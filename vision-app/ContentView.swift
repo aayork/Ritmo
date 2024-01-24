@@ -15,7 +15,7 @@ struct ContentView: View {
             Model3D(named: "Scene", bundle: realityKitContentBundle)
                 .padding(.bottom, 50)
 
-            Text("Hello, world!")
+            Text("Hi Team! Can't wait to get started with this new app -AY")
         }
         .padding()
     }
