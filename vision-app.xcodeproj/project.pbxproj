@@ -7,153 +7,171 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		EC1244072B5B03F40023EB1E /* visionapp.docc in Sources */ = {isa = PBXBuildFile; fileRef = EC1244062B5B03F40023EB1E /* visionapp.docc */; };
-		EC12440D2B5B03F40023EB1E /* visionapp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC1244022B5B03F40023EB1E /* visionapp.framework */; };
-		EC1244122B5B03F40023EB1E /* visionappTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1244112B5B03F40023EB1E /* visionappTests.swift */; };
-		EC1244132B5B03F40023EB1E /* visionapp.h in Headers */ = {isa = PBXBuildFile; fileRef = EC1244052B5B03F40023EB1E /* visionapp.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EC59ADE02B60CC3F00E5790E /* RealityKitContent in Frameworks */ = {isa = PBXBuildFile; productRef = EC59ADDF2B60CC3F00E5790E /* RealityKitContent */; };
+		EC59ADE22B60CC3F00E5790E /* vision_appApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC59ADE12B60CC3F00E5790E /* vision_appApp.swift */; };
+		EC59ADE42B60CC3F00E5790E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC59ADE32B60CC3F00E5790E /* ContentView.swift */; };
+		EC59ADE62B60CC4100E5790E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC59ADE52B60CC4100E5790E /* Assets.xcassets */; };
+		EC59ADE92B60CC4100E5790E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC59ADE82B60CC4100E5790E /* Preview Assets.xcassets */; };
+		EC59ADF42B60CC4100E5790E /* vision_appTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC59ADF32B60CC4100E5790E /* vision_appTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		EC12440E2B5B03F40023EB1E /* PBXContainerItemProxy */ = {
+		EC59ADF02B60CC4100E5790E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = EC1243F92B5B03F40023EB1E /* Project object */;
+			containerPortal = EC59ADD22B60CC3F00E5790E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = EC1244012B5B03F40023EB1E;
-			remoteInfo = visionapp;
+			remoteGlobalIDString = EC59ADD92B60CC3F00E5790E;
+			remoteInfo = "vision-app";
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		EC1244022B5B03F40023EB1E /* visionapp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = visionapp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		EC1244052B5B03F40023EB1E /* visionapp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = visionapp.h; sourceTree = "<group>"; };
-		EC1244062B5B03F40023EB1E /* visionapp.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = visionapp.docc; sourceTree = "<group>"; };
-		EC12440C2B5B03F40023EB1E /* visionappTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = visionappTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		EC1244112B5B03F40023EB1E /* visionappTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = visionappTests.swift; sourceTree = "<group>"; };
+		EC59ADDA2B60CC3F00E5790E /* vision-app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "vision-app.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EC59ADDE2B60CC3F00E5790E /* RealityKitContent */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = RealityKitContent; sourceTree = "<group>"; };
+		EC59ADE12B60CC3F00E5790E /* vision_appApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = vision_appApp.swift; sourceTree = "<group>"; };
+		EC59ADE32B60CC3F00E5790E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		EC59ADE52B60CC4100E5790E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		EC59ADE82B60CC4100E5790E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		EC59ADEA2B60CC4100E5790E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EC59ADEF2B60CC4100E5790E /* vision-appTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "vision-appTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EC59ADF32B60CC4100E5790E /* vision_appTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = vision_appTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		EC1243FF2B5B03F40023EB1E /* Frameworks */ = {
+		EC59ADD72B60CC3F00E5790E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EC59ADE02B60CC3F00E5790E /* RealityKitContent in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		EC1244092B5B03F40023EB1E /* Frameworks */ = {
+		EC59ADEC2B60CC4100E5790E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EC12440D2B5B03F40023EB1E /* visionapp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		EC1243F82B5B03F40023EB1E = {
+		EC59ADD12B60CC3F00E5790E = {
 			isa = PBXGroup;
 			children = (
-				EC1244042B5B03F40023EB1E /* visionapp */,
-				EC1244102B5B03F40023EB1E /* visionappTests */,
-				EC1244032B5B03F40023EB1E /* Products */,
+				EC59ADDC2B60CC3F00E5790E /* vision-app */,
+				EC59ADDD2B60CC3F00E5790E /* Packages */,
+				EC59ADF22B60CC4100E5790E /* vision-appTests */,
+				EC59ADDB2B60CC3F00E5790E /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		EC1244032B5B03F40023EB1E /* Products */ = {
+		EC59ADDB2B60CC3F00E5790E /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				EC1244022B5B03F40023EB1E /* visionapp.framework */,
-				EC12440C2B5B03F40023EB1E /* visionappTests.xctest */,
+				EC59ADDA2B60CC3F00E5790E /* vision-app.app */,
+				EC59ADEF2B60CC4100E5790E /* vision-appTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		EC1244042B5B03F40023EB1E /* visionapp */ = {
+		EC59ADDC2B60CC3F00E5790E /* vision-app */ = {
 			isa = PBXGroup;
 			children = (
-				EC1244052B5B03F40023EB1E /* visionapp.h */,
-				EC1244062B5B03F40023EB1E /* visionapp.docc */,
+				EC59ADE12B60CC3F00E5790E /* vision_appApp.swift */,
+				EC59ADE32B60CC3F00E5790E /* ContentView.swift */,
+				EC59ADE52B60CC4100E5790E /* Assets.xcassets */,
+				EC59ADEA2B60CC4100E5790E /* Info.plist */,
+				EC59ADE72B60CC4100E5790E /* Preview Content */,
 			);
-			path = visionapp;
+			path = "vision-app";
 			sourceTree = "<group>";
 		};
-		EC1244102B5B03F40023EB1E /* visionappTests */ = {
+		EC59ADDD2B60CC3F00E5790E /* Packages */ = {
 			isa = PBXGroup;
 			children = (
-				EC1244112B5B03F40023EB1E /* visionappTests.swift */,
+				EC59ADDE2B60CC3F00E5790E /* RealityKitContent */,
 			);
-			path = visionappTests;
+			path = Packages;
+			sourceTree = "<group>";
+		};
+		EC59ADE72B60CC4100E5790E /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				EC59ADE82B60CC4100E5790E /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		EC59ADF22B60CC4100E5790E /* vision-appTests */ = {
+			isa = PBXGroup;
+			children = (
+				EC59ADF32B60CC4100E5790E /* vision_appTests.swift */,
+			);
+			path = "vision-appTests";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
-/* Begin PBXHeadersBuildPhase section */
-		EC1243FD2B5B03F40023EB1E /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				EC1244132B5B03F40023EB1E /* visionapp.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXHeadersBuildPhase section */
-
 /* Begin PBXNativeTarget section */
-		EC1244012B5B03F40023EB1E /* visionapp */ = {
+		EC59ADD92B60CC3F00E5790E /* vision-app */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = EC1244162B5B03F40023EB1E /* Build configuration list for PBXNativeTarget "visionapp" */;
+			buildConfigurationList = EC59ADF72B60CC4100E5790E /* Build configuration list for PBXNativeTarget "vision-app" */;
 			buildPhases = (
-				EC1243FD2B5B03F40023EB1E /* Headers */,
-				EC1243FE2B5B03F40023EB1E /* Sources */,
-				EC1243FF2B5B03F40023EB1E /* Frameworks */,
-				EC1244002B5B03F40023EB1E /* Resources */,
+				EC59ADD62B60CC3F00E5790E /* Sources */,
+				EC59ADD72B60CC3F00E5790E /* Frameworks */,
+				EC59ADD82B60CC3F00E5790E /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = visionapp;
-			productName = visionapp;
-			productReference = EC1244022B5B03F40023EB1E /* visionapp.framework */;
-			productType = "com.apple.product-type.framework";
+			name = "vision-app";
+			packageProductDependencies = (
+				EC59ADDF2B60CC3F00E5790E /* RealityKitContent */,
+			);
+			productName = "vision-app";
+			productReference = EC59ADDA2B60CC3F00E5790E /* vision-app.app */;
+			productType = "com.apple.product-type.application";
 		};
-		EC12440B2B5B03F40023EB1E /* visionappTests */ = {
+		EC59ADEE2B60CC4100E5790E /* vision-appTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = EC1244192B5B03F40023EB1E /* Build configuration list for PBXNativeTarget "visionappTests" */;
+			buildConfigurationList = EC59ADFA2B60CC4100E5790E /* Build configuration list for PBXNativeTarget "vision-appTests" */;
 			buildPhases = (
-				EC1244082B5B03F40023EB1E /* Sources */,
-				EC1244092B5B03F40023EB1E /* Frameworks */,
-				EC12440A2B5B03F40023EB1E /* Resources */,
+				EC59ADEB2B60CC4100E5790E /* Sources */,
+				EC59ADEC2B60CC4100E5790E /* Frameworks */,
+				EC59ADED2B60CC4100E5790E /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				EC12440F2B5B03F40023EB1E /* PBXTargetDependency */,
+				EC59ADF12B60CC4100E5790E /* PBXTargetDependency */,
 			);
-			name = visionappTests;
-			productName = visionappTests;
-			productReference = EC12440C2B5B03F40023EB1E /* visionappTests.xctest */;
+			name = "vision-appTests";
+			productName = "vision-appTests";
+			productReference = EC59ADEF2B60CC4100E5790E /* vision-appTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		EC1243F92B5B03F40023EB1E /* Project object */ = {
+		EC59ADD22B60CC3F00E5790E /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1520;
 				LastUpgradeCheck = 1520;
 				TargetAttributes = {
-					EC1244012B5B03F40023EB1E = {
+					EC59ADD92B60CC3F00E5790E = {
 						CreatedOnToolsVersion = 15.2;
 					};
-					EC12440B2B5B03F40023EB1E = {
+					EC59ADEE2B60CC4100E5790E = {
 						CreatedOnToolsVersion = 15.2;
+						TestTargetID = EC59ADD92B60CC3F00E5790E;
 					};
 				};
 			};
-			buildConfigurationList = EC1243FC2B5B03F40023EB1E /* Build configuration list for PBXProject "visionapp" */;
+			buildConfigurationList = EC59ADD52B60CC3F00E5790E /* Build configuration list for PBXProject "vision-app" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -161,26 +179,28 @@
 				en,
 				Base,
 			);
-			mainGroup = EC1243F82B5B03F40023EB1E;
-			productRefGroup = EC1244032B5B03F40023EB1E /* Products */;
+			mainGroup = EC59ADD12B60CC3F00E5790E;
+			productRefGroup = EC59ADDB2B60CC3F00E5790E /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				EC1244012B5B03F40023EB1E /* visionapp */,
-				EC12440B2B5B03F40023EB1E /* visionappTests */,
+				EC59ADD92B60CC3F00E5790E /* vision-app */,
+				EC59ADEE2B60CC4100E5790E /* vision-appTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		EC1244002B5B03F40023EB1E /* Resources */ = {
+		EC59ADD82B60CC3F00E5790E /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EC59ADE92B60CC4100E5790E /* Preview Assets.xcassets in Resources */,
+				EC59ADE62B60CC4100E5790E /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		EC12440A2B5B03F40023EB1E /* Resources */ = {
+		EC59ADED2B60CC4100E5790E /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -190,34 +210,35 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		EC1243FE2B5B03F40023EB1E /* Sources */ = {
+		EC59ADD62B60CC3F00E5790E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EC1244072B5B03F40023EB1E /* visionapp.docc in Sources */,
+				EC59ADE42B60CC3F00E5790E /* ContentView.swift in Sources */,
+				EC59ADE22B60CC3F00E5790E /* vision_appApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		EC1244082B5B03F40023EB1E /* Sources */ = {
+		EC59ADEB2B60CC4100E5790E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EC1244122B5B03F40023EB1E /* visionappTests.swift in Sources */,
+				EC59ADF42B60CC4100E5790E /* vision_appTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		EC12440F2B5B03F40023EB1E /* PBXTargetDependency */ = {
+		EC59ADF12B60CC4100E5790E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = EC1244012B5B03F40023EB1E /* visionapp */;
-			targetProxy = EC12440E2B5B03F40023EB1E /* PBXContainerItemProxy */;
+			target = EC59ADD92B60CC3F00E5790E /* vision-app */;
+			targetProxy = EC59ADF02B60CC4100E5790E /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		EC1244142B5B03F40023EB1E /* Debug */ = {
+		EC59ADF52B60CC4100E5790E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -251,7 +272,6 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -277,13 +297,11 @@
 				SDKROOT = xros;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
 				XROS_DEPLOYMENT_TARGET = 1.0;
 			};
 			name = Debug;
 		};
-		EC1244152B5B03F40023EB1E /* Release */ = {
+		EC59ADF62B60CC4100E5790E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -317,7 +335,6 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -336,36 +353,28 @@
 				SDKROOT = xros;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
 				XROS_DEPLOYMENT_TARGET = 1.0;
 			};
 			name = Release;
 		};
-		EC1244172B5B03F40023EB1E /* Debug */ = {
+		EC59ADF82B60CC4100E5790E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_MODULE_VERIFIER = YES;
+				DEVELOPMENT_ASSET_PATHS = "\"vision-app/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				INFOPLIST_FILE = "$(TARGET_NAME)/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
-				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu17 gnu++20";
-				PRODUCT_BUNDLE_IDENTIFIER = nmi.cool.visionapp;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SKIP_INSTALL = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.nmi.vision-app";
+				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "xros xrsimulator";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -373,30 +382,24 @@
 			};
 			name = Debug;
 		};
-		EC1244182B5B03F40023EB1E /* Release */ = {
+		EC59ADF92B60CC4100E5790E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_MODULE_VERIFIER = YES;
+				DEVELOPMENT_ASSET_PATHS = "\"vision-app/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				INFOPLIST_FILE = "$(TARGET_NAME)/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
-				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu17 gnu++20";
-				PRODUCT_BUNDLE_IDENTIFIER = nmi.cool.visionapp;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SKIP_INSTALL = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.nmi.vision-app";
+				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "xros xrsimulator";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -404,69 +407,84 @@
 			};
 			name = Release;
 		};
-		EC12441A2B5B03F40023EB1E /* Debug */ = {
+		EC59ADFB2B60CC4100E5790E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = nmi.cool.visionappTests;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.nmi.vision-appTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "xros xrsimulator";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2,7";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/vision-app.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/vision-app";
+				XROS_DEPLOYMENT_TARGET = 1.0;
 			};
 			name = Debug;
 		};
-		EC12441B2B5B03F40023EB1E /* Release */ = {
+		EC59ADFC2B60CC4100E5790E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = nmi.cool.visionappTests;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.nmi.vision-appTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "xros xrsimulator";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2,7";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/vision-app.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/vision-app";
+				XROS_DEPLOYMENT_TARGET = 1.0;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		EC1243FC2B5B03F40023EB1E /* Build configuration list for PBXProject "visionapp" */ = {
+		EC59ADD52B60CC3F00E5790E /* Build configuration list for PBXProject "vision-app" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				EC1244142B5B03F40023EB1E /* Debug */,
-				EC1244152B5B03F40023EB1E /* Release */,
+				EC59ADF52B60CC4100E5790E /* Debug */,
+				EC59ADF62B60CC4100E5790E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		EC1244162B5B03F40023EB1E /* Build configuration list for PBXNativeTarget "visionapp" */ = {
+		EC59ADF72B60CC4100E5790E /* Build configuration list for PBXNativeTarget "vision-app" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				EC1244172B5B03F40023EB1E /* Debug */,
-				EC1244182B5B03F40023EB1E /* Release */,
+				EC59ADF82B60CC4100E5790E /* Debug */,
+				EC59ADF92B60CC4100E5790E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		EC1244192B5B03F40023EB1E /* Build configuration list for PBXNativeTarget "visionappTests" */ = {
+		EC59ADFA2B60CC4100E5790E /* Build configuration list for PBXNativeTarget "vision-appTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				EC12441A2B5B03F40023EB1E /* Debug */,
-				EC12441B2B5B03F40023EB1E /* Release */,
+				EC59ADFB2B60CC4100E5790E /* Debug */,
+				EC59ADFC2B60CC4100E5790E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		EC59ADDF2B60CC3F00E5790E /* RealityKitContent */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = RealityKitContent;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
-	rootObject = EC1243F92B5B03F40023EB1E /* Project object */;
+	rootObject = EC59ADD22B60CC3F00E5790E /* Project object */;
 }

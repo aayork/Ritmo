@@ -1,14 +1,14 @@
 //
-//  visionappTests.swift
-//  visionappTests
+//  vision_appTests.swift
+//  vision-appTests
 //
-//  Created by Aidan York on 1/19/24.
+//  Created by Aidan York on 1/23/24.
 //
 
 import XCTest
-@testable import visionapp
+@testable import vision_app
 
-class visionappTests: XCTestCase {
+class vision_appTests: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
