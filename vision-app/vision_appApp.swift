@@ -12,6 +12,7 @@ struct vision_appApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .background(.red.opacity(0.8))
         }
     }
 }

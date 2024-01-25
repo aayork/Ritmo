@@ -13,11 +13,12 @@ struct ContentView: View {
     var body: some View {
         VStack {
             Model3D(named: "Scene", bundle: realityKitContentBundle)
-                .padding(.bottom, 50)
+                .padding(.bottom, 45)
 
             Text("Hi Team! Can't wait to get started with this new app -AY")
-        }
-        .padding()
+                .font(.extraLargeTitle)
+                .opacity(0.5)}
+                .padding(.horizontal, 50)
     }
 }
 
