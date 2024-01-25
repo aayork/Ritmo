@@ -15,7 +15,7 @@ struct ContentView: View {
             Model3D(named: "Scene", bundle: realityKitContentBundle)
                 .padding(.bottom, 45)
             
-            Text("Hi Team! Can't wait to get started with this new app -AY")
+            Text("Hi Team! Can't wait to get started with this new app -Max")
                 .font(.extraLargeTitle)
                 .opacity(1.0)
                 .padding(.horizontal, 50)
