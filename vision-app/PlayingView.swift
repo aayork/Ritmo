@@ -10,7 +10,7 @@ import RealityKit
 import RealityKitContent
 
 
-struct BlueView: View {
+struct PlayingView: View {
     var body: some View {
         ZStack {
             Color.blue
@@ -32,19 +32,19 @@ struct BlueView: View {
                         Label("", systemImage: "backward.fill")
                     }
                     .buttonStyle(.borderless)
-                    .controlSize(.large)
+                    .controlSize(.extraLarge)
                     Button {
                     } label: {
                         Label("", systemImage: "play.fill")
                     }
                     .buttonStyle(.borderless)
-                    .controlSize(.large)
+                    .controlSize(.extraLarge)
                     Button {
                     } label: {
                         Label("", systemImage: "forward.fill")
                     }
                     .buttonStyle(.borderless)
-                    .controlSize(.large)
+                    .controlSize(.extraLarge)
                 }
             }
         }
@@ -52,5 +52,5 @@ struct BlueView: View {
 }
 
 #Preview {
-    BlueView()
+    PlayingView()
 }

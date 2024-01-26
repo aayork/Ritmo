@@ -12,12 +12,12 @@ import RealityKitContent
 struct ContentView: View {
     var body: some View {
         TabView {
-            BlueView()
+            PlayingView()
                 .tabItem {
                     Image(systemName: "music.note")
                     Text("Now Playing")
                 }
-            RedView()
+            LibraryView()
                 .tabItem {
                     Image(systemName: "book")
                     Text("Library")

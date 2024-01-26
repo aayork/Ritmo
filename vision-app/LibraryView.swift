@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct RedView: View {
+struct LibraryView: View {
     var body: some View {
         VStack {
             Color.red
@@ -16,5 +16,5 @@ struct RedView: View {
 }
 
 #Preview {
-    RedView()
+    LibraryView()
 }
