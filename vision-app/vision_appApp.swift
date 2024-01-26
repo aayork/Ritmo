@@ -13,5 +13,8 @@ struct vision_appApp: App {
         WindowGroup {
             ContentView()
         }
+        ImmersiveSpace(id: "Immersive Space") {
+            
+        }   
     }
 }

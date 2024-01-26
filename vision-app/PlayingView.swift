@@ -34,6 +34,7 @@ struct PlayingView: View {
                     .buttonStyle(.borderless)
                     .controlSize(.extraLarge)
                     Button {
+                        playMusic()
                     } label: {
                         Label("", systemImage: "play.fill")
                     }

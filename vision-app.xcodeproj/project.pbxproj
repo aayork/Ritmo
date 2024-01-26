@@ -16,6 +16,7 @@
 		EC59ADE92B60CC4100E5790E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC59ADE82B60CC4100E5790E /* Preview Assets.xcassets */; };
 		EC59ADF42B60CC4100E5790E /* vision_appTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC59ADF32B60CC4100E5790E /* vision_appTests.swift */; };
 		ECFD8C122B64320200E573E2 /* PlayMusic.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECFD8C112B64320200E573E2 /* PlayMusic.swift */; };
+		ECFD8C142B64730A00E573E2 /* Music in Resources */ = {isa = PBXBuildFile; fileRef = ECFD8C132B64730A00E573E2 /* Music */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,6 +42,7 @@
 		EC59ADEF2B60CC4100E5790E /* vision-appTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "vision-appTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC59ADF32B60CC4100E5790E /* vision_appTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = vision_appTests.swift; sourceTree = "<group>"; };
 		ECFD8C112B64320200E573E2 /* PlayMusic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayMusic.swift; sourceTree = "<group>"; };
+		ECFD8C132B64730A00E573E2 /* Music */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Music; path = ../../../Music; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +93,7 @@
 				ECFD8C112B64320200E573E2 /* PlayMusic.swift */,
 				EC59ADE52B60CC4100E5790E /* Assets.xcassets */,
 				EC59ADEA2B60CC4100E5790E /* Info.plist */,
+				ECFD8C132B64730A00E573E2 /* Music */,
 				EC59ADE72B60CC4100E5790E /* Preview Content */,
 			);
 			path = "vision-app";
@@ -204,6 +207,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ECFD8C142B64730A00E573E2 /* Music in Resources */,
 				EC59ADE92B60CC4100E5790E /* Preview Assets.xcassets in Resources */,
 				EC59ADE62B60CC4100E5790E /* Assets.xcassets in Resources */,
 			);
