@@ -22,8 +22,26 @@ struct BlueView: View {
                     .font(.extraLargeTitle)
                     .opacity(1.0)
                     .padding(.horizontal, 50)
-                
-                Button("DONT PUSH ME") {
+                HStack {
+                    Button {
+                        
+                    } label: {
+                        Label("", systemImage: "backward.fill")
+                    }
+                    .buttonStyle(.borderless)
+                    .controlSize(.large)
+                    Button {
+                    } label: {
+                        Label("", systemImage: "play.fill")
+                    }
+                    .buttonStyle(.borderless)
+                    .controlSize(.large)
+                    Button {
+                    } label: {
+                        Label("", systemImage: "forward.fill")
+                    }
+                    .buttonStyle(.borderless)
+                    .controlSize(.large)
                 }
             }
         }

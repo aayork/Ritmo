@@ -14,13 +14,13 @@ struct ContentView: View {
         TabView {
             BlueView()
                 .tabItem {
-                    Image(systemName: "checkmark")
-                    Text("Blue")
+                    Image(systemName: "music.note")
+                    Text("Now Playing")
                 }
             RedView()
                 .tabItem {
-                    Image(systemName: "rays")
-                    Text("Red")
+                    Image(systemName: "book")
+                    Text("Library")
                 }
         }
     }
