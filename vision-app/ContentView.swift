@@ -11,17 +11,17 @@ import RealityKitContent
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Model3D(named: "Scene", bundle: realityKitContentBundle)
-                .padding(.bottom, 45)
-            
-            Text("Hi Team! Can't wait to get started with this new app -Max")
-                .font(.extraLargeTitle)
-                .opacity(1.0)
-                .padding(.horizontal, 50)
-            
-            Button("DONT PUSH ME") {
-            }
+        TabView {
+            BlueView()
+                .tabItem {
+                    Image(systemName: "checkmark")
+                    Text("Blue")
+                }
+            RedView()
+                .tabItem {
+                    Image(systemName: "rays")
+                    Text("Red")
+                }
         }
     }
 }
