@@ -11,12 +11,7 @@ import SwiftUI
 struct vision_appApp: App {
     var body: some Scene {
         WindowGroup {
-            TabView {
-                ContentView()
-                    .tabItem {
-                        Label("Library", systemImage: "book")
-                    }
-            }
+            ContentView()
         }
     }
 }
