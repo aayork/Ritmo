@@ -15,7 +15,7 @@ let url = Bundle.main.url(forResource: "01 Closing Time", withExtension: "mp3")
 
 func playMusic() {
     // Check if the URL is not nil
-    guard let url = Bundle.main.url(forResource: "Music/07. Coldplay - Viva la Vida", withExtension: ".mp3") else {
+    guard let url = Bundle.main.url(forResource: "Music/08 All the Small Things", withExtension: ".mp3") else {
         print("Error: Could not find the audio file.")
         return
     }

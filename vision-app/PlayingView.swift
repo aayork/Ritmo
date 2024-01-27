@@ -18,11 +18,11 @@ struct PlayingView: View {
                 Model3D(named: "Scene", bundle: realityKitContentBundle)
                     .padding(.bottom, 45)
                 
-                Text("SICKO MODE")
+                Text("song_name")
                     .font(.extraLargeTitle)
                     .opacity(1.0)
                     .padding(.horizontal, 50)
-                Text("Travis Scott")
+                Text("artist_name")
                     .font(.subheadline)
                     .opacity(0.5)
                 HStack {
