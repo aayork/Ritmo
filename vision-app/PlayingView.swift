@@ -9,8 +9,9 @@ import SwiftUI
 import RealityKit
 import RealityKitContent
 
-
 struct PlayingView: View {
+    @State private var playing = false
+    
     var body: some View {
         ZStack {
             Color.blue
@@ -18,7 +19,7 @@ struct PlayingView: View {
                 Model3D(named: "Scene", bundle: realityKitContentBundle)
                     .padding(.bottom, 45)
                 
-                Text("song_name")
+                Text("song_title")
                     .font(.extraLargeTitle)
                     .opacity(1.0)
                     .padding(.horizontal, 50)
@@ -34,7 +35,13 @@ struct PlayingView: View {
                     .buttonStyle(.borderless)
                     .controlSize(.extraLarge)
                     Button {
-                        playMusic()
+                        if (playing == false) {
+                            playMusic();
+                            playing = true;
+                        } else {
+                            pauseMusic();
+                            playing = false;
+                        }
                     } label: {
                         Label("", systemImage: "play.fill")
                     }

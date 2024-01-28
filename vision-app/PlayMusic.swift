@@ -33,3 +33,7 @@ func playMusic() {
         print("Error: \(error.localizedDescription)")
     }
 }
+
+func pauseMusic() {
+    player?.pause()
+}
