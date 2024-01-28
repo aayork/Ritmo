@@ -9,31 +9,31 @@ import Foundation
 import AVFoundation
 import AVFAudio
 
-var player: AVAudioPlayer!
-
-let url = Bundle.main.url(forResource: "01 Closing Time", withExtension: "mp3")
+var player: AVAudioPlayer?
 
 func playMusic() {
-    // Check if the URL is not nil
-    guard let url = Bundle.main.url(forResource: "Music/08 All the Small Things", withExtension: ".mp3") else {
-        print("Error: Could not find the audio file.")
-        return
+    // Check if the player is not nil
+    if player == nil {
+        // Initialize the audio player if it's not already initialized
+        guard let url = Bundle.main.url(forResource: "Music/08 All the Small Things", withExtension: ".mp3") else {
+            print("Error: Could not find the audio file.")
+            return
+        }
+
+        do {
+            player = try AVAudioPlayer(contentsOf: url)
+            player?.prepareToPlay()
+        } catch {
+            print("Error: \(error.localizedDescription)")
+            return
+        }
     }
 
-    do {
-        // Initialize the audio player
-        player = try AVAudioPlayer(contentsOf: url)
-        
-        // Prepare the player for playback
-        player.prepareToPlay()
-        
-        // Play the audio
-        player.play()
-    } catch {
-        print("Error: \(error.localizedDescription)")
-    }
+    // Play the audio
+    player?.play()
 }
 
 func pauseMusic() {
+    // Pause the audio if the player is not nil
     player?.pause()
 }

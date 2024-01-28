@@ -30,26 +30,25 @@ struct PlayingView: View {
                     Button {
                         
                     } label: {
-                        Label("", systemImage: "backward.fill")
+                        Image(systemName: "backward.fill")
                     }
                     .buttonStyle(.borderless)
                     .controlSize(.extraLarge)
                     Button {
                         if (playing == false) {
                             playMusic();
-                            playing = true;
                         } else {
                             pauseMusic();
-                            playing = false;
                         }
+                        playing.toggle()
                     } label: {
-                        Label("", systemImage: "play.fill")
+                        Image(systemName: playing ? "pause.fill" : "play.fill")
                     }
                     .buttonStyle(.borderless)
                     .controlSize(.extraLarge)
                     Button {
                     } label: {
-                        Label("", systemImage: "forward.fill")
+                        Image(systemName: "forward.fill")
                     }
                     .buttonStyle(.borderless)
                     .controlSize(.extraLarge)
