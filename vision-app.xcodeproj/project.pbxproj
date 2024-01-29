@@ -15,8 +15,23 @@
 		EC59ADE62B60CC4100E5790E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC59ADE52B60CC4100E5790E /* Assets.xcassets */; };
 		EC59ADE92B60CC4100E5790E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC59ADE82B60CC4100E5790E /* Preview Assets.xcassets */; };
 		EC59ADF42B60CC4100E5790E /* vision_appTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC59ADF32B60CC4100E5790E /* vision_appTests.swift */; };
+		ECB14EFB2B6872EA007922C9 /* 07 Little Lion Man.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = ECB14EEB2B6872EA007922C9 /* 07 Little Lion Man.mp3 */; };
+		ECB14EFC2B6872EA007922C9 /* 01 - Cotton Eye Joe (Original Version).mp3 in Resources */ = {isa = PBXBuildFile; fileRef = ECB14EEC2B6872EA007922C9 /* 01 - Cotton Eye Joe (Original Version).mp3 */; };
+		ECB14EFD2B6872EA007922C9 /* Broken.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = ECB14EED2B6872EA007922C9 /* Broken.mp3 */; };
+		ECB14EFE2B6872EA007922C9 /* 07. Coldplay - Viva la Vida.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = ECB14EEE2B6872EA007922C9 /* 07. Coldplay - Viva la Vida.mp3 */; };
+		ECB14EFF2B6872EA007922C9 /* 04 She Will Be Loved.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = ECB14EEF2B6872EA007922C9 /* 04 She Will Be Loved.mp3 */; };
+		ECB14F002B6872EA007922C9 /* 03 In a Little While.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = ECB14EF02B6872EA007922C9 /* 03 In a Little While.mp3 */; };
+		ECB14F012B6872EA007922C9 /* 06 How's It Going to Be.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = ECB14EF12B6872EA007922C9 /* 06 How's It Going to Be.mp3 */; };
+		ECB14F022B6872EA007922C9 /* 03 3 A.M.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = ECB14EF22B6872EA007922C9 /* 03 3 A.M.mp3 */; };
+		ECB14F032B6872EA007922C9 /* 02 Drive By.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = ECB14EF32B6872EA007922C9 /* 02 Drive By.mp3 */; };
+		ECB14F042B6872EA007922C9 /* 02 Hey, Soul Sister.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = ECB14EF42B6872EA007922C9 /* 02 Hey, Soul Sister.mp3 */; };
+		ECB14F052B6872EA007922C9 /* 08 All the Small Things.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = ECB14EF52B6872EA007922C9 /* 08 All the Small Things.mp3 */; };
+		ECB14F062B6872EA007922C9 /* 01 Wake Me Up.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = ECB14EF62B6872EA007922C9 /* 01 Wake Me Up.mp3 */; };
+		ECB14F072B6872EA007922C9 /* 06 Little Talks.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = ECB14EF72B6872EA007922C9 /* 06 Little Talks.mp3 */; };
+		ECB14F082B6872EA007922C9 /* 01 Closing Time.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = ECB14EF82B6872EA007922C9 /* 01 Closing Time.mp3 */; };
+		ECB14F092B6872EA007922C9 /* 03 I Will Wait.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = ECB14EF92B6872EA007922C9 /* 03 I Will Wait.mp3 */; };
+		ECB14F0A2B6872EA007922C9 /* 02 I'm Gonna Be (500 Miles).mp3 in Resources */ = {isa = PBXBuildFile; fileRef = ECB14EFA2B6872EA007922C9 /* 02 I'm Gonna Be (500 Miles).mp3 */; };
 		ECFD8C122B64320200E573E2 /* PlayMusic.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECFD8C112B64320200E573E2 /* PlayMusic.swift */; };
-		ECFD8C142B64730A00E573E2 /* Music in Resources */ = {isa = PBXBuildFile; fileRef = ECFD8C132B64730A00E573E2 /* Music */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,8 +56,23 @@
 		EC59ADEA2B60CC4100E5790E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EC59ADEF2B60CC4100E5790E /* vision-appTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "vision-appTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC59ADF32B60CC4100E5790E /* vision_appTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = vision_appTests.swift; sourceTree = "<group>"; };
+		ECB14EEB2B6872EA007922C9 /* 07 Little Lion Man.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "07 Little Lion Man.mp3"; sourceTree = "<group>"; };
+		ECB14EEC2B6872EA007922C9 /* 01 - Cotton Eye Joe (Original Version).mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "01 - Cotton Eye Joe (Original Version).mp3"; sourceTree = "<group>"; };
+		ECB14EED2B6872EA007922C9 /* Broken.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Broken.mp3; sourceTree = "<group>"; };
+		ECB14EEE2B6872EA007922C9 /* 07. Coldplay - Viva la Vida.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "07. Coldplay - Viva la Vida.mp3"; sourceTree = "<group>"; };
+		ECB14EEF2B6872EA007922C9 /* 04 She Will Be Loved.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "04 She Will Be Loved.mp3"; sourceTree = "<group>"; };
+		ECB14EF02B6872EA007922C9 /* 03 In a Little While.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "03 In a Little While.mp3"; sourceTree = "<group>"; };
+		ECB14EF12B6872EA007922C9 /* 06 How's It Going to Be.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "06 How's It Going to Be.mp3"; sourceTree = "<group>"; };
+		ECB14EF22B6872EA007922C9 /* 03 3 A.M.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "03 3 A.M.mp3"; sourceTree = "<group>"; };
+		ECB14EF32B6872EA007922C9 /* 02 Drive By.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "02 Drive By.mp3"; sourceTree = "<group>"; };
+		ECB14EF42B6872EA007922C9 /* 02 Hey, Soul Sister.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "02 Hey, Soul Sister.mp3"; sourceTree = "<group>"; };
+		ECB14EF52B6872EA007922C9 /* 08 All the Small Things.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "08 All the Small Things.mp3"; sourceTree = "<group>"; };
+		ECB14EF62B6872EA007922C9 /* 01 Wake Me Up.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "01 Wake Me Up.mp3"; sourceTree = "<group>"; };
+		ECB14EF72B6872EA007922C9 /* 06 Little Talks.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "06 Little Talks.mp3"; sourceTree = "<group>"; };
+		ECB14EF82B6872EA007922C9 /* 01 Closing Time.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "01 Closing Time.mp3"; sourceTree = "<group>"; };
+		ECB14EF92B6872EA007922C9 /* 03 I Will Wait.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "03 I Will Wait.mp3"; sourceTree = "<group>"; };
+		ECB14EFA2B6872EA007922C9 /* 02 I'm Gonna Be (500 Miles).mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "02 I'm Gonna Be (500 Miles).mp3"; sourceTree = "<group>"; };
 		ECFD8C112B64320200E573E2 /* PlayMusic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayMusic.swift; sourceTree = "<group>"; };
-		ECFD8C132B64730A00E573E2 /* Music */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Music; path = ../../../Music; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,7 +123,7 @@
 				ECFD8C112B64320200E573E2 /* PlayMusic.swift */,
 				EC59ADE52B60CC4100E5790E /* Assets.xcassets */,
 				EC59ADEA2B60CC4100E5790E /* Info.plist */,
-				ECFD8C132B64730A00E573E2 /* Music */,
+				ECB14EEA2B6872EA007922C9 /* Music */,
 				EC59ADE72B60CC4100E5790E /* Preview Content */,
 			);
 			path = "vision-app";
@@ -121,6 +151,29 @@
 				EC59ADF32B60CC4100E5790E /* vision_appTests.swift */,
 			);
 			path = "vision-appTests";
+			sourceTree = "<group>";
+		};
+		ECB14EEA2B6872EA007922C9 /* Music */ = {
+			isa = PBXGroup;
+			children = (
+				ECB14EEB2B6872EA007922C9 /* 07 Little Lion Man.mp3 */,
+				ECB14EEC2B6872EA007922C9 /* 01 - Cotton Eye Joe (Original Version).mp3 */,
+				ECB14EED2B6872EA007922C9 /* Broken.mp3 */,
+				ECB14EEE2B6872EA007922C9 /* 07. Coldplay - Viva la Vida.mp3 */,
+				ECB14EEF2B6872EA007922C9 /* 04 She Will Be Loved.mp3 */,
+				ECB14EF02B6872EA007922C9 /* 03 In a Little While.mp3 */,
+				ECB14EF12B6872EA007922C9 /* 06 How's It Going to Be.mp3 */,
+				ECB14EF22B6872EA007922C9 /* 03 3 A.M.mp3 */,
+				ECB14EF32B6872EA007922C9 /* 02 Drive By.mp3 */,
+				ECB14EF42B6872EA007922C9 /* 02 Hey, Soul Sister.mp3 */,
+				ECB14EF52B6872EA007922C9 /* 08 All the Small Things.mp3 */,
+				ECB14EF62B6872EA007922C9 /* 01 Wake Me Up.mp3 */,
+				ECB14EF72B6872EA007922C9 /* 06 Little Talks.mp3 */,
+				ECB14EF82B6872EA007922C9 /* 01 Closing Time.mp3 */,
+				ECB14EF92B6872EA007922C9 /* 03 I Will Wait.mp3 */,
+				ECB14EFA2B6872EA007922C9 /* 02 I'm Gonna Be (500 Miles).mp3 */,
+			);
+			path = Music;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -207,9 +260,24 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ECFD8C142B64730A00E573E2 /* Music in Resources */,
+				ECB14F082B6872EA007922C9 /* 01 Closing Time.mp3 in Resources */,
+				ECB14F002B6872EA007922C9 /* 03 In a Little While.mp3 in Resources */,
+				ECB14EFE2B6872EA007922C9 /* 07. Coldplay - Viva la Vida.mp3 in Resources */,
+				ECB14F042B6872EA007922C9 /* 02 Hey, Soul Sister.mp3 in Resources */,
+				ECB14F022B6872EA007922C9 /* 03 3 A.M.mp3 in Resources */,
+				ECB14EFB2B6872EA007922C9 /* 07 Little Lion Man.mp3 in Resources */,
+				ECB14EFF2B6872EA007922C9 /* 04 She Will Be Loved.mp3 in Resources */,
+				ECB14F012B6872EA007922C9 /* 06 How's It Going to Be.mp3 in Resources */,
+				ECB14F062B6872EA007922C9 /* 01 Wake Me Up.mp3 in Resources */,
+				ECB14F032B6872EA007922C9 /* 02 Drive By.mp3 in Resources */,
+				ECB14F0A2B6872EA007922C9 /* 02 I'm Gonna Be (500 Miles).mp3 in Resources */,
 				EC59ADE92B60CC4100E5790E /* Preview Assets.xcassets in Resources */,
+				ECB14EFC2B6872EA007922C9 /* 01 - Cotton Eye Joe (Original Version).mp3 in Resources */,
+				ECB14F072B6872EA007922C9 /* 06 Little Talks.mp3 in Resources */,
 				EC59ADE62B60CC4100E5790E /* Assets.xcassets in Resources */,
+				ECB14EFD2B6872EA007922C9 /* Broken.mp3 in Resources */,
+				ECB14F052B6872EA007922C9 /* 08 All the Small Things.mp3 in Resources */,
+				ECB14F092B6872EA007922C9 /* 03 I Will Wait.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
