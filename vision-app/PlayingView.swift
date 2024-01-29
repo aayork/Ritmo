@@ -12,6 +12,10 @@ import RealityKitContent
 struct PlayingView: View {
     @State private var playing = false
     
+    var songTitle = "Not Playing"
+    
+    var artistName = "Not Playing"
+    
     var body: some View {
         ZStack {
             Color.blue
@@ -19,11 +23,11 @@ struct PlayingView: View {
                 Model3D(named: "Scene", bundle: realityKitContentBundle)
                     .padding(.bottom, 45)
                 
-                Text("song_title")
+                Text(songTitle)
                     .font(.extraLargeTitle)
                     .opacity(1.0)
                     .padding(.horizontal, 50)
-                Text("artist_name")
+                Text(artistName)
                     .font(.subheadline)
                     .opacity(0.5)
                 HStack {

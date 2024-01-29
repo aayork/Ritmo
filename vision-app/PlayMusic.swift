@@ -28,7 +28,7 @@ func playMusic() {
             return
         }
     }
-
+        
     // Play the audio
     player?.play()
 }
