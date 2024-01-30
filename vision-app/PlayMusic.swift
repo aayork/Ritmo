@@ -15,7 +15,7 @@ func playMusic() {
     // Check if the player is not nil
     if player == nil {
         // Initialize the audio player if it's not already initialized
-        guard let url = Bundle.main.url(forResource: "Music/08 All the Small Things", withExtension: ".mp3") else {
+        guard let url = Bundle.main.url(forResource: "08 All the Small Things", withExtension: "mp3") else {
             print("Error: Could not find the audio file.")
             return
         }
