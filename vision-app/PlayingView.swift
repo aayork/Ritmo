@@ -12,9 +12,9 @@ import RealityKitContent
 struct PlayingView: View {
     @State private var playing = false
     
-    var songTitle = "Not Playing"
+    @State var songTitle = "01 Closing Time"
     
-    var artistName = "Not Playing"
+    @State var artistName = "Not Playing"
     
     var body: some View {
         ZStack {
@@ -32,7 +32,11 @@ struct PlayingView: View {
                     .opacity(0.5)
                 HStack {
                     Button {
-                        
+                        if (playing == true) {
+                            pauseMusic();
+                            playing.toggle();
+                        }
+                        songTitle = cycleLeft()
                     } label: {
                         Image(systemName: "backward.fill")
                     }
@@ -51,6 +55,11 @@ struct PlayingView: View {
                     .buttonStyle(.borderless)
                     .controlSize(.extraLarge)
                     Button {
+                        if (playing == true) {
+                            pauseMusic();
+                            playing.toggle();
+                        }
+                        songTitle = cycleRight()
                     } label: {
                         Image(systemName: "forward.fill")
                     }

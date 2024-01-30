@@ -11,16 +11,21 @@ import AVFAudio
 
 var player: AVAudioPlayer?
 
+var songs = ["01 Closing Time", "02 Hey, Soul Sister", "03 I Will Wait", "04 She Will Be Loved"]
+var currentSong = 0;
+var newSong = true;
+
 func playMusic() {
     // Check if the player is not nil
-    if player == nil {
+    if (player == nil || newSong) {
         // Initialize the audio player if it's not already initialized
-        guard let url = Bundle.main.url(forResource: "08 All the Small Things", withExtension: "mp3") else {
+        guard let url = Bundle.main.url(forResource: songs[currentSong], withExtension: "mp3") else {
             print("Error: Could not find the audio file.")
             return
         }
 
         do {
+            newSong = false
             player = try AVAudioPlayer(contentsOf: url)
             player?.prepareToPlay()
         } catch {
@@ -36,4 +41,22 @@ func playMusic() {
 func pauseMusic() {
     // Pause the audio if the player is not nil
     player?.pause()
+}
+
+func cycleLeft() -> String {
+    currentSong -= 1
+    if (currentSong < 0) {
+        currentSong = songs.count - 1;
+    }
+    newSong = true;
+    return songs[currentSong]
+}
+
+func cycleRight() -> String {
+    currentSong += 1
+    if (currentSong > songs.count - 1) {
+        currentSong = 0;
+    }
+    newSong = true;
+    return songs[currentSong]
 }
