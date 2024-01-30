@@ -14,7 +14,7 @@ struct PlayingView: View {
     
     @State var songTitle = "01 Closing Time"
     
-    @State var artistName = "Not Playing"
+    @State var artistName = "artist_name"
     
     var body: some View {
         ZStack {
@@ -37,6 +37,8 @@ struct PlayingView: View {
                             playing.toggle();
                         }
                         songTitle = cycleLeft()
+                        playMusic()
+                        playing = true
                     } label: {
                         Image(systemName: "backward.fill")
                     }
@@ -60,6 +62,8 @@ struct PlayingView: View {
                             playing.toggle();
                         }
                         songTitle = cycleRight()
+                        playMusic()
+                        playing = true
                     } label: {
                         Image(systemName: "forward.fill")
                     }
