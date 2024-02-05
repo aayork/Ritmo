@@ -18,7 +18,7 @@ struct PlayingView: View {
     
     var body: some View {
         ZStack {
-            Color.blue
+            Color.clear
             VStack {
                 Model3D(named: "Scene", bundle: realityKitContentBundle)
                     .padding(.bottom, 45)

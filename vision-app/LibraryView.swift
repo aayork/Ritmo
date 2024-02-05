@@ -10,7 +10,7 @@ import SwiftUI
 struct LibraryView: View {
     var body: some View {
         VStack {
-            Color.red
+            Color.clear
         }
     }
 }
