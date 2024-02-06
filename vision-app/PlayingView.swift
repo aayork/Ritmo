@@ -21,7 +21,7 @@ struct PlayingView: View {
             Color.clear
             Color(hue: 0.65, saturation: 0.9, brightness: 1.5, opacity: 0.3)
             VStack {
-                Model3D(named: "Scene", bundle: realityKitContentBundle)
+                Model3D(named: "Skull", bundle: realityKitContentBundle)
                     .padding(.bottom, 45)
                 
                 Text(songTitle)
