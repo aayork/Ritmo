@@ -1,5 +1,5 @@
 //
-//  BlueView.swift
+//  PlayingView.swift
 //  vision-app
 //
 //  Created by Max Pelot on 1/26/24.

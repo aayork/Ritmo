@@ -1,25 +1,56 @@
 //
-//  RedView.swift
-//  vision-app
+//  LibraryView.swift
+//  test-project
 //
-//  Created by Max Pelot on 1/26/24.
+//  Created by Aidan York on 2/8/24.
 //
 
 import SwiftUI
+import RealityKit
+import RealityKitContent
 
 struct LibraryView: View {
-    
+
+    @State private var showImmersiveSpace = false
+    @State private var immersiveSpaceIsShown = false
+
+    @Environment(\.openImmersiveSpace) var openImmersiveSpace
+    @Environment(\.dismissImmersiveSpace) var dismissImmersiveSpace
+
     var body: some View {
-        ZStack {
-            Color.clear
-            Color(hue: 0.0, saturation: 1.0, brightness: 1.5, opacity: 0.3)
-            Button("Open Game") {
-                 
+        VStack {
+            Model3D(named: "Scene", bundle: realityKitContentBundle)
+                .padding(.bottom, 50)
+
+            Text("Hello, world!")
+
+            Toggle("Show Immersive Space", isOn: $showImmersiveSpace)
+                .toggleStyle(.button)
+                .padding(.top, 50)
+        }
+        .padding()
+        .onChange(of: showImmersiveSpace) { _, newValue in
+            Task {
+                if newValue {
+                    switch await openImmersiveSpace(id: "ImmersiveSpace") {
+                    case .opened:
+                        immersiveSpaceIsShown = true
+                    case .error, .userCancelled:
+                        fallthrough
+                    @unknown default:
+                        immersiveSpaceIsShown = false
+                        showImmersiveSpace = false
+                    }
+                } else if immersiveSpaceIsShown {
+                    await dismissImmersiveSpace()
+                    immersiveSpaceIsShown = false
+                }
             }
         }
     }
 }
 
-#Preview {
+#Preview(windowStyle: .automatic) {
     LibraryView()
 }
+
