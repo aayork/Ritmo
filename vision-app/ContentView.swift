@@ -25,7 +25,8 @@ struct ContentView: View {
             CubeView()
                 .tabItem {
                     Image(systemName: "square")
-                    Text("Cube") }
+                    Text("Cube")
+                }
 
         }
     }

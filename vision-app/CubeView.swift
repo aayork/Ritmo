@@ -17,6 +17,7 @@ struct CubeView: View {
     var body: some View {
     
         VStack(spacing: 18.0) {
+           
             Model3D(named: "GlassCube", bundle: realityKitContentBundle) { model in
                 switch model {
                 case .empty:
@@ -44,6 +45,6 @@ struct CubeView: View {
     }
 }
 
-#Preview {
+#Preview(windowStyle: .volumetric) {
     CubeView()
 }
