@@ -13,6 +13,9 @@ struct LibraryView: View {
         ZStack {
             Color.clear
             Color(hue: 0.0, saturation: 1.0, brightness: 1.5, opacity: 0.3)
+            Button("Open Game") {
+                 
+            }
         }
     }
 }

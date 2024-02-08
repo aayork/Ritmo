@@ -1,11 +1,3 @@
-//
-//  CubeView.swift
-//  vision-app
-//
-//  Created by Aidan York on 2/8/24.
-//
-
-import Foundation
 import SwiftUI
 import RealityKit
 import RealityKitContent

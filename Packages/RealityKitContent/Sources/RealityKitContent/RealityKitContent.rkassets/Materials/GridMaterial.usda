@@ -239,6 +239,7 @@ def Xform "Root"
         prepend references = @../AtmospheresForestFloor.usdz@
     )
     {
+        rel mixGroup = </Root/AudioMixGroups/MixGroup>
         uniform bool shouldLoop = 1
     }
 }

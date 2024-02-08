@@ -21,6 +21,7 @@ struct vision_appApp: App {
         .defaultSize(width: 0.1, height: 0.1, depth: 0.1, in: .meters)
         
         ImmersiveSpace(id: "Immersive Space") {
+
             
         }
     }

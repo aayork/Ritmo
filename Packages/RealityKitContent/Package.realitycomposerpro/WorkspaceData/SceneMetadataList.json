@@ -43,8 +43,7 @@
     "objectMetadataList" : [
       [
         "5CE4005B-0877-4425-BB2E-0623B8E48E79",
-        "Root",
-        "AcousticGuitar"
+        "Root"
       ],
       {
         "isExpanded" : true,
@@ -52,7 +51,8 @@
       },
       [
         "5CE4005B-0877-4425-BB2E-0623B8E48E79",
-        "Root"
+        "Root",
+        "AcousticGuitar"
       ],
       {
         "isExpanded" : true,
