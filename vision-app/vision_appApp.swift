@@ -15,6 +15,6 @@ struct vision_appApp: App {
         }
         ImmersiveSpace(id: "Immersive Space") {
             
-        }   
+        }
     }
 }

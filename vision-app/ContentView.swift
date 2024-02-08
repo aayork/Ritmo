@@ -22,6 +22,11 @@ struct ContentView: View {
                     Image(systemName: "book")
                     Text("Library")
                 }
+            CubeView()
+                .tabItem {
+                    Image(systemName: "square.fill")
+                    Text("Cube") }
+
         }
     }
 }

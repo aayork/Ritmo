@@ -3,6 +3,14 @@
     "objectMetadataList" : [
       [
         "0A9B4653-B11E-4D6A-850E-C6FCB621626C",
+        "Root"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "0A9B4653-B11E-4D6A-850E-C6FCB621626C",
         "Root",
         "Sphere"
       ],
@@ -18,14 +26,6 @@
       {
         "isExpanded" : true,
         "isLocked" : false
-      },
-      [
-        "0A9B4653-B11E-4D6A-850E-C6FCB621626C",
-        "Root"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
       }
     ]
   },
@@ -37,6 +37,27 @@
   "03E02005-EFA6-48D6-8A76-05B2822A74E9" : {
     "objectMetadataList" : [
 
+    ]
+  },
+  "5CE4005B-0877-4425-BB2E-0623B8E48E79" : {
+    "objectMetadataList" : [
+      [
+        "5CE4005B-0877-4425-BB2E-0623B8E48E79",
+        "Root",
+        "AcousticGuitar"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "5CE4005B-0877-4425-BB2E-0623B8E48E79",
+        "Root"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      }
     ]
   },
   "26DBAE76-5DD8-47B6-A085-1B4ADA111097" : {
