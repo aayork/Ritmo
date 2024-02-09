@@ -26,9 +26,40 @@ def Xform "Root"
     )
     {
         quatf xformOp:orient = (0.8433914, 0, -0.53729963, 0)
-        float3 xformOp:scale = (0.25, 0.25, 0.25)
+        float3 xformOp:scale = (0.65, 0.65, 0.65)
         float3 xformOp:translate = (1, 1.5, -1.5)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def RealityKitComponent "SpatialAudio"
+        {
+            uniform token info:id = "RealityKit.SpatialAudio"
+        }
+
+        def RealityKitComponent "InputTarget"
+        {
+            bool allowsDirectInput = 1
+            bool allowsIndirectInput = 1
+            uniform token info:id = "RealityKit.InputTarget"
+        }
+
+        def RealityKitComponent "Collider"
+        {
+            uint group = 1
+            uniform token info:id = "RealityKit.Collider"
+            uint mask = 4294967295
+            token type = "Default"
+
+            def RealityKitStruct "Shape"
+            {
+                float3 extent = (0.36444882, 0.99427843, 0.1112502)
+                token shapeType = "Box"
+
+                def RealityKitStruct "pose"
+                {
+                    float3 position = (0.0000031143427, 0.49713922, 0.0006730892)
+                }
+            }
+        }
     }
 
     def "Drum_Kit" (
@@ -40,9 +71,70 @@ def Xform "Root"
     )
     {
         quatf xformOp:orient = (0.9610868, 0.0005622562, 0.27624086, -0.0016884868)
-        float3 xformOp:scale = (0.25, 0.24999999, 0.25)
+        float3 xformOp:scale = (0.4, 0.39999998, 0.4)
         float3 xformOp:translate = (-1, 1.5, -1.5)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def RealityKitComponent "SpatialAudio"
+        {
+            float gain = -0.7
+            uniform token info:id = "RealityKit.SpatialAudio"
+        }
+
+        def RealityKitComponent "InputTarget"
+        {
+            bool allowsDirectInput = 1
+            bool allowsIndirectInput = 1
+            uniform token info:id = "RealityKit.InputTarget"
+        }
+
+        def RealityKitComponent "Collider"
+        {
+            uint group = 1
+            uniform token info:id = "RealityKit.Collider"
+            uint mask = 4294967295
+            token type = "Default"
+
+            def RealityKitStruct "Shape"
+            {
+                float3 extent = (1.9378567, 1.2972981, 1.1714268)
+                token shapeType = "Box"
+
+                def RealityKitStruct "pose"
+                {
+                    float3 position = (0.047903806, 0.64864904, 0.11273846)
+                }
+            }
+        }
+    }
+
+    def "CruiseShipHorn" (
+        active = true
+        prepend references = @CruiseShipHorn.usdz@
+    )
+    {
+    }
+
+    def "AtmospheresForestFloor" (
+        active = true
+        prepend references = @AtmospheresForestFloor.usdz@
+    )
+    {
+    }
+
+    def "AntiqueCarHorn" (
+        active = true
+        prepend references = @AntiqueCarHorn.usdz@
+    )
+    {
+    }
+
+    def Xform "AmbientAudio"
+    {
+        def RealityKitComponent "AmbientAudio"
+        {
+            uniform token info:id = "RealityKit.AmbientAudio"
+        }
     }
 }
 
