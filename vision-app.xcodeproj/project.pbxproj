@@ -13,6 +13,7 @@
 		ECA1E21D2B75B64100EE4926 /* ImmersiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA1E21C2B75B64100EE4926 /* ImmersiveView.swift */; };
 		ECA1E21F2B75B64200EE4926 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ECA1E21E2B75B64200EE4926 /* Assets.xcassets */; };
 		ECA1E2222B75B64200EE4926 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ECA1E2212B75B64200EE4926 /* Preview Assets.xcassets */; };
+		ECA1E22A2B75CBE900EE4926 /* PlayMusic.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA1E2292B75CBE900EE4926 /* PlayMusic.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		ECA1E21E2B75B64200EE4926 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ECA1E2212B75B64200EE4926 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		ECA1E2232B75B64200EE4926 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ECA1E2292B75CBE900EE4926 /* PlayMusic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayMusic.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +63,7 @@
 				ECA1E2182B75B64100EE4926 /* vision_appApp.swift */,
 				ECA1E21A2B75B64100EE4926 /* ContentView.swift */,
 				ECA1E21C2B75B64100EE4926 /* ImmersiveView.swift */,
+				ECA1E2292B75CBE900EE4926 /* PlayMusic.swift */,
 				ECA1E21E2B75B64200EE4926 /* Assets.xcassets */,
 				ECA1E2232B75B64200EE4926 /* Info.plist */,
 				ECA1E2202B75B64200EE4926 /* Preview Content */,
@@ -158,6 +161,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ECA1E21B2B75B64100EE4926 /* ContentView.swift in Sources */,
+				ECA1E22A2B75CBE900EE4926 /* PlayMusic.swift in Sources */,
 				ECA1E2192B75B64100EE4926 /* vision_appApp.swift in Sources */,
 				ECA1E21D2B75B64100EE4926 /* ImmersiveView.swift in Sources */,
 			);
