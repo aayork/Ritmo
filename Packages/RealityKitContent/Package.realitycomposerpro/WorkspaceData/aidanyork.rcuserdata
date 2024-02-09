@@ -1,7 +1,8 @@
 {
   "advancedEditorSelectedIdentifier" : "ProjectBrowser",
   "openSceneRelativePaths" : [
-    "Materials\/GridMaterial.usda"
+    "Materials\/GridMaterial.usda",
+    "ImmersiveScene.usda"
   ],
   "recentIdentifiers" : {
     "5CE4005B-0877-4425-BB2E-0623B8E48E79" : [
@@ -234,6 +235,96 @@
         ]
       }
     ],
+    "6DB258E7-F77C-401F-BE5A-525AD4A782B9" : [
+      {
+        "date" : 729131612.631522,
+        "title" : "Untitled",
+        "transform" : [
+          0.99999994,
+          0,
+          0,
+          0,
+          0,
+          0.8660254,
+          -0.49999988,
+          0,
+          0,
+          0.49999988,
+          0.8660254,
+          0,
+          0.030696444,
+          0.9312786,
+          1.360347,
+          1
+        ]
+      },
+      {
+        "date" : 729131607.315497,
+        "title" : "Untitled",
+        "transform" : [
+          0.99999994,
+          0,
+          0,
+          0,
+          0,
+          0.8660254,
+          -0.49999988,
+          0,
+          0,
+          0.49999988,
+          0.8660254,
+          0,
+          -0.0036195875,
+          0.52157164,
+          0.8818259,
+          1
+        ]
+      },
+      {
+        "date" : 729131507.886808,
+        "title" : "Untitled",
+        "transform" : [
+          0.99999994,
+          0,
+          0,
+          0,
+          0,
+          0.8660254,
+          -0.49999988,
+          0,
+          0,
+          0.49999988,
+          0.8660254,
+          0,
+          0,
+          0.23631132,
+          0.40930322,
+          1
+        ]
+      },
+      {
+        "date" : 729131408.353919,
+        "title" : "Untitled",
+        "transform" : [
+          0.99999994,
+          0,
+          -0,
+          0,
+          -0,
+          0.8660254,
+          -0.49999988,
+          0,
+          0,
+          0.49999988,
+          0.8660254,
+          0,
+          0,
+          0.19834754,
+          0.34354803,
+          1
+        ]
+      }
+    ],
     "26DBAE76-5DD8-47B6-A085-1B4ADA111097" : [
       {
         "date" : 728592333.980392,
@@ -457,5 +548,5 @@
       }
     ]
   },
-  "selectedSceneRelativePath" : "Scene.usda"
+  "selectedSceneRelativePath" : "ImmersiveScene.usda"
 }
