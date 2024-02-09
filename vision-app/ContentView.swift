@@ -29,8 +29,7 @@ struct ContentView: View {
             
             Color(hue: 0.65, saturation: 0.9, brightness: 1.5, opacity: 0.3)
             
-            Text(" ")
-                .font(.extraLargeTitle)
+            Text("")
                 .ornament(
                     visibility: .visible,
                     attachmentAnchor: .scene(.bottom),
