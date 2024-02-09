@@ -2,7 +2,7 @@
 //  ContentView.swift
 //  vision-app
 //
-//  Created by Aidan York on 1/23/24.
+//  Created by Aidan York on 2/8/24.
 //
 
 import SwiftUI
@@ -10,25 +10,42 @@ import RealityKit
 import RealityKitContent
 
 struct ContentView: View {
-    
-    var body: some View {
-        TabView {
-            PlayingView()
-                .tabItem {
-                    Image(systemName: "music.note")
-                    Text("Now Playing")
-                }
-            LibraryView()
-                .tabItem {
-                    Image(systemName: "book")
-                    Text("Library")
-                }
-            CubeView()
-                .tabItem {
-                    Image(systemName: "square")
-                    Text("Cube")
-                }
 
+    @State private var showImmersiveSpace = false
+    @State private var immersiveSpaceIsShown = false
+
+    @Environment(\.openImmersiveSpace) var openImmersiveSpace
+    @Environment(\.dismissImmersiveSpace) var dismissImmersiveSpace
+
+    var body: some View {
+        VStack {
+            Model3D(named: "Scene", bundle: realityKitContentBundle)
+                .padding(.bottom, 50)
+
+            Text("Hello, world!")
+
+            Toggle("Show Immersive Space", isOn: $showImmersiveSpace)
+                .toggleStyle(.button)
+                .padding(.top, 50)
+        }
+        .padding()
+        .onChange(of: showImmersiveSpace) { _, newValue in
+            Task {
+                if newValue {
+                    switch await openImmersiveSpace(id: "ImmersiveSpace") {
+                    case .opened:
+                        immersiveSpaceIsShown = true
+                    case .error, .userCancelled:
+                        fallthrough
+                    @unknown default:
+                        immersiveSpaceIsShown = false
+                        showImmersiveSpace = false
+                    }
+                } else if immersiveSpaceIsShown {
+                    await dismissImmersiveSpace()
+                    immersiveSpaceIsShown = false
+                }
+            }
         }
     }
 }
