@@ -75,6 +75,7 @@ struct LibraryView: View {
                         }
                         .buttonStyle(.borderless)
                         .controlSize(.extraLarge)
+                        
                     }
                     .labelStyle(.iconOnly)
                     .padding(.vertical)
@@ -84,6 +85,15 @@ struct LibraryView: View {
             
             
             VStack {
+                
+                Button {
+                    // Call the function to play spatial audio
+                    playSpatialAudio()
+                } label: {
+                    Text("Play Spatial (From Guitar)")
+                }
+                .buttonStyle(.bordered)
+                .controlSize(.extraLarge)
                 
                 Text(songTitle)
                     .font(.extraLargeTitle)

@@ -33,6 +33,7 @@
 		ECA1E26A2B75D17600EE4926 /* 01 Closing Time.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = ECA1E25A2B75D17600EE4926 /* 01 Closing Time.mp3 */; };
 		ECA1E26B2B75D17600EE4926 /* 03 I Will Wait.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = ECA1E25B2B75D17600EE4926 /* 03 I Will Wait.mp3 */; };
 		ECA1E26C2B75D17600EE4926 /* 02 I'm Gonna Be (500 Miles).mp3 in Resources */ = {isa = PBXBuildFile; fileRef = ECA1E25C2B75D17600EE4926 /* 02 I'm Gonna Be (500 Miles).mp3 */; };
+		ECC092542B783A82002B4013 /* PlaySpatial.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECC092532B783A82002B4013 /* PlaySpatial.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,6 +65,7 @@
 		ECA1E25A2B75D17600EE4926 /* 01 Closing Time.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "01 Closing Time.mp3"; sourceTree = "<group>"; };
 		ECA1E25B2B75D17600EE4926 /* 03 I Will Wait.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "03 I Will Wait.mp3"; sourceTree = "<group>"; };
 		ECA1E25C2B75D17600EE4926 /* 02 I'm Gonna Be (500 Miles).mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "02 I'm Gonna Be (500 Miles).mp3"; sourceTree = "<group>"; };
+		ECC092532B783A82002B4013 /* PlaySpatial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaySpatial.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +107,7 @@
 				EC64789B2B77C58700F12A54 /* LibraryView.swift */,
 				EC605FE82B77D06A005EC21A /* SettingsView.swift */,
 				ECA1E2292B75CBE900EE4926 /* PlayMusic.swift */,
+				ECC092532B783A82002B4013 /* PlaySpatial.swift */,
 				ECA1E21E2B75B64200EE4926 /* Assets.xcassets */,
 				ECA1E2232B75B64200EE4926 /* Info.plist */,
 				ECA1E24C2B75D17600EE4926 /* Music */,
@@ -241,6 +244,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ECC092542B783A82002B4013 /* PlaySpatial.swift in Sources */,
 				EC605FE92B77D06A005EC21A /* SettingsView.swift in Sources */,
 				ECA1E21B2B75B64100EE4926 /* ContentView.swift in Sources */,
 				ECA1E22A2B75CBE900EE4926 /* PlayMusic.swift in Sources */,

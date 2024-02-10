@@ -39,26 +39,6 @@
     "objectMetadataList" : [
       [
         "AF09ED6F-1707-48FD-8720-65B998362C09",
-        "Root"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "AF09ED6F-1707-48FD-8720-65B998362C09",
-        "Root",
-        "Drum_Kit"
-      ],
-      {
-        "isExpanded" : false,
-        "isLocked" : false,
-        "selectedAudioFilePrim" : {
-          "string" : "\/Root\/CruiseShipHorn"
-        }
-      },
-      [
-        "AF09ED6F-1707-48FD-8720-65B998362C09",
         "Root",
         "AmbientAudio"
       ],
@@ -71,15 +51,11 @@
       },
       [
         "AF09ED6F-1707-48FD-8720-65B998362C09",
-        "Root",
-        "AcousticGuitar"
+        "Root"
       ],
       {
-        "isExpanded" : false,
-        "isLocked" : false,
-        "selectedAudioFilePrim" : {
-          "string" : "\/Root\/AntiqueCarHorn"
-        }
+        "isExpanded" : true,
+        "isLocked" : false
       }
     ]
   },
