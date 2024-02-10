@@ -28,6 +28,11 @@ struct ContentView: View {
                     Image(systemName: "square")
                     Text("Cube")
                 }
+            GameView()
+                .tabItem {
+                    Image(systemName: "circle")
+                    Text("Game")
+                }
 
         }
     }

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		9AC1AF4D2B642143006A140C /* PlayingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC1AF4C2B642143006A140C /* PlayingView.swift */; };
 		9AC1AF4F2B642275006A140C /* LibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC1AF4E2B642275006A140C /* LibraryView.swift */; };
+		9AC597382B7713C600729430 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC597372B7713C600729430 /* GameView.swift */; };
 		EC59ADE02B60CC3F00E5790E /* RealityKitContent in Frameworks */ = {isa = PBXBuildFile; productRef = EC59ADDF2B60CC3F00E5790E /* RealityKitContent */; };
 		EC59ADE22B60CC3F00E5790E /* vision_appApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC59ADE12B60CC3F00E5790E /* vision_appApp.swift */; };
 		EC59ADE42B60CC3F00E5790E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC59ADE32B60CC3F00E5790E /* ContentView.swift */; };
@@ -49,6 +50,7 @@
 /* Begin PBXFileReference section */
 		9AC1AF4C2B642143006A140C /* PlayingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayingView.swift; sourceTree = "<group>"; };
 		9AC1AF4E2B642275006A140C /* LibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryView.swift; sourceTree = "<group>"; };
+		9AC597372B7713C600729430 /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 		EC59ADDA2B60CC3F00E5790E /* vision-app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "vision-app.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC59ADDE2B60CC3F00E5790E /* RealityKitContent */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = RealityKitContent; sourceTree = "<group>"; };
 		EC59ADE12B60CC3F00E5790E /* vision_appApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = vision_appApp.swift; sourceTree = "<group>"; };
@@ -122,6 +124,7 @@
 			children = (
 				EC59ADE12B60CC3F00E5790E /* vision_appApp.swift */,
 				EC59ADE32B60CC3F00E5790E /* ContentView.swift */,
+				9AC597372B7713C600729430 /* GameView.swift */,
 				9AC1AF4C2B642143006A140C /* PlayingView.swift */,
 				9AC1AF4E2B642275006A140C /* LibraryView.swift */,
 				ECFD8C112B64320200E573E2 /* PlayMusic.swift */,
@@ -307,6 +310,7 @@
 				9AC1AF4F2B642275006A140C /* LibraryView.swift in Sources */,
 				EC59ADE22B60CC3F00E5790E /* vision_appApp.swift in Sources */,
 				ECFD8C122B64320200E573E2 /* PlayMusic.swift in Sources */,
+				9AC597382B7713C600729430 /* GameView.swift in Sources */,
 				EC61C47D2B757E2000A50F56 /* ImmersiveView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
