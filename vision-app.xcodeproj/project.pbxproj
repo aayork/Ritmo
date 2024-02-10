@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EC64789A2B77C4F300F12A54 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6478992B77C4F300F12A54 /* HomeView.swift */; };
+		EC64789C2B77C58700F12A54 /* LibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC64789B2B77C58700F12A54 /* LibraryView.swift */; };
 		ECA1E2172B75B64100EE4926 /* RealityKitContent in Frameworks */ = {isa = PBXBuildFile; productRef = ECA1E2162B75B64100EE4926 /* RealityKitContent */; };
 		ECA1E2192B75B64100EE4926 /* vision_appApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA1E2182B75B64100EE4926 /* vision_appApp.swift */; };
 		ECA1E21B2B75B64100EE4926 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA1E21A2B75B64100EE4926 /* ContentView.swift */; };
@@ -33,6 +35,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		EC6478992B77C4F300F12A54 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		EC64789B2B77C58700F12A54 /* LibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryView.swift; sourceTree = "<group>"; };
 		ECA1E2112B75B64100EE4926 /* vision-app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "vision-app.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECA1E2152B75B64100EE4926 /* RealityKitContent */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = RealityKitContent; sourceTree = "<group>"; };
 		ECA1E2182B75B64100EE4926 /* vision_appApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = vision_appApp.swift; sourceTree = "<group>"; };
@@ -93,9 +97,11 @@
 			isa = PBXGroup;
 			children = (
 				ECA1E2182B75B64100EE4926 /* vision_appApp.swift */,
+				EC6478992B77C4F300F12A54 /* HomeView.swift */,
 				ECA1E21A2B75B64100EE4926 /* ContentView.swift */,
 				ECA1E21C2B75B64100EE4926 /* ImmersiveView.swift */,
 				ECA1E2292B75CBE900EE4926 /* PlayMusic.swift */,
+				EC64789B2B77C58700F12A54 /* LibraryView.swift */,
 				ECA1E21E2B75B64200EE4926 /* Assets.xcassets */,
 				ECA1E2232B75B64200EE4926 /* Info.plist */,
 				ECA1E24C2B75D17600EE4926 /* Music */,
@@ -235,6 +241,8 @@
 				ECA1E21B2B75B64100EE4926 /* ContentView.swift in Sources */,
 				ECA1E22A2B75CBE900EE4926 /* PlayMusic.swift in Sources */,
 				ECA1E2192B75B64100EE4926 /* vision_appApp.swift in Sources */,
+				EC64789A2B77C4F300F12A54 /* HomeView.swift in Sources */,
+				EC64789C2B77C58700F12A54 /* LibraryView.swift in Sources */,
 				ECA1E21D2B75B64100EE4926 /* ImmersiveView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
