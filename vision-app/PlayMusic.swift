@@ -10,6 +10,7 @@ import AVFoundation
 import AVFAudio
 
 var player: AVAudioPlayer?
+// "?" denotes an optional variable
 
 var songs = ["01 Closing Time", "02 Hey, Soul Sister", "03 I Will Wait", "04 She Will Be Loved"]
 var currentSong = 0;

@@ -10,22 +10,23 @@ import RealityKit
 import RealityKitContent
 
 struct ContentView: View {
-    
-    @State private var playing = false
-        
-    @State var songTitle = "Not Playing"
-        
-    @State var artistName = "artist_name"
-
-    @State private var showImmersiveSpace = false
-    @State private var immersiveSpaceIsShown = false
-
-    @Environment(\.openImmersiveSpace) var openImmersiveSpace
-    @Environment(\.dismissImmersiveSpace) var dismissImmersiveSpace
-
     var body: some View {
         TabView {
-            
+            HomeView()
+                .tabItem {
+                    Image(systemName: "house")
+                    Text("Home")
+                }
+            LibraryView()
+                .tabItem {
+                    Image(systemName: "music.note")
+                    Text("Library")
+                }
+            SettingsView()
+                .tabItem {
+                    Image(systemName: "gearshape")
+                    Text("Settings")
+                }
         }
     }
 }
