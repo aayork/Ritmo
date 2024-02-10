@@ -8,6 +8,7 @@
 import Foundation
 import AVFoundation
 import AVFAudio
+import OSLog
 
 var player: AVAudioPlayer?
 // "?" denotes an optional variable

@@ -9,19 +9,21 @@ import SwiftUI
 
 struct HomeView: View {
     var body: some View {
-        Text("Welcome To Music Space")
-            .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
-            .padding(25)
-        Text("Recent Songs")
-            .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
-        List {
-            ZStack {
-                Text("Something in the Orange")
+        VStack {
+            Text("Welcome To Music Space")
+                .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
+                .padding(25)
+            
+            Text("Recent Songs")
+                .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+            List {
+                Text("Something in the Orange - Zach Bryan")
+                
             }
+            .border(Color.clear, width: 3)
+            .background(Color.clear)
+            .padding(10)
         }
-        .border(Color.clear, width: 3)
-        .background(Color.clear)
-        .padding(10)
     }
 }
 

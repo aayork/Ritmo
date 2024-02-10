@@ -53,6 +53,7 @@ struct LibraryView: View {
                         Button {
                             if (playing == false) {
                                 playMusic();
+                                configureAudioExperience();
                             } else {
                                 pauseMusic();
                             }
