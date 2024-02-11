@@ -1,8 +1,8 @@
 //
 //  SpatialAudioView.swift
-//  VisionOS-Examples
+//  vision-app
 //
-//  Created by Jordi Bruin on 02/08/2023.
+//
 //
 
 import SwiftUI
@@ -12,17 +12,57 @@ import RealityKitContent
 struct SpatialAudioView: View {
     
     @Environment(\.openImmersiveSpace) private var openImmersiveSpace
+    /// This isn't the original immersive space I created, I've been having trouble getting spatial audio to work with RealityKit. Something weird with setting element values.
+    @State private var playing = false
+    @State var songTitle = "Not Playing"
     
     var body: some View {
         VStack {
-            Text("Add a 3D orb with an audio file attached to it. You can drag it around to test spatial audio experiences.")
-            Button {
-                Task {
-                    await openImmersiveSpace(id: "ImmersiveSpace")
+            Text("Experience Spatial Audio!")
+                .font(.title)
+            Text(SoundView().soundFile)
+                .font(.title3)
+            
+            Text("")
+                .ornament(
+                    visibility: .visible,
+                    attachmentAnchor: .scene(.bottom),
+                    contentAlignment: .center
+                ) {
+                    HStack {
+                        Button {
+                            
+                        } label: {
+                            Image(systemName: "backward.fill")
+                        }
+                        .buttonStyle(.borderless)
+                        .controlSize(.extraLarge)
+                        Button {
+                            Task {
+                                await openImmersiveSpace(id: "ImmersiveSpace")
+                            }
+                            playing = true
+                        } label: {
+                            Image(systemName: playing ? "pause.fill" : "play.fill")
+                        }
+                        .buttonStyle(.borderless)
+                        .controlSize(.extraLarge)
+                        Button {
+                            
+                        } label: {
+                            Image(systemName: "forward.fill")
+                        }
+                        .buttonStyle(.borderless)
+                        .controlSize(.extraLarge)
+                        
+                    }
+                    .labelStyle(.iconOnly)
+                    .padding(.vertical)
+                    .padding(.horizontal)
+                    .glassBackgroundEffect()
                 }
-            } label: {
-                Text("Start Spatial Audio Experience")
-            }
+            
+            
         }
     }
 }
@@ -56,13 +96,13 @@ struct SpatialAudioImmersiveSpace: View {
 import SwiftUI
 import RealityKit
 
-struct SoundOrbView: View {
+struct SoundView: View {
     
-    let soundFile: String
+    var songs = ["01 Closing Time", "02 Hey, Soul Sister", "03 I Will Wait", "04 She Will Be Loved"]
+    var soundFile = "01 Closing Time"
     var acousticGuitar: Entity
         
-        init(soundFile: String) {
-            self.soundFile = soundFile
+        init() {
             self.acousticGuitar = ModelEntity(
                 mesh: .generateSphere(radius: 0.1),
                 materials: [SimpleMaterial(color: .white, isMetallic: false)]
