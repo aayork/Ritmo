@@ -1,0 +1,87 @@
+#usda 1.0
+(
+    defaultPrim = "Root"
+    metersPerUnit = 1
+    upAxis = "Y"
+)
+
+def Xform "Root"
+{
+    reorder nameChildren = ["Sphere_Left", "Sphere_Right", "GridMaterial"]
+    def "GridMaterial" (
+        active = true
+        prepend references = @Materials/GridMaterial.usda@
+    )
+    {
+        float3 xformOp:scale = (1, 1, 1)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def "AcousticGuitar" (
+        active = true
+        customData = {
+            float3 rotationEulerHint = (0, -1.134464, 0)
+        }
+        prepend references = @AcousticGuitar.usdz@
+    )
+    {
+        quatf xformOp:orient = (0.8433914, 0, -0.53729963, 0)
+        float3 xformOp:scale = (0.65, 0.65, 0.65)
+        float3 xformOp:translate = (1, 1.5, -1.5)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def RealityKitComponent "SpatialAudio"
+        {
+            uniform token info:id = "RealityKit.SpatialAudio"
+        }
+    }
+
+    def "Drum_Kit" (
+        active = true
+        customData = {
+            float3 rotationEulerHint = (0.00017453298, 0.55976224, -0.0034635337)
+        }
+        prepend references = @DrumKit.usdz@
+    )
+    {
+        quatf xformOp:orient = (0.9610868, 0.0005622562, 0.27624086, -0.0016884868)
+        float3 xformOp:scale = (0.4, 0.39999998, 0.4)
+        float3 xformOp:translate = (-1, 1.5, -1.5)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def RealityKitComponent "SpatialAudio"
+        {
+            uniform token info:id = "RealityKit.SpatialAudio"
+        }
+    }
+
+    def "CruiseShipHorn" (
+        active = true
+        prepend references = @CruiseShipHorn.usdz@
+    )
+    {
+    }
+
+    def "AtmospheresForestFloor" (
+        active = true
+        prepend references = @AtmospheresForestFloor.usdz@
+    )
+    {
+    }
+
+    def "AntiqueCarHorn" (
+        active = true
+        prepend references = @AntiqueCarHorn.usdz@
+    )
+    {
+    }
+
+    def Xform "AmbientAudio"
+    {
+        def RealityKitComponent "AmbientAudio"
+        {
+            uniform token info:id = "RealityKit.AmbientAudio"
+        }
+    }
+}
+

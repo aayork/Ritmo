@@ -3,6 +3,78 @@
     "objectMetadataList" : [
       [
         "0A9B4653-B11E-4D6A-850E-C6FCB621626C",
+        "Root"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      }
+    ]
+  },
+  "65F6F990-A780-4474-B78B-572E0E4E273D" : {
+    "objectMetadataList" : [
+      [
+        "65F6F990-A780-4474-B78B-572E0E4E273D",
+        "Root"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      }
+    ]
+  },
+  "66168B71-AB05-424E-8B6C-D33D6E61B08F" : {
+    "objectMetadataList" : [
+      [
+        "66168B71-AB05-424E-8B6C-D33D6E61B08F",
+        "Root"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      }
+    ]
+  },
+  "AF09ED6F-1707-48FD-8720-65B998362C09" : {
+    "objectMetadataList" : [
+      [
+        "AF09ED6F-1707-48FD-8720-65B998362C09",
+        "Root",
+        "AmbientAudio"
+      ],
+      {
+        "isExpanded" : false,
+        "isLocked" : false,
+        "selectedAudioFilePrim" : {
+          "string" : "\/Root\/AtmospheresForestFloor"
+        }
+      },
+      [
+        "AF09ED6F-1707-48FD-8720-65B998362C09",
+        "Root",
+        "AcousticGuitar"
+      ],
+      {
+        "isExpanded" : false,
+        "isLocked" : false,
+        "selectedAudioFilePrim" : {
+          "string" : "\/Root\/CruiseShipHorn"
+        }
+      },
+      [
+        "AF09ED6F-1707-48FD-8720-65B998362C09",
+        "Root"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      }
+    ]
+  },
+  "CB766F92-EE55-4A63-9401-E7B8C009764D" : {
+    "objectMetadataList" : [
+      [
+        "CB766F92-EE55-4A63-9401-E7B8C009764D",
         "Root",
         "GridMaterial"
       ],
@@ -11,7 +83,24 @@
         "isLocked" : false
       },
       [
-        "0A9B4653-B11E-4D6A-850E-C6FCB621626C",
+        "CB766F92-EE55-4A63-9401-E7B8C009764D",
+        "Root"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      }
+    ]
+  },
+  "D560BB77-AAF3-4BDE-B7C4-989332A4688B" : {
+    "objectMetadataList" : [
+
+    ]
+  },
+  "D66134B1-3681-4A8E-AFE5-29F257229F3B" : {
+    "objectMetadataList" : [
+      [
+        "D66134B1-3681-4A8E-AFE5-29F257229F3B",
         "Root"
       ],
       {
@@ -19,93 +108,10 @@
         "isLocked" : false
       },
       [
-        "0A9B4653-B11E-4D6A-850E-C6FCB621626C",
+        "D66134B1-3681-4A8E-AFE5-29F257229F3B",
         "Root",
-        "Sphere"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      }
-    ]
-  },
-  "1CBF3893-ABFD-408C-8B91-045BFD257808" : {
-    "objectMetadataList" : [
-
-    ]
-  },
-  "03E02005-EFA6-48D6-8A76-05B2822A74E9" : {
-    "objectMetadataList" : [
-
-    ]
-  },
-  "5CE4005B-0877-4425-BB2E-0623B8E48E79" : {
-    "objectMetadataList" : [
-      [
-        "5CE4005B-0877-4425-BB2E-0623B8E48E79",
-        "Root",
-        "AcousticGuitar"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "5CE4005B-0877-4425-BB2E-0623B8E48E79",
-        "Root"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      }
-    ]
-  },
-  "6DB258E7-F77C-401F-BE5A-525AD4A782B9" : {
-    "objectMetadataList" : [
-      [
-        "6DB258E7-F77C-401F-BE5A-525AD4A782B9",
-        "Root"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      }
-    ]
-  },
-  "26DBAE76-5DD8-47B6-A085-1B4ADA111097" : {
-    "objectMetadataList" : [
-      [
-        "26DBAE76-5DD8-47B6-A085-1B4ADA111097",
-        "Root"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      }
-    ]
-  },
-  "34C460AE-CA1B-4348-BD05-621ACBDFFE97" : {
-    "objectMetadataList" : [
-
-    ]
-  },
-  "440DE5B4-E4E4-459B-AABF-9ACE96319272" : {
-    "objectMetadataList" : [
-      [
-        "440DE5B4-E4E4-459B-AABF-9ACE96319272",
-        "Root"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      }
-    ]
-  },
-  "FBD8436F-6B8B-4B82-99B5-995D538B4704" : {
-    "objectMetadataList" : [
-      [
-        "FBD8436F-6B8B-4B82-99B5-995D538B4704",
-        "Root"
+        "GridMaterial",
+        "GridMaterial"
       ],
       {
         "isExpanded" : true,

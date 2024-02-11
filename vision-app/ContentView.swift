@@ -2,7 +2,7 @@
 //  ContentView.swift
 //  vision-app
 //
-//  Created by Aidan York on 1/23/24.
+//  Created by Aidan York on 2/8/24.
 //
 
 import SwiftUI
@@ -10,30 +10,28 @@ import RealityKit
 import RealityKitContent
 
 struct ContentView: View {
-    
     var body: some View {
         TabView {
-            PlayingView()
+            HomeView()
+                .tabItem {
+                    Image(systemName: "house")
+                    Text("Home")
+                }
+            MusicView()
                 .tabItem {
                     Image(systemName: "music.note")
-                    Text("Now Playing")
-                }
-            LibraryView()
-                .tabItem {
-                    Image(systemName: "book")
                     Text("Library")
-                }
-            CubeView()
-                .tabItem {
-                    Image(systemName: "square")
-                    Text("Cube")
                 }
             GameView()
                 .tabItem {
                     Image(systemName: "circle")
                     Text("Game")
                 }
-
+            SettingsView()
+                .tabItem {
+                    Image(systemName: "gearshape")
+                    Text("Settings")
+                }
         }
     }
 }
