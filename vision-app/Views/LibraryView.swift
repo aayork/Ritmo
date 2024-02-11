@@ -26,6 +26,7 @@ struct LibraryView: View {
 
     var body: some View {
         ZStack {
+            
             Color.clear
             
             Color(hue: 0.65, saturation: 0.9, brightness: 1.5, opacity: 0.3)
@@ -118,7 +119,7 @@ struct LibraryView: View {
                             fallthrough
                         @unknown default:
                             immersiveSpaceIsShown = false
-                            showImmersiveSpace = false
+                            
                         }
                     } else if immersiveSpaceIsShown {
                         await dismissImmersiveSpace()

@@ -9,19 +9,23 @@ import RealityKit
 import RealityKitContent
 
 func playSpatialAudio() {
-    // Create your entity
-    if let entity = try? Entity.load(named: "AcousticGuitar", in: realityKitContentBundle) {
+    if let acousticGuitar = try? Entity.load(named: "AcousticGuitar", in: realityKitContentBundle) {
+        // Create your entity
+        print("Creating entity...")
+        let audioSource = Entity()
+        audioSource.spatialAudio = SpatialAudioComponent()
+        
         do {
-            // Load the audio resource
-            let resource = try AudioFileResource.load(named: "07 Little Lion Man")
+            let resource = try AudioFileResource.load(named: "07 Little Lion Man.mp3", configuration: .init(shouldLoop: true))
             
-            // Play audio from the entity
-            entity.playAudio(resource)
+            // Place the loaded audio resource onto the orb.
+            acousticGuitar.addChild(audioSource)
+            audioSource.playAudio(resource)
         } catch {
-            print("Error: \(error)")
+            print("Error loading audio file: \(error.localizedDescription)")
         }
-    } else {
-        print("Failed to load the entity")
+        
     }
 }
+
 

@@ -51,6 +51,18 @@
       },
       [
         "AF09ED6F-1707-48FD-8720-65B998362C09",
+        "Root",
+        "AcousticGuitar"
+      ],
+      {
+        "isExpanded" : false,
+        "isLocked" : false,
+        "selectedAudioFilePrim" : {
+          "string" : "\/Root\/CruiseShipHorn"
+        }
+      },
+      [
+        "AF09ED6F-1707-48FD-8720-65B998362C09",
         "Root"
       ],
       {

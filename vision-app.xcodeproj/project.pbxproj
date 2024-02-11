@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EC3336A62B787ACB00836AFB /* SpatialAudioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC3336A52B787ACB00836AFB /* SpatialAudioView.swift */; };
 		EC605FE92B77D06A005EC21A /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC605FE82B77D06A005EC21A /* SettingsView.swift */; };
 		EC64789A2B77C4F300F12A54 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6478992B77C4F300F12A54 /* HomeView.swift */; };
 		EC64789C2B77C58700F12A54 /* LibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC64789B2B77C58700F12A54 /* LibraryView.swift */; };
@@ -16,7 +17,6 @@
 		ECA1E21D2B75B64100EE4926 /* ImmersiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA1E21C2B75B64100EE4926 /* ImmersiveView.swift */; };
 		ECA1E21F2B75B64200EE4926 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ECA1E21E2B75B64200EE4926 /* Assets.xcassets */; };
 		ECA1E2222B75B64200EE4926 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ECA1E2212B75B64200EE4926 /* Preview Assets.xcassets */; };
-		ECA1E22A2B75CBE900EE4926 /* PlayMusic.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA1E2292B75CBE900EE4926 /* PlayMusic.swift */; };
 		ECA1E25D2B75D17600EE4926 /* 07 Little Lion Man.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = ECA1E24D2B75D17600EE4926 /* 07 Little Lion Man.mp3 */; };
 		ECA1E25E2B75D17600EE4926 /* 01 - Cotton Eye Joe (Original Version).mp3 in Resources */ = {isa = PBXBuildFile; fileRef = ECA1E24E2B75D17600EE4926 /* 01 - Cotton Eye Joe (Original Version).mp3 */; };
 		ECA1E25F2B75D17600EE4926 /* Broken.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = ECA1E24F2B75D17600EE4926 /* Broken.mp3 */; };
@@ -34,9 +34,11 @@
 		ECA1E26B2B75D17600EE4926 /* 03 I Will Wait.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = ECA1E25B2B75D17600EE4926 /* 03 I Will Wait.mp3 */; };
 		ECA1E26C2B75D17600EE4926 /* 02 I'm Gonna Be (500 Miles).mp3 in Resources */ = {isa = PBXBuildFile; fileRef = ECA1E25C2B75D17600EE4926 /* 02 I'm Gonna Be (500 Miles).mp3 */; };
 		ECC092542B783A82002B4013 /* PlaySpatial.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECC092532B783A82002B4013 /* PlaySpatial.swift */; };
+		ECC0925C2B78584B002B4013 /* PlayMusic.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECC0925B2B78584B002B4013 /* PlayMusic.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		EC3336A52B787ACB00836AFB /* SpatialAudioView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpatialAudioView.swift; sourceTree = "<group>"; };
 		EC605FE82B77D06A005EC21A /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		EC6478992B77C4F300F12A54 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		EC64789B2B77C58700F12A54 /* LibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryView.swift; sourceTree = "<group>"; };
@@ -48,7 +50,6 @@
 		ECA1E21E2B75B64200EE4926 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ECA1E2212B75B64200EE4926 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		ECA1E2232B75B64200EE4926 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		ECA1E2292B75CBE900EE4926 /* PlayMusic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayMusic.swift; sourceTree = "<group>"; };
 		ECA1E24D2B75D17600EE4926 /* 07 Little Lion Man.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "07 Little Lion Man.mp3"; sourceTree = "<group>"; };
 		ECA1E24E2B75D17600EE4926 /* 01 - Cotton Eye Joe (Original Version).mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "01 - Cotton Eye Joe (Original Version).mp3"; sourceTree = "<group>"; };
 		ECA1E24F2B75D17600EE4926 /* Broken.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Broken.mp3; sourceTree = "<group>"; };
@@ -66,6 +67,7 @@
 		ECA1E25B2B75D17600EE4926 /* 03 I Will Wait.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "03 I Will Wait.mp3"; sourceTree = "<group>"; };
 		ECA1E25C2B75D17600EE4926 /* 02 I'm Gonna Be (500 Miles).mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "02 I'm Gonna Be (500 Miles).mp3"; sourceTree = "<group>"; };
 		ECC092532B783A82002B4013 /* PlaySpatial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaySpatial.swift; sourceTree = "<group>"; };
+		ECC0925B2B78584B002B4013 /* PlayMusic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayMusic.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,6 +156,7 @@
 		ECC092552B7844A5002B4013 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				EC3336A52B787ACB00836AFB /* SpatialAudioView.swift */,
 				ECA1E21C2B75B64100EE4926 /* ImmersiveView.swift */,
 				EC6478992B77C4F300F12A54 /* HomeView.swift */,
 				EC64789B2B77C58700F12A54 /* LibraryView.swift */,
@@ -165,7 +168,7 @@
 		ECC092562B7844D8002B4013 /* Audio */ = {
 			isa = PBXGroup;
 			children = (
-				ECA1E2292B75CBE900EE4926 /* PlayMusic.swift */,
+				ECC0925B2B78584B002B4013 /* PlayMusic.swift */,
 				ECC092532B783A82002B4013 /* PlaySpatial.swift */,
 			);
 			path = Audio;
@@ -261,9 +264,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				ECC092542B783A82002B4013 /* PlaySpatial.swift in Sources */,
+				ECC0925C2B78584B002B4013 /* PlayMusic.swift in Sources */,
+				EC3336A62B787ACB00836AFB /* SpatialAudioView.swift in Sources */,
 				EC605FE92B77D06A005EC21A /* SettingsView.swift in Sources */,
 				ECA1E21B2B75B64100EE4926 /* ContentView.swift in Sources */,
-				ECA1E22A2B75CBE900EE4926 /* PlayMusic.swift in Sources */,
 				ECA1E2192B75B64100EE4926 /* vision_appApp.swift in Sources */,
 				EC64789A2B77C4F300F12A54 /* HomeView.swift in Sources */,
 				EC64789C2B77C58700F12A54 /* LibraryView.swift in Sources */,

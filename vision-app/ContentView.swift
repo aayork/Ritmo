@@ -17,7 +17,7 @@ struct ContentView: View {
                     Image(systemName: "house")
                     Text("Home")
                 }
-            LibraryView()
+            SpatialAudioView()
                 .tabItem {
                     Image(systemName: "music.note")
                     Text("Library")
