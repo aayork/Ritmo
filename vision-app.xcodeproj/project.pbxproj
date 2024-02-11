@@ -102,12 +102,8 @@
 			children = (
 				ECA1E2182B75B64100EE4926 /* vision_appApp.swift */,
 				ECA1E21A2B75B64100EE4926 /* ContentView.swift */,
-				ECA1E21C2B75B64100EE4926 /* ImmersiveView.swift */,
-				EC6478992B77C4F300F12A54 /* HomeView.swift */,
-				EC64789B2B77C58700F12A54 /* LibraryView.swift */,
-				EC605FE82B77D06A005EC21A /* SettingsView.swift */,
-				ECA1E2292B75CBE900EE4926 /* PlayMusic.swift */,
-				ECC092532B783A82002B4013 /* PlaySpatial.swift */,
+				ECC092552B7844A5002B4013 /* Views */,
+				ECC092562B7844D8002B4013 /* Audio */,
 				ECA1E21E2B75B64200EE4926 /* Assets.xcassets */,
 				ECA1E2232B75B64200EE4926 /* Info.plist */,
 				ECA1E24C2B75D17600EE4926 /* Music */,
@@ -153,6 +149,26 @@
 				ECA1E25C2B75D17600EE4926 /* 02 I'm Gonna Be (500 Miles).mp3 */,
 			);
 			path = Music;
+			sourceTree = "<group>";
+		};
+		ECC092552B7844A5002B4013 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				ECA1E21C2B75B64100EE4926 /* ImmersiveView.swift */,
+				EC6478992B77C4F300F12A54 /* HomeView.swift */,
+				EC64789B2B77C58700F12A54 /* LibraryView.swift */,
+				EC605FE82B77D06A005EC21A /* SettingsView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		ECC092562B7844D8002B4013 /* Audio */ = {
+			isa = PBXGroup;
+			children = (
+				ECA1E2292B75CBE900EE4926 /* PlayMusic.swift */,
+				ECC092532B783A82002B4013 /* PlaySpatial.swift */,
+			);
+			path = Audio;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
