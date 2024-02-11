@@ -15,7 +15,7 @@ struct vision_appApp: App {
         } // To make the "glass window" go away, set window group to plain type
 
         ImmersiveSpace(id: "ImmersiveSpace") {
-            SoundView()
+            ImmersiveView()
         }
     
     }
