@@ -22,13 +22,17 @@ struct ContentView: View {
                     Image(systemName: "music.note")
                     Text("Library")
                 }
+            GameView()
+                .tabItem {
+                    Image(systemName: "circle")
+                    Text("Game")
+                }
             SettingsView()
                 .tabItem {
                     Image(systemName: "gearshape")
                     Text("Settings")
                 }
         }
-        
     }
 }
 
