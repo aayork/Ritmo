@@ -9,7 +9,7 @@ import SwiftUI
 import RealityKit
 import RealityKitContent
 
-struct SpatialAudioView: View {
+struct MusicView: View {
     
     @Environment(\.openImmersiveSpace) private var openImmersiveSpace
     /// This isn't the original immersive space I created, I've been having trouble getting spatial audio to work with RealityKit. Something weird with setting element values.
@@ -68,7 +68,7 @@ struct SpatialAudioView: View {
 }
 
 #Preview {
-    SpatialAudioView()
+    MusicView()
 }
 
 struct SpatialAudioImmersiveSpace: View {
@@ -84,14 +84,11 @@ struct SpatialAudioImmersiveSpace: View {
 }
 
 //
-//  SoundOrbView.swift
+//  SoundView.swift
+//  vision-app
 //
 //  Created by Rutger Schimmel on 27/07/2023.
-//  Based on https://developer.apple.com/videos/play/wwdc2023/10080/
-//
-//  This view can be placed in a ImmersiveSpace, creating a floating orb that projects sounds.
-//  The orb can be interacted with by dragging.
-//
+//  Based on https://developer.apple.com/videos/play/wwdc2023/10080/ and Rutger Schimmel's design
 
 import SwiftUI
 import RealityKit

@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		EC3336A62B787ACB00836AFB /* SpatialAudioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC3336A52B787ACB00836AFB /* SpatialAudioView.swift */; };
+		EC3336A62B787ACB00836AFB /* MusicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC3336A52B787ACB00836AFB /* MusicView.swift */; };
 		EC605FE92B77D06A005EC21A /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC605FE82B77D06A005EC21A /* SettingsView.swift */; };
 		EC64789A2B77C4F300F12A54 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6478992B77C4F300F12A54 /* HomeView.swift */; };
 		EC64789C2B77C58700F12A54 /* LibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC64789B2B77C58700F12A54 /* LibraryView.swift */; };
@@ -38,7 +38,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		EC3336A52B787ACB00836AFB /* SpatialAudioView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpatialAudioView.swift; sourceTree = "<group>"; };
+		EC3336A52B787ACB00836AFB /* MusicView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicView.swift; sourceTree = "<group>"; };
 		EC605FE82B77D06A005EC21A /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		EC6478992B77C4F300F12A54 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		EC64789B2B77C58700F12A54 /* LibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryView.swift; sourceTree = "<group>"; };
@@ -156,7 +156,7 @@
 		ECC092552B7844A5002B4013 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				EC3336A52B787ACB00836AFB /* SpatialAudioView.swift */,
+				EC3336A52B787ACB00836AFB /* MusicView.swift */,
 				ECA1E21C2B75B64100EE4926 /* ImmersiveView.swift */,
 				EC6478992B77C4F300F12A54 /* HomeView.swift */,
 				EC64789B2B77C58700F12A54 /* LibraryView.swift */,
@@ -265,7 +265,7 @@
 			files = (
 				ECC092542B783A82002B4013 /* PlaySpatial.swift in Sources */,
 				ECC0925C2B78584B002B4013 /* PlayMusic.swift in Sources */,
-				EC3336A62B787ACB00836AFB /* SpatialAudioView.swift in Sources */,
+				EC3336A62B787ACB00836AFB /* MusicView.swift in Sources */,
 				EC605FE92B77D06A005EC21A /* SettingsView.swift in Sources */,
 				ECA1E21B2B75B64100EE4926 /* ContentView.swift in Sources */,
 				ECA1E2192B75B64100EE4926 /* vision_appApp.swift in Sources */,
