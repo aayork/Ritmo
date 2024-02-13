@@ -18,7 +18,7 @@ struct ImmersiveView: View {
          // Add the initial RealityKit content
          if let scene = try? await Entity(named: "Immersive", in: realityKitContentBundle) {
             //Accessing ambient emitter
-            let audioEntity = scene.findEntity(named: "AmbientAudioComponent")
+            let audioEntity = scene.findEntity(named: "SpatialAudioComponent")
             // Add the audio source to a parent entity, and play a looping sound on it.
             //example from Apple code to find the audio file res
             if let audio = try? await AudioFileResource(named: "StarWars60",
