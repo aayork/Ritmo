@@ -19,12 +19,6 @@ struct HomeView: View {
         RecentlyPlayedSong(title: "Song 2", artist: "Artist 2"),
         RecentlyPlayedSong(title: "Song 3", artist: "Artist 3"),
         RecentlyPlayedSong(title: "Song 4", artist: "Artist 4"),
-        RecentlyPlayedSong(title: "Song 5", artist: "Artist 5"),
-        RecentlyPlayedSong(title: "Song 6", artist: "Artist 6"),
-        RecentlyPlayedSong(title: "Song 7", artist: "Artist 7"),
-        RecentlyPlayedSong(title: "Song 8", artist: "Artist 8"),
-        RecentlyPlayedSong(title: "Song 9", artist: "Artist 9"),
-        RecentlyPlayedSong(title: "Song 10", artist: "Artist 10")
     ]
     
     let highScore = 100 // Example high score
