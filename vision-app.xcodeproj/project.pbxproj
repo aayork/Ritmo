@@ -108,7 +108,6 @@
 			children = (
 				ECA1E2182B75B64100EE4926 /* vision_appApp.swift */,
 				ECA1E21A2B75B64100EE4926 /* ContentView.swift */,
-				9AC597372B7713C600729430 /* GameView.swift */,
 				ECC092552B7844A5002B4013 /* Views */,
 				ECC092562B7844D8002B4013 /* Audio */,
 				ECA1E21E2B75B64200EE4926 /* Assets.xcassets */,
@@ -162,6 +161,7 @@
 		ECC092552B7844A5002B4013 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				9AC597372B7713C600729430 /* GameView.swift */,
 				EC3336A52B787ACB00836AFB /* MusicView.swift */,
 				ECA1E21C2B75B64100EE4926 /* ImmersiveView.swift */,
 				EC6478992B77C4F300F12A54 /* HomeView.swift */,
