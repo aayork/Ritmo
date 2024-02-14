@@ -11,24 +11,35 @@ import RealityKitContent
 
 struct ImmersiveView: View {
    
-   @State private var playbackController: AudioPlaybackController?
+   @State private var audioController: AudioPlaybackController? // ? means nullable
    
    var body: some View {
-      RealityView { content in
-         // Add the initial RealityKit content
-         if let scene = try? await Entity(named: "Immersive", in: realityKitContentBundle) {
-            //Accessing ambient emitter
-            let audioEntity = scene.findEntity(named: "SpatialAudioComponent")
-            // Add the audio source to a parent entity, and play a looping sound on it.
-            //example from Apple code to find the audio file res
-            if let audio = try? await AudioFileResource(named: "StarWars60",
-                                                        configuration: .init(shouldLoop: true)) {
-               playbackController = audioEntity?.prepareAudio(audio)
-               playbackController?.play()
-            }
-            content.add(scene)
-         }
-      }
+       RealityView { content in
+           guard let entity = try? await Entity(named: "Immersive", in: realityKitContentBundle) else {
+               fatalError("Unable to load immersive model")
+           }
+           
+           let spatialAudioEntity = entity.findEntity(named: "AcousticGuitar")
+           
+           spatialAudioEntity?.spatialAudio = SpatialAudioComponent()
+        
+           guard let resource = try? await AudioFileResource(named: "/Root/StarWars60_wav", from: "Immersive.usda", in: realityKitContentBundle) else {
+               fatalError("Unable to load audio resource")
+           }
+           
+           audioController = spatialAudioEntity?.prepareAudio(resource)
+           audioController?.play()
+           
+           
+           content.add(entity)
+       }
+       .onDisappear(perform: {
+           audioController?.stop()
+       })
    }
+}
+
+#Preview {
+   ImmersiveView()
 }
 

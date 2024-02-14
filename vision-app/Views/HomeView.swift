@@ -19,12 +19,6 @@ struct HomeView: View {
         RecentlyPlayedSong(title: "Song 2", artist: "Artist 2"),
         RecentlyPlayedSong(title: "Song 3", artist: "Artist 3"),
         RecentlyPlayedSong(title: "Song 4", artist: "Artist 4"),
-        RecentlyPlayedSong(title: "Song 5", artist: "Artist 5"),
-        RecentlyPlayedSong(title: "Song 6", artist: "Artist 6"),
-        RecentlyPlayedSong(title: "Song 7", artist: "Artist 7"),
-        RecentlyPlayedSong(title: "Song 8", artist: "Artist 8"),
-        RecentlyPlayedSong(title: "Song 9", artist: "Artist 9"),
-        RecentlyPlayedSong(title: "Song 10", artist: "Artist 10")
     ]
     
     let highScore = 100 // Example high score
@@ -95,7 +89,7 @@ struct HomeView: View {
     
     private func multicolorBackground() -> some View {
         ZStack {
-            Circle()
+            Capsule()
                 .fill(Color.pink.opacity(0.5))
                 .blur(radius: 50)
                 .offset(x: 10, y: -100)
@@ -105,7 +99,7 @@ struct HomeView: View {
                 .blur(radius: 50)
                 .offset(x: 100, y: 100)
                 .rotationEffect(Angle(degrees: -colorCycle))
-            Circle()
+            Rectangle()
                 .fill(Color.blue.opacity(0.5))
                 .blur(radius: 50)
                 .offset(x: -300, y: 50)
@@ -115,12 +109,12 @@ struct HomeView: View {
                 .blur(radius: 50)
                 .offset(x: 300, y: 100)
                 .rotationEffect(Angle(degrees: -colorCycle))
-            Circle()
+            Ellipse()
                 .fill(Color.orange.opacity(0.5))
                 .blur(radius: 50)
                 .offset(x: 175, y: -400)
                 .rotationEffect(Angle(degrees: colorCycle))
-            Circle()
+            Rectangle()
                 .fill(Color.teal.opacity(0.5))
                 .blur(radius: 50)
                 .offset(x: -75, y: 400)
@@ -130,7 +124,7 @@ struct HomeView: View {
                 .blur(radius: 50)
                 .offset(x: -110, y: 260)
                 .rotationEffect(Angle(degrees: colorCycle))
-            Circle()
+            Rectangle()
                 .fill(Color.green.opacity(0.5))
                 .blur(radius: 50)
                 .offset(x: -150, y: 275)
