@@ -20,7 +20,7 @@ struct MusicView: View {
         VStack {
             Text("Experience Spatial Audio!")
                 .font(.title)
-            Text(ImmersiveView().soundFile)
+            Text("Song Name")
                 .font(.title3)
             
             Text("")

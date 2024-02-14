@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		9AC597382B7713C600729430 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC597372B7713C600729430 /* GameView.swift */; };
 		EC3336A62B787ACB00836AFB /* MusicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC3336A52B787ACB00836AFB /* MusicView.swift */; };
+		EC3EF0962B7BF36F006C8C61 /* StarWars60.wav in Resources */ = {isa = PBXBuildFile; fileRef = EC3EF0952B7BF36F006C8C61 /* StarWars60.wav */; };
 		EC605FE92B77D06A005EC21A /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC605FE82B77D06A005EC21A /* SettingsView.swift */; };
 		EC64789A2B77C4F300F12A54 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6478992B77C4F300F12A54 /* HomeView.swift */; };
 		EC64789C2B77C58700F12A54 /* LibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC64789B2B77C58700F12A54 /* LibraryView.swift */; };
@@ -41,6 +42,7 @@
 /* Begin PBXFileReference section */
 		9AC597372B7713C600729430 /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 		EC3336A52B787ACB00836AFB /* MusicView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicView.swift; sourceTree = "<group>"; };
+		EC3EF0952B7BF36F006C8C61 /* StarWars60.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = StarWars60.wav; sourceTree = "<group>"; };
 		EC605FE82B77D06A005EC21A /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		EC6478992B77C4F300F12A54 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		EC64789B2B77C58700F12A54 /* LibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryView.swift; sourceTree = "<group>"; };
@@ -135,6 +137,7 @@
 		ECA1E24C2B75D17600EE4926 /* Music */ = {
 			isa = PBXGroup;
 			children = (
+				EC3EF0952B7BF36F006C8C61 /* StarWars60.wav */,
 				ECA1E24D2B75D17600EE4926 /* 07 Little Lion Man.mp3 */,
 				ECA1E24E2B75D17600EE4926 /* 01 - Cotton Eye Joe (Original Version).mp3 */,
 				ECA1E24F2B75D17600EE4926 /* Broken.mp3 */,
@@ -254,6 +257,7 @@
 				ECA1E2692B75D17600EE4926 /* 06 Little Talks.mp3 in Resources */,
 				ECA1E21F2B75B64200EE4926 /* Assets.xcassets in Resources */,
 				ECA1E25F2B75D17600EE4926 /* Broken.mp3 in Resources */,
+				EC3EF0962B7BF36F006C8C61 /* StarWars60.wav in Resources */,
 				ECA1E2672B75D17600EE4926 /* 08 All the Small Things.mp3 in Resources */,
 				ECA1E26B2B75D17600EE4926 /* 03 I Will Wait.mp3 in Resources */,
 			);
