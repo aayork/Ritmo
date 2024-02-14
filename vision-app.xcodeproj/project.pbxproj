@@ -7,10 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-
+		9AC597382B7713C600729430 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC597372B7713C600729430 /* GameView.swift */; };
 		EC3336A62B787ACB00836AFB /* MusicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC3336A52B787ACB00836AFB /* MusicView.swift */; };
 		EC605FE92B77D06A005EC21A /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC605FE82B77D06A005EC21A /* SettingsView.swift */; };
-    9AC597382B7713C600729430 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC597372B7713C600729430 /* GameView.swift */; };
 		EC64789A2B77C4F300F12A54 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6478992B77C4F300F12A54 /* HomeView.swift */; };
 		EC64789C2B77C58700F12A54 /* LibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC64789B2B77C58700F12A54 /* LibraryView.swift */; };
 		ECA1E2172B75B64100EE4926 /* RealityKitContent in Frameworks */ = {isa = PBXBuildFile; productRef = ECA1E2162B75B64100EE4926 /* RealityKitContent */; };
@@ -37,14 +36,12 @@
 		ECA1E26C2B75D17600EE4926 /* 02 I'm Gonna Be (500 Miles).mp3 in Resources */ = {isa = PBXBuildFile; fileRef = ECA1E25C2B75D17600EE4926 /* 02 I'm Gonna Be (500 Miles).mp3 */; };
 		ECC092542B783A82002B4013 /* PlaySpatial.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECC092532B783A82002B4013 /* PlaySpatial.swift */; };
 		ECC0925C2B78584B002B4013 /* PlayMusic.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECC0925B2B78584B002B4013 /* PlayMusic.swift */; };
-
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-
+		9AC597372B7713C600729430 /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 		EC3336A52B787ACB00836AFB /* MusicView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicView.swift; sourceTree = "<group>"; };
 		EC605FE82B77D06A005EC21A /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
-    9AC597372B7713C600729430 /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 		EC6478992B77C4F300F12A54 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		EC64789B2B77C58700F12A54 /* LibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryView.swift; sourceTree = "<group>"; };
 		ECA1E2112B75B64100EE4926 /* vision-app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "vision-app.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -73,7 +70,6 @@
 		ECA1E25C2B75D17600EE4926 /* 02 I'm Gonna Be (500 Miles).mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "02 I'm Gonna Be (500 Miles).mp3"; sourceTree = "<group>"; };
 		ECC092532B783A82002B4013 /* PlaySpatial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaySpatial.swift; sourceTree = "<group>"; };
 		ECC0925B2B78584B002B4013 /* PlayMusic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayMusic.swift; sourceTree = "<group>"; };
-
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,7 +106,6 @@
 			children = (
 				ECA1E2182B75B64100EE4926 /* vision_appApp.swift */,
 				ECA1E21A2B75B64100EE4926 /* ContentView.swift */,
-        9AC597372B7713C600729430 /* GameView.swift */,
 				ECC092552B7844A5002B4013 /* Views */,
 				ECC092562B7844D8002B4013 /* Audio */,
 				ECA1E21E2B75B64200EE4926 /* Assets.xcassets */,
@@ -163,6 +158,7 @@
 		ECC092552B7844A5002B4013 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				9AC597372B7713C600729430 /* GameView.swift */,
 				EC3336A52B787ACB00836AFB /* MusicView.swift */,
 				ECA1E21C2B75B64100EE4926 /* ImmersiveView.swift */,
 				EC6478992B77C4F300F12A54 /* HomeView.swift */,
@@ -278,17 +274,8 @@
 				ECA1E2192B75B64100EE4926 /* vision_appApp.swift in Sources */,
 				EC64789A2B77C4F300F12A54 /* HomeView.swift in Sources */,
 				EC64789C2B77C58700F12A54 /* LibraryView.swift in Sources */,
-        9AC597382B7713C600729430 /* GameView.swift in Sources */,
+				9AC597382B7713C600729430 /* GameView.swift in Sources */,
 				ECA1E21D2B75B64100EE4926 /* ImmersiveView.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		EC59ADEB2B60CC4100E5790E /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				EC59ADF42B60CC4100E5790E /* vision_appTests.swift in Sources */,
-
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
