@@ -81,5 +81,10 @@ def Xform "Root"
     {
         uniform asset file = @nature-soundstropicaljunglebirds-108380.wav@
     }
+
+    def RealityKitAudioFile "back_on_74_mp3"
+    {
+        uniform asset file = @back-on-74.mp3@
+    }
 }
 

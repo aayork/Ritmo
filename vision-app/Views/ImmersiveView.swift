@@ -23,7 +23,7 @@ struct ImmersiveView: View {
            
            spatialAudioEntity?.spatialAudio = SpatialAudioComponent()
         
-           guard let resource = try? await AudioFileResource(named: "/Root/StarWars60_wav", from: "Immersive.usda", in: realityKitContentBundle) else {
+           guard let resource = try? await AudioFileResource(named: "/Root/back_on_74_mp3", from: "Immersive.usda", in: realityKitContentBundle) else {
                fatalError("Unable to load audio resource")
            }
            

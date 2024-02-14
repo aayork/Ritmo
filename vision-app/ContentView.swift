@@ -24,8 +24,13 @@ struct ContentView: View {
                 }
             GameView()
                 .tabItem {
-                    Image(systemName: "circle")
+                    Image(systemName: "gamecontroller.fill")
                     Text("Game")
+                }
+            FriendsView()
+                .tabItem {
+                    Image(systemName: "person.fill")
+                    Text("Friends")
                 }
             SettingsView()
                 .tabItem {
