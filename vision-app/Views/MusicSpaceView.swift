@@ -59,11 +59,11 @@ import RealityKit
 struct SoundOrbView: View {
 
     let soundFile: String
-    var acousticGuitar: Entity
+    var orb: Entity
         
         init(soundFile: String) {
             self.soundFile = soundFile
-            self.acousticGuitar = ModelEntity(
+            self.orb = ModelEntity(
                 mesh: .generateSphere(radius: 0.1),
                 materials: [SimpleMaterial(color: .white, isMetallic: false)]
             )
@@ -74,16 +74,16 @@ struct SoundOrbView: View {
 
     func setupModel() {
         // Set the position of the orb in meters.
-        acousticGuitar.position.x = 0
-        acousticGuitar.position.y = 1.5
-        acousticGuitar.position.z = -1
+        orb.position.x = 0
+        orb.position.y = 1.5
+        orb.position.z = -1
 
         // Make the orb selectable.
-        acousticGuitar.components.set(InputTargetComponent())
-        acousticGuitar.components.set(CollisionComponent(shapes: [.generateSphere(radius: 0.1)]))
+        orb.components.set(InputTargetComponent())
+        orb.components.set(CollisionComponent(shapes: [.generateSphere(radius: 0.1)]))
 
         // Make the orb cast a shadow.
-        acousticGuitar.components.set(GroundingShadowComponent(castsShadow: true))
+        orb.components.set(GroundingShadowComponent(castsShadow: true))
     }
 
     func loadAudio() {
@@ -95,7 +95,7 @@ struct SoundOrbView: View {
             let resource = try AudioFileResource.load(named: soundFile, configuration: .init(shouldLoop: true))
 
             // Place the loaded audio resource onto the orb.
-            acousticGuitar.addChild(audioSource)
+            orb.addChild(audioSource)
             audioSource.playAudio(resource)
         } catch {
             print("Error loading audio file: \(error.localizedDescription)")
@@ -104,13 +104,13 @@ struct SoundOrbView: View {
 
     var body: some View {
         RealityView { content in
-            content.add(acousticGuitar)
+            content.add(orb)
         }
         .gesture(DragGesture()
             .targetedToAnyEntity()
             .onChanged { value in
                 // The value is in SwiftUI's coordinate space, so we have to convert it to RealityKit's coordinate space.
-                acousticGuitar.position = value.convert(value.location3D, from: .local, to: acousticGuitar.parent!)
+                orb.position = value.convert(value.location3D, from: .local, to: orb.parent!)
             })
     }
 }
