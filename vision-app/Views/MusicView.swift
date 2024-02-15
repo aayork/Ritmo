@@ -70,16 +70,3 @@ struct MusicView: View {
 #Preview {
     MusicView()
 }
-
-struct SpatialAudioImmersiveSpace: View {
-    var body: some View {
-        RealityView { content in
-            if let scene = try? await Entity(named: "Immersive", in: realityKitContentBundle) {
-                content.add(scene)
-            }
-        } update: { updateContent in
-            
-        }
-    }
-}
-

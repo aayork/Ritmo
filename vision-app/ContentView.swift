@@ -37,11 +37,6 @@ struct ContentView: View {
                     Image(systemName: "gearshape")
                     Text("Settings")
                 }
-            MusicSpaceView()
-                .tabItem {
-                    Image(systemName: "gamecontroller.fill")
-                    Text("Game")
-                }
         }
     }
 }

@@ -14,6 +14,7 @@ struct ImmersiveView: View {
    @State private var audioController: AudioPlaybackController? // ? means nullable
    
    var body: some View {
+       
        RealityView { content in
            guard let entity = try? await Entity(named: "Immersive", in: realityKitContentBundle) else {
                fatalError("Unable to load immersive model")
@@ -31,6 +32,7 @@ struct ImmersiveView: View {
            audioController?.play()
            
            
+           
            content.add(entity)
        }
        .onDisappear(perform: {
@@ -38,8 +40,3 @@ struct ImmersiveView: View {
        })
    }
 }
-
-#Preview {
-   ImmersiveView()
-}
-
