@@ -10,7 +10,7 @@ import SwiftUI
 @main
 struct vision_appApp: App {
     var body: some Scene {
-        WindowGroup {
+        WindowGroup(id: "windowGroup") {
             ContentView()
         } // To make the "glass window" go away, set window group to plain type
 
