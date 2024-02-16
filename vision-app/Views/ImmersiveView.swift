@@ -44,6 +44,13 @@ struct ImmersiveView: View {
            // Add interaction - assuming RealityKit 2.0 for gestures handling, add if needed
            sphereEntity.components.set(InputTargetComponent())
            sphereEntity.components.set(CollisionComponent(shapes: [.generateSphere(radius: 0.1)]))
+           
+           Task {
+               // Move the sphere automatically
+               var moveItMoveIt = sphereEntity.transform
+               moveItMoveIt.translation += SIMD3(0, 0, 1)
+               sphereEntity.move(to: moveItMoveIt, relativeTo: nil, duration: 5,timingFunction: .default)
+           }
 
            // Make the orb cast a shadow.
            sphereEntity.components.set(GroundingShadowComponent(castsShadow: true))
