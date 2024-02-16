@@ -63,14 +63,16 @@ struct ImmersiveView: View {
            audioController?.stop()
        })
        .gesture(TapGesture().targetedToAnyEntity().onEnded({ value in
-           var transform = value.entity.transform
-           transform.translation += SIMD3(0.1, 0, -0.1)
-           value.entity.move(
-            to: transform,
-           relativeTo: nil,
-            duration: 3,
-            timingFunction: .easeInOut
-           )
+           value.entity.removeFromParent()
+           
+//           var transform = value.entity.transform
+//           transform.translation += SIMD3(0.1, 0, -0.1)
+//           value.entity.move(
+//            to: transform,
+//           relativeTo: nil,
+//            duration: 3,
+//            timingFunction: .easeInOut
+//           )
        }))
    }
 }
