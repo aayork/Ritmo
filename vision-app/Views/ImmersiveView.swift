@@ -10,7 +10,9 @@ import RealityKit
 import RealityKitContent
 
 struct ImmersiveView: View {
-    @State private var audioController: AudioPlaybackController?
+    @State private var audioControllerGuitar: AudioPlaybackController?
+    @State private var audioControllerDrums: AudioPlaybackController?
+    @State private var audioControllerVocals: AudioPlaybackController?
     
     @Environment(\.dismissWindow) private var dismissWindow
    
@@ -21,16 +23,33 @@ struct ImmersiveView: View {
                fatalError("Unable to load immersive model")
            }
            
-           let spatialAudioEntity = immersiveEntity.findEntity(named: "AcousticGuitar")
-           spatialAudioEntity?.spatialAudio = SpatialAudioComponent()
+           let spatialAudioEntityGuitar = immersiveEntity.findEntity(named: "AcousticGuitar")
+           spatialAudioEntityGuitar?.spatialAudio = SpatialAudioComponent()
+           
+           let spatialAudioEntityDrums = immersiveEntity.findEntity(named: "DrumKit")
+           spatialAudioEntityDrums?.spatialAudio = SpatialAudioComponent()
+           
+           let spatialAudioEntityVocals = immersiveEntity.findEntity(named: "MovieBoomMicrophone")
+           spatialAudioEntityVocals?.spatialAudio = SpatialAudioComponent()
         
-           guard let resource = try? await AudioFileResource(named: "/Root/back_on_74_mp3", from: "Immersive.usda", in: realityKitContentBundle) else {
+           guard let instrumentResource = try? await AudioFileResource(named: "/Root/instruments_mp3", from: "Immersive.usda", in: realityKitContentBundle) else {
                fatalError("Unable to load audio resource")
            }
            
-           audioController = spatialAudioEntity?.prepareAudio(resource)
-           audioController?.play()
+           guard let drumsResource = try? await AudioFileResource(named: "/Root/drums_mp3", from: "Immersive.usda", in: realityKitContentBundle) else {
+               fatalError("Unable to load audio resource")
+           }
            
+           guard let vocalsResource = try? await AudioFileResource(named: "/Root/vocals_mp3", from: "Immersive.usda", in: realityKitContentBundle) else {
+               fatalError("Unable to load audio resource")
+           }
+           
+           audioControllerGuitar = spatialAudioEntityGuitar?.prepareAudio(instrumentResource)
+           audioControllerDrums = spatialAudioEntityDrums?.prepareAudio(drumsResource)
+           audioControllerVocals = spatialAudioEntityDrums?.prepareAudio(vocalsResource)
+           audioControllerGuitar?.play()
+           audioControllerDrums?.play()
+           audioControllerVocals?.play()
            // Add the immersiveEntity to the scene
            content.add(immersiveEntity)
            
@@ -62,7 +81,8 @@ struct ImmersiveView: View {
            content.add(sphereEntity)
        }
        .onDisappear(perform: {
-           audioController?.stop()
+           audioControllerGuitar?.stop()
+           audioControllerDrums?.stop()
        })
        .gesture(TapGesture().targetedToAnyEntity().onEnded({ value in
            value.entity.removeFromParent()
