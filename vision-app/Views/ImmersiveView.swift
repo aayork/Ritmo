@@ -39,7 +39,7 @@ struct ImmersiveView: View {
            let sphereEntity = ModelEntity(mesh: sphere, materials: [sphereMaterial])
            
            // Position the sphere entity above the ground or any reference point
-           sphereEntity.position = [0, 1, -1] // Adjust the Y value to float the sphere
+           sphereEntity.position = [0, 1.25, -1] // Adjust the Y value to float the sphere
            
            // Add interaction - assuming RealityKit 2.0 for gestures handling, add if needed
            sphereEntity.components.set(InputTargetComponent())
@@ -48,7 +48,7 @@ struct ImmersiveView: View {
            Task {
                // Move the sphere automatically
                var moveItMoveIt = sphereEntity.transform
-               moveItMoveIt.translation += SIMD3(0, 0, 1)
+               moveItMoveIt.translation += SIMD3(0, 1.5, 1)
                sphereEntity.move(to: moveItMoveIt, relativeTo: nil, duration: 5,timingFunction: .default)
            }
 
