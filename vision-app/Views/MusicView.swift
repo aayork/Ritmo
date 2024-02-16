@@ -16,53 +16,59 @@ struct MusicView: View {
     @State private var playing = false
     @State var songTitle = "Not Playing"
     
+    
     var body: some View {
-        VStack {
-            Text("Experience Spatial Audio!")
-                .font(.title)
-            Text("Song Name")
-                .font(.title3)
-            
-            Text("")
-                .ornament(
-                    visibility: .visible,
-                    attachmentAnchor: .scene(.bottom),
-                    contentAlignment: .center
-                ) {
-                    HStack {
-                        Button {
+     
+            NavigationSplitView {
+                // The content of the sidebar goes in here
+            } detail: {
+            VStack {
+                
+                Text("Experience Spatial Audio!")
+                    .font(.title)
+                Text("Song Name")
+                    .font(.title3)
+                
+                Text("")
+                    .ornament(
+                        visibility: .visible,
+                        attachmentAnchor: .scene(.bottom),
+                        contentAlignment: .center
+                    ) {
+                        HStack {
                             
-                        } label: {
-                            Image(systemName: "backward.fill")
-                        }
-                        .buttonStyle(.borderless)
-                        .controlSize(.extraLarge)
-                        Button {
-                            Task {
-                                await openImmersiveSpace(id: "ImmersiveSpace")
+                            Button {
+                                
+                            } label: {
+                                Image(systemName: "backward.fill")
                             }
-                            playing = true
-                        } label: {
-                            Image(systemName: playing ? "pause.fill" : "play.fill")
-                        }
-                        .buttonStyle(.borderless)
-                        .controlSize(.extraLarge)
-                        Button {
+                            .buttonStyle(.borderless)
+                            .controlSize(.extraLarge)
+                            Button {
+                                Task {
+                                    await openImmersiveSpace(id: "ImmersiveSpace")
+                                }
+                                playing = true
+                            } label: {
+                                Image(systemName: playing ? "pause.fill" : "play.fill")
+                            }
+                            .buttonStyle(.borderless)
+                            .controlSize(.extraLarge)
+                            Button {
+                                
+                            } label: {
+                                Image(systemName: "forward.fill")
+                            }
+                            .buttonStyle(.borderless)
+                            .controlSize(.extraLarge)
                             
-                        } label: {
-                            Image(systemName: "forward.fill")
                         }
-                        .buttonStyle(.borderless)
-                        .controlSize(.extraLarge)
-                        
+                        .labelStyle(.iconOnly)
+                        .padding(.vertical)
+                        .padding(.horizontal)
+                        .glassBackgroundEffect()
                     }
-                    .labelStyle(.iconOnly)
-                    .padding(.vertical)
-                    .padding(.horizontal)
-                    .glassBackgroundEffect()
-                }
-            
-            
+            }
         }
     }
 }
