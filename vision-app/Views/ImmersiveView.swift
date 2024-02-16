@@ -10,8 +10,9 @@ import RealityKit
 import RealityKitContent
 
 struct ImmersiveView: View {
-   
-   @State private var audioController: AudioPlaybackController?
+    @State private var audioController: AudioPlaybackController?
+    
+    @Environment(\.dismissWindow) private var dismissWindow
    
    var body: some View {
        
@@ -46,6 +47,7 @@ struct ImmersiveView: View {
            sphereEntity.components.set(CollisionComponent(shapes: [.generateSphere(radius: 0.1)]))
            
            Task {
+               dismissWindow(id: "windowGroup")
                // Move the sphere automatically
                var moveItMoveIt = sphereEntity.transform
                moveItMoveIt.translation += SIMD3(0, 1.5, 1)
