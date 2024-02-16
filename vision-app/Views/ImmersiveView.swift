@@ -11,17 +11,16 @@ import RealityKitContent
 
 struct ImmersiveView: View {
    
-   @State private var audioController: AudioPlaybackController? // ? means nullable
+   @State private var audioController: AudioPlaybackController?
    
    var body: some View {
        
        RealityView { content in
-           guard let entity = try? await Entity(named: "Immersive", in: realityKitContentBundle) else {
+           guard let immersiveEntity = try? await Entity(named: "Immersive", in: realityKitContentBundle) else {
                fatalError("Unable to load immersive model")
            }
            
-           let spatialAudioEntity = entity.findEntity(named: "AcousticGuitar")
-           
+           let spatialAudioEntity = immersiveEntity.findEntity(named: "AcousticGuitar")
            spatialAudioEntity?.spatialAudio = SpatialAudioComponent()
         
            guard let resource = try? await AudioFileResource(named: "/Root/back_on_74_mp3", from: "Immersive.usda", in: realityKitContentBundle) else {
@@ -31,12 +30,31 @@ struct ImmersiveView: View {
            audioController = spatialAudioEntity?.prepareAudio(resource)
            audioController?.play()
            
+           // Add the immersiveEntity to the scene
+           content.add(immersiveEntity)
            
+           // Create a floating sphere
+           let sphere = MeshResource.generateSphere(radius: 0.1) // Sphere with radius of 0.1 meters
+           let sphereMaterial = SimpleMaterial(color: .blue, isMetallic: false)
+           let sphereEntity = ModelEntity(mesh: sphere, materials: [sphereMaterial])
            
-           content.add(entity)
+           // Position the sphere entity above the ground or any reference point
+           sphereEntity.position = [0, 1, -1] // Adjust the Y value to float the sphere
+           
+           // Add interaction - assuming RealityKit 2.0 for gestures handling, add if needed
+           sphereEntity.components.set(InputTargetComponent())
+           sphereEntity.components.set(CollisionComponent(shapes: [.generateSphere(radius: 0.1)]))
+
+           // Make the orb cast a shadow.
+           sphereEntity.components.set(GroundingShadowComponent(castsShadow: true))
+           // content.installGestures([.rotation, .translation], for: sphereEntity)
+           
+           // Add the sphere entity to the scene
+           content.add(sphereEntity)
        }
        .onDisappear(perform: {
            audioController?.stop()
        })
    }
 }
+
