@@ -20,14 +20,14 @@ def Xform "Root"
     def "AcousticGuitar" (
         active = true
         customData = {
-            float3 rotationEulerHint = (0, -1.134464, 0)
+            float3 rotationEulerHint = (-0.020058444, -0.85732937, -0.030964011)
         }
         prepend references = @AcousticGuitar.usdz@
     )
     {
-        quatf xformOp:orient = (0.8433914, 0, -0.53729963, 0)
-        float3 xformOp:scale = (0.65, 0.65, 0.65)
-        float3 xformOp:translate = (0.6536053, 1, -0.4624093)
+        quatf xformOp:orient = (0.9093023, -0.015555167, -0.41544473, -0.018248092)
+        float3 xformOp:scale = (0.65, 0.65, 0.65000004)
+        float3 xformOp:translate = (0.75079995, 1.0523645, -0.98926985)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
         def RealityKitComponent "SpatialAudio"
