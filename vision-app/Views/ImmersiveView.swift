@@ -62,32 +62,39 @@ struct ImmersiveView: View {
            let circle = MeshResource.generateCylinder(height: 0.01, radius: 0.2)
            let circleMaterial = SimpleMaterial(color: .white, isMetallic: false)
            let circleEntity = ModelEntity(mesh: circle, materials: [circleMaterial])
-           //circleEntity.transform.rotation = [0, 0, 90]
-           circleEntity.transform = Transform(pitch: Float.pi / 2, yaw: 0.0, roll: 0.0)
            
+           let pose = ModelEntity()
+           
+           // Make the sphere and circle a child of the pose
            sphereEntity.addChild(circleEntity)
+           pose.addChild(sphereEntity)
            
            // Position the sphere entity above the ground or any reference point
-           sphereEntity.position = [0, 1.5, -5] // Adjust the Y value to float the sphere
+           sphereEntity.transform = Transform(pitch: Float.pi / 2, yaw: 0.0, roll: 0.0) // Set the sphere to face the camera
+           pose.position = [0, 1.5, -5] // Adjust the Y value to float the pose
            
            // Add interaction - assuming RealityKit 2.0 for gestures handling, add if needed
-           sphereEntity.components.set(InputTargetComponent())
-           sphereEntity.components.set(CollisionComponent(shapes: [.generateSphere(radius: 0.1)]))
+           pose.components.set(InputTargetComponent())
+           pose.components.set(CollisionComponent(shapes: [.generateSphere(radius: 0.1)]))
            
            Task {
                dismissWindow(id: "windowGroup")
                // Move the sphere automatically
-               var moveItMoveIt = sphereEntity.transform
+               var moveItMoveIt = pose.transform
                moveItMoveIt.translation += SIMD3(0, 0, 5)
-               sphereEntity.move(to: moveItMoveIt, relativeTo: nil, duration: 5, timingFunction: .default)
+               pose.move(to: moveItMoveIt, relativeTo: nil, duration: 5, timingFunction: .default)
+               var scaleTransform: Transform = Transform()
+               scaleTransform.scale = SIMD3(0.5, 0.5, 0.5)
+               circleEntity.move(to: circleEntity.transform, relativeTo: circleEntity.parent)
+               circleEntity.move(to: scaleTransform, relativeTo: circleEntity.parent, duration: 5)
            }
 
            // Make the orb cast a shadow.
-           sphereEntity.components.set(GroundingShadowComponent(castsShadow: true))
+           pose.components.set(GroundingShadowComponent(castsShadow: true))
            // content.installGestures([.rotation, .translation], for: sphereEntity)
            
            // Add the sphere entity to the scene
-           content.add(sphereEntity)
+           content.add(pose)
        }
        .onDisappear(perform: {
            audioControllerGuitar?.stop()
