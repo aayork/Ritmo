@@ -58,8 +58,17 @@ struct ImmersiveView: View {
            let sphereMaterial = SimpleMaterial(color: .blue, isMetallic: false)
            let sphereEntity = ModelEntity(mesh: sphere, materials: [sphereMaterial])
            
+           // Create circle around the sphere
+           let circle = MeshResource.generateCylinder(height: 0.01, radius: 0.2)
+           let circleMaterial = SimpleMaterial(color: .white, isMetallic: false)
+           let circleEntity = ModelEntity(mesh: circle, materials: [circleMaterial])
+           //circleEntity.transform.rotation = [0, 0, 90]
+           circleEntity.transform = Transform(pitch: Float.pi / 2, yaw: 0.0, roll: 0.0)
+           
+           sphereEntity.addChild(circleEntity)
+           
            // Position the sphere entity above the ground or any reference point
-           sphereEntity.position = [0, 1.25, -1] // Adjust the Y value to float the sphere
+           sphereEntity.position = [0, 1.5, -5] // Adjust the Y value to float the sphere
            
            // Add interaction - assuming RealityKit 2.0 for gestures handling, add if needed
            sphereEntity.components.set(InputTargetComponent())
@@ -69,8 +78,8 @@ struct ImmersiveView: View {
                dismissWindow(id: "windowGroup")
                // Move the sphere automatically
                var moveItMoveIt = sphereEntity.transform
-               moveItMoveIt.translation += SIMD3(0, 1.5, 1)
-               sphereEntity.move(to: moveItMoveIt, relativeTo: nil, duration: 5,timingFunction: .default)
+               moveItMoveIt.translation += SIMD3(0, 0, 5)
+               sphereEntity.move(to: moveItMoveIt, relativeTo: nil, duration: 5, timingFunction: .default)
            }
 
            // Make the orb cast a shadow.
