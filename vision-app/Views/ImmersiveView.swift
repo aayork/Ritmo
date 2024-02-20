@@ -60,10 +60,13 @@ struct ImmersiveView: View {
            
            // Create circle around the sphere
            let circle = MeshResource.generateCylinder(height: 0.01, radius: 0.2)
-           let circleMaterial = SimpleMaterial(color: .white, isMetallic: false)
-           let circleEntity = ModelEntity(mesh: circle, materials: [circleMaterial])
+           let white = SimpleMaterial(color: .white, isMetallic: false)
+           let circleEntity = ModelEntity(mesh: circle, materials: [white])
            
            let pose = ModelEntity()
+           
+           let info = MeshResource.generateText("Info", font: .systemFont(ofSize: 30), containerFrame: CGRect(x: 0, y: 0, width: 0, height: 0), alignment: .center)
+           let infoEntity = ModelEntity(mesh: info, materials: [white])
            
            // Make the sphere and circle a child of the pose
            sphereEntity.addChild(circleEntity)
@@ -95,6 +98,7 @@ struct ImmersiveView: View {
            
            // Add the sphere entity to the scene
            content.add(pose)
+           content.add(infoEntity)
        }
        .onDisappear(perform: {
            audioControllerGuitar?.stop()
