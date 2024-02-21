@@ -68,11 +68,8 @@ struct MusicView: View {
                 }
             } detail: {
             VStack {
-                
-                Text("Experience Spatial Audio!")
+                Text("About This Song")
                     .font(.title)
-                Text("Song Name")
-                    .font(.title3)
                 
                 Text("")
                     .ornament(

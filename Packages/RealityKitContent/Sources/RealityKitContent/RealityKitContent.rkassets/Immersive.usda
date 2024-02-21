@@ -26,8 +26,8 @@ def Xform "Root"
     )
     {
         quatf xformOp:orient = (0.88630414, -0.016052486, -0.46246088, -0.018363632)
-        float3 xformOp:scale = (0.65, 0.65, 0.65000004)
-        float3 xformOp:translate = (0.76114917, -0.0076137185, -1.1238265)
+        float3 xformOp:scale = (1, 1, 1.0000001)
+        float3 xformOp:translate = (1.838836, 0, -0.8310531)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
         def RealityKitComponent "SpatialAudio"
@@ -96,12 +96,15 @@ def Xform "Root"
 
     def "DrumKit" (
         active = true
+        customData = {
+            float3 rotationEulerHint = (0, 0.52359885, 0)
+        }
         prepend references = @DrumKit.usdz@
     )
     {
-        quatf xformOp:orient = (1, 0, 0, 0)
-        float3 xformOp:scale = (0.5, 0.5, 0.5)
-        float3 xformOp:translate = (-1.3552679, 0, 0.44056606)
+        quatf xformOp:orient = (0.9659258, 0, 0.25881904, 0)
+        float3 xformOp:scale = (1, 1, 1)
+        float3 xformOp:translate = (-2.582287, 4.7683716e-7, -0.50243306)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
         def RealityKitComponent "SpatialAudio"
@@ -120,14 +123,14 @@ def Xform "Root"
     def "Movie_Boom_Microphone" (
         active = true
         customData = {
-            float3 rotationEulerHint = (-0.108328, 0, 0)
+            float3 rotationEulerHint = (0.10832808, -1.5707963, 0)
         }
         prepend references = @MovieBoomMicrophone.usdz@
     )
     {
-        quatf xformOp:orient = (0.9985335, -0.054137517, 0, 0)
-        float3 xformOp:scale = (0.9972855, 0.9972855, 0.9972855)
-        float3 xformOp:translate = (-1.6805328, 5.9604645e-8, -0.9314279)
+        quatf xformOp:orient = (0.70606977, -0.038281035, -0.7060698, -0.038281035)
+        float3 xformOp:scale = (1, 1, 1)
+        float3 xformOp:translate = (0.15524915, 1.1920929e-7, -1.8948488)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
         def RealityKitComponent "SpatialAudio"

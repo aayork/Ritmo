@@ -12,7 +12,6 @@
 		EC3EF0962B7BF36F006C8C61 /* StarWars60.wav in Resources */ = {isa = PBXBuildFile; fileRef = EC3EF0952B7BF36F006C8C61 /* StarWars60.wav */; };
 		EC605FE92B77D06A005EC21A /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC605FE82B77D06A005EC21A /* SettingsView.swift */; };
 		EC64789A2B77C4F300F12A54 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6478992B77C4F300F12A54 /* HomeView.swift */; };
-		EC64789C2B77C58700F12A54 /* LibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC64789B2B77C58700F12A54 /* LibraryView.swift */; };
 		EC6E9D472B7C62B700C1F0A3 /* FriendsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6E9D462B7C62B700C1F0A3 /* FriendsView.swift */; };
 		ECA1E2172B75B64100EE4926 /* RealityKitContent in Frameworks */ = {isa = PBXBuildFile; productRef = ECA1E2162B75B64100EE4926 /* RealityKitContent */; };
 		ECA1E2192B75B64100EE4926 /* vision_appApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA1E2182B75B64100EE4926 /* vision_appApp.swift */; };
@@ -36,8 +35,6 @@
 		ECA1E26A2B75D17600EE4926 /* 01 Closing Time.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = ECA1E25A2B75D17600EE4926 /* 01 Closing Time.mp3 */; };
 		ECA1E26B2B75D17600EE4926 /* 03 I Will Wait.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = ECA1E25B2B75D17600EE4926 /* 03 I Will Wait.mp3 */; };
 		ECA1E26C2B75D17600EE4926 /* 02 I'm Gonna Be (500 Miles).mp3 in Resources */ = {isa = PBXBuildFile; fileRef = ECA1E25C2B75D17600EE4926 /* 02 I'm Gonna Be (500 Miles).mp3 */; };
-		ECC092542B783A82002B4013 /* PlaySpatial.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECC092532B783A82002B4013 /* PlaySpatial.swift */; };
-		ECC0925C2B78584B002B4013 /* PlayMusic.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECC0925B2B78584B002B4013 /* PlayMusic.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,7 +43,6 @@
 		EC3EF0952B7BF36F006C8C61 /* StarWars60.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = StarWars60.wav; sourceTree = "<group>"; };
 		EC605FE82B77D06A005EC21A /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		EC6478992B77C4F300F12A54 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
-		EC64789B2B77C58700F12A54 /* LibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryView.swift; sourceTree = "<group>"; };
 		EC6E9D462B7C62B700C1F0A3 /* FriendsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsView.swift; sourceTree = "<group>"; };
 		ECA1E2112B75B64100EE4926 /* vision-app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "vision-app.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECA1E2152B75B64100EE4926 /* RealityKitContent */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = RealityKitContent; sourceTree = "<group>"; };
@@ -72,8 +68,6 @@
 		ECA1E25A2B75D17600EE4926 /* 01 Closing Time.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "01 Closing Time.mp3"; sourceTree = "<group>"; };
 		ECA1E25B2B75D17600EE4926 /* 03 I Will Wait.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "03 I Will Wait.mp3"; sourceTree = "<group>"; };
 		ECA1E25C2B75D17600EE4926 /* 02 I'm Gonna Be (500 Miles).mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "02 I'm Gonna Be (500 Miles).mp3"; sourceTree = "<group>"; };
-		ECC092532B783A82002B4013 /* PlaySpatial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaySpatial.swift; sourceTree = "<group>"; };
-		ECC0925B2B78584B002B4013 /* PlayMusic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayMusic.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,7 +105,6 @@
 				ECA1E2182B75B64100EE4926 /* vision_appApp.swift */,
 				ECA1E21A2B75B64100EE4926 /* ContentView.swift */,
 				ECC092552B7844A5002B4013 /* Views */,
-				ECC092562B7844D8002B4013 /* Audio */,
 				ECA1E21E2B75B64200EE4926 /* Assets.xcassets */,
 				ECA1E2232B75B64200EE4926 /* Info.plist */,
 				ECA1E24C2B75D17600EE4926 /* Music */,
@@ -163,24 +156,14 @@
 		ECC092552B7844A5002B4013 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				9AC597372B7713C600729430 /* GameView.swift */,
+				EC6478992B77C4F300F12A54 /* HomeView.swift */,
 				EC3336A52B787ACB00836AFB /* MusicView.swift */,
 				ECA1E21C2B75B64100EE4926 /* ImmersiveView.swift */,
-				EC6478992B77C4F300F12A54 /* HomeView.swift */,
-				EC64789B2B77C58700F12A54 /* LibraryView.swift */,
-				EC605FE82B77D06A005EC21A /* SettingsView.swift */,
 				EC6E9D462B7C62B700C1F0A3 /* FriendsView.swift */,
+				EC605FE82B77D06A005EC21A /* SettingsView.swift */,
+				9AC597372B7713C600729430 /* GameView.swift */,
 			);
 			path = Views;
-			sourceTree = "<group>";
-		};
-		ECC092562B7844D8002B4013 /* Audio */ = {
-			isa = PBXGroup;
-			children = (
-				ECC0925B2B78584B002B4013 /* PlayMusic.swift */,
-				ECC092532B783A82002B4013 /* PlaySpatial.swift */,
-			);
-			path = Audio;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -273,14 +256,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ECC092542B783A82002B4013 /* PlaySpatial.swift in Sources */,
-				ECC0925C2B78584B002B4013 /* PlayMusic.swift in Sources */,
 				EC3336A62B787ACB00836AFB /* MusicView.swift in Sources */,
 				EC605FE92B77D06A005EC21A /* SettingsView.swift in Sources */,
 				ECA1E21B2B75B64100EE4926 /* ContentView.swift in Sources */,
 				ECA1E2192B75B64100EE4926 /* vision_appApp.swift in Sources */,
 				EC64789A2B77C4F300F12A54 /* HomeView.swift in Sources */,
-				EC64789C2B77C58700F12A54 /* LibraryView.swift in Sources */,
 				EC6E9D472B7C62B700C1F0A3 /* FriendsView.swift in Sources */,
 				9AC597382B7713C600729430 /* GameView.swift in Sources */,
 				ECA1E21D2B75B64100EE4926 /* ImmersiveView.swift in Sources */,
@@ -431,7 +411,7 @@
 				SUPPORTED_PLATFORMS = "xros xrsimulator";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2,7";
+				TARGETED_DEVICE_FAMILY = 7;
 			};
 			name = Debug;
 		};
@@ -457,7 +437,7 @@
 				SUPPORTED_PLATFORMS = "xros xrsimulator";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2,7";
+				TARGETED_DEVICE_FAMILY = 7;
 			};
 			name = Release;
 		};

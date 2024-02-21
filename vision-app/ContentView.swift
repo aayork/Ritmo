@@ -20,12 +20,7 @@ struct ContentView: View {
             MusicView()
                 .tabItem {
                     Image(systemName: "music.note")
-                    Text("Library")
-                }
-            GameView()
-                .tabItem {
-                    Image(systemName: "gamecontroller.fill")
-                    Text("Game")
+                    Text("Play")
                 }
             FriendsView()
                 .tabItem {
