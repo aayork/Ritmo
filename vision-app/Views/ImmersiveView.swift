@@ -15,6 +15,23 @@ struct ImmersiveView: View {
     @State private var audioControllerVocals: AudioPlaybackController?
     
     @Environment(\.dismissWindow) private var dismissWindow
+    
+    let timer = Timer.publish(every: 7, on: .main, in: .common).autoconnect()
+    @State private var output = "...";
+    @State private var tick = false;
+    @State private var correctTime = false;
+    
+    func input() {
+        if (correctTime) {
+            output = "Nice!";
+        } else {
+            output = "Bad..."
+        }
+    }
+    
+    func tick() async {
+        tick = true;
+    }
    
    var body: some View {
        
@@ -54,9 +71,9 @@ struct ImmersiveView: View {
            content.add(immersiveEntity)
            
            // Create a floating sphere
-           let sphere = MeshResource.generateSphere(radius: 0.1) // Sphere with radius of 0.1 meters
-           let sphereMaterial = SimpleMaterial(color: .blue, isMetallic: false)
-           let sphereEntity = ModelEntity(mesh: sphere, materials: [sphereMaterial])
+           let sphere = MeshResource.generateSphere(radius: 0.05) // Sphere with radius of 0.1 meters
+           let black = SimpleMaterial(color: .black, isMetallic: false)
+           let sphereEntity = ModelEntity(mesh: sphere, materials: [black])
            
            // Create circle around the sphere
            let circle = MeshResource.generateCylinder(height: 0.01, radius: 0.2)
@@ -65,8 +82,8 @@ struct ImmersiveView: View {
            
            let pose = ModelEntity()
            
-           let info = MeshResource.generateText("Info", font: .systemFont(ofSize: 30), containerFrame: CGRect(x: 0, y: 0, width: 0, height: 0), alignment: .center)
-           let infoEntity = ModelEntity(mesh: info, materials: [white])
+           let info = MeshResource.generateText("Info", containerFrame: CGRect(x: 0, y: 0, width: 0, height: 0), alignment: .center)
+           let infoEntity = ModelEntity(mesh: info, materials: [black])
            
            // Make the sphere and circle a child of the pose
            sphereEntity.addChild(circleEntity)
@@ -75,22 +92,38 @@ struct ImmersiveView: View {
            // Position the sphere entity above the ground or any reference point
            sphereEntity.transform = Transform(pitch: Float.pi / 2, yaw: 0.0, roll: 0.0) // Set the sphere to face the camera
            pose.position = [0, 1.5, -5] // Adjust the Y value to float the pose
+           infoEntity.setScale(SIMD3(0.01, 0.01, 0.01), relativeTo: nil)
+           infoEntity.position = [0, 1.6, -1]
            
            // Add interaction - assuming RealityKit 2.0 for gestures handling, add if needed
            pose.components.set(InputTargetComponent())
            pose.components.set(CollisionComponent(shapes: [.generateSphere(radius: 0.1)]))
+           
+           func tick() async {
+               output = "..."
+               correctTime = true;
+               try? await Task.sleep(until: .now + .seconds(0.15), clock: .continuous)
+               // circle matches sphere
+               try? await Task.sleep(until: .now + .seconds(0.15), clock: .continuous)
+               correctTime = false;
+           }
            
            Task {
                dismissWindow(id: "windowGroup")
                // Move the sphere automatically
                var moveItMoveIt = pose.transform
                moveItMoveIt.translation += SIMD3(0, 0, 5)
-               pose.move(to: moveItMoveIt, relativeTo: nil, duration: 5, timingFunction: .default)
+               pose.move(to: moveItMoveIt, relativeTo: nil, duration: 5, timingFunction: .linear)
                var scaleTransform: Transform = Transform()
-               scaleTransform.scale = SIMD3(0.5, 0.5, 0.5)
+               scaleTransform.scale = SIMD3(0.25, 0.25, 0.25)
                circleEntity.move(to: circleEntity.transform, relativeTo: circleEntity.parent)
-               circleEntity.move(to: scaleTransform, relativeTo: circleEntity.parent, duration: 5)
+               circleEntity.move(to: scaleTransform, relativeTo: circleEntity.parent, duration: 4, timingFunction: .linear)
            }
+           
+//           onReceive(timer) {time in
+//               Task {await tick()}
+//               infoEntity.string =
+//           }
 
            // Make the orb cast a shadow.
            pose.components.set(GroundingShadowComponent(castsShadow: true))
