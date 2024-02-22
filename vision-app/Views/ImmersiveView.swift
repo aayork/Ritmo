@@ -120,6 +120,7 @@ struct ImmersiveView: View {
                style: .continuous
            )
        )
+       .offset(x: 300, y: -1500)
        // Scoreboard
 
        
