@@ -216,6 +216,9 @@ struct ImmersiveView: View {
            // Add the sphere entity to the scene
            content.add(pose)
            content.add(infoEntity)
+       } update: { updateContent in
+           
+           
        }
        .onDisappear(perform: {
            audioControllerGuitar?.stop()
@@ -223,7 +226,12 @@ struct ImmersiveView: View {
            audioControllerVocals?.stop()
        })
        .gesture(TapGesture().targetedToAnyEntity().onEnded({ value in
-           value.entity.removeFromParent()
+           // Change color to green
+           value.entity.children.removeAll()
+           let sphere = MeshResource.generateSphere(radius: 0.05) // Sphere with radius of 0.1 meters
+           let green = SimpleMaterial(color: .green, isMetallic: false)
+           let sphereEntity = ModelEntity(mesh: sphere, materials: [green])
+           value.entity.addChild(sphereEntity)
        }))
    }
 }
