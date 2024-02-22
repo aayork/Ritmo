@@ -13,6 +13,7 @@ struct ImmersiveView: View {
     @State private var audioControllerGuitar: AudioPlaybackController?
     @State private var audioControllerDrums: AudioPlaybackController?
     @State private var audioControllerVocals: AudioPlaybackController?
+    @State var score = 0
     
     @Environment(\.dismissWindow) private var dismissWindow
     // Your existing functions
@@ -44,83 +45,85 @@ struct ImmersiveView: View {
    var body: some View {
        
        // Scoreboard
-       HStack(alignment: .top) {
-           VStack(spacing: 0) {
-               HStack(alignment: .top) {
-                   Button {
-                       Task {
-                           await dismissImmersiveSpace()
+       ZStack() {
+           HStack(alignment: .top) {
+               VStack(spacing: 0) {
+                   HStack(alignment: .top) {
+                       Button {
+                           Task {
+                               await dismissImmersiveSpace()
+                           }
+                       } label: {
+                           Label("Back", systemImage: "chevron.backward")
+                               .labelStyle(.iconOnly)
                        }
-                   } label: {
-                       Label("Back", systemImage: "chevron.backward")
-                           .labelStyle(.iconOnly)
-                   }
-                   .offset(x: -23)
-
-                   VStack {
-                       Text(verbatim: "10")
-                           .font(.system(size: 60))
-                           .bold()
-                           .accessibilityLabel(Text("Score"))
-                           .accessibilityValue(Text("10"))
-                       Text("score")
-                           .font(.system(size: 30))
-                           .bold()
-                           .accessibilityHidden(true)
-                           .offset(y: -5)
-                   }
-                   .padding(.leading, 0)
-                   .padding(.trailing, 60)
-               }
-               HStack {
-                   Button {
-                   } label: {
-                       Label(
-                           "Play music",
-                           systemImage: "speaker.wave.3.fill"
-                       )
-                           .labelStyle(.iconOnly)
-                   }
-                   .padding(.leading, 12)
-                   .padding(.trailing, 10)
-                   ProgressView(value: 10)
-                       .contentShape(.accessibility, Capsule().offset(y: -3))
-                       .accessibilityLabel("")
-                       .accessibilityValue(Text("10 seconds remaining"))
-                       .tint(Color(uiColor: UIColor(red: 15 / 255, green: 68 / 255, blue: 15 / 255, alpha: 1.0)))
-                       .padding(.vertical, 30)
-                   Button {
-                   } label: {
-                       Label("Play", systemImage: "play.fill")
-                            .labelStyle(.iconOnly)
+                       .offset(x: -23)
                        
+                       VStack {
+                           Text(String(score))
+                               .font(.system(size: 60))
+                               .bold()
+                               .accessibilityLabel(Text("Score"))
+                               .accessibilityValue(String(score))
+                           Text("Score")
+                               .font(.system(size: 30))
+                               .bold()
+                               .accessibilityHidden(true)
+                               .offset(y: -5)
+                       }
+                       .padding(.leading, 0)
+                       .padding(.trailing, 60)
                    }
-                   .padding(.trailing, 12)
-                   .padding(.leading, 10)
-               }
-               .background(
-                   .regularMaterial,
-                   in: .rect(
-                       topLeadingRadius: 0,
-                       bottomLeadingRadius: 12,
-                       bottomTrailingRadius: 12,
-                       topTrailingRadius: 0,
-                       style: .continuous
+                   HStack {
+                       Button {
+                       } label: {
+                           Label(
+                            "Play music",
+                            systemImage: "speaker.wave.3.fill"
+                           )
+                           .labelStyle(.iconOnly)
+                       }
+                       .padding(.leading, 12)
+                       .padding(.trailing, 10)
+                       ProgressView(value: 5, total: 10)
+                           .contentShape(.accessibility, Capsule().offset(y: -3))
+                           .accessibilityLabel("")
+                           .accessibilityValue(Text("10 seconds remaining"))
+                           .tint(Color(uiColor: UIColor(red: 15 / 255, green: 68 / 255, blue: 15 / 255, alpha: 1.0)))
+                           .padding(.vertical, 30)
+                       Button {
+                       } label: {
+                           Label("Play", systemImage: "play.fill")
+                               .labelStyle(.iconOnly)
+                           
+                       }
+                       .padding(.trailing, 12)
+                       .padding(.leading, 10)
+                   }
+                   .background(
+                    .regularMaterial,
+                    in: .rect(
+                        topLeadingRadius: 0,
+                        bottomLeadingRadius: 12,
+                        bottomTrailingRadius: 12,
+                        topTrailingRadius: 0,
+                        style: .continuous
+                    )
                    )
-               )
-               .frame(width: 260, height: 70)
-               .offset(y: 15)
+                   .frame(width: 260, height: 70)
+                   .offset(y: 15)
+               }
+               .padding(.vertical, 12)
            }
-           .padding(.vertical, 12)
-       }
-       .frame(width: 260)
-       .glassBackgroundEffect(
-           in: RoundedRectangle(
-               cornerRadius: 32,
-               style: .continuous
+           .frame(width: 260)
+           .glassBackgroundEffect(
+            in: RoundedRectangle(
+                cornerRadius: 32,
+                style: .continuous
+            )
            )
-       )
-       .offset(x: 300, y: -1500)
+           .offset(x: 300, y: -1500)
+       }
        // Scoreboard
 
        
@@ -174,8 +177,8 @@ struct ImmersiveView: View {
            
            let pose = ModelEntity()
            
-           let info = MeshResource.generateText("Info", containerFrame: CGRect(x: 0, y: 0, width: 0, height: 0), alignment: .center)
-           let infoEntity = ModelEntity(mesh: info, materials: [black])
+           // let info = MeshResource.generateText("Info", containerFrame: CGRect(x: 0, y: 0, width: 0, height: 0), alignment: .center)
+           // let infoEntity = ModelEntity(mesh: info, materials: [black])
            
            // Make the sphere and circle a child of the pose
            sphereEntity.addChild(circleEntity)
@@ -184,8 +187,8 @@ struct ImmersiveView: View {
            // Position the sphere entity above the ground or any reference point
            sphereEntity.transform = Transform(pitch: Float.pi / 2, yaw: 0.0, roll: 0.0) // Set the sphere to face the camera
            pose.position = [0, 1.5, -5] // Adjust the Y value to float the pose
-           infoEntity.setScale(SIMD3(0.01, 0.01, 0.01), relativeTo: nil)
-           infoEntity.position = [0, 1.6, -1]
+           // infoEntity.setScale(SIMD3(0.01, 0.01, 0.01), relativeTo: nil)
+           // infoEntity.position = [0, 1.6, -1]
            
            // Add interaction - assuming RealityKit 2.0 for gestures handling, add if needed
            pose.components.set(InputTargetComponent())
@@ -223,7 +226,7 @@ struct ImmersiveView: View {
            
            // Add the sphere entity to the scene
            content.add(pose)
-           content.add(infoEntity)
+           // content.add(infoEntity)
        } update: { updateContent in
            
            
@@ -239,6 +242,7 @@ struct ImmersiveView: View {
            let sphere = MeshResource.generateSphere(radius: 0.05) // Sphere with radius of 0.1 meters
            let green = SimpleMaterial(color: .green, isMetallic: false)
            let sphereEntity = ModelEntity(mesh: sphere, materials: [green])
+           score = 1
            value.entity.addChild(sphereEntity)
        }))
    }
