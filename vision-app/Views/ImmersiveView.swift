@@ -114,6 +114,12 @@ struct ImmersiveView: View {
            .padding(.vertical, 12)
        }
        .frame(width: 260)
+       .glassBackgroundEffect(
+           in: RoundedRectangle(
+               cornerRadius: 32,
+               style: .continuous
+           )
+       )
        // Scoreboard
 
        
