@@ -15,6 +15,14 @@ struct ImmersiveView: View {
     @State private var audioControllerVocals: AudioPlaybackController?
     
     @Environment(\.dismissWindow) private var dismissWindow
+    // Your existing functions
+
+    /// Function to dismiss the immersive space.
+    func dismissImmersiveSpace() async {
+        // Use the dismissWindow environment variable to dismiss the current window.
+        // You might need to provide the specific window ID if your app has multiple windows.
+        dismissWindow()
+    }
     
     let timer = Timer.publish(every: 7, on: .main, in: .common).autoconnect()
     @State private var output = "...";
@@ -34,6 +42,82 @@ struct ImmersiveView: View {
     }
    
    var body: some View {
+       
+       
+       HStack(alignment: .top) {
+           VStack(spacing: 0) {
+               HStack(alignment: .top) {
+                   Button {
+                       Task {
+                           await dismissImmersiveSpace()
+                       }
+                   } label: {
+                       Label("Back", systemImage: "chevron.backward")
+                           .labelStyle(.iconOnly)
+                   }
+                   .offset(x: -23)
+
+                   VStack {
+                       Text(verbatim: "10")
+                           .font(.system(size: 60))
+                           .bold()
+                           .accessibilityLabel(Text("Score"))
+                           .accessibilityValue(Text("10"))
+                       Text("score")
+                           .font(.system(size: 30))
+                           .bold()
+                           .accessibilityHidden(true)
+                           .offset(y: -5)
+                   }
+                   .padding(.leading, 0)
+                   .padding(.trailing, 60)
+               }
+               HStack {
+                   Button {
+                   } label: {
+                       Label(
+                           "Play music",
+                           systemImage: "speaker.wave.3.fill"
+                       )
+                           .labelStyle(.iconOnly)
+                   }
+                   .padding(.leading, 12)
+                   .padding(.trailing, 10)
+                   ProgressView(value: 10)
+                       .contentShape(.accessibility, Capsule().offset(y: -3))
+                       .accessibilityLabel("")
+                       .accessibilityValue(Text("10 seconds remaining"))
+                       .tint(Color(uiColor: UIColor(red: 15 / 255, green: 68 / 255, blue: 15 / 255, alpha: 1.0)))
+                       .padding(.vertical, 30)
+                   Button {
+                   } label: {
+                       Label("Play", systemImage: "play.fill")
+                            .labelStyle(.iconOnly)
+                       
+                   }
+                   .padding(.trailing, 12)
+                   .padding(.leading, 10)
+               }
+               .background(
+                   .regularMaterial,
+                   in: .rect(
+                       topLeadingRadius: 0,
+                       bottomLeadingRadius: 12,
+                       bottomTrailingRadius: 12,
+                       topTrailingRadius: 0,
+                       style: .continuous
+                   )
+               )
+               .frame(width: 260, height: 70)
+               .offset(y: 15)
+           }
+           .padding(.vertical, 12)
+       }
+       .frame(width: 260)
+
+       
+       
+       
        
        RealityView { content in
            guard let immersiveEntity = try? await Entity(named: "Immersive", in: realityKitContentBundle) else {
@@ -143,4 +227,3 @@ struct ImmersiveView: View {
        }))
    }
 }
-
