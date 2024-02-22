@@ -28,17 +28,15 @@ struct ImmersiveView: View {
     }
     
     let timer = Timer.publish(every: 5, on: .main, in: .common).autoconnect()
-    @State private var output = "...";
-    //@State private var tick = false;
     @State private var correctTime = false;
     
-    func input() {
-        if (correctTime) {
-            output = "Nice!";
-        } else {
-            output = "Bad..."
-        }
-    }
+//    func input() {
+//        if (correctTime) {
+//            output = "Nice!";
+//        } else {
+//            output = "Bad..."
+//        }
+//    }
    
     func tick() {
         // Create a floating sphere
@@ -84,11 +82,21 @@ struct ImmersiveView: View {
         circleEntity.move(to: circleEntity.transform, relativeTo: circleEntity.parent)
         circleEntity.move(to: scaleTransform, relativeTo: circleEntity.parent, duration: 4, timingFunction: .linear)
         
-//        correctTime = true;
-//        try? await Task.sleep(until: .now + .seconds(0.15), clock: .continuous)
-//        // circle matches sphere
-//        try? await Task.sleep(until: .now + .seconds(0.15), clock: .continuous)
-//        correctTime = false;
+        Task {
+            try? await Task.sleep(until: .now + .seconds(4 - 0.4), clock: .continuous)
+            correctTime = true;
+            // circle matches sphere
+            try? await Task.sleep(until: .now + .seconds(0.8), clock: .continuous)
+            correctTime = false;
+        }
+    }
+    
+    func changeColor(entity: Entity, color: UIColor) {
+        entity.children.removeAll()
+        let sphere = MeshResource.generateSphere(radius: 0.05) // Sphere with radius of 0.1 meters
+        let material = SimpleMaterial(color: color, isMetallic: false)
+        let sphereEntity = ModelEntity(mesh: sphere, materials: [material])
+        entity.addChild(sphereEntity)
     }
     
    var body: some View {
@@ -228,13 +236,16 @@ struct ImmersiveView: View {
            audioControllerVocals?.stop()
        })
        .gesture(TapGesture().targetedToAnyEntity().onEnded({ value in
-           // Change color to green
-           value.entity.children.removeAll()
-           let sphere = MeshResource.generateSphere(radius: 0.05) // Sphere with radius of 0.1 meters
-           let green = SimpleMaterial(color: .green, isMetallic: false)
-           let sphereEntity = ModelEntity(mesh: sphere, materials: [green])
-           score += 1
-           value.entity.addChild(sphereEntity)
+           // Change color to green or red
+           //value.entity.children.removeAll()
+           //let sphere = MeshResource.generateSphere(radius: 0.05) // Sphere with radius of 0.1 meters
+           
+           if (correctTime) {
+               changeColor(entity: value.entity, color: .green)
+               score += 1
+           } else {
+               changeColor(entity: value.entity, color: .red)
+           }
        }))
    }
 }
