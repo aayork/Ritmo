@@ -43,7 +43,7 @@ struct ImmersiveView: View {
    
    var body: some View {
        
-       
+       // Scoreboard
        HStack(alignment: .top) {
            VStack(spacing: 0) {
                HStack(alignment: .top) {
@@ -114,6 +114,7 @@ struct ImmersiveView: View {
            .padding(.vertical, 12)
        }
        .frame(width: 260)
+       // Scoreboard
 
        
        
