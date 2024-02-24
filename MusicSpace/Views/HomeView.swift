@@ -1,6 +1,6 @@
 //
 //  HomeView.swift
-//  vision-app
+//  MusicSpace
 //
 //  Created by Aidan York on 2/10/24.
 //

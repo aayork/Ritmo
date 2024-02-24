@@ -1,6 +1,6 @@
 //
-//  vision_appApp.swift
-//  vision-app
+//  MusicSpaceApp.swift
+//  MusicSpace
 //
 //  Created by Aidan York on 2/8/24.
 //

@@ -1,6 +1,6 @@
 //
 //  FriendsView.swift
-//  vision-app
+//  MusicSpace
 //
 //  Created by Aidan York on 2/13/24.
 //

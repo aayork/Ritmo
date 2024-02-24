@@ -13,7 +13,7 @@
 		EC64789A2B77C4F300F12A54 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6478992B77C4F300F12A54 /* HomeView.swift */; };
 		EC6E9D472B7C62B700C1F0A3 /* FriendsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6E9D462B7C62B700C1F0A3 /* FriendsView.swift */; };
 		ECA1E2172B75B64100EE4926 /* RealityKitContent in Frameworks */ = {isa = PBXBuildFile; productRef = ECA1E2162B75B64100EE4926 /* RealityKitContent */; };
-		ECA1E2192B75B64100EE4926 /* vision_appApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA1E2182B75B64100EE4926 /* vision_appApp.swift */; };
+		ECA1E2192B75B64100EE4926 /* MusicSpaceApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA1E2182B75B64100EE4926 /* MusicSpaceApp.swift */; };
 		ECA1E21B2B75B64100EE4926 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA1E21A2B75B64100EE4926 /* ContentView.swift */; };
 		ECA1E21D2B75B64100EE4926 /* ImmersiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA1E21C2B75B64100EE4926 /* ImmersiveView.swift */; };
 		ECA1E21F2B75B64200EE4926 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ECA1E21E2B75B64200EE4926 /* Assets.xcassets */; };
@@ -34,7 +34,6 @@
 		ECA1E26A2B75D17600EE4926 /* 01 Closing Time.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = ECA1E25A2B75D17600EE4926 /* 01 Closing Time.mp3 */; };
 		ECA1E26B2B75D17600EE4926 /* 03 I Will Wait.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = ECA1E25B2B75D17600EE4926 /* 03 I Will Wait.mp3 */; };
 		ECA1E26C2B75D17600EE4926 /* 02 I'm Gonna Be (500 Miles).mp3 in Resources */ = {isa = PBXBuildFile; fileRef = ECA1E25C2B75D17600EE4926 /* 02 I'm Gonna Be (500 Miles).mp3 */; };
-		ECDF2DFA2B87A1CF00F6CE9F /* GameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECDF2DF92B87A1CF00F6CE9F /* GameModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,9 +42,9 @@
 		EC605FE82B77D06A005EC21A /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		EC6478992B77C4F300F12A54 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		EC6E9D462B7C62B700C1F0A3 /* FriendsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsView.swift; sourceTree = "<group>"; };
-		ECA1E2112B75B64100EE4926 /* vision-app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "vision-app.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		ECA1E2112B75B64100EE4926 /* MusicSpace.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MusicSpace.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECA1E2152B75B64100EE4926 /* RealityKitContent */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = RealityKitContent; sourceTree = "<group>"; };
-		ECA1E2182B75B64100EE4926 /* vision_appApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = vision_appApp.swift; sourceTree = "<group>"; };
+		ECA1E2182B75B64100EE4926 /* MusicSpaceApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicSpaceApp.swift; sourceTree = "<group>"; };
 		ECA1E21A2B75B64100EE4926 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		ECA1E21C2B75B64100EE4926 /* ImmersiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImmersiveView.swift; sourceTree = "<group>"; };
 		ECA1E21E2B75B64200EE4926 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -67,7 +66,6 @@
 		ECA1E25A2B75D17600EE4926 /* 01 Closing Time.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "01 Closing Time.mp3"; sourceTree = "<group>"; };
 		ECA1E25B2B75D17600EE4926 /* 03 I Will Wait.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "03 I Will Wait.mp3"; sourceTree = "<group>"; };
 		ECA1E25C2B75D17600EE4926 /* 02 I'm Gonna Be (500 Miles).mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "02 I'm Gonna Be (500 Miles).mp3"; sourceTree = "<group>"; };
-		ECDF2DF92B87A1CF00F6CE9F /* GameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,7 +83,7 @@
 		ECA1E2082B75B64100EE4926 = {
 			isa = PBXGroup;
 			children = (
-				ECA1E2132B75B64100EE4926 /* vision-app */,
+				ECA1E2132B75B64100EE4926 /* MusicSpace */,
 				ECA1E2142B75B64100EE4926 /* Packages */,
 				ECA1E2122B75B64100EE4926 /* Products */,
 			);
@@ -94,23 +92,22 @@
 		ECA1E2122B75B64100EE4926 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				ECA1E2112B75B64100EE4926 /* vision-app.app */,
+				ECA1E2112B75B64100EE4926 /* MusicSpace.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		ECA1E2132B75B64100EE4926 /* vision-app */ = {
+		ECA1E2132B75B64100EE4926 /* MusicSpace */ = {
 			isa = PBXGroup;
 			children = (
-				ECA1E2182B75B64100EE4926 /* vision_appApp.swift */,
-				ECDF2DF92B87A1CF00F6CE9F /* GameModel.swift */,
+				ECA1E2182B75B64100EE4926 /* MusicSpaceApp.swift */,
 				ECC092552B7844A5002B4013 /* Views */,
 				ECA1E21E2B75B64200EE4926 /* Assets.xcassets */,
 				ECA1E2232B75B64200EE4926 /* Info.plist */,
 				ECA1E24C2B75D17600EE4926 /* Music */,
 				ECA1E2202B75B64200EE4926 /* Preview Content */,
 			);
-			path = "vision-app";
+			path = MusicSpace;
 			sourceTree = "<group>";
 		};
 		ECA1E2142B75B64100EE4926 /* Packages */ = {
@@ -169,9 +166,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		ECA1E2102B75B64100EE4926 /* vision-app */ = {
+		ECA1E2102B75B64100EE4926 /* MusicSpace */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = ECA1E2262B75B64200EE4926 /* Build configuration list for PBXNativeTarget "vision-app" */;
+			buildConfigurationList = ECA1E2262B75B64200EE4926 /* Build configuration list for PBXNativeTarget "MusicSpace" */;
 			buildPhases = (
 				ECA1E20D2B75B64100EE4926 /* Sources */,
 				ECA1E20E2B75B64100EE4926 /* Frameworks */,
@@ -181,12 +178,12 @@
 			);
 			dependencies = (
 			);
-			name = "vision-app";
+			name = MusicSpace;
 			packageProductDependencies = (
 				ECA1E2162B75B64100EE4926 /* RealityKitContent */,
 			);
 			productName = "vision-app";
-			productReference = ECA1E2112B75B64100EE4926 /* vision-app.app */;
+			productReference = ECA1E2112B75B64100EE4926 /* MusicSpace.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -204,7 +201,7 @@
 					};
 				};
 			};
-			buildConfigurationList = ECA1E20C2B75B64100EE4926 /* Build configuration list for PBXProject "vision-app" */;
+			buildConfigurationList = ECA1E20C2B75B64100EE4926 /* Build configuration list for PBXProject "MusicSpace" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -217,7 +214,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				ECA1E2102B75B64100EE4926 /* vision-app */,
+				ECA1E2102B75B64100EE4926 /* MusicSpace */,
 			);
 		};
 /* End PBXProject section */
@@ -259,8 +256,7 @@
 				EC3336A62B787ACB00836AFB /* MusicView.swift in Sources */,
 				EC605FE92B77D06A005EC21A /* SettingsView.swift in Sources */,
 				ECA1E21B2B75B64100EE4926 /* ContentView.swift in Sources */,
-				ECA1E2192B75B64100EE4926 /* vision_appApp.swift in Sources */,
-				ECDF2DFA2B87A1CF00F6CE9F /* GameModel.swift in Sources */,
+				ECA1E2192B75B64100EE4926 /* MusicSpaceApp.swift in Sources */,
 				EC64789A2B77C4F300F12A54 /* HomeView.swift in Sources */,
 				EC6E9D472B7C62B700C1F0A3 /* FriendsView.swift in Sources */,
 				ECA1E21D2B75B64100EE4926 /* ImmersiveView.swift in Sources */,
@@ -396,7 +392,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"vision-app/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"MusicSpace/Preview Content\"";
 				DEVELOPMENT_TEAM = B4M62857JV;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -424,7 +420,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"vision-app/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"MusicSpace/Preview Content\"";
 				DEVELOPMENT_TEAM = B4M62857JV;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -448,7 +444,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		ECA1E20C2B75B64100EE4926 /* Build configuration list for PBXProject "vision-app" */ = {
+		ECA1E20C2B75B64100EE4926 /* Build configuration list for PBXProject "MusicSpace" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				ECA1E2242B75B64200EE4926 /* Debug */,
@@ -457,7 +453,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		ECA1E2262B75B64200EE4926 /* Build configuration list for PBXNativeTarget "vision-app" */ = {
+		ECA1E2262B75B64200EE4926 /* Build configuration list for PBXNativeTarget "MusicSpace" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				ECA1E2272B75B64200EE4926 /* Debug */,
