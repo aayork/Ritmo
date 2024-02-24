@@ -17,6 +17,8 @@ struct ImmersiveView: View {
     
     let orbSpawner = Entity()
     
+    let immersiveImageName: String // Parameter for the immersive view image name
+    
     @Environment(\.dismissWindow) private var dismissWindow
     // Your existing functions
 
@@ -185,6 +187,30 @@ struct ImmersiveView: View {
 
        
        RealityView { content in
+           
+           /*
+           
+           let rootEntity = Entity()
+           
+           guard let texture = try? await TextureResource(named: immersiveImageName) else {
+               return
+           }
+           
+           var material = UnlitMaterial()
+           material.color = .init(texture: .init(texture))
+           
+           rootEntity.components.set(ModelComponent(
+            mesh: .generateSphere(radius: 1E3),
+            materials: [material]
+           ))
+           rootEntity.scale *= .init(x: -1, y: 1, z: 1)
+           rootEntity.transform.translation += SIMD3<Float>(0.0, 1.0, 0.0)
+           
+           content.add(rootEntity)
+            
+            */
+           
+           
            guard let immersiveEntity = try? await Entity(named: "Immersive", in: realityKitContentBundle) else {
                fatalError("Unable to load immersive model")
            }
