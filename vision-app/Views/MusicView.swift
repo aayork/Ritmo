@@ -21,7 +21,6 @@ struct MusicView: View {
     
     @Environment(\.openImmersiveSpace) private var openImmersiveSpace
     @State private var playing = false
-    @State private var songTitle = "Not Playing"
     @State private var songs = [Item]()
     
     var body: some View {
@@ -37,46 +36,44 @@ struct MusicView: View {
                 }
             }
         } detail: {
-            // Detail view content here
+            VStack {
+                Text("About This Song").font(.title)
+                Text("").ornament(visibility: .visible, attachmentAnchor: .scene(.bottom), contentAlignment: .center) {
+                    HStack {
+                        Button(action: {}) {
+                            Image(systemName: "backward.fill")
+                        }
+                        .buttonStyle(.borderless)
+                        .controlSize(.extraLarge)
+                        
+                        Button(action: {
+                            Task {
+                                await openImmersiveSpace(id: "ImmersiveSpace")
+                            }
+                            playing = true
+                        }) {
+                            Image(systemName: playing ? "pause.fill" : "play.fill")
+                        }
+                        .buttonStyle(.borderless)
+                        .controlSize(.extraLarge)
+                        
+                        Button(action: {}) {
+                            Image(systemName: "forward.fill")
+                        }
+                        .buttonStyle(.borderless)
+                        .controlSize(.extraLarge)
+                    }
+                    .labelStyle(.iconOnly)
+                    .padding(.vertical)
+                    .padding(.horizontal)
+                    .glassBackgroundEffect()
+                }
+            } // VStack
         }
         .onAppear {
             fetchMusic()
         }
-        
-        VStack {
-            Text("About This Song").font(.title)
-            Text("").ornament(visibility: .visible, attachmentAnchor: .scene(.bottom), contentAlignment: .center) {
-                HStack {
-                    Button(action: {}) {
-                        Image(systemName: "backward.fill")
-                    }
-                    .buttonStyle(.borderless)
-                    .controlSize(.extraLarge)
-                    
-                    Button(action: {
-                        Task {
-                            await openImmersiveSpace(id: "ImmersiveSpace")
-                        }
-                        playing = true
-                    }) {
-                        Image(systemName: playing ? "pause.fill" : "play.fill")
-                    }
-                    .buttonStyle(.borderless)
-                    .controlSize(.extraLarge)
-                    
-                    Button(action: {}) {
-                        Image(systemName: "forward.fill")
-                    }
-                    .buttonStyle(.borderless)
-                    .controlSize(.extraLarge)
-                }
-                .labelStyle(.iconOnly)
-                .padding(.vertical)
-                .padding(.horizontal)
-                .glassBackgroundEffect()
-            }
-        }
-    }
+    } // View
     
     private var request: MusicCatalogSearchRequest {
         var request = MusicCatalogSearchRequest(term: "Happy", types: [Song.self])
@@ -103,6 +100,7 @@ struct MusicView: View {
         }
     }
 }
+
 
 #Preview {
     MusicView()
