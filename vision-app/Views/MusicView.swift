@@ -6,110 +6,99 @@
 //
 
 import SwiftUI
+import MusicKit
 import RealityKit
 import RealityKitContent
 
-struct Song: Identifiable {
+struct Item: Identifiable, Hashable {
     var id = UUID()
-    var title: String
-    var artist: String
+    let name: String
+    let artist: String
+    let imageURL: URL?
 }
-
 
 struct MusicView: View {
     
     @Environment(\.openImmersiveSpace) private var openImmersiveSpace
-    /// This isn't the original immersive space I created, I've been having trouble getting spatial audio to work with RealityKit. Something weird with setting element values.
     @State private var playing = false
-    @State var songTitle = "Not Playing"
-    @State private var librarySongs: [Song] = [
-        Song(title: "Song 1", artist: "Artist 1"),
-        Song(title: "Song 2", artist: "Artist 2"),
-        Song(title: "Song 3", artist: "Artist 3"),
-        Song(title: "Song 4", artist: "Artist 4"),
-        Song(title: "Song 5", artist: "Artist 5"),
-        Song(title: "Song 6", artist: "Artist 6"),
-    ]
-    
+    @State private var songTitle = "Not Playing"
+    @State private var songs = [Item]()
     
     var body: some View {
-     
-            NavigationSplitView {
-                Text("Library")
-                    .font(.title)
-                    .padding(.bottom)
-                ScrollView {
-                    LazyVStack {
-                        ForEach(librarySongs) { song in
-                            HStack {
-                                Text("\(song.title) - \(song.artist)")
-                                    .foregroundColor(.primary)
-                                Spacer()
-                                Button(action: {
-                                    // Handle play button action
-                                    print("Play \(song.title)")
-                                }) {
-                                    Image(systemName: "play.circle")
-                                        .font(.system(size: 24))
-                                        .foregroundColor(.white)
-                                }
-                                .buttonStyle(PlainButtonStyle())
-                                .padding()
-                                .background(Color.clear.opacity(0.8))
-                                .cornerRadius(10)
-                            }
-                            .padding()
-                            .frame(maxWidth: .infinity)
-                            .background(Color.secondary.opacity(0.1))
-                            .cornerRadius(10)
-                            .padding(.horizontal)
-                        }
+        NavigationSplitView {
+            List(songs) { song in
+                HStack {
+                    AsyncImage(url: song.imageURL)
+                        .frame(width: 75, height: 75)
+                    VStack(alignment: .leading) {
+                        Text(song.name).font(.title3)
+                        Text(song.artist).font(.footnote)
                     }
                 }
-            } detail: {
-            VStack {
-                Text("About This Song")
-                    .font(.title)
-                
-                Text("")
-                    .ornament(
-                        visibility: .visible,
-                        attachmentAnchor: .scene(.bottom),
-                        contentAlignment: .center
-                    ) {
-                        HStack {
-                            
-                            Button {
-                                
-                            } label: {
-                                Image(systemName: "backward.fill")
-                            }
-                            .buttonStyle(.borderless)
-                            .controlSize(.extraLarge)
-                            Button {
-                                Task {
-                                    await openImmersiveSpace(id: "ImmersiveSpace")
-                                }
-                                playing = true
-                            } label: {
-                                Image(systemName: playing ? "pause.fill" : "play.fill")
-                            }
-                            .buttonStyle(.borderless)
-                            .controlSize(.extraLarge)
-                            Button {
-                                
-                            } label: {
-                                Image(systemName: "forward.fill")
-                            }
-                            .buttonStyle(.borderless)
-                            .controlSize(.extraLarge)
-                            
-                        }
-                        .labelStyle(.iconOnly)
-                        .padding(.vertical)
-                        .padding(.horizontal)
-                        .glassBackgroundEffect()
+            }
+        } detail: {
+            // Detail view content here
+        }
+        .onAppear {
+            fetchMusic()
+        }
+        
+        VStack {
+            Text("About This Song").font(.title)
+            Text("").ornament(visibility: .visible, attachmentAnchor: .scene(.bottom), contentAlignment: .center) {
+                HStack {
+                    Button(action: {}) {
+                        Image(systemName: "backward.fill")
                     }
+                    .buttonStyle(.borderless)
+                    .controlSize(.extraLarge)
+                    
+                    Button(action: {
+                        Task {
+                            await openImmersiveSpace(id: "ImmersiveSpace")
+                        }
+                        playing = true
+                    }) {
+                        Image(systemName: playing ? "pause.fill" : "play.fill")
+                    }
+                    .buttonStyle(.borderless)
+                    .controlSize(.extraLarge)
+                    
+                    Button(action: {}) {
+                        Image(systemName: "forward.fill")
+                    }
+                    .buttonStyle(.borderless)
+                    .controlSize(.extraLarge)
+                }
+                .labelStyle(.iconOnly)
+                .padding(.vertical)
+                .padding(.horizontal)
+                .glassBackgroundEffect()
+            }
+        }
+    }
+    
+    private var request: MusicCatalogSearchRequest {
+        var request = MusicCatalogSearchRequest(term: "Happy", types: [Song.self])
+        request.limit = 25
+        return request
+    }
+    
+    private func fetchMusic() {
+        Task {
+            let status = await MusicAuthorization.request()
+            switch status {
+            case .authorized:
+                do {
+                    let result = try await request.response()
+                    self.songs = result.songs.compactMap {
+                        Item(name: $0.title, artist: $0.artistName, imageURL: $0.artwork?.url(width: 75, height: 75))
+                    }
+                } catch {
+                    print("Error fetching music")
+                }
+            default:
+                break
             }
         }
     }
