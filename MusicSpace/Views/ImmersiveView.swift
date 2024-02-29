@@ -53,8 +53,8 @@ struct ImmersiveView: View {
         
         let pose = ModelEntity()
         
-        // let info = MeshResource.generateText("Info", containerFrame: CGRect(x: 0, y: 0, width: 0, height: 0), alignment: .center)
-        // let infoEntity = ModelEntity(mesh: info, materials: [black])
+        let info = MeshResource.generateText("Info", containerFrame: CGRect(x: 0, y: 0, width: 0, height: 0), alignment: .center)
+        let infoEntity = ModelEntity(mesh: info, materials: [black])
         
         // Make the sphere and circle a child of the pose
         sphereEntity.addChild(circleEntity)
@@ -63,8 +63,8 @@ struct ImmersiveView: View {
         // Position the sphere entity above the ground or any reference point
         sphereEntity.transform = Transform(pitch: Float.pi / 2, yaw: 0.0, roll: 0.0) // Set the sphere to face the camera
         pose.position = [0, 1.3, -5] // Adjust the Y value to float the pose
-        // infoEntity.setScale(SIMD3(0.01, 0.01, 0.01), relativeTo: nil)
-        // infoEntity.position = [0, 1.6, -1]
+        infoEntity.setScale(SIMD3(0.01, 0.01, 0.01), relativeTo: nil)
+        infoEntity.position = [0, 1.6, -1]
         
         // Add interaction - assuming RealityKit 2.0 for gestures handling, add if needed
         pose.components.set(InputTargetComponent())

@@ -68,6 +68,7 @@
 		ECA1E25A2B75D17600EE4926 /* 01 Closing Time.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "01 Closing Time.mp3"; sourceTree = "<group>"; };
 		ECA1E25B2B75D17600EE4926 /* 03 I Will Wait.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "03 I Will Wait.mp3"; sourceTree = "<group>"; };
 		ECA1E25C2B75D17600EE4926 /* 02 I'm Gonna Be (500 Miles).mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "02 I'm Gonna Be (500 Miles).mp3"; sourceTree = "<group>"; };
+		ECDD66992B8D2E96005987B0 /* MusicSpace.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MusicSpace.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +103,7 @@
 		ECA1E2132B75B64100EE4926 /* MusicSpace */ = {
 			isa = PBXGroup;
 			children = (
+				ECDD66992B8D2E96005987B0 /* MusicSpace.entitlements */,
 				ECA1E2182B75B64100EE4926 /* MusicSpaceApp.swift */,
 				ECC092552B7844A5002B4013 /* Views */,
 				ECA1E21E2B75B64200EE4926 /* Assets.xcassets */,
@@ -394,10 +396,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = MusicSpace/MusicSpace.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MusicSpace/Preview Content\"";
-				DEVELOPMENT_TEAM = B4M62857JV;
+				DEVELOPMENT_TEAM = C32HX45PQ4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "$(TARGET_NAME)/Info.plist";
@@ -408,7 +411,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 0.1;
-				PRODUCT_BUNDLE_IDENTIFIER = com.nmi.musicspace;
+				PRODUCT_BUNDLE_IDENTIFIER = cool.nmi.musicspace;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "xros xrsimulator";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -422,10 +425,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = MusicSpace/MusicSpace.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MusicSpace/Preview Content\"";
-				DEVELOPMENT_TEAM = B4M62857JV;
+				DEVELOPMENT_TEAM = C32HX45PQ4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "$(TARGET_NAME)/Info.plist";
@@ -436,7 +440,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 0.1;
-				PRODUCT_BUNDLE_IDENTIFIER = com.nmi.musicspace;
+				PRODUCT_BUNDLE_IDENTIFIER = cool.nmi.musicspace;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "xros xrsimulator";
 				SWIFT_EMIT_LOC_STRINGS = YES;
