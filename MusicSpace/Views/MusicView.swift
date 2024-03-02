@@ -4,6 +4,8 @@
 //
 //  Created by Aidan York on 2/10/24.
 //
+// Current Issue: Can't get MusicKit song to play audio
+//
 
 import SwiftUI
 import MusicKit
@@ -61,6 +63,9 @@ struct MusicView: View {
                                     
                                 Button(action: {
                                     // Play or pause action here
+                                    Task {
+                                        await openImmersiveSpace(id: "ImmersiveSpace")
+                                    }
                                     playing.toggle()
                                 }) {
                                     Image(systemName: playing ? "pause.fill" : "play.fill")
@@ -154,6 +159,9 @@ struct MusicView: View {
         }
     }
    
+    public func getSongName() -> String {
+        return selectedSong?.name ?? "Party in the U.S.A."
+    }
     
     private func fetchMusic() {
         print(searchText)
