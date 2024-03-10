@@ -20,25 +20,10 @@ struct ImmersiveView: View {
     let immersiveImageName: String // Parameter for the immersive view image name
     
     @Environment(\.dismissWindow) private var dismissWindow
-    // Your existing functions
-
-    /// Function to dismiss the immersive space.
-    func dismissImmersiveSpace() async {
-        // Use the dismissWindow environment variable to dismiss the current window.
-        // You might need to provide the specific window ID if your app has multiple windows.
-        dismissWindow()
-    }
+    @Environment(\.dismissImmersiveSpace) private var dismissImmersiveSpace
     
     let timer = Timer.publish(every: 5, on: .main, in: .common).autoconnect()
     @State private var correctTime = false;
-    
-//    func input() {
-//        if (correctTime) {
-//            output = "Nice!";
-//        } else {
-//            output = "Bad..."
-//        }
-//    }
    
     func tick() {
         // Create a floating sphere
@@ -148,6 +133,8 @@ struct ImmersiveView: View {
                        }
                        .frame(width: 460)
                        Button {
+                           Task {
+                           }
                        } label: {
                            Label("Pause", systemImage: "pause.fill")
                                .labelStyle(.iconOnly)

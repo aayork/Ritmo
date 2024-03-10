@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EC10F9132B963E3B008741EA /* WaveAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC10F9122B963E3B008741EA /* WaveAnimation.swift */; };
 		EC3336A62B787ACB00836AFB /* MusicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC3336A52B787ACB00836AFB /* MusicView.swift */; };
 		EC3EF0962B7BF36F006C8C61 /* StarWars60.wav in Resources */ = {isa = PBXBuildFile; fileRef = EC3EF0952B7BF36F006C8C61 /* StarWars60.wav */; };
 		EC605FE92B77D06A005EC21A /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC605FE82B77D06A005EC21A /* SettingsView.swift */; };
@@ -38,6 +39,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		EC10F9122B963E3B008741EA /* WaveAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaveAnimation.swift; sourceTree = "<group>"; };
 		EC3336A52B787ACB00836AFB /* MusicView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicView.swift; sourceTree = "<group>"; };
 		EC3EF0952B7BF36F006C8C61 /* StarWars60.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = StarWars60.wav; sourceTree = "<group>"; };
 		EC605FE82B77D06A005EC21A /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
@@ -164,6 +166,7 @@
 				ECA1E21C2B75B64100EE4926 /* ImmersiveView.swift */,
 				EC6E9D462B7C62B700C1F0A3 /* FriendsView.swift */,
 				EC605FE82B77D06A005EC21A /* SettingsView.swift */,
+				EC10F9122B963E3B008741EA /* WaveAnimation.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -260,6 +263,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EC3336A62B787ACB00836AFB /* MusicView.swift in Sources */,
+				EC10F9132B963E3B008741EA /* WaveAnimation.swift in Sources */,
 				EC605FE92B77D06A005EC21A /* SettingsView.swift in Sources */,
 				ECA1E21B2B75B64100EE4926 /* ContentView.swift in Sources */,
 				ECA1E2192B75B64100EE4926 /* MusicSpaceApp.swift in Sources */,

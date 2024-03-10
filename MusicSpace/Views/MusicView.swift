@@ -4,7 +4,7 @@
 //
 //  Created by Aidan York on 2/10/24.
 //
-// Current Issue: Can't get MusicKit song to play audio
+// This should work but I can't test without visionOS hardware.
 //
 
 import SwiftUI
@@ -24,8 +24,9 @@ struct MusicView: View {
     @Environment(\.openImmersiveSpace) private var openImmersiveSpace
     @State private var playing = false
     @State private var songs = [Item]()
-    @State private var selectedSong: Item? // Step 1: Track selected song
+    @State private var selectedSong: Item?
     private let musicPlayer = ApplicationMusicPlayer.shared
+    @State var musicSubscription: MusicSubscription?
     
     var body: some View {
         NavigationSplitView {
@@ -45,7 +46,7 @@ struct MusicView: View {
         } detail: {
             if let song = selectedSong { // Step 3: Update detail view for selected song
                     VStack {
-                        Text("About This Song").font(.title)
+                        Text("Play Now").font(.title)
                         Text(song.name).font(.headline) // Display song name
                         Text(song.artist).font(.subheadline) // Display artist name
                         AsyncImage(url: song.imageURL) // Display song image if available
@@ -53,35 +54,17 @@ struct MusicView: View {
                                 
                         // Play controls
                         HStack {
-                            Button(action: {
-                                // Your backward action here
-                                }) {
-                                    Image(systemName: "backward.fill")
-                                }
-                                .buttonStyle(.borderless)
-                                .controlSize(.large)
-                                    
                                 Button(action: {
-                                    // Play or pause action here
                                     Task {
+                                        await togglePlaying()
                                         await openImmersiveSpace(id: "ImmersiveSpace")
                                     }
-                                    playing.toggle()
                                 }) {
                                     Image(systemName: playing ? "pause.fill" : "play.fill")
                                 }
                                 .buttonStyle(.borderless)
                                 .controlSize(.large)
-                                    
-                                Button(action: {
-                                    // Your forward action here
-                                }) {
-                                    Image(systemName: "forward.fill")
-                                }
-                                .buttonStyle(.borderless)
-                                .controlSize(.large)
                             }
-                            .padding()
                         }
                     } else {
                         Text("Select a song to see details") // Prompt user to select a song
@@ -160,7 +143,40 @@ struct MusicView: View {
     }
    
     public func getSongName() -> String {
-        return selectedSong?.name ?? "Party in the U.S.A."
+        return selectedSong?.name ?? "No Song Selected"
+    }
+    
+    private func togglePlaying() async {
+        // Toggle the playing state
+        playing.toggle()
+
+        // Check if there's a selected song and the playing state
+        if let item = selectedSong {
+            if playing {
+                // If we are going to play, check if the music subscription allows playing
+                if musicSubscription?.canPlayCatalogContent == true {
+                    // Request music authorization
+                    let status = await MusicAuthorization.request()
+                    switch status {
+                    case .authorized:
+                        // If authorized, play the selected song
+                        await play(item: item)
+                    default:
+                        print("Music authorization not granted")
+                        playing = false // Revert playing state as we cannot play the music
+                    }
+                } else {
+                    print("You are not an Apple Music subscriber.")
+                    playing = false // Revert playing state as user cannot play the content
+                }
+            } else {
+                // Pause the music player
+                musicPlayer.pause()
+            }
+        } else {
+            print("No song selected")
+            playing = false // Revert playing state as there's no selection
+        }
     }
     
     private func fetchMusic() {

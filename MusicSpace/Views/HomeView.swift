@@ -62,13 +62,13 @@ struct HomeView: View {
                                 }
                                 .buttonStyle(PlainButtonStyle())
                                 .padding()
-                                .background(Color.clear.opacity(0.8))
+                                .background(Color.clear.opacity(0.9))
                                 .cornerRadius(10)
                             }
                             .padding()
+                            .background(Color.secondary.opacity(0.15))
                             .frame(maxWidth: .infinity)
-                            .background(Color.secondary.opacity(0.1))
-                            .cornerRadius(10)
+                            .cornerRadius(20)
                             .padding(.horizontal)
                         }
                     }
@@ -85,67 +85,23 @@ struct HomeView: View {
                     .foregroundColor(.white)
             }
         }
+        .background(
+            Rectangle() // This rectangle serves as the background
+                .foregroundColor(.black) // Set the color of the rectangle
+                .blur(radius: 25.0) // Apply a blur effect to create a soft look
+                .opacity(0.2) // Adjust opacity for a more subtle effect
+        )
+        .cornerRadius(10) // Apply corner radius if desired
+        .padding() // Adjust padding to ensure it aligns well with your layout
+        .padding(-32)
     }
+    
     
     private func multicolorBackground() -> some View {
         ZStack {
-            Capsule()
-                .fill(Color.pink.opacity(0.5))
-                .blur(radius: 50)
-                .offset(x: 10, y: -100)
-                .rotationEffect(Angle(degrees: colorCycle))
-            Circle()
-                .fill(Color.green.opacity(0.5))
-                .blur(radius: 50)
-                .offset(x: 100, y: 100)
-                .rotationEffect(Angle(degrees: -colorCycle))
-            Rectangle()
-                .fill(Color.blue.opacity(0.5))
-                .blur(radius: 50)
-                .offset(x: -300, y: 50)
-                .rotationEffect(Angle(degrees: colorCycle))
-            Circle()
-                .fill(Color.red.opacity(0.5))
-                .blur(radius: 50)
-                .offset(x: 300, y: 100)
-                .rotationEffect(Angle(degrees: -colorCycle))
-            Ellipse()
-                .fill(Color.orange.opacity(0.5))
-                .blur(radius: 50)
-                .offset(x: 175, y: -400)
-                .rotationEffect(Angle(degrees: colorCycle))
-            Rectangle()
-                .fill(Color.teal.opacity(0.5))
-                .blur(radius: 50)
-                .offset(x: -75, y: 400)
-                .rotationEffect(Angle(degrees: -colorCycle))
-            Circle()
-                .fill(Color.orange.opacity(0.5))
-                .blur(radius: 50)
-                .offset(x: -110, y: 260)
-                .rotationEffect(Angle(degrees: colorCycle))
-            Rectangle()
-                .fill(Color.green.opacity(0.5))
-                .blur(radius: 50)
-                .offset(x: -150, y: 275)
-                .rotationEffect(Angle(degrees: colorCycle))
-            Circle()
-                .fill(Color.red.opacity(0.5))
-                .blur(radius: 50)
-                .offset(x: -250, y: 50)
-                .rotationEffect(Angle(degrees: -colorCycle))
-            Circle()
-                .fill(Color.yellow.opacity(0.5))
-                .blur(radius: 50)
-                .offset(x: 100, y: 275)
-                .rotationEffect(Angle(degrees: colorCycle))
+            WaveAnimation()
         }
-        .edgesIgnoringSafeArea(.all)
-        .onAppear {
-            withAnimation(Animation.linear(duration: 30).repeatForever()) {
-                colorCycle = 720
-            }
-        }
+        .padding(-15)
     }
 }
 
