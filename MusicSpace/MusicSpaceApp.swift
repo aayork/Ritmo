@@ -15,7 +15,7 @@ struct vision_appApp: App {
         } // To make the "glass window" go away, set window group to plain type
 
         ImmersiveSpace(id: "ImmersiveSpace") {
-            ImmersiveView(immersiveImageName: "coachella")
+            // ImmersiveView(immersiveImageName: "image_name_here")
         }
         /*
         .immersionStyle(selection: .constant(.progressive), in: .progressive)

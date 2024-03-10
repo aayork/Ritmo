@@ -12,7 +12,7 @@ import MusicKit
 import RealityKit
 import RealityKitContent
 
-struct Item: Identifiable, Hashable {
+struct Item: Identifiable, Hashable, Codable {
     var id = UUID()
     let name: String
     let artist: String
@@ -32,38 +32,79 @@ struct MusicView: View {
         NavigationSplitView {
             List(songs, selection: $selectedSong) { song in // Bind selection to selectedSong
                 HStack {
-                    AsyncImage(url: song.imageURL)
-                        .frame(width: 75, height: 75)
-                    VStack(alignment: .leading) {
-                        Text(song.name).font(.title3)
-                        Text(song.artist).font(.footnote)
+                        AsyncImage(url: song.imageURL)
+                            .frame(width: 75, height: 75)
+                            .cornerRadius(10)
+                        
+                        VStack(alignment: .leading) {
+                            Text(song.name).font(.headline)
+                            Text(song.artist).font(.subheadline)
+                        }
+                        
+                        
+                        // Assuming you want these to be in the detail view of the selected item
+                        // If you want them in the list, you can adjust accordingly
                     }
-                }
-                .onTapGesture {
-                    self.selectedSong = song // Step 2: Set selected song on tap
-                }
+                    .onTapGesture {
+                        self.selectedSong = song
+                    }
             }
         } detail: {
             if let song = selectedSong { // Step 3: Update detail view for selected song
                     VStack {
-                        Text("Play Now").font(.title)
-                        Text(song.name).font(.headline) // Display song name
-                        Text(song.artist).font(.subheadline) // Display artist name
-                        AsyncImage(url: song.imageURL) // Display song image if available
-                            .frame(width: 150, height: 150)
+                        HStack {
+                            Text("Play Now").font(.title)
+                            if true {
+                                Text("Curated")
+                                    .padding(8)
+                                    .background(Color.pink)
+                                    .clipShape(Capsule())
+                                    .foregroundColor(.white)
+                            }
+                            
+                            // Difficulty indicator
+                            Text("Easy")
+                                .padding(8)
+                                .background(difficultyColor(for: "Easy"))
+                                .clipShape(Capsule())
+                                .foregroundColor(.white)
+                        }
+                        HStack {
+                            AsyncImage(
+                                url: song.imageURL,
+                                content: { image in
+                                    image.resizable()
+                                        .frame(maxWidth: 300, maxHeight: 300)
+                                        .cornerRadius(25.0)
+                                },
+                                placeholder: {
+                                    ProgressView()
+                                }
+                            )
+                            VStack {
+            
+                                Text(song.name).font(.headline) // Display song name
+                                Text(song.artist).font(.subheadline) // Display artist name
+                            }
+                            .padding(.horizontal)
+                        }
+                        .padding()
+                        
                                 
                         // Play controls
                         HStack {
-                                Button(action: {
+                            Button(action: {
                                     Task {
                                         await togglePlaying()
-                                        await openImmersiveSpace(id: "ImmersiveSpace")
+                                        await openImmersiveSpace(id: "ImmersiveSpace")}
+                                        saveSongsToJSON()
+                                        }) {
+                                        Image(systemName: playing ? "pause.fill" : "play.fill")
+                                                .padding()
+                                            .background(Circle().fill(Color.green))
                                     }
-                                }) {
-                                    Image(systemName: playing ? "pause.fill" : "play.fill")
-                                }
-                                .buttonStyle(.borderless)
-                                .controlSize(.large)
+                                    .buttonStyle(.borderless)
+                                    .font(.largeTitle)
                             }
                         }
                     } else {
@@ -77,6 +118,47 @@ struct MusicView: View {
                 }
     } // View
     
+    
+    // Helper function to determine the color of the difficulty indicator
+        private func difficultyColor(for difficulty: String) -> Color {
+            switch difficulty {
+            case "Easy":
+                return Color.green
+            case "Medium":
+                return Color.orange
+            case "Hard":
+                return Color.red
+            default:
+                return Color.gray
+            }
+        }
+    
+    
+    // Path for storing the songs JSON file
+    private var songsFilePath: URL {
+        FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("songs.json")
+    }
+
+    // Save the current list of songs to a JSON file
+    private func saveSongsToJSON() {
+        do {
+            let data = try JSONEncoder().encode(songs)
+            try data.write(to: songsFilePath, options: [.atomicWrite, .completeFileProtection])
+        } catch {
+            print("Failed to save songs: \(error)")
+        }
+    }
+
+    // Load songs from the JSON file
+    private func loadSongsFromJSON() {
+        do {
+            let data = try Data(contentsOf: songsFilePath)
+            songs = try JSONDecoder().decode([Item].self, from: data)
+        } catch {
+            print("Failed to load songs: \(error)")
+        }
+    }
+
     
     // Example implementations of playback control actions
     private func togglePlayPause() async {
