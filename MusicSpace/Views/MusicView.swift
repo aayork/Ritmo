@@ -63,9 +63,9 @@ struct MusicView: View {
                             }
                             
                             // Difficulty indicator
-                            Text("Easy")
+                            Text("Medium")
                                 .padding(8)
-                                .background(difficultyColor(for: "Easy"))
+                                .background(difficultyColor(for: "Medium"))
                                 .clipShape(Capsule())
                                 .foregroundColor(.white)
                         }
@@ -74,7 +74,7 @@ struct MusicView: View {
                                 url: song.imageURL,
                                 content: { image in
                                     image.resizable()
-                                        .frame(maxWidth: 300, maxHeight: 300)
+                                        .frame(maxWidth: 400, maxHeight: 400)
                                         .cornerRadius(25.0)
                                 },
                                 placeholder: {
@@ -87,25 +87,25 @@ struct MusicView: View {
                                 Text(song.artist).font(.subheadline) // Display artist name
                             }
                             .padding(.horizontal)
+                            // Play controls
+                            HStack {
+                                Button(action: {
+                                        Task {
+                                            await togglePlaying()
+                                            await openImmersiveSpace(id: "ImmersiveSpace")}
+                                             saveSongsToJSON()
+                                            }) {
+                                            Image(systemName: playing ? "pause.fill" : "play.fill")
+                                                    .padding()
+                                                .background(Circle().fill(Color.green))
+                                        }
+                                        .buttonStyle(.borderless)
+                                        .font(.largeTitle)
+                                }
                         }
                         .padding()
                         
                                 
-                        // Play controls
-                        HStack {
-                            Button(action: {
-                                    Task {
-                                        await togglePlaying()
-                                        await openImmersiveSpace(id: "ImmersiveSpace")}
-                                        saveSongsToJSON()
-                                        }) {
-                                        Image(systemName: playing ? "pause.fill" : "play.fill")
-                                                .padding()
-                                            .background(Circle().fill(Color.green))
-                                    }
-                                    .buttonStyle(.borderless)
-                                    .font(.largeTitle)
-                            }
                         }
                     } else {
                         Text("Select a song to see details") // Prompt user to select a song

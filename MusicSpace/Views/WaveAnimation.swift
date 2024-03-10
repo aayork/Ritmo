@@ -56,7 +56,7 @@ struct Wave: Shape {
     func path(in rect: CGRect) -> Path {
         var path = Path()
         
-        let waveSpacing = 10.0
+        let waveSpacing = 13.5
         
         let waveHeight = rect.height / 40
         let yOffSet = CGFloat(index) * waveSpacing
