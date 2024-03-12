@@ -19,7 +19,7 @@ struct Item: Identifiable, Hashable, Codable {
 
 struct MusicView: View {
     @State private var searchText = ""
-    @Environment(GameModel.self) var gameModel
+    //@Environment(GameModel.self) var gameModel
     @Environment(\.openImmersiveSpace) private var openImmersiveSpace
     @State private var playing = false
     @State private var songs = [Item]()

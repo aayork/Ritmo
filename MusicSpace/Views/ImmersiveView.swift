@@ -49,9 +49,7 @@ struct ImmersiveView: View {
         // Position the sphere entity above the ground or any reference point
         sphereEntity.transform = Transform(pitch: Float.pi / 2, yaw: 0.0, roll: 0.0) // Set the sphere to face the camera
         // glassHand!.transform = Transform(pitch: Float.pi / 2, yaw: 0.0, roll: 0.0) // Set the sphere to face the camera
-        pose.position = [0, 1.3, -5] // Adjust the Y value to float the pose
-        infoEntity.setScale(SIMD3(0.01, 0.01, 0.01), relativeTo: nil)
-        infoEntity.position = [0, 1.6, -1]
+        hand.position = [0, 1.3, -5] // Adjust the Y value to float the hand
         
         // Add interaction - assuming RealityKit 2.0 for gestures handling, add if needed
         hand.components.set(InputTargetComponent())
@@ -94,87 +92,6 @@ struct ImmersiveView: View {
        // Scoreboard
        ScoreView()
            .environment(self.gameModel)
-       /*
-       ZStack() {
-           HStack(alignment: .top) {
-               VStack(spacing: 0) {
-                   HStack(alignment: .top) {
-                       Button {
-                           Task {
-                               await dismissImmersiveSpace()
-                           }
-                       } label: {
-                           Label("Back", systemImage: "chevron.backward")
-                               .labelStyle(.iconOnly)
-                       }
-                       
-                       HStack {
-                           let songName = MusicView().getSongName()
-                           Text(songName)
-                               .font(.system(size: 30))
-                               .bold()
-                               .accessibilityHidden(true)
-                               .offset(y: -5)
-                               .padding(50)
-                           Text(String(score))
-                               .font(.system(size: 60))
-                               .bold()
-                               .accessibilityLabel(Text("Score"))
-                               .accessibilityValue(String(score))
-                               .offset(x: 5)
-                           
-                       }
-                       .padding(.leading, 0)
-                       .padding(.trailing, 60)
-                   }
-                   HStack {
-                       HStack {
-                           ProgressView(value: 5, total: 10)
-                               .contentShape(.accessibility, Capsule().offset(y: -3))
-                               .accessibilityLabel("")
-                               .accessibilityValue(Text("10 seconds remaining"))
-                               .tint(Color(uiColor: UIColor(red: 212 / 255, green: 244 / 255, blue: 4 / 255, alpha: 1.0)))
-                               .padding(.vertical, 30)
-                               .frame(width: 300)
-                       }
-                       .frame(width: 460)
-                       Button {
-                           Task {
-                           }
-                       } label: {
-                           Label("Pause", systemImage: "pause.fill")
-                               .labelStyle(.iconOnly)
-                           
-                       }
-                       .padding(.trailing, 12)
-                       .padding(.leading, -55)
-                   }
-                   .background(
-                    .regularMaterial,
-                    in: .rect(
-                        topLeadingRadius: 0,
-                        bottomLeadingRadius: 12,
-                        bottomTrailingRadius: 12,
-                        topTrailingRadius: 0,
-                        style: .continuous
-                    )
-                   )
-                   .frame(width: 460, height: 70)
-                   .offset(y: 15)
-               }
-               .padding(.vertical, 12)
-           }
-           .frame(width: 460)
-           .glassBackgroundEffect(
-            in: RoundedRectangle(
-                cornerRadius: 32,
-                style: .continuous
-            )
-           )
-           .offset(x: 300, y: -1500)
-       }
-        */
-       // Score
        
        RealityView { content in
            
