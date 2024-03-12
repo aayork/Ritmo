@@ -139,6 +139,57 @@ def Xform "Root"
         float3 xformOp:scale = (0.00040479656, 0.00040479656, 0.00040479656)
         float3 xformOp:translate = (0.33285514, 0.8186637, -0.37214968)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        over "RootNode"
+        {
+            over "Armature"
+            {
+                over "Bone"
+                {
+                    over "Bone005"
+                    {
+                        over "Bone006"
+                        {
+                            over "Bone007"
+                            {
+                                quatf xformOp:orient = (0.9979181, -0.06205563, 0.011169086, -0.013558882)
+                                float3 xformOp:scale = (0.99999994, 1, 1)
+                                float3 xformOp:translate = (-0.0000019073486, 0.5694351, 0)
+                                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                                over "Bone008" (
+                                    customData = {
+                                        float3 rotationEulerHint = (0.25830576, 0.20620228, 3.2215495)
+                                    }
+                                )
+                                {
+                                    quatf xformOp:orient = (-0.026179798, -0.107100144, 0.123928666, 0.986147)
+                                    float3 xformOp:scale = (1, 1, 1)
+                                    float3 xformOp:translate = (0.0000019073486, 0.4974861, -0.000005722046)
+                                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                                    over "Bone008_end"
+                                    {
+                                        quatf xformOp:orient = (1, 0, 0, 0)
+                                        float3 xformOp:scale = (1, 1, 1)
+                                        float3 xformOp:translate = (0.0000038146973, 0.49749374, -0.000009536743)
+                                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    over "Bone001"
+                    {
+                        quatf xformOp:orient = (0.83258617, 0.1734247, 0.2833826, 0.44319123)
+                        float3 xformOp:scale = (1, 0.99999994, 1)
+                        float3 xformOp:translate = (3.1664964e-8, 0.9422984, -1.5390818e-8)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                    }
+                }
+            }
+        }
     }
 }
 

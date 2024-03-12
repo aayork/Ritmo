@@ -29,6 +29,9 @@ struct ImmersiveView: View {
         let black = SimpleMaterial(color: .black, isMetallic: false)
         let sphereEntity = ModelEntity(mesh: sphere, materials: [black])
         
+        // Hand
+        // let glassHand = try? Entity.load(named: "handwork")
+        
         // Create circle around the sphere
         let circle = MeshResource.generateCylinder(height: 0.01, radius: 0.2)
         let white = SimpleMaterial(color: .white, isMetallic: false)
@@ -43,8 +46,12 @@ struct ImmersiveView: View {
         sphereEntity.addChild(circleEntity)
         pose.addChild(sphereEntity)
         
+        // glassHand?.addChild(circleEntity)
+        // pose.addChild(glassHand!)
+        
         // Position the sphere entity above the ground or any reference point
         sphereEntity.transform = Transform(pitch: Float.pi / 2, yaw: 0.0, roll: 0.0) // Set the sphere to face the camera
+        // glassHand!.transform = Transform(pitch: Float.pi / 2, yaw: 0.0, roll: 0.0) // Set the sphere to face the camera
         pose.position = [0, 1.3, -5] // Adjust the Y value to float the pose
         infoEntity.setScale(SIMD3(0.01, 0.01, 0.01), relativeTo: nil)
         infoEntity.position = [0, 1.6, -1]
