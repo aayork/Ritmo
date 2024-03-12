@@ -23,6 +23,18 @@
       }
     ]
   },
+  "14047C3A-99CA-4DC5-A76A-4AB047A85307" : {
+    "objectMetadataList" : [
+      [
+        "14047C3A-99CA-4DC5-A76A-4AB047A85307",
+        "Root"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      }
+    ]
+  },
   "66168B71-AB05-424E-8B6C-D33D6E61B08F" : {
     "objectMetadataList" : [
       [
@@ -37,6 +49,119 @@
   },
   "AF09ED6F-1707-48FD-8720-65B998362C09" : {
     "objectMetadataList" : [
+      [
+        "AF09ED6F-1707-48FD-8720-65B998362C09",
+        "Root",
+        "handwork",
+        "RootNode",
+        "hand"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "AF09ED6F-1707-48FD-8720-65B998362C09",
+        "Root",
+        "AmbientAudio"
+      ],
+      {
+        "isExpanded" : false,
+        "isLocked" : false,
+        "selectedAudioFilePrim" : {
+          "string" : "\/Root\/StarWars60_wav"
+        }
+      },
+      [
+        "AF09ED6F-1707-48FD-8720-65B998362C09",
+        "Root",
+        "handwork",
+        "RootNode",
+        "Armature",
+        "Bone",
+        "Bone005",
+        "Bone006"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "AF09ED6F-1707-48FD-8720-65B998362C09",
+        "Root",
+        "handwork"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "AF09ED6F-1707-48FD-8720-65B998362C09",
+        "Root",
+        "handwork",
+        "RootNode",
+        "Armature",
+        "Bone"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "AF09ED6F-1707-48FD-8720-65B998362C09",
+        "Root",
+        "handwork",
+        "RootNode",
+        "Armature",
+        "Bone",
+        "Bone005",
+        "Bone006",
+        "Bone007"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "AF09ED6F-1707-48FD-8720-65B998362C09",
+        "Root",
+        "handwork",
+        "RootNode",
+        "Armature"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "AF09ED6F-1707-48FD-8720-65B998362C09",
+        "Root",
+        "handwork",
+        "RootNode",
+        "Armature",
+        "Bone",
+        "Bone005"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "AF09ED6F-1707-48FD-8720-65B998362C09",
+        "Root",
+        "handwork",
+        "RootNode",
+        "Armature",
+        "Bone",
+        "Bone005",
+        "Bone006",
+        "Bone007",
+        "Bone008"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
       [
         "AF09ED6F-1707-48FD-8720-65B998362C09",
         "Root",
@@ -60,14 +185,12 @@
       [
         "AF09ED6F-1707-48FD-8720-65B998362C09",
         "Root",
-        "AmbientAudio"
+        "handwork",
+        "RootNode"
       ],
       {
-        "isExpanded" : false,
-        "isLocked" : false,
-        "selectedAudioFilePrim" : {
-          "string" : "\/Root\/StarWars60_wav"
-        }
+        "isExpanded" : true,
+        "isLocked" : false
       }
     ]
   },
