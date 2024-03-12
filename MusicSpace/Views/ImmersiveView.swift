@@ -167,8 +167,8 @@ struct ImmersiveView: View {
            )
            .offset(x: 300, y: -1500)
        }
-       // Scoreboard
-
+       // Score
+       
        
        RealityView { content in
            

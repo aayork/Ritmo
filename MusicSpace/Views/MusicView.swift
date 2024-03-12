@@ -99,8 +99,9 @@ struct MusicView: View {
                                                     .padding()
                                                 .background(Circle().fill(Color.green))
                                         }
-                                        .buttonStyle(.borderless)
+                                        .buttonStyle(PlainButtonStyle())
                                         .font(.largeTitle)
+                                        .cornerRadius(360)
                                 }
                         }
                         .padding()

@@ -47,34 +47,6 @@ def Xform "Root"
         }
     }
 
-    def "CruiseShipHorn" (
-        active = true
-        prepend references = @CruiseShipHorn.usdz@
-    )
-    {
-    }
-
-    def "AtmospheresForestFloor" (
-        active = true
-        prepend references = @AtmospheresForestFloor.usdz@
-    )
-    {
-        uniform bool shouldLoop = 1
-    }
-
-    def "AntiqueCarHorn" (
-        active = true
-        prepend references = @AntiqueCarHorn.usdz@
-    )
-    {
-    }
-
-    def RealityKitAudioFile "StarWars60_wav"
-    {
-        uniform asset file = @StarWars60.wav@
-        uniform bool shouldLoop = 1
-    }
-
     def Xform "AmbientAudio"
     {
         def RealityKitComponent "AmbientAudio"
@@ -82,16 +54,6 @@ def Xform "Root"
             float gain = 0
             uniform token info:id = "RealityKit.AmbientAudio"
         }
-    }
-
-    def RealityKitAudioFile "nature_soundstropicaljunglebirds_108380_wav"
-    {
-        uniform asset file = @nature-soundstropicaljunglebirds-108380.wav@
-    }
-
-    def RealityKitAudioFile "back_on_74_mp3"
-    {
-        uniform asset file = @back-on-74.mp3@
     }
 
     def "DrumKit" (
@@ -159,6 +121,17 @@ def Xform "Root"
     def RealityKitAudioFile "vocals_mp3"
     {
         uniform asset file = @vocals.mp3@
+    }
+
+    def "handwork" (
+        active = true
+        prepend references = @handwork.usdz@</Object_4>
+    )
+    {
+        quatf xformOp:orient = (0.99999994, 0, 0, 0)
+        float3 xformOp:scale = (0.00040479662, 0.00040479662, 0.00040479662)
+        float3 xformOp:translate = (0.50145, 0.75, -0.50691)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
     }
 }
 
