@@ -90,7 +90,8 @@ struct MusicView: View {
                             Button(action: {
                                 Task {
                                     await togglePlaying()
-                                    await openImmersiveSpace(id: "ImmersiveSpace")}
+                                    await openImmersiveSpace(id: "ImmersiveSpace")
+                                }
                             }) {
                                 Image(systemName: playing ? "pause.fill" : "play.fill")
                                     .padding()

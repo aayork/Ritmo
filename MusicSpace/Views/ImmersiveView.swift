@@ -17,8 +17,6 @@ struct ImmersiveView: View {
     
     let orbSpawner = Entity()
     
-    let immersiveImageName: String // Parameter for the immersive view image name
-    
     @Environment(\.dismissWindow) private var dismissWindow
     @Environment(\.dismissImmersiveSpace) private var dismissImmersiveSpace
     
@@ -208,6 +206,7 @@ struct ImmersiveView: View {
            let spatialAudioEntityVocals = immersiveEntity.findEntity(named: "MovieBoomMicrophone")
            spatialAudioEntityVocals?.spatialAudio = SpatialAudioComponent()
            
+           /*
            guard let instrumentResource = try? await AudioFileResource(named: "/Root/instruments_mp3", from: "Immersive.usda", in: realityKitContentBundle) else {
                fatalError("Unable to load audio resource")
            }
@@ -219,6 +218,7 @@ struct ImmersiveView: View {
            guard let vocalsResource = try? await AudioFileResource(named: "/Root/vocals_mp3", from: "Immersive.usda", in: realityKitContentBundle) else {
                fatalError("Unable to load audio resource")
            }
+            */
            
            // audioControllerGuitar = spatialAudioEntityGuitar?.prepareAudio(instrumentResource)
            // audioControllerDrums = spatialAudioEntityDrums?.prepareAudio(drumsResource)
