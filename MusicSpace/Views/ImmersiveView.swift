@@ -257,5 +257,6 @@ struct ImmersiveView: View {
                changeColor(entity: value.entity, color: .red)
            }
        }))
+       .preferredSurroundingsEffect(.systemDark)
    }
 }
