@@ -10,9 +10,9 @@ import RealityKit
 import RealityKitContent
 
 struct ImmersiveView: View {
-    @State private var audioControllerGuitar: AudioPlaybackController?
-    @State private var audioControllerDrums: AudioPlaybackController?
-    @State private var audioControllerVocals: AudioPlaybackController?
+    // @State private var audioControllerGuitar: AudioPlaybackController?
+    // @State private var audioControllerDrums: AudioPlaybackController?
+    // @State private var audioControllerVocals: AudioPlaybackController?
     @State var score = 0
     
     let orbSpawner = Entity()
@@ -220,12 +220,12 @@ struct ImmersiveView: View {
                fatalError("Unable to load audio resource")
            }
            
-           audioControllerGuitar = spatialAudioEntityGuitar?.prepareAudio(instrumentResource)
-           audioControllerDrums = spatialAudioEntityDrums?.prepareAudio(drumsResource)
-           audioControllerVocals = spatialAudioEntityDrums?.prepareAudio(vocalsResource)
-           audioControllerGuitar?.play()
-           audioControllerDrums?.play()
-           audioControllerVocals?.play()
+           // audioControllerGuitar = spatialAudioEntityGuitar?.prepareAudio(instrumentResource)
+           // audioControllerDrums = spatialAudioEntityDrums?.prepareAudio(drumsResource)
+           // audioControllerVocals = spatialAudioEntityDrums?.prepareAudio(vocalsResource)
+           // audioControllerGuitar?.play()
+           // audioControllerDrums?.play()
+           // audioControllerVocals?.play()
            // Add the immersiveEntity to the scene
            content.add(immersiveEntity)
            
@@ -241,9 +241,9 @@ struct ImmersiveView: View {
            tick()
        }
        .onDisappear(perform: {
-           audioControllerGuitar?.stop()
-           audioControllerDrums?.stop()
-           audioControllerVocals?.stop()
+           // audioControllerGuitar?.stop()
+           // audioControllerDrums?.stop()
+           // audioControllerVocals?.stop()
        })
        .gesture(TapGesture().targetedToAnyEntity().onEnded({ value in
            // Change color to green or red
