@@ -10,6 +10,7 @@ import RealityKit
 import RealityKitContent
 
 struct ContentView: View {
+    @Environment(GameModel.self) var gameModel
     var body: some View {
         TabView {
             HomeView()

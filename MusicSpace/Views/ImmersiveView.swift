@@ -10,20 +10,22 @@ import RealityKit
 import RealityKitContent
 
 struct ImmersiveView: View {
+    @Environment(\.dismissWindow) private var dismissWindow
+    @Environment(\.dismissImmersiveSpace) private var dismissImmersiveSpace
+    @Environment(GameModel.self) var gameModel
+    @State var score = 0
+    @State private var correctTime = false;
+    
+    let orbSpawner = Entity()
+    let timer = Timer.publish(every: 5, on: .main, in: .common).autoconnect()
+    let handTravelTime = 4.0 // The time it takes the hand to reach the player
+    let acceptInputWindow = 0.8 // The time window in which the player can successfully match a gesture
+    
     // @State private var audioControllerGuitar: AudioPlaybackController?
     // @State private var audioControllerDrums: AudioPlaybackController?
     // @State private var audioControllerVocals: AudioPlaybackController?
-    @State var score = 0
     
-    let orbSpawner = Entity()
-    
-    @Environment(\.dismissWindow) private var dismissWindow
-    @Environment(\.dismissImmersiveSpace) private var dismissImmersiveSpace
-    
-    let timer = Timer.publish(every: 5, on: .main, in: .common).autoconnect()
-    @State private var correctTime = false;
-   
-    func tick() {
+    func spawnHand() {
         // Create a floating sphere
         let sphere = MeshResource.generateSphere(radius: 0.05) // Sphere with radius of 0.1 meters
         let black = SimpleMaterial(color: .black, isMetallic: false)
@@ -34,59 +36,59 @@ struct ImmersiveView: View {
         let white = SimpleMaterial(color: .white, isMetallic: false)
         let circleEntity = ModelEntity(mesh: circle, materials: [white])
         
-        let pose = ModelEntity()
+        // Instantiate parent hand
+        let hand = ModelEntity()
         
-        let info = MeshResource.generateText("Info", containerFrame: CGRect(x: 0, y: 0, width: 0, height: 0), alignment: .center)
-        let infoEntity = ModelEntity(mesh: info, materials: [black])
-        
-        // Make the sphere and circle a child of the pose
+        // Make the sphere and circle a child of the hand
         sphereEntity.addChild(circleEntity)
-        pose.addChild(sphereEntity)
+        hand.addChild(sphereEntity)
         
         // Position the sphere entity above the ground or any reference point
         sphereEntity.transform = Transform(pitch: Float.pi / 2, yaw: 0.0, roll: 0.0) // Set the sphere to face the camera
-        pose.position = [0, 1.3, -5] // Adjust the Y value to float the pose
-        infoEntity.setScale(SIMD3(0.01, 0.01, 0.01), relativeTo: nil)
-        infoEntity.position = [0, 1.6, -1]
+        hand.position = [0, 1.3, -5] // Adjust the Y value to float the pose
         
         // Add interaction - assuming RealityKit 2.0 for gestures handling, add if needed
-        pose.components.set(InputTargetComponent())
-        pose.components.set(CollisionComponent(shapes: [.generateSphere(radius: 0.1)]))
+        hand.components.set(InputTargetComponent())
+        hand.components.set(CollisionComponent(shapes: [.generateSphere(radius: 0.1)]))
         
-        // Make the orb cast a shadow.
-        pose.components.set(GroundingShadowComponent(castsShadow: true))
+        // Make the orb cast a shadow
+        hand.components.set(GroundingShadowComponent(castsShadow: true))
         
         // Attach the orb to the spawner
-        orbSpawner.addChild(pose)
+        orbSpawner.addChild(hand)
     
-        var moveItMoveIt = pose.transform
+        // Set hand to move towards player and the circle indicator to shrink
+        var moveItMoveIt = hand.transform
         moveItMoveIt.translation += SIMD3(0, 0, 5)
-        pose.move(to: moveItMoveIt, relativeTo: nil, duration: 5, timingFunction: .linear)
+        hand.move(to: moveItMoveIt, relativeTo: nil, duration: handTravelTime + 1, timingFunction: .linear)
         var scaleTransform: Transform = Transform()
         scaleTransform.scale = SIMD3(0.25, 0.25, 0.25)
         circleEntity.move(to: circleEntity.transform, relativeTo: circleEntity.parent)
-        circleEntity.move(to: scaleTransform, relativeTo: circleEntity.parent, duration: 4, timingFunction: .linear)
+        circleEntity.move(to: scaleTransform, relativeTo: circleEntity.parent, duration: handTravelTime, timingFunction: .linear)
         
+        // set correctTime to true during the window
         Task {
-            try? await Task.sleep(until: .now + .seconds(4 - 0.4), clock: .continuous)
+            try? await Task.sleep(until: .now + .seconds(handTravelTime - acceptInputWindow / 2), clock: .continuous)
             correctTime = true;
-            // circle matches sphere
-            try? await Task.sleep(until: .now + .seconds(0.8), clock: .continuous)
+            try? await Task.sleep(until: .now + .seconds(acceptInputWindow), clock: .continuous)
             correctTime = false;
         }
     }
     
+    // Attach a sphere with the given color to the given entity
     func changeColor(entity: Entity, color: UIColor) {
         entity.children.removeAll()
-        let sphere = MeshResource.generateSphere(radius: 0.05) // Sphere with radius of 0.1 meters
+        let sphere = MeshResource.generateSphere(radius: 0.05)
         let material = SimpleMaterial(color: color, isMetallic: false)
         let sphereEntity = ModelEntity(mesh: sphere, materials: [material])
         entity.addChild(sphereEntity)
     }
     
    var body: some View {
-       
        // Scoreboard
+       ScoreView()
+           .environment(self.gameModel)
+       /*
        ZStack() {
            HStack(alignment: .top) {
                VStack(spacing: 0) {
@@ -165,13 +167,12 @@ struct ImmersiveView: View {
            )
            .offset(x: 300, y: -1500)
        }
+        */
        // Score
-       
        
        RealityView { content in
            
            /*
-           
            let rootEntity = Entity()
            
            guard let texture = try? await TextureResource(named: immersiveImageName) else {
@@ -189,9 +190,6 @@ struct ImmersiveView: View {
            rootEntity.transform.translation += SIMD3<Float>(0.0, 1.0, 0.0)
            
            content.add(rootEntity)
-            
-            */
-           
            
            guard let immersiveEntity = try? await Entity(named: "Immersive", in: realityKitContentBundle) else {
                fatalError("Unable to load immersive model")
@@ -206,7 +204,6 @@ struct ImmersiveView: View {
            let spatialAudioEntityVocals = immersiveEntity.findEntity(named: "MovieBoomMicrophone")
            spatialAudioEntityVocals?.spatialAudio = SpatialAudioComponent()
            
-           /*
            guard let instrumentResource = try? await AudioFileResource(named: "/Root/instruments_mp3", from: "Immersive.usda", in: realityKitContentBundle) else {
                fatalError("Unable to load audio resource")
            }
@@ -218,16 +215,17 @@ struct ImmersiveView: View {
            guard let vocalsResource = try? await AudioFileResource(named: "/Root/vocals_mp3", from: "Immersive.usda", in: realityKitContentBundle) else {
                fatalError("Unable to load audio resource")
            }
-            */
+            
            
-           // audioControllerGuitar = spatialAudioEntityGuitar?.prepareAudio(instrumentResource)
-           // audioControllerDrums = spatialAudioEntityDrums?.prepareAudio(drumsResource)
-           // audioControllerVocals = spatialAudioEntityDrums?.prepareAudio(vocalsResource)
-           // audioControllerGuitar?.play()
-           // audioControllerDrums?.play()
-           // audioControllerVocals?.play()
-           // Add the immersiveEntity to the scene
-           content.add(immersiveEntity)
+            audioControllerGuitar = spatialAudioEntityGuitar?.prepareAudio(instrumentResource)
+            audioControllerDrums = spatialAudioEntityDrums?.prepareAudio(drumsResource)
+            audioControllerVocals = spatialAudioEntityDrums?.prepareAudio(vocalsResource)
+            audioControllerGuitar?.play()
+            audioControllerDrums?.play()
+            audioControllerVocals?.play()
+            Add the immersiveEntity to the scene
+            content.add(immersiveEntity)
+           */
            
            //orbSpawner.position = [0, 0, 0]
            content.add(orbSpawner)
@@ -238,7 +236,7 @@ struct ImmersiveView: View {
            // content.installGestures([.rotation, .translation], for: sphereEntity)
        }
        .onReceive(timer) {time in
-           tick()
+           spawnHand()
        }
        .onDisappear(perform: {
            // audioControllerGuitar?.stop()
@@ -252,7 +250,7 @@ struct ImmersiveView: View {
            
            if (correctTime) {
                changeColor(entity: value.entity, color: .green)
-               score += 1
+               gameModel.score += 1
            } else {
                changeColor(entity: value.entity, color: .red)
            }
