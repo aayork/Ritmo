@@ -4,8 +4,6 @@
 //
 //  Created by Aidan York on 2/10/24.
 //
-// This should work but I can't test without visionOS hardware.
-//
 
 import SwiftUI
 import MusicKit
@@ -26,173 +24,146 @@ struct MusicView: View {
     @State private var songs = [Item]()
     @State private var selectedSong: Item?
     private let musicPlayer = ApplicationMusicPlayer.shared
-    @State var musicSubscription: MusicSubscription?
+    
     
     var body: some View {
         NavigationSplitView {
             List(songs, selection: $selectedSong) { song in // Bind selection to selectedSong
                 HStack {
-                        AsyncImage(url: song.imageURL)
-                            .frame(width: 75, height: 75)
-                            .cornerRadius(10)
-                        
-                        VStack(alignment: .leading) {
-                            Text(song.name).font(.headline)
-                            Text(song.artist).font(.subheadline)
-                        }
-                        
-                        
-                        // Assuming you want these to be in the detail view of the selected item
-                        // If you want them in the list, you can adjust accordingly
+                    AsyncImage(url: song.imageURL)
+                        .frame(width: 75, height: 75)
+                        .cornerRadius(10)
+                    
+                    VStack(alignment: .leading) {
+                        Text(song.name).font(.headline)
+                        Text(song.artist).font(.subheadline)
                     }
-                    .onTapGesture {
-                        self.selectedSong = song
-                    }
+                    
+                    
+                    // Assuming you want these to be in the detail view of the selected item
+                    // If you want them in the list, you can adjust accordingly
+                }
+                .onTapGesture {
+                    self.selectedSong = song
+                }
             }
         } detail: {
             if let song = selectedSong { // Step 3: Update detail view for selected song
-                    VStack {
-                        HStack {
-                            Text("Play Now").font(.title)
-                            if true {
-                                Text("Curated")
-                                    .padding(8)
-                                    .background(Color.pink)
-                                    .clipShape(Capsule())
-                                    .foregroundColor(.white)
-                            }
-                            
-                            // Difficulty indicator
-                            Text("Medium")
+                VStack {
+                    HStack {
+                        Text("Play Now").font(.title)
+                        if true {
+                            Text("Curated")
                                 .padding(8)
-                                .background(difficultyColor(for: "Medium"))
+                                .background(Color.pink)
                                 .clipShape(Capsule())
                                 .foregroundColor(.white)
                         }
-                        HStack {
-                            AsyncImage(
-                                url: song.imageURL,
-                                content: { image in
-                                    image.resizable()
-                                        .frame(maxWidth: 400, maxHeight: 400)
-                                        .cornerRadius(25.0)
-                                },
-                                placeholder: {
-                                    ProgressView()
-                                }
-                            )
-                            VStack {
-            
-                                Text(song.name).font(.headline) // Display song name
-                                Text(song.artist).font(.subheadline) // Display artist name
-                            }
-                            .padding(.horizontal)
-                            // Play controls
-                            HStack {
-                                Button(action: {
-                                        Task {
-                                            await togglePlaying()
-                                            await openImmersiveSpace(id: "ImmersiveSpace")}
-                                             saveSongsToJSON()
-                                            }) {
-                                            Image(systemName: playing ? "pause.fill" : "play.fill")
-                                                    .padding()
-                                                .background(Circle().fill(Color.green))
-                                        }
-                                        .buttonStyle(PlainButtonStyle())
-                                        .font(.largeTitle)
-                                        .cornerRadius(360)
-                                }
-                        }
-                        .padding()
                         
-                                
-                        }
-                    } else {
-                        Text("Select a song to see details") // Prompt user to select a song
+                        // Difficulty indicator
+                        Text("Medium")
+                            .padding(8)
+                            .background(difficultyColor(for: "Medium"))
+                            .clipShape(Capsule())
+                            .foregroundColor(.white)
                     }
+                    HStack {
+                        AsyncImage(
+                            url: song.imageURL,
+                            content: { image in
+                                image.resizable()
+                                    .frame(maxWidth: 400, maxHeight: 400)
+                                    .cornerRadius(25.0)
+                            },
+                            placeholder: {
+                                ProgressView()
+                            }
+                        )
+                        VStack {
+                            
+                            Text(song.name).font(.headline) // Display song name
+                            Text(song.artist).font(.subheadline) // Display artist name
+                        }
+                        .padding(.horizontal)
+                        // Play controls
+                        HStack {
+                            Button(action: {
+                                Task {
+                                    await togglePlaying()
+                                    await openImmersiveSpace(id: "ImmersiveSpace")}
+                            }) {
+                                Image(systemName: playing ? "pause.fill" : "play.fill")
+                                    .padding()
+                                    .background(Circle().fill(Color.green))
+                            }
+                            .buttonStyle(PlainButtonStyle())
+                            .font(.largeTitle)
+                            .cornerRadius(360)
+                        }
+                    }
+                    .padding()
+                    
+                    
+                }
+            } else {
+                Text("Select a song to see details") // Prompt user to select a song
+            }
         }
         .searchable(text: $searchText)
         .navigationBarTitleDisplayMode(.inline)
         .onChange(of: searchText, initial: true) { oldValue, newValue in
-                    fetchMusic()
-                }
+            fetchMusic()
+        }
     } // View
     
     
     // Helper function to determine the color of the difficulty indicator
-        private func difficultyColor(for difficulty: String) -> Color {
-            switch difficulty {
-            case "Easy":
-                return Color.green
-            case "Medium":
-                return Color.orange
-            case "Hard":
-                return Color.red
-            default:
-                return Color.gray
-            }
+    private func difficultyColor(for difficulty: String) -> Color {
+        switch difficulty {
+        case "Easy":
+            return Color.green
+        case "Medium":
+            return Color.orange
+        case "Hard":
+            return Color.red
+        default:
+            return Color.gray
         }
+    }
     
-    
-    // Path for storing the songs JSON file
-    private var songsFilePath: URL {
-        FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("songs.json")
-    }
-
-    // Save the current list of songs to a JSON file
-    private func saveSongsToJSON() {
-        do {
-            let data = try JSONEncoder().encode(songs)
-            try data.write(to: songsFilePath, options: [.atomicWrite, .completeFileProtection])
-        } catch {
-            print("Failed to save songs: \(error)")
-        }
-    }
-
-    // Load songs from the JSON file
-    private func loadSongsFromJSON() {
-        do {
-            let data = try Data(contentsOf: songsFilePath)
-            songs = try JSONDecoder().decode([Item].self, from: data)
-        } catch {
-            print("Failed to load songs: \(error)")
-        }
-    }
-
     
     // Example implementations of playback control actions
     private func togglePlayPause() async {
-            playing.toggle()
-            if playing {
-                print("Playing \(selectedSong?.name ?? "song")")
-                // Add your code to play music here
-                await play(item: selectedSong!)
-            } else {
-                print("Paused \(selectedSong?.name ?? "song")")
-                // Add your code to pause music here
-            }
+        playing.toggle()
+        if playing {
+            print("Playing \(selectedSong?.name ?? "song")")
+            // Add your code to play music here
+            await play(item: selectedSong!)
+        } else {
+            print("Paused \(selectedSong?.name ?? "song")")
+            // Add your code to pause music here
         }
-
-        private func playPreviousSong() {
-            // Example logic to select the previous song in the list
-            if let currentSongIndex = songs.firstIndex(where: { $0.id == selectedSong?.id }), currentSongIndex > 0 {
-                let previousSongIndex = songs.index(before: currentSongIndex)
-                selectedSong = songs[previousSongIndex]
-                print("Playing previous song: \(songs[previousSongIndex].name)")
-                // Add your code to play the previous song here
-            }
+    }
+    
+    private func playPreviousSong() {
+        // Example logic to select the previous song in the list
+        if let currentSongIndex = songs.firstIndex(where: { $0.id == selectedSong?.id }), currentSongIndex > 0 {
+            let previousSongIndex = songs.index(before: currentSongIndex)
+            selectedSong = songs[previousSongIndex]
+            print("Playing previous song: \(songs[previousSongIndex].name)")
+            // Add your code to play the previous song here
         }
-
-        private func playNextSong() {
-            // Example logic to select the next song in the list
-            if let currentSongIndex = songs.firstIndex(where: { $0.id == selectedSong?.id }), currentSongIndex < songs.count - 1 {
-                let nextSongIndex = songs.index(after: currentSongIndex)
-                selectedSong = songs[nextSongIndex]
-                print("Playing next song: \(songs[nextSongIndex].name)")
-                // Add your code to play the next song here
-            }
+    }
+    
+    private func playNextSong() {
+        // Example logic to select the next song in the list
+        if let currentSongIndex = songs.firstIndex(where: { $0.id == selectedSong?.id }), currentSongIndex < songs.count - 1 {
+            let nextSongIndex = songs.index(after: currentSongIndex)
+            selectedSong = songs[nextSongIndex]
+            print("Playing next song: \(songs[nextSongIndex].name)")
+            // Add your code to play the next song here
         }
+    }
     
     
     private var request: MusicCatalogSearchRequest {
@@ -204,7 +175,7 @@ struct MusicView: View {
     func play(item: Item) async {
         var searchRequest = MusicCatalogSearchRequest(term: "\(item.name) \(item.artist)", types: [Song.self])
         searchRequest.limit = 1 // You may adjust this based on how specific your search needs to be
-
+        
         do {
             let status = await MusicAuthorization.request()
             switch status {
@@ -224,7 +195,7 @@ struct MusicView: View {
             print("Error playing the song: \(error.localizedDescription)")
         }
     }
-   
+    
     public func getSongName() -> String {
         return selectedSong?.name ?? "No Song Selected"
     }
@@ -232,25 +203,18 @@ struct MusicView: View {
     private func togglePlaying() async {
         // Toggle the playing state
         playing.toggle()
-
         // Check if there's a selected song and the playing state
         if let item = selectedSong {
             if playing {
-                // If we are going to play, check if the music subscription allows playing
-                if musicSubscription?.canPlayCatalogContent == true {
-                    // Request music authorization
-                    let status = await MusicAuthorization.request()
-                    switch status {
-                    case .authorized:
-                        // If authorized, play the selected song
-                        await play(item: item)
-                    default:
-                        print("Music authorization not granted")
-                        playing = false // Revert playing state as we cannot play the music
-                    }
-                } else {
-                    print("You are not an Apple Music subscriber.")
-                    playing = false // Revert playing state as user cannot play the content
+                // Request music authorization
+                let status = await MusicAuthorization.request()
+                switch status {
+                case .authorized:
+                    // If authorized, play the selected song
+                    await play(item: item)
+                default:
+                    print("Music authorization not granted")
+                    playing = false // Revert playing state as we cannot play the music
                 }
             } else {
                 // Pause the music player
