@@ -23,6 +23,18 @@
       }
     ]
   },
+  "14047C3A-99CA-4DC5-A76A-4AB047A85307" : {
+    "objectMetadataList" : [
+      [
+        "14047C3A-99CA-4DC5-A76A-4AB047A85307",
+        "Root"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      }
+    ]
+  },
   "66168B71-AB05-424E-8B6C-D33D6E61B08F" : {
     "objectMetadataList" : [
       [
@@ -39,6 +51,14 @@
     "objectMetadataList" : [
       [
         "AF09ED6F-1707-48FD-8720-65B998362C09",
+        "Root"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "AF09ED6F-1707-48FD-8720-65B998362C09",
         "Root",
         "AcousticGuitar"
       ],
@@ -48,14 +68,6 @@
         "selectedAudioFilePrim" : {
           "string" : "\/Root\/back_on_74_mp3"
         }
-      },
-      [
-        "AF09ED6F-1707-48FD-8720-65B998362C09",
-        "Root"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
       },
       [
         "AF09ED6F-1707-48FD-8720-65B998362C09",

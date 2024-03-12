@@ -125,12 +125,19 @@ def Xform "Root"
 
     def "handwork" (
         active = true
+        prepend apiSchemas = ["MaterialBindingAPI"]
+        customData = {
+            float3 rotationEulerHint = (0, 0, 4.6883793)
+        }
         prepend references = @handwork.usdz@</Object_4>
     )
     {
-        quatf xformOp:orient = (0.99999994, 0, 0, 0)
-        float3 xformOp:scale = (0.00040479662, 0.00040479662, 0.00040479662)
-        float3 xformOp:translate = (0.50145, 0.75, -0.50691)
+        rel material:binding = </Root/GridMaterial/GridMaterial> (
+            bindMaterialAs = "weakerThanDescendants"
+        )
+        quatf xformOp:orient = (0.69856745, 0, 0, -0.7155442)
+        float3 xformOp:scale = (0.00040479656, 0.00040479656, 0.00040479656)
+        float3 xformOp:translate = (0.33285514, 0.8186637, -0.37214968)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
     }
 }
