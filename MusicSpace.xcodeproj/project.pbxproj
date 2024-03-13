@@ -341,7 +341,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "$(TARGET_NAME)/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = MusicSpace;
-				INFOPLIST_KEY_NSAppleMusicUsageDescription = "Please allow access to continue";
+				INFOPLIST_KEY_NSAppleMusicUsageDescription = "Requesting Access to Play Music";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -370,7 +370,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "$(TARGET_NAME)/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = MusicSpace;
-				INFOPLIST_KEY_NSAppleMusicUsageDescription = "Please allow access to continue";
+				INFOPLIST_KEY_NSAppleMusicUsageDescription = "Requesting Access to Play Music";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

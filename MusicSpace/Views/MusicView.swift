@@ -15,6 +15,7 @@ struct Item: Identifiable, Hashable, Codable {
     let name: String
     let artist: String
     let imageURL: URL?
+    let song: Song // This is the playable music item
 }
 
 struct MusicView: View {
@@ -24,7 +25,7 @@ struct MusicView: View {
     @State private var playing = false
     @State private var songs = [Item]()
     @State private var selectedSong: Item?
-    private let musicPlayer = ApplicationMusicPlayer.shared
+    let musicPlayer = ApplicationMusicPlayer.shared
     
     
     var body: some View {
@@ -140,7 +141,11 @@ struct MusicView: View {
         if playing {
             print("Playing \(selectedSong?.name ?? "song")")
             // Add your code to play music here
-            await play(item: selectedSong!)
+            do {
+                try await play(selectedSong!.song)
+            } catch {
+                print("Error")
+            }
         } else {
             print("Paused \(selectedSong?.name ?? "song")")
             // Add your code to pause music here
@@ -174,28 +179,11 @@ struct MusicView: View {
         return request
     }
     
-    func play(item: Item) async {
-        var searchRequest = MusicCatalogSearchRequest(term: "\(item.name) \(item.artist)", types: [Song.self])
-        searchRequest.limit = 1 // You may adjust this based on how specific your search needs to be
+    @MainActor
+    private func play<I: PlayableMusicItem>(_ item: I) async throws {
         
-        do {
-            let status = await MusicAuthorization.request()
-            switch status {
-            case .authorized:
-                let response = try await searchRequest.response()
-                guard let song = response.songs.first else {
-                    print("No matching song found in Apple Music catalog.")
-                    return
-                }
-                // Now that you have a Song, you can proceed with the original play logic
-                try await musicPlayer.queue.insert(song, position: .afterCurrentEntry)
-                try await musicPlayer.play()
-            default:
-                print("Music authorization not granted")
-            }
-        } catch {
-            print("Error playing the song: \(error.localizedDescription)")
-        }
+        musicPlayer.queue = [item]
+        try await musicPlayer.play()
     }
     
     public func getSongName() -> String {
@@ -213,7 +201,12 @@ struct MusicView: View {
                 switch status {
                 case .authorized:
                     // If authorized, play the selected song
-                    await play(item: item)
+                    do {
+                                    try await play(item.song)
+                                } catch {
+                                    print("Error playing song: \(error)")
+                                    playing = false
+                                }
                 default:
                     print("Music authorization not granted")
                     playing = false // Revert playing state as we cannot play the music
@@ -237,7 +230,7 @@ struct MusicView: View {
                 do {
                     let result = try await request.response()
                     self.songs = result.songs.compactMap {
-                        Item(name: $0.title, artist: $0.artistName, imageURL: $0.artwork?.url(width: 75, height: 75))
+                        Item(name: $0.title, artist: $0.artistName, imageURL: $0.artwork?.url(width: 400, height: 400), song: $0.self)
                     }
                 } catch {
                     print("Error fetching music")
