@@ -22,10 +22,8 @@ struct ImmersiveView: View {
     let acceptInputWindow = 0.8 // The time window in which the player can successfully match a gesture
     
     func spawnHand() {
-        // Create a floating sphere
-        let sphere = MeshResource.generateSphere(radius: 0.05) // Sphere with radius of 0.1 meters
-        let black = SimpleMaterial(color: .black, isMetallic: false)
-        let sphereEntity = ModelEntity(mesh: sphere, materials: [black])
+        // Import entity from RealityKit package
+        let importEntity = try? Entity.load(named: "RubberGlove", in: realityKitContentBundle)
         
         // Create circle around the sphere
         let circle = MeshResource.generateCylinder(height: 0.01, radius: 0.2)
@@ -36,11 +34,11 @@ struct ImmersiveView: View {
         let hand = ModelEntity()
         
         // Make the sphere and circle a child of the hand
-        sphereEntity.addChild(circleEntity)
-        hand.addChild(sphereEntity)
+        importEntity!.addChild(circleEntity)
+        hand.addChild(importEntity!)
         
         // Position the sphere entity above the ground or any reference point
-        sphereEntity.transform = Transform(pitch: Float.pi / 2, yaw: 0.0, roll: 0.0) // Set the sphere to face the camera
+        importEntity!.transform = Transform(pitch: Float.pi / 2, yaw: 0.0, roll: 0.0) // Set the sphere to face the camera
         hand.position = [0, 1.3, -5] // Adjust the Y value to float the hand
         
         // Add interaction - assuming RealityKit 2.0 for gestures handling, add if needed
