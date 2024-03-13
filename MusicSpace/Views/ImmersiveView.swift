@@ -21,18 +21,11 @@ struct ImmersiveView: View {
     let handTravelTime = 4.0 // The time it takes the hand to reach the player
     let acceptInputWindow = 0.8 // The time window in which the player can successfully match a gesture
     
-    // @State private var audioControllerGuitar: AudioPlaybackController?
-    // @State private var audioControllerDrums: AudioPlaybackController?
-    // @State private var audioControllerVocals: AudioPlaybackController?
-    
     func spawnHand() {
         // Create a floating sphere
         let sphere = MeshResource.generateSphere(radius: 0.05) // Sphere with radius of 0.1 meters
         let black = SimpleMaterial(color: .black, isMetallic: false)
         let sphereEntity = ModelEntity(mesh: sphere, materials: [black])
-        
-        // Hand
-        // let glassHand = try? Entity.load(named: "handwork")
         
         // Create circle around the sphere
         let circle = MeshResource.generateCylinder(height: 0.01, radius: 0.2)
@@ -48,7 +41,6 @@ struct ImmersiveView: View {
         
         // Position the sphere entity above the ground or any reference point
         sphereEntity.transform = Transform(pitch: Float.pi / 2, yaw: 0.0, roll: 0.0) // Set the sphere to face the camera
-        // glassHand!.transform = Transform(pitch: Float.pi / 2, yaw: 0.0, roll: 0.0) // Set the sphere to face the camera
         hand.position = [0, 1.3, -5] // Adjust the Y value to float the hand
         
         // Add interaction - assuming RealityKit 2.0 for gestures handling, add if needed
@@ -94,83 +86,22 @@ struct ImmersiveView: View {
            .environment(self.gameModel)
        
        RealityView { content in
-           
-           /*
-           let rootEntity = Entity()
-           
-           guard let texture = try? await TextureResource(named: immersiveImageName) else {
-               return
-           }
-           
-           var material = UnlitMaterial()
-           material.color = .init(texture: .init(texture))
-           
-           rootEntity.components.set(ModelComponent(
-            mesh: .generateSphere(radius: 1E3),
-            materials: [material]
-           ))
-           rootEntity.scale *= .init(x: -1, y: 1, z: 1)
-           rootEntity.transform.translation += SIMD3<Float>(0.0, 1.0, 0.0)
-           
-           content.add(rootEntity)
+           content.add(orbSpawner)
            
            guard let immersiveEntity = try? await Entity(named: "Immersive", in: realityKitContentBundle) else {
-               fatalError("Unable to load immersive model")
-           }
-           
-           let spatialAudioEntityGuitar = immersiveEntity.findEntity(named: "AcousticGuitar")
-           spatialAudioEntityGuitar?.spatialAudio = SpatialAudioComponent()
-           
-           let spatialAudioEntityDrums = immersiveEntity.findEntity(named: "DrumKit")
-           spatialAudioEntityDrums?.spatialAudio = SpatialAudioComponent()
-           
-           let spatialAudioEntityVocals = immersiveEntity.findEntity(named: "MovieBoomMicrophone")
-           spatialAudioEntityVocals?.spatialAudio = SpatialAudioComponent()
-           
-           guard let instrumentResource = try? await AudioFileResource(named: "/Root/instruments_mp3", from: "Immersive.usda", in: realityKitContentBundle) else {
-               fatalError("Unable to load audio resource")
-           }
-           
-           guard let drumsResource = try? await AudioFileResource(named: "/Root/drums_mp3", from: "Immersive.usda", in: realityKitContentBundle) else {
-               fatalError("Unable to load audio resource")
-           }
-           
-           guard let vocalsResource = try? await AudioFileResource(named: "/Root/vocals_mp3", from: "Immersive.usda", in: realityKitContentBundle) else {
-               fatalError("Unable to load audio resource")
-           }
-            
-           
-            audioControllerGuitar = spatialAudioEntityGuitar?.prepareAudio(instrumentResource)
-            audioControllerDrums = spatialAudioEntityDrums?.prepareAudio(drumsResource)
-            audioControllerVocals = spatialAudioEntityDrums?.prepareAudio(vocalsResource)
-            audioControllerGuitar?.play()
-            audioControllerDrums?.play()
-            audioControllerVocals?.play()
-            Add the immersiveEntity to the scene
-            content.add(immersiveEntity)
-           */
-           
-           //orbSpawner.position = [0, 0, 0]
-           content.add(orbSpawner)
+                        fatalError("Unable to load immersive model")
+                    }
+           content.add(immersiveEntity)
            
            Task {
                dismissWindow(id: "windowGroup")
            }
-           // content.installGestures([.rotation, .translation], for: sphereEntity)
        }
        .onReceive(timer) {time in
            spawnHand()
        }
-       .onDisappear(perform: {
-           // audioControllerGuitar?.stop()
-           // audioControllerDrums?.stop()
-           // audioControllerVocals?.stop()
-       })
+       
        .gesture(TapGesture().targetedToAnyEntity().onEnded({ value in
-           // Change color to green or red
-           //value.entity.children.removeAll()
-           //let sphere = MeshResource.generateSphere(radius: 0.05) // Sphere with radius of 0.1 meters
-           
            if (correctTime) {
                changeColor(entity: value.entity, color: .green)
                gameModel.score += 1
