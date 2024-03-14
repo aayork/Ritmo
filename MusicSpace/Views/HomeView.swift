@@ -103,7 +103,6 @@ struct HomeView: View {
     }
 }
 
-// Assume WaveAnimation() is defined elsewhere in your code.
 
 #Preview {
     HomeView()

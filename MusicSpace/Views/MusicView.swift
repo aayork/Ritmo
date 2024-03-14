@@ -14,36 +14,28 @@ struct Item: Identifiable, Hashable, Codable {
     var id = UUID()
     let name: String
     let artist: String
-    let imageURL: URL?
     let song: Song // This is the playable music item
+    let artwork: Artwork
 }
 
 struct MusicView: View {
-    @State private var searchText = ""
-    //@Environment(GameModel.self) var gameModel
     @Environment(\.openImmersiveSpace) private var openImmersiveSpace
+    @State private var searchText = ""
     @State private var playing = false
     @State private var songs = [Item]()
     @State private var selectedSong: Item?
     let musicPlayer = ApplicationMusicPlayer.shared
     
-    
     var body: some View {
         NavigationSplitView {
             List(songs, selection: $selectedSong) { song in // Bind selection to selectedSong
                 HStack {
-                    AsyncImage(url: song.imageURL)
-                        .frame(width: 75, height: 75)
-                        .cornerRadius(10)
-                    
+                    ArtworkImage(song.artwork, width: 75)
+                                    .cornerRadius(10)
                     VStack(alignment: .leading) {
                         Text(song.name).font(.headline)
                         Text(song.artist).font(.subheadline)
                     }
-                    
-                    
-                    // Assuming you want these to be in the detail view of the selected item
-                    // If you want them in the list, you can adjust accordingly
                 }
                 .onTapGesture {
                     self.selectedSong = song
@@ -70,19 +62,10 @@ struct MusicView: View {
                             .foregroundColor(.white)
                     }
                     HStack {
-                        AsyncImage(
-                            url: song.imageURL,
-                            content: { image in
-                                image.resizable()
-                                    .frame(maxWidth: 400, maxHeight: 400)
-                                    .cornerRadius(25.0)
-                            },
-                            placeholder: {
-                                ProgressView()
-                            }
-                        )
+                        ArtworkImage(song.artwork, width: 400)
+                                        .cornerRadius(10)
+                        
                         VStack {
-                            
                             Text(song.name).font(.headline) // Display song name
                             Text(song.artist).font(.subheadline) // Display artist name
                         }
@@ -230,7 +213,7 @@ struct MusicView: View {
                 do {
                     let result = try await request.response()
                     self.songs = result.songs.compactMap {
-                        Item(name: $0.title, artist: $0.artistName, imageURL: $0.artwork?.url(width: 400, height: 400), song: $0.self)
+                        Item(name: $0.title, artist: $0.artistName, song: $0.self, artwork: $0.artwork!)
                     }
                 } catch {
                     print("Error fetching music")
