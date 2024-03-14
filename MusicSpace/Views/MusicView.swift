@@ -16,6 +16,7 @@ struct Item: Identifiable, Hashable, Codable {
     let artist: String
     let song: Song // This is the playable music item
     let artwork: Artwork
+    let duration: TimeInterval
 }
 
 struct MusicView: View {
@@ -214,7 +215,7 @@ struct MusicView: View {
                 do {
                     let result = try await request.response()
                     self.songs = result.songs.compactMap {
-                        Item(name: $0.title, artist: $0.artistName, song: $0.self, artwork: $0.artwork!)
+                        Item(name: $0.title, artist: $0.artistName, song: $0.self, artwork: $0.artwork!, duration: $0.duration!)
                     }
                 } catch {
                     print("Error fetching music")
