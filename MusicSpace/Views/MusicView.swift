@@ -20,6 +20,7 @@ struct Item: Identifiable, Hashable, Codable {
 
 struct MusicView: View {
     @Environment(\.openImmersiveSpace) private var openImmersiveSpace
+    @Environment(GameModel.self) var gameModel
     @State private var searchText = ""
     @State private var playing = false
     @State private var songs = [Item]()
@@ -77,6 +78,7 @@ struct MusicView: View {
                         HStack {
                             Button(action: {
                                 Task {
+                                    gameModel.songTitle = getSongName()
                                     await togglePlaying()
                                     await openImmersiveSpace(id: "ImmersiveSpace")
                                 }
@@ -225,6 +227,6 @@ struct MusicView: View {
 }
 
 
-#Preview {
-    MusicView()
-}
+//#Preview {
+//    MusicView()
+//}
