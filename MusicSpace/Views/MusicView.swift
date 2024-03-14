@@ -28,17 +28,20 @@ struct MusicView: View {
     
     var body: some View {
         NavigationSplitView {
-            List(songs, selection: $selectedSong) { song in // Bind selection to selectedSong
-                HStack {
-                    ArtworkImage(song.artwork, width: 75)
-                                    .cornerRadius(10)
-                    VStack(alignment: .leading) {
-                        Text(song.name).font(.headline)
-                        Text(song.artist).font(.subheadline)
-                    }
-                }
-                .onTapGesture {
+            List(songs, selection: $selectedSong) { song in
+                Button(action: {
                     self.selectedSong = song
+                })
+                {
+                    HStack {
+                        ArtworkImage(song.artwork, width: 75)
+                            .cornerRadius(10)
+                        VStack(alignment: .leading) {
+                            Text(song.name).font(.headline)
+                            Text(song.artist).font(.subheadline)
+                        }
+                    }
+                    .padding()
                 }
             }
         } detail: {
@@ -117,8 +120,6 @@ struct MusicView: View {
         }
     }
     
-    
-    // Example implementations of playback control actions
     private func togglePlayPause() async {
         playing.toggle()
         if playing {
@@ -131,27 +132,25 @@ struct MusicView: View {
             }
         } else {
             print("Paused \(selectedSong?.name ?? "song")")
-            // Add your code to pause music here
+            // Add code to pause music here
         }
     }
     
     private func playPreviousSong() {
-        // Example logic to select the previous song in the list
         if let currentSongIndex = songs.firstIndex(where: { $0.id == selectedSong?.id }), currentSongIndex > 0 {
             let previousSongIndex = songs.index(before: currentSongIndex)
             selectedSong = songs[previousSongIndex]
             print("Playing previous song: \(songs[previousSongIndex].name)")
-            // Add your code to play the previous song here
+            // Add code to play the previous song here
         }
     }
     
     private func playNextSong() {
-        // Example logic to select the next song in the list
         if let currentSongIndex = songs.firstIndex(where: { $0.id == selectedSong?.id }), currentSongIndex < songs.count - 1 {
             let nextSongIndex = songs.index(after: currentSongIndex)
             selectedSong = songs[nextSongIndex]
             print("Playing next song: \(songs[nextSongIndex].name)")
-            // Add your code to play the next song here
+            // Add code to play the next song here
         }
     }
     
