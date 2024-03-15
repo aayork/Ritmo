@@ -19,13 +19,13 @@ struct ScoreView: View {
                             Task {
                                 await dismissImmersiveSpace()
                             }
+                            gameModel.reset()
                         } label: {
                             Label("Back", systemImage: "chevron.backward")
                                 .labelStyle(.iconOnly)
                         }
-                        
                         HStack {
-                            let songName = gameModel.selectedSong!.name
+                            let songName = gameModel.musicView.selectedSong!.name
                             Text(songName)
                                 .font(.system(size: 30))
                                 .bold()
@@ -38,7 +38,6 @@ struct ScoreView: View {
                                 .accessibilityLabel(Text("Score"))
                                 .accessibilityValue(String(gameModel.score))
                                 .offset(x: 5)
-                            
                         }
                         .padding(.leading, 0)
                         .padding(.trailing, 60)
@@ -56,6 +55,8 @@ struct ScoreView: View {
                         .frame(width: 460)
                         Button {
                             Task {
+                                // Maybe we can repurpose this to be a mute button?
+                                //await gameModel.togglePlayPause()
                             }
                         } label: {
                             Label("Pause", systemImage: "pause.fill")

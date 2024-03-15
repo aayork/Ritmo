@@ -23,9 +23,9 @@ struct MusicView: View {
     @Environment(\.openImmersiveSpace) private var openImmersiveSpace
     @Environment(GameModel.self) var gameModel
     @State private var searchText = ""
-    @State private var playing = false
     @State private var songs = [Item]()
-    @State private var selectedSong: Item?
+    @State var playing = false
+    @State var selectedSong: Item?
     let musicPlayer = ApplicationMusicPlayer.shared
     
     var body: some View {
@@ -79,7 +79,9 @@ struct MusicView: View {
                         HStack {
                             Button(action: {
                                 Task {
-                                    gameModel.selectedSong = self.selectedSong
+                                    gameModel.musicView = self
+                                    //gameModel.selectedSong = self.selectedSong
+                                    //gameModel.togglePlayPause = self.togglePlayPause
                                     await togglePlaying()
                                     await openImmersiveSpace(id: "ImmersiveSpace")
                                 }
@@ -94,8 +96,6 @@ struct MusicView: View {
                         }
                     }
                     .padding()
-                    
-                    
                 }
             } else {
                 Text("Select a song to see details") // Prompt user to select a song
@@ -107,7 +107,6 @@ struct MusicView: View {
             fetchMusic()
         }
     } // View
-    
     
     // Helper function to determine the color of the difficulty indicator
     private func difficultyColor(for difficulty: String) -> Color {
@@ -123,7 +122,8 @@ struct MusicView: View {
         }
     }
     
-    private func togglePlayPause() async {
+    func togglePlayPause() async  {
+        print("PlAYPAUSE")
         playing.toggle()
         if playing {
             print("Playing \(selectedSong?.name ?? "song")")
@@ -187,11 +187,11 @@ struct MusicView: View {
                 case .authorized:
                     // If authorized, play the selected song
                     do {
-                                    try await play(item.song)
-                                } catch {
-                                    print("Error playing song: \(error)")
-                                    playing = false
-                                }
+                        try await play(item.song)
+                    } catch {
+                        print("Error playing song: \(error)")
+                        playing = false
+                    }
                 default:
                     print("Music authorization not granted")
                     playing = false // Revert playing state as we cannot play the music
