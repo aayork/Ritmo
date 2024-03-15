@@ -15,7 +15,7 @@ struct ContentView: View {
         if gameModel.musicView.playing {
             ScoreView()
         } else {
-            ContentView()
+            IntermediateView()
         }
     }
 }
