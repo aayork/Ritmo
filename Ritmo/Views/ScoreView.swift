@@ -56,7 +56,7 @@ struct ScoreView: View {
                         Button {
                             Task {
                                 // Maybe we can repurpose this to be a mute button?
-                                //await gameModel.togglePlayPause()
+                                // await gameModel.togglePlayPause()
                             }
                         } label: {
                             Label("Pause", systemImage: "pause.fill")

@@ -15,7 +15,7 @@ struct MusicSpaceApp: App {
             ContentView()
                 .environment(self.gameModel)
         }
-
+        
         ImmersiveSpace(id: "ImmersiveSpace") {
             ImmersiveView()
                 .environment(self.gameModel)

@@ -10,11 +10,7 @@ import SwiftUI
 struct IntermediateView: View {
     var body: some View {
         TabView {
-            VStack {
-                Text("R!TMO")
-                    .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
-                HomeView()
-            }
+            HomeView()
                 .tabItem {
                     Image(systemName: "house")
                     Text("Home")
