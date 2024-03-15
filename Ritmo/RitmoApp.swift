@@ -8,11 +8,16 @@
 import SwiftUI
 
 @main
-struct MusicSpaceApp: App {
+struct RitmoApp: App {
     @State private var gameModel = GameModel()
     var body: some Scene {
         WindowGroup(id: "windowGroup") {
             ContentView()
+                .environment(self.gameModel)
+        }
+        
+        WindowGroup(id: "Score") {
+            ScoreView()
                 .environment(self.gameModel)
         }
         

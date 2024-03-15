@@ -9,6 +9,8 @@ import SwiftUI
 
 struct ScoreView: View {
     @Environment(GameModel.self) var gameModel
+    @Environment(\.openWindow) private var openWindow
+    @Environment(\.dismissWindow) private var dismissWindow
     @Environment(\.dismissImmersiveSpace) var dismissImmersiveSpace
     var body: some View {
         ZStack() {
@@ -17,6 +19,8 @@ struct ScoreView: View {
                     HStack(alignment: .top) {
                         Button {
                             Task {
+                                openWindow(id: "windowGroup")
+                                dismissWindow(id: "Score")
                                 await dismissImmersiveSpace()
                             }
                             gameModel.reset()

@@ -11,6 +11,7 @@ import RealityKitContent
 
 struct ImmersiveView: View {
     @Environment(\.dismissWindow) private var dismissWindow
+    @Environment(\.openWindow) private var openWindow
     @Environment(\.dismissImmersiveSpace) private var dismissImmersiveSpace
     @Environment(GameModel.self) var gameModel
     @State var score = 0
@@ -78,13 +79,10 @@ struct ImmersiveView: View {
         entity.addChild(sphereEntity)
     }
     
-   var body: some View {
+    var body: some View {
        // Scoreboard
-       /*
        ScoreView()
-           .environment(self.gameModel)
-        */
-       
+        
        RealityView { content in
            content.add(orbSpawner)
            
@@ -92,11 +90,12 @@ struct ImmersiveView: View {
                         fatalError("Unable to load immersive model")
                     }
            content.add(immersiveEntity)
-           /*
+           
            Task {
+               openWindow(id: "Score")
                dismissWindow(id: "windowGroup")
            }
-            */
+            
        }
        .onReceive(timer) {time in
            spawnHand()

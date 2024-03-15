@@ -125,8 +125,8 @@ struct MusicView: View {
     
     func togglePlayPause() async  {
         print("PlAYPAUSE")
-        gameModel.playing.toggle()
-        if gameModel.playing {
+        playing.toggle()
+        if playing {
             print("Playing \(selectedSong?.name ?? "song")")
             // Add your code to play music here
             do {
