@@ -15,7 +15,7 @@ struct IntermediateView: View {
                     Image(systemName: "house")
                     Text("Home")
                 }
-            IntermediateView()
+            MusicView()
                 .tabItem {
                     Image(systemName: "music.note")
                     Text("Play")
