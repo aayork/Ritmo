@@ -12,7 +12,7 @@ import RealityKitContent
 struct ContentView: View {
     @Environment(GameModel.self) var gameModel
     var body: some View {
-        if musicView.playing {
+        if gameModel.musicView.playing {
             ScoreView()
         } else {
             ContentView()
