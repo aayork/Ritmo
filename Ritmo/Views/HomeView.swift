@@ -40,13 +40,6 @@ struct HomeView: View {
     private var contentStack: some View {
         HStack {
             VStack(alignment: .center) {
-                HStack {
-                    Text("Welcome to MusicSpace")
-                        .font(.title)
-                        .foregroundColor(.white)
-                        .padding(.top, 20)
-                        .padding(.bottom, 40)
-                }
                 Text("Recent Songs")
                     .font(.title3)
                     .padding(.bottom, 8)

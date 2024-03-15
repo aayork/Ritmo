@@ -17,9 +17,13 @@ struct ContentView: View {
         } else {
             IntermediateView()
         }
+        Button("Toggle Playing") {
+            gameModel.musicView.playing.toggle()
+        }
     }
 }
 
-#Preview(windowStyle: .automatic) {
+#Preview {
     ContentView()
+        .environment(GameModel().self)
 }

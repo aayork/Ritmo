@@ -17,6 +17,7 @@ struct Item: Identifiable, Hashable, Codable {
     let song: Song // This is the playable music item
     let artwork: Artwork
     let duration: TimeInterval
+    let genre: MusicItemCollection<Genre>?
 }
 
 struct MusicView: View {
@@ -178,6 +179,7 @@ struct MusicView: View {
     private func togglePlaying() async {
         // Toggle the playing state
         playing.toggle()
+        print(playing)
         // Check if there's a selected song and the playing state
         if let item = selectedSong {
             if playing {
@@ -215,7 +217,7 @@ struct MusicView: View {
                 do {
                     let result = try await request.response()
                     self.songs = result.songs.compactMap {
-                        Item(name: $0.title, artist: $0.artistName, song: $0.self, artwork: $0.artwork!, duration: $0.duration!)
+                        Item(name: $0.title, artist: $0.artistName, song: $0.self, artwork: $0.artwork!, duration: $0.duration!, genre: $0.genres)
                     }
                 } catch {
                     print("Error fetching music")
@@ -226,8 +228,3 @@ struct MusicView: View {
         }
     }
 }
-
-
-//#Preview {
-//    MusicView()
-//}

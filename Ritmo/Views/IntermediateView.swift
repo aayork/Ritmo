@@ -10,7 +10,11 @@ import SwiftUI
 struct IntermediateView: View {
     var body: some View {
         TabView {
-            HomeView()
+            VStack {
+                Text("R!TMO")
+                    .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
+                HomeView()
+            }
                 .tabItem {
                     Image(systemName: "house")
                     Text("Home")
@@ -36,4 +40,5 @@ struct IntermediateView: View {
 
 #Preview {
     IntermediateView()
+        .environment(GameModel().self)
 }

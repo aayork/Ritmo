@@ -21,7 +21,7 @@ struct ScoreView: View {
                             }
                             gameModel.reset()
                         } label: {
-                            Label("Back", systemImage: "chevron.backward")
+                            Label("Back", systemImage: "x.circle")
                                 .labelStyle(.iconOnly)
                         }
                         HStack {
@@ -97,7 +97,7 @@ struct ScoreView: View {
     VStack {
         Spacer()
         ScoreView()
-            .environment(GameModel())
+            .environment(GameModel().self)
             .glassBackgroundEffect(
                 in: RoundedRectangle(
                     cornerRadius: 32,
