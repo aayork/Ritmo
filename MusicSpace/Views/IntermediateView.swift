@@ -9,7 +9,28 @@ import SwiftUI
 
 struct IntermediateView: View {
     var body: some View {
-        MusicView()
+        TabView {
+            HomeView()
+                .tabItem {
+                    Image(systemName: "house")
+                    Text("Home")
+                }
+            IntermediateView()
+                .tabItem {
+                    Image(systemName: "music.note")
+                    Text("Play")
+                }
+            FriendsView()
+                .tabItem {
+                    Image(systemName: "person.fill")
+                    Text("Friends")
+                }
+            SettingsView()
+                .tabItem {
+                    Image(systemName: "gearshape")
+                    Text("Settings")
+                }
+        }
     }
 }
 

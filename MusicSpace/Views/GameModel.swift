@@ -5,9 +5,6 @@ import SwiftUI
 /// State that drives the different screens of the game and options that players select.
 @Observable
 class GameModel {
-    var isPlaying = false
-    var isPaused = false
-       
     /// A Boolean value that indicates that game assets have loaded.
     var readyToStart = false
     
