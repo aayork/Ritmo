@@ -92,17 +92,3 @@ struct ScoreView: View {
         }
     }
 }
-
-#Preview {
-    VStack {
-        Spacer()
-        ScoreView()
-            .environment(GameModel().self)
-            .glassBackgroundEffect(
-                in: RoundedRectangle(
-                    cornerRadius: 32,
-                    style: .continuous
-                )
-            )
-    }
-}

@@ -26,6 +26,7 @@ struct MusicView: View {
     @State private var searchText = ""
     @State private var songs = [Item]()
     @State var selectedSong: Item?
+    @State var playing = false
     let musicPlayer = ApplicationMusicPlayer.shared
     
     var body: some View {
@@ -86,7 +87,7 @@ struct MusicView: View {
                                     await openImmersiveSpace(id: "ImmersiveSpace")
                                 }
                             }) {
-                                Image(systemName: gameModel.playing ? "pause.fill" : "play.fill")
+                                Image(systemName: playing ? "pause.fill" : "play.fill")
                                     .padding()
                                     .background(Circle().fill(Color.green))
                             }
@@ -177,11 +178,11 @@ struct MusicView: View {
     
     private func togglePlaying() async {
         // Toggle the playing state
-        gameModel.playing.toggle()
-        print(gameModel.playing)
+        playing.toggle()
+        print(playing)
         // Check if there's a selected song and the playing state
         if let item = selectedSong {
-            if gameModel.playing {
+            if playing {
                 // Request music authorization
                 let status = await MusicAuthorization.request()
                 switch status {
@@ -191,11 +192,11 @@ struct MusicView: View {
                         try await play(item.song)
                     } catch {
                         print("Error playing song: \(error)")
-                        gameModel.playing = false
+                        playing = false
                     }
                 default:
                     print("Music authorization not granted")
-                    gameModel.playing = false // Revert playing state as we cannot play the music
+                    playing = false // Revert playing state as we cannot play the music
                 }
             } else {
                 // Pause the music player
@@ -203,7 +204,7 @@ struct MusicView: View {
             }
         } else {
             print("No song selected")
-            gameModel.playing = false // Revert playing state as there's no selection
+            playing = false // Revert playing state as there's no selection
         }
     }
     
