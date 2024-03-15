@@ -1,6 +1,6 @@
 //
 //  ScoreView.swift
-//  MusicSpace
+//  Ritmo
 //
 //  Created by Max Pelot on 3/12/24.
 //

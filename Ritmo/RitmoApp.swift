@@ -1,6 +1,6 @@
 //
-//  MusicSpaceApp.swift
-//  MusicSpace
+//  RitmoApp.swift
+//  Ritmo
 //
 //  Created by Aidan York on 2/8/24.
 //

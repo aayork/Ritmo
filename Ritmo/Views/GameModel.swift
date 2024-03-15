@@ -1,3 +1,10 @@
+//
+//  GameModel.swift
+//  Ritmo
+//
+//  Created by Max Pelot on 3/12/24.
+//
+
 import AVKit
 import RealityKit
 import SwiftUI

@@ -1,6 +1,6 @@
 //
 //  FriendsView.swift
-//  MusicSpace
+//  Ritmo
 //
 //  Created by Aidan York on 2/13/24.
 //
