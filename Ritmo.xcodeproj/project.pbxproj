@@ -77,11 +77,11 @@
 		ECA1E2132B75B64100EE4926 /* Ritmo */ = {
 			isa = PBXGroup;
 			children = (
-				ECDD66992B8D2E96005987B0 /* Ritmo.entitlements */,
 				ECA1E2182B75B64100EE4926 /* RitmoApp.swift */,
 				ECC092552B7844A5002B4013 /* Views */,
 				ECA1E21E2B75B64200EE4926 /* Assets.xcassets */,
 				ECA1E2232B75B64200EE4926 /* Info.plist */,
+				ECDD66992B8D2E96005987B0 /* Ritmo.entitlements */,
 				ECA1E2202B75B64200EE4926 /* Preview Content */,
 			);
 			path = Ritmo;
