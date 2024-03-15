@@ -11,13 +11,15 @@ class GameModel {
     /// A Boolean value that indicates that game assets have loaded.
     var readyToStart = false
     
-    var songTitle = ""
+    var selectedSong: Item?
     var score = 0
 
     /// Removes 3D content when then game is over.
     func clear() {
         spaceOrigin.children.removeAll()
     }
+    
+    
     
     /// Resets game state information.
     func reset() {

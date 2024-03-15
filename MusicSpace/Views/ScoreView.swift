@@ -25,7 +25,7 @@ struct ScoreView: View {
                         }
                         
                         HStack {
-                            let songName = gameModel.songTitle
+                            let songName = gameModel.selectedSong!.name
                             Text(songName)
                                 .font(.system(size: 30))
                                 .bold()

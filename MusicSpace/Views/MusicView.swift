@@ -79,7 +79,7 @@ struct MusicView: View {
                         HStack {
                             Button(action: {
                                 Task {
-                                    gameModel.songTitle = getSongName()
+                                    gameModel.selectedSong = self.selectedSong
                                     await togglePlaying()
                                     await openImmersiveSpace(id: "ImmersiveSpace")
                                 }
