@@ -12,6 +12,7 @@ struct ScoreView: View {
     @Environment(\.openWindow) private var openWindow
     @Environment(\.dismissImmersiveSpace) var dismissImmersiveSpace
     @Environment(\.dismiss) private var dismiss
+    @State private var progressValue: Double = 0
     var body: some View {
         ZStack() {
             HStack(alignment: .top) {
@@ -48,10 +49,8 @@ struct ScoreView: View {
                     }
                     HStack {
                         HStack {
-                            ProgressView(value: 5, total: 10)
+                            ProgressView(value: progressValue, total: gameModel.musicView.selectedSong!.duration)
                                 .contentShape(.accessibility, Capsule().offset(y: -3))
-                                .accessibilityLabel("")
-                                .accessibilityValue(Text("10 seconds remaining"))
                                 .tint(Color(uiColor: UIColor(red: 212 / 255, green: 244 / 255, blue: 4 / 255, alpha: 1.0)))
                                 .padding(.vertical, 30)
                                 .frame(width: 300)
@@ -71,19 +70,28 @@ struct ScoreView: View {
                         .padding(.leading, -55)
                     }
                     .background(
-                     .regularMaterial,
-                     in: .rect(
-                         topLeadingRadius: 0,
-                         bottomLeadingRadius: 12,
-                         bottomTrailingRadius: 12,
-                         topTrailingRadius: 0,
-                         style: .continuous
-                     )
+                        .regularMaterial,
+                        in: .rect(
+                            topLeadingRadius: 0,
+                            bottomLeadingRadius: 12,
+                            bottomTrailingRadius: 12,
+                            topTrailingRadius: 0,
+                            style: .continuous
+                        )
                     )
                     .frame(width: 460, height: 70)
                     .offset(y: 15)
                 }
                 .padding(.vertical, 12)
+                .onAppear { // Step 2: Start timer on appear
+                    Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in
+                        if progressValue < gameModel.musicView.selectedSong!.duration {
+                            progressValue += 1
+                        } else {
+                            timer.invalidate() // Stop the timer if the duration is reached
+                        }
+                    }
+                }
             }
         }
     }
