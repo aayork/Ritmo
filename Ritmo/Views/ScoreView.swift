@@ -62,6 +62,16 @@ struct ScoreView: View {
                                 .tint(Color(uiColor: UIColor(red: 212 / 255, green: 244 / 255, blue: 4 / 255, alpha: 1.0)))
                                 .padding(.vertical, 30)
                                 .frame(width: 300)
+                            Button(action: {
+                                Task {
+                                }
+                            }) {
+                                Image(systemName: gameModel.musicView.playing ? "pause.fill" : "play.fill")
+                                    .padding()
+                                    .background(Circle().fill(Color.green))
+                            }
+                            .buttonStyle(PlainButtonStyle())
+                            .cornerRadius(360)
                         }
                         .frame(width: 460)
                     }

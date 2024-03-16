@@ -87,13 +87,13 @@ struct MusicView: View {
                                     await openImmersiveSpace(id: "ImmersiveSpace")
                                 }
                             }) {
-                                Image(systemName: playing ? "pause.fill" : "play.fill")
+                                Text("Play Now")
                                     .padding()
-                                    .background(Circle().fill(Color.green))
+                                    .background(Rectangle().fill(Color.green))
                             }
                             .buttonStyle(PlainButtonStyle())
                             .font(.largeTitle)
-                            .cornerRadius(360)
+                            .cornerRadius(20)
                         }
                     }
                     .padding()
