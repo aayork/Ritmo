@@ -85,12 +85,6 @@ struct ScoreView: View {
                 }
                 .padding(.vertical, 12)
             }
-            .frame(width: 460)
-            .glassBackgroundEffect(
-             in: RoundedRectangle(
-                 cornerRadius: 32,
-                 style: .continuous)
-            )
         }
     }
 }
