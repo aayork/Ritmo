@@ -92,7 +92,7 @@ struct ImmersiveView: View {
            content.add(immersiveEntity)
            
            Task {
-               openWindow(id: "Score")
+               openWindow(id: "scoreView")
                dismissWindow(id: "windowGroup")
            }
             

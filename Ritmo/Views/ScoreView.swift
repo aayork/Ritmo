@@ -10,8 +10,8 @@ import SwiftUI
 struct ScoreView: View {
     @Environment(GameModel.self) var gameModel
     @Environment(\.openWindow) private var openWindow
-    @Environment(\.dismissWindow) private var dismissWindow
     @Environment(\.dismissImmersiveSpace) var dismissImmersiveSpace
+    @Environment(\.dismiss) private var dismiss
     var body: some View {
         ZStack() {
             HStack(alignment: .top) {
@@ -20,12 +20,12 @@ struct ScoreView: View {
                         Button {
                             Task {
                                 openWindow(id: "windowGroup")
-                                dismissWindow(id: "Score")
                                 await dismissImmersiveSpace()
+                                dismiss()
                             }
                             gameModel.reset()
                         } label: {
-                            Label("Back", systemImage: "x.circle")
+                            Label("Exit", systemImage: "x.circle")
                                 .labelStyle(.iconOnly)
                         }
                         HStack {
@@ -89,10 +89,8 @@ struct ScoreView: View {
             .glassBackgroundEffect(
              in: RoundedRectangle(
                  cornerRadius: 32,
-                 style: .continuous
-             )
+                 style: .continuous)
             )
-            .offset(x: 300, y: -1500)
         }
     }
 }

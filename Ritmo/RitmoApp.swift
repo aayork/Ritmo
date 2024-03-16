@@ -16,10 +16,11 @@ struct RitmoApp: App {
                 .environment(self.gameModel)
         }
         
-        WindowGroup(id: "Score") {
+        WindowGroup(id: "scoreView") {
             ScoreView()
                 .environment(self.gameModel)
         }
+        .defaultSize(width: 460, height: 250)
         
         ImmersiveSpace(id: "ImmersiveSpace") {
             ImmersiveView()
