@@ -29,23 +29,31 @@ struct ScoreView: View {
                             Label("Exit", systemImage: "x.circle")
                                 .labelStyle(.iconOnly)
                         }
-                        HStack {
-                            let songName = gameModel.musicView.selectedSong!.name
-                            Text(songName)
-                                .font(.system(size: 30))
-                                .bold()
-                                .accessibilityHidden(true)
-                                .offset(y: -5)
-                                .padding(50)
-                            Text(String(gameModel.score))
-                                .font(.system(size: 60))
+                        VStack {
+                            VStack {
+                                let songName = gameModel.musicView.selectedSong!.name
+                                let artistName = gameModel.musicView.selectedSong!.artist
+                                Text(songName)
+                                    .font(.title3)
+                                    .bold()
+                                    .accessibilityHidden(true)
+                                    .offset(y: -5)
+                                Text(artistName)
+                                    .font(.subheadline)
+                                    .bold()
+                                    .accessibilityHidden(true)
+                                    .offset(y: -5)
+                            }
+                            .padding(20)
+                            Text("Score: " + String(gameModel.score))
+                                .font(.system(size: 35))
                                 .bold()
                                 .accessibilityLabel(Text("Score"))
                                 .accessibilityValue(String(gameModel.score))
                                 .offset(x: 5)
                         }
-                        .padding(.leading, 0)
-                        .padding(.trailing, 60)
+                        .padding(.leading, 10)
+                        .padding(.trailing, 50)
                     }
                     HStack {
                         HStack {
@@ -56,18 +64,6 @@ struct ScoreView: View {
                                 .frame(width: 300)
                         }
                         .frame(width: 460)
-                        Button {
-                            Task {
-                                // Maybe we can repurpose this to be a mute button?
-                                // await gameModel.togglePlayPause()
-                            }
-                        } label: {
-                            Label("Pause", systemImage: "pause.fill")
-                                .labelStyle(.iconOnly)
-                            
-                        }
-                        .padding(.trailing, 12)
-                        .padding(.leading, -55)
                     }
                     .background(
                         .regularMaterial,
