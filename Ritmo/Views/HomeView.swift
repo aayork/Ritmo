@@ -39,10 +39,24 @@ struct HomeView: View {
     
     private var contentStack: some View {
         HStack {
-            Text("R!TMO")
-                .font(.title)
-                .padding(100)
-                .frame(alignment: .topLeading)
+            VStack {
+                Image("ritmoYellow")
+                    .offset(y: -250)
+                Button(action: {
+                    Task {
+                        SettingsView()
+                    }
+                }) {
+                    Text("How to play")
+                        .padding()
+                        .background(Rectangle().fill(Color.black))
+                }
+                .buttonStyle(PlainButtonStyle())
+                .font(.largeTitle)
+                .cornerRadius(20)
+                .offset(y: -240)
+                .padding(.horizontal)
+            }
             HStack {
                 VStack(alignment: .center) {
                     Text("Recent Songs")
