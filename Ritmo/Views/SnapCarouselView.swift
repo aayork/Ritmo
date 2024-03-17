@@ -11,14 +11,13 @@ struct SnapCarouselView: View {
     @State private var currentIndex: Int
     
     let cards: [Card] = [
-        Card(id: 0, color: Color.red),
-        Card(id: 1, color: Color.green),
-        Card(id: 2, color: Color.blue),
-        Card(id: 3, color: Color.orange),
-        Card(id: 4, color: Color.purple)
+        Card(id: 0, imageName: "coverart"),
+        Card(id: 1, imageName: "coverart"),
+        Card(id: 2, imageName: "coverart"),
+        Card(id: 3, imageName: "coverart"),
+        Card(id: 4, imageName: "coverart")
     ]
     
-    // Initialize currentIndex to the middle item
     init() {
         _currentIndex = State(initialValue: cards.count / 2)
     }
@@ -29,16 +28,15 @@ struct SnapCarouselView: View {
                 ForEach(cards.indices, id: \.self) { index in
                     let card = cards[index]
                     CarouselCardView(card: card, currentIndex: $currentIndex, geometry: geometry)
-                        // Calculate offset to center the currently selected card
                         .offset(x: geometry.size.width / 2 - CGFloat(currentIndex) * (geometry.size.width / CGFloat(cards.count)) - (geometry.size.width / CGFloat(cards.count)) / 2 + CGFloat(index) * (geometry.size.width / CGFloat(cards.count)), y: 0)
 
-                        .zIndex(currentIndex == card.id ? 1 : 0) // Ensure current card is on top
+                        .zIndex(currentIndex == card.id ? 1 : 0)
                 }
             }
             .gesture(
                 DragGesture()
                     .onEnded { value in
-                        let threshold: CGFloat = 100 // Adjust as needed for sensitivity
+                        let threshold: CGFloat = 100
                         let offset = value.translation.width
                         
                         withAnimation(Animation.spring()) {
@@ -58,7 +56,7 @@ struct SnapCarouselView: View {
 
 struct Card: Identifiable {
     var id: Int
-    var color: Color
+    var imageName: String
 }
 
 struct CarouselCardView: View {
@@ -67,16 +65,17 @@ struct CarouselCardView: View {
     let geometry: GeometryProxy
     
     var body: some View {
-        Circle()
-            .foregroundColor(card.color)
-            .frame(width: 300, height: 300)
-            .opacity(card.id == currentIndex ? 1.0 : 0.6)
+        Image(card.imageName)
+            .resizable()
+            .scaledToFit()
+            .frame(width: 400, height: 400)
+            .clipShape(Circle())
+            .opacity(card.id == currentIndex ? 1.0 : 0.9)
             .scaleEffect(card.id == currentIndex ? 1.0 : 0.8)
             .grayscale(card.id == currentIndex ? 0.0 : 1.0)
     }
 }
 
-// Preview
 struct SnapCarouselView_Previews: PreviewProvider {
     static var previews: some View {
         SnapCarouselView()
