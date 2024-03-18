@@ -10,60 +10,65 @@ import MusicKit
 
 struct SnapCarouselView: View {
     @State private var currentIndex: Int
-    @State private var cards: [Card]
-    
+    @State private var cards: [Item]
+    @State private var selectedCardID: UUID?
+
     init() {
         let recentlyPlayed = RecentlyPlayedManager.shared.getRecentlyPlayedSongs()
         _cards = State(initialValue: recentlyPlayed)
-        _currentIndex = State(initialValue: recentlyPlayed.count / 2)
+        _selectedCardID = State(initialValue: recentlyPlayed.first?.id)
+        _currentIndex = State(initialValue: 0)
     }
-
     
     var body: some View {
         GeometryReader { geometry in
             ZStack(alignment: .center) {
                 ForEach(cards.indices, id: \.self) { index in
                     let card = cards[index]
-                    CarouselCardView(card: card, currentIndex: $currentIndex, geometry: geometry)
-                        .offset(x: geometry.size.width / 2 - CGFloat(currentIndex) * (geometry.size.width / CGFloat(cards.count)) - (geometry.size.width / CGFloat(cards.count)) / 2 + CGFloat(index) * (geometry.size.width / CGFloat(cards.count)), y: 0)
+                    // Break down the offset calculation
+                    let totalWidth = geometry.size.width
+                    let cardWidth = totalWidth / CGFloat(cards.count)
+                    let halfTotalWidth = totalWidth / 2
+                    let halfCardWidth = cardWidth / 2
+                    let currentIndexOffset = CGFloat(currentIndex) * cardWidth
+                    let indexOffset = CGFloat(index) * cardWidth
+                    let offset = halfTotalWidth - currentIndexOffset - halfCardWidth + indexOffset
 
-                        .zIndex(currentIndex == card.id ? 1 : 0)
+                    CarouselCardView(card: card, selectedCardID: selectedCardID, geometry: geometry)
+                        .offset(x: offset, y: 0)
+                        .zIndex(selectedCardID == card.id ? 1 : 0) // Adjust this if needed based on your selection logic
                 }
             }
             .gesture(
-                DragGesture()
-                    .onEnded { value in
-                        let threshold: CGFloat = 100
-                        let offset = value.translation.width
-                        
-                        withAnimation(Animation.spring()) {
-                            if offset < -threshold {
-                                currentIndex = min(currentIndex + 1, cards.count - 1)
-                            } else if offset > threshold {
-                                currentIndex = max(currentIndex - 1, 0)
-                            }
-                        }
+                            DragGesture()
+                                .onEnded { value in
+                                    updateCurrentIndexAndSelectedCardID(with: value.translation.width)
+                                }
+                        )
                     }
-            )
-        }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .padding()
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .padding()
     }
-}
-
-struct Card: Identifiable, Codable {
-    var id: Int
-    let name: String
-    let artist: String
-    let song: Song // This is the playable music item
-    let artwork: Artwork
-    let duration: TimeInterval
-    let genre: MusicItemCollection<Genre>?
+    
+    private func updateCurrentIndexAndSelectedCardID(with translationWidth: CGFloat) {
+            let threshold: CGFloat = 100
+            let offset = translationWidth
+                            
+            withAnimation(Animation.spring()) {
+                if offset < -threshold {
+                    currentIndex = min(currentIndex + 1, cards.count - 1)
+                } else if offset > threshold {
+                    currentIndex = max(currentIndex - 1, 0)
+                }
+                selectedCardID = cards[currentIndex].id
+            }
+        }
+    
 }
 
 struct CarouselCardView: View {
-    let card: Card
-    @Binding var currentIndex: Int
+    let card: Item
+    let selectedCardID: UUID?
     let geometry: GeometryProxy
     
     var body: some View {
@@ -71,9 +76,9 @@ struct CarouselCardView: View {
             .scaledToFit()
             .frame(width: 400, height: 400)
             .clipShape(Circle())
-            .opacity(card.id == currentIndex ? 1.0 : 0.7)
-            .scaleEffect(card.id == currentIndex ? 1.0 : 0.8)
-            .grayscale(card.id == currentIndex ? 0.0 : 1.0)
+            .opacity(card.id == selectedCardID ? 1.0 : 0.7)
+            .scaleEffect(card.id == selectedCardID ? 1.0 : 0.8)
+            .grayscale(card.id == selectedCardID ? 0.0 : 1.0)
     }
 }
 

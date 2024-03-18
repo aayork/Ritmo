@@ -83,6 +83,7 @@ struct MusicView: View {
                                     gameModel.musicView = self
                                     //gameModel.selectedSong = self.selectedSong
                                     //gameModel.togglePlayPause = self.togglePlayPause
+                                    gameModel.recentlyPlayed.addSong(song: selectedSong!)
                                     await togglePlaying()
                                     await openImmersiveSpace(id: "ImmersiveSpace")
                                 }

@@ -15,6 +15,7 @@ class GameModel {
     /// A Boolean value that indicates that game assets have loaded.
     var readyToStart = false
     var musicView: MusicView
+    var recentlyPlayed: RecentlyPlayedManager
     var score = 0
 
     /// Removes 3D content when then game is over.
@@ -32,6 +33,7 @@ class GameModel {
     init() {
         //self.togglePlayPause = {}
         self.musicView = MusicView()
+        self.recentlyPlayed = RecentlyPlayedManager()
     }
     /// Preload animation assets.
 }
