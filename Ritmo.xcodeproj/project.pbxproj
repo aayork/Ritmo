@@ -22,6 +22,7 @@
 		ECA1E21D2B75B64100EE4926 /* ImmersiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA1E21C2B75B64100EE4926 /* ImmersiveView.swift */; };
 		ECA1E21F2B75B64200EE4926 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ECA1E21E2B75B64200EE4926 /* Assets.xcassets */; };
 		ECA1E2222B75B64200EE4926 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ECA1E2212B75B64200EE4926 /* Preview Assets.xcassets */; };
+		ECF310752BA8CF6500CFFE00 /* RecentlyPlayedManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF310742BA8CF6500CFFE00 /* RecentlyPlayedManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +44,7 @@
 		ECA1E2212B75B64200EE4926 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		ECA1E2232B75B64200EE4926 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ECDD66992B8D2E96005987B0 /* Ritmo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Ritmo.entitlements; sourceTree = "<group>"; };
+		ECF310742BA8CF6500CFFE00 /* RecentlyPlayedManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentlyPlayedManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +80,7 @@
 			isa = PBXGroup;
 			children = (
 				ECA1E2182B75B64100EE4926 /* RitmoApp.swift */,
+				ECF310742BA8CF6500CFFE00 /* RecentlyPlayedManager.swift */,
 				ECC092552B7844A5002B4013 /* Views */,
 				ECDD66992B8D2E96005987B0 /* Ritmo.entitlements */,
 				ECA1E21E2B75B64200EE4926 /* Assets.xcassets */,
@@ -205,6 +208,7 @@
 				ECA1E2192B75B64100EE4926 /* RitmoApp.swift in Sources */,
 				EC64789A2B77C4F300F12A54 /* HomeView.swift in Sources */,
 				EC6E9D472B7C62B700C1F0A3 /* FriendsView.swift in Sources */,
+				ECF310752BA8CF6500CFFE00 /* RecentlyPlayedManager.swift in Sources */,
 				ECA1E21D2B75B64100EE4926 /* ImmersiveView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

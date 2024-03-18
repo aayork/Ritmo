@@ -6,21 +6,18 @@
 //
 
 import SwiftUI
+import MusicKit
 
 struct SnapCarouselView: View {
     @State private var currentIndex: Int
-    
-    let cards: [Card] = [
-        Card(id: 0, imageName: "coverart"),
-        Card(id: 1, imageName: "coverart"),
-        Card(id: 2, imageName: "coverart"),
-        Card(id: 3, imageName: "coverart"),
-        Card(id: 4, imageName: "coverart")
-    ]
+    @State private var cards: [Card]
     
     init() {
-        _currentIndex = State(initialValue: cards.count / 2)
+        let recentlyPlayed = RecentlyPlayedManager.shared.getRecentlyPlayedSongs()
+        _cards = State(initialValue: recentlyPlayed)
+        _currentIndex = State(initialValue: recentlyPlayed.count / 2)
     }
+
     
     var body: some View {
         GeometryReader { geometry in
@@ -54,9 +51,14 @@ struct SnapCarouselView: View {
     }
 }
 
-struct Card: Identifiable {
+struct Card: Identifiable, Codable {
     var id: Int
-    var imageName: String
+    let name: String
+    let artist: String
+    let song: Song // This is the playable music item
+    let artwork: Artwork
+    let duration: TimeInterval
+    let genre: MusicItemCollection<Genre>?
 }
 
 struct CarouselCardView: View {
@@ -65,12 +67,11 @@ struct CarouselCardView: View {
     let geometry: GeometryProxy
     
     var body: some View {
-        Image(card.imageName)
-            .resizable()
+        ArtworkImage(card.artwork, width: 400)
             .scaledToFit()
             .frame(width: 400, height: 400)
             .clipShape(Circle())
-            .opacity(card.id == currentIndex ? 1.0 : 0.9)
+            .opacity(card.id == currentIndex ? 1.0 : 0.7)
             .scaleEffect(card.id == currentIndex ? 1.0 : 0.8)
             .grayscale(card.id == currentIndex ? 0.0 : 1.0)
     }

@@ -87,7 +87,7 @@ struct MusicView: View {
                                     await openImmersiveSpace(id: "ImmersiveSpace")
                                 }
                             }) {
-                                Text("Play Now")
+                                Text("Start")
                                     .padding()
                                     .background(Rectangle().fill(Color.green))
                             }
@@ -99,7 +99,7 @@ struct MusicView: View {
                     .padding()
                 }
             } else {
-                Text("Select a song to see details") // Prompt user to select a song
+                Text("Select a song to play") // Prompt user to select a song
             }
         }
         .searchable(text: $searchText)
@@ -190,6 +190,7 @@ struct MusicView: View {
                     // If authorized, play the selected song
                     do {
                         try await play(item.song)
+                        // RecentlyPlayedManager.addSong(<#RecentlyPlayedManager#>)
                     } catch {
                         print("Error playing song: \(error)")
                         playing = false
