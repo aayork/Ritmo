@@ -46,7 +46,6 @@ struct HomeView: View {
     
     var body: some View {
         ZStack {
-            multicolorBackground()
             contentStack
         }
         .padding()
@@ -56,6 +55,7 @@ struct HomeView: View {
              style: .continuous
          )
         )
+        .background(Color.darkGray.opacity(0.8))
     }
     
     private var contentStack: some View {
