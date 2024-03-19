@@ -60,7 +60,7 @@ struct MusicView: View {
                             Spacer()
                         }
                     }
-                    .frame(height: 80, alignment: .leading)
+                    .frame(height: 150, alignment: .leading)
                         .frame(minWidth: 0, maxWidth: .infinity)
                         .background(Color("electricLime"))
                     HStack {
@@ -85,20 +85,20 @@ struct MusicView: View {
                         Spacer()
                         if let song = selectedSong {
                             VStack(alignment: .leading) {
-                                ArtworkImage(song.artwork, width: 180)
-                                    .cornerRadius(30)
+                                ArtworkImage(song.artwork, width: 220)
+                                    .cornerRadius(50)
                                 
                                 Text(song.name) // Display song name
-                                    .font(.system(size: 20))
+                                    .font(.system(size: 25, weight: .heavy))
                                     .foregroundStyle(Color("electricLime"))
                                 Text(song.artist).font(.system(size: 15)) // Display artist name
                                 
                                 
                                 
                                 Text("High Score")
-                                    .font(.system(size: 10))
+                                    .font(.system(size: 15))
                                 Text("00000")
-                                    .font(.system(size: 20))
+                                    .font(.system(size: 25))
                                     .foregroundStyle(Color("electricLime"))
                                 
                                 // Play controls
@@ -122,7 +122,7 @@ struct MusicView: View {
                                     .cornerRadius(20)
                                 }
                             }
-                            .frame(width: 250)
+                            .frame(width: 300)
                             .padding()
                         } else {
                             Text("Select a song to play") // Prompt user to select a song

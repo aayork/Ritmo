@@ -17,6 +17,7 @@ class GameModel {
     var musicView: MusicView
     var recentlyPlayed: RecentlyPlayedManager
     var score = 0
+    var tab = 1
 
     /// Removes 3D content when then game is over.
     func clear() {

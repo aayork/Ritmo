@@ -16,6 +16,7 @@ struct RecentlyPlayedSong: Identifiable {
 }
 
 struct HomeView: View {
+    @Binding var tabSelection: Int
     @State private var recentlyPlayedSongs: [RecentlyPlayedSong] = [
         RecentlyPlayedSong(title: "Song 1", artist: "Artist 1", coverImageName: "cover1"),
         RecentlyPlayedSong(title: "Song 2", artist: "Artist 2", coverImageName: "cover2"),
@@ -65,6 +66,7 @@ struct HomeView: View {
                         .frame(alignment: .topLeading)
                     SnapCarouselView()
                     Button(action: {
+                        tabSelection = 2
                     }) {
                         Text("Play Now")
                             .padding()
@@ -87,6 +89,6 @@ struct HomeView: View {
 }
 
 
-#Preview {
-    HomeView()
-}
+//#Preview {
+    //HomeView()
+//}
