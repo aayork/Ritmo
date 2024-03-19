@@ -15,6 +15,14 @@
 		EC5EC91B2BA682C800809821 /* SnapCarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC5EC91A2BA682C800809821 /* SnapCarouselView.swift */; };
 		EC605FE92B77D06A005EC21A /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC605FE82B77D06A005EC21A /* SettingsView.swift */; };
 		EC64789A2B77C4F300F12A54 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6478992B77C4F300F12A54 /* HomeView.swift */; };
+		EC6929512BA9CFC500EF3AFE /* SoulcraftGX.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EC6929502BA9CFC500EF3AFE /* SoulcraftGX.ttf */; };
+		EC6929532BA9CFD100EF3AFE /* FormaDJRMicro-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EC6929522BA9CFD100EF3AFE /* FormaDJRMicro-Regular.ttf */; };
+		EC6929552BA9CFD900EF3AFE /* FormaDJRMicro-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EC6929542BA9CFD900EF3AFE /* FormaDJRMicro-Medium.ttf */; };
+		EC6929572BA9CFE000EF3AFE /* FormaDJRMicro-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EC6929562BA9CFE000EF3AFE /* FormaDJRMicro-Light.ttf */; };
+		EC6929592BA9CFE800EF3AFE /* FormaDJRMicro-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EC6929582BA9CFE800EF3AFE /* FormaDJRMicro-ExtraLight.ttf */; };
+		EC69295B2BA9CFEE00EF3AFE /* FormaDJRMicro-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EC69295A2BA9CFEE00EF3AFE /* FormaDJRMicro-ExtraBold.ttf */; };
+		EC69295D2BA9CFF700EF3AFE /* FormaDJRMicro-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EC69295C2BA9CFF700EF3AFE /* FormaDJRMicro-Bold.ttf */; };
+		EC69295F2BA9CFFE00EF3AFE /* FormaDJRMicro-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EC69295E2BA9CFFE00EF3AFE /* FormaDJRMicro-Black.ttf */; };
 		EC6E9D472B7C62B700C1F0A3 /* FriendsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6E9D462B7C62B700C1F0A3 /* FriendsView.swift */; };
 		ECA1E2172B75B64100EE4926 /* RealityKitContent in Frameworks */ = {isa = PBXBuildFile; productRef = ECA1E2162B75B64100EE4926 /* RealityKitContent */; };
 		ECA1E2192B75B64100EE4926 /* RitmoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA1E2182B75B64100EE4926 /* RitmoApp.swift */; };
@@ -34,6 +42,14 @@
 		EC5EC91A2BA682C800809821 /* SnapCarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapCarouselView.swift; sourceTree = "<group>"; };
 		EC605FE82B77D06A005EC21A /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		EC6478992B77C4F300F12A54 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		EC6929502BA9CFC500EF3AFE /* SoulcraftGX.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SoulcraftGX.ttf; sourceTree = "<group>"; };
+		EC6929522BA9CFD100EF3AFE /* FormaDJRMicro-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FormaDJRMicro-Regular.ttf"; sourceTree = "<group>"; };
+		EC6929542BA9CFD900EF3AFE /* FormaDJRMicro-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FormaDJRMicro-Medium.ttf"; sourceTree = "<group>"; };
+		EC6929562BA9CFE000EF3AFE /* FormaDJRMicro-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FormaDJRMicro-Light.ttf"; sourceTree = "<group>"; };
+		EC6929582BA9CFE800EF3AFE /* FormaDJRMicro-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FormaDJRMicro-ExtraLight.ttf"; sourceTree = "<group>"; };
+		EC69295A2BA9CFEE00EF3AFE /* FormaDJRMicro-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FormaDJRMicro-ExtraBold.ttf"; sourceTree = "<group>"; };
+		EC69295C2BA9CFF700EF3AFE /* FormaDJRMicro-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FormaDJRMicro-Bold.ttf"; sourceTree = "<group>"; };
+		EC69295E2BA9CFFE00EF3AFE /* FormaDJRMicro-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FormaDJRMicro-Black.ttf"; sourceTree = "<group>"; };
 		EC6E9D462B7C62B700C1F0A3 /* FriendsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsView.swift; sourceTree = "<group>"; };
 		ECA1E2112B75B64100EE4926 /* Ritmo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ritmo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECA1E2152B75B64100EE4926 /* RealityKitContent */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = RealityKitContent; sourceTree = "<group>"; };
@@ -59,6 +75,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		EC69294F2BA9CF8D00EF3AFE /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				EC6929502BA9CFC500EF3AFE /* SoulcraftGX.ttf */,
+				EC6929522BA9CFD100EF3AFE /* FormaDJRMicro-Regular.ttf */,
+				EC6929542BA9CFD900EF3AFE /* FormaDJRMicro-Medium.ttf */,
+				EC6929562BA9CFE000EF3AFE /* FormaDJRMicro-Light.ttf */,
+				EC6929582BA9CFE800EF3AFE /* FormaDJRMicro-ExtraLight.ttf */,
+				EC69295A2BA9CFEE00EF3AFE /* FormaDJRMicro-ExtraBold.ttf */,
+				EC69295C2BA9CFF700EF3AFE /* FormaDJRMicro-Bold.ttf */,
+				EC69295E2BA9CFFE00EF3AFE /* FormaDJRMicro-Black.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		ECA1E2082B75B64100EE4926 = {
 			isa = PBXGroup;
 			children = (
@@ -81,6 +112,7 @@
 			children = (
 				ECA1E2182B75B64100EE4926 /* RitmoApp.swift */,
 				ECF310742BA8CF6500CFFE00 /* RecentlyPlayedManager.swift */,
+				EC69294F2BA9CF8D00EF3AFE /* Fonts */,
 				ECC092552B7844A5002B4013 /* Views */,
 				ECDD66992B8D2E96005987B0 /* Ritmo.entitlements */,
 				ECA1E21E2B75B64200EE4926 /* Assets.xcassets */,
@@ -185,8 +217,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EC69295F2BA9CFFE00EF3AFE /* FormaDJRMicro-Black.ttf in Resources */,
+				EC69295B2BA9CFEE00EF3AFE /* FormaDJRMicro-ExtraBold.ttf in Resources */,
+				EC6929512BA9CFC500EF3AFE /* SoulcraftGX.ttf in Resources */,
 				ECA1E2222B75B64200EE4926 /* Preview Assets.xcassets in Resources */,
+				EC6929552BA9CFD900EF3AFE /* FormaDJRMicro-Medium.ttf in Resources */,
 				ECA1E21F2B75B64200EE4926 /* Assets.xcassets in Resources */,
+				EC6929532BA9CFD100EF3AFE /* FormaDJRMicro-Regular.ttf in Resources */,
+				EC6929592BA9CFE800EF3AFE /* FormaDJRMicro-ExtraLight.ttf in Resources */,
+				EC6929572BA9CFE000EF3AFE /* FormaDJRMicro-Light.ttf in Resources */,
+				EC69295D2BA9CFF700EF3AFE /* FormaDJRMicro-Bold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

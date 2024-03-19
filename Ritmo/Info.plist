@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>CFBundleIdentifier</key>
+	<string></string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationPreferredDefaultSceneSessionRole</key>
@@ -11,5 +13,16 @@
 		<key>UISceneConfigurations</key>
 		<dict/>
 	</dict>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Fonts/SoulcraftGX.ttf</string>
+		<string>Fonts/FormaDJRMicro-Regular.ttf</string>
+		<string>Fonts/FormaDJRMicro-Medium.ttf</string>
+		<string>Fonts/FormaDJRMicro-Light.ttf</string>
+		<string>Fonts/FormaDJRMicro-ExtraLight.ttf</string>
+		<string>Fonts/FormaDJRMicro-ExtraBold.ttf</string>
+		<string>Fonts/FormaDJRMicro-Bold.ttf</string>
+		<string>Fonts/FormaDJRMicro-Black.ttf</string>
+	</array>
 </dict>
 </plist>

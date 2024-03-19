@@ -27,6 +27,7 @@ struct MusicView: View {
     @State private var songs = [Item]()
     @State var selectedSong: Item?
     @State var playing = false
+    @State var highScore = 0
     let musicPlayer = ApplicationMusicPlayer.shared
     
     var body: some View {
@@ -84,48 +85,53 @@ struct MusicView: View {
                     HStack {
                         Spacer()
                         if let song = selectedSong {
-                            VStack(alignment: .leading) {
-                                ArtworkImage(song.artwork, width: 220)
+                            HStack {
+                                ArtworkImage(song.artwork, width: 400)
                                     .cornerRadius(50)
+                                    .position(x:250, y:225)
+                                VStack(alignment: .leading) {
                                 
-                                Text(song.name) // Display song name
-                                    .font(.system(size: 25, weight: .heavy))
-                                    .foregroundStyle(Color("electricLime"))
-                                Text(song.artist).font(.system(size: 15)) // Display artist name
+                                    Text(song.name) // Display song name
+                                        .font(.system(size: 35, weight: .heavy))
+                                        .foregroundStyle(Color("electricLime"))
+                                    Text(song.artist).font(.system(size: 25)) // Display artist name
                                 
                                 
                                 
-                                Text("High Score")
-                                    .font(.system(size: 15))
-                                Text("00000")
-                                    .font(.system(size: 25))
-                                    .foregroundStyle(Color("electricLime"))
+                                    Text("High Score: ")
+                                        .font(.system(size: 20))
+                                    Text(String(highScore))
+                                        .font(.system(size: 30))
+                                        .foregroundStyle(Color("electricLime"))
                                 
-                                // Play controls
-                                HStack {
-                                    Button(action: {
-                                        Task {
-                                            gameModel.musicView = self
-                                            //gameModel.selectedSong = self.selectedSong
-                                            //gameModel.togglePlayPause = self.togglePlayPause
-                                            gameModel.recentlyPlayed.addSong(song: selectedSong!)
-                                            await togglePlaying()
-                                            await openImmersiveSpace(id: "ImmersiveSpace")
-                                        }
-                                    }) {
-                                        Text("Start")
+                                    // Play controls
+                                    HStack {
+                                        Button(action: {
+                                            Task {
+                                                gameModel.musicView = self
+                                                //gameModel.selectedSong = self.selectedSong
+                                                //gameModel.togglePlayPause = self.togglePlayPause
+                                                gameModel.recentlyPlayed.addSong(song: selectedSong!)
+                                                await togglePlaying()
+                                                await openImmersiveSpace(id: "ImmersiveSpace")
+                                            }
+                                        }) {
+                                            Text("Start")
                                             .padding()
                                             .background(Rectangle().fill(Color.green))
+                                        }
+                                        .buttonStyle(PlainButtonStyle())
+                                        .font(.extraLargeTitle)
+                                        .cornerRadius(20)
                                     }
-                                    .buttonStyle(PlainButtonStyle())
-                                    .font(.largeTitle)
-                                    .cornerRadius(20)
                                 }
+                                .frame(width: 300)
+                                .position(x:110, y:225)
+                                .padding()
                             }
-                            .frame(width: 300)
-                            .padding()
                         } else {
-                            Text("Select a song to play") // Prompt user to select a song
+                            Text("Please search for a song...")
+                                .position(x:485, y:225)
                         }
                     }
                 }
