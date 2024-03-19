@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9A087E1E2BAA0E3500750AE0 /* HandTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A087E1D2BAA0E3500750AE0 /* HandTracking.swift */; };
 		9AF2D2EC2BA0F3660064D49D /* ScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF2D2EB2BA0F3660064D49D /* ScoreView.swift */; };
 		9AF2D2F02BA0F5490064D49D /* GameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF2D2EF2BA0F5490064D49D /* GameModel.swift */; };
 		9AF2D2F22BA0F7120064D49D /* GlobalEntities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF2D2F12BA0F7120064D49D /* GlobalEntities.swift */; };
@@ -34,6 +35,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9A087E1D2BAA0E3500750AE0 /* HandTracking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandTracking.swift; sourceTree = "<group>"; };
 		9AF2D2EB2BA0F3660064D49D /* ScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreView.swift; sourceTree = "<group>"; };
 		9AF2D2EF2BA0F5490064D49D /* GameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameModel.swift; sourceTree = "<group>"; };
 		9AF2D2F12BA0F7120064D49D /* GlobalEntities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalEntities.swift; sourceTree = "<group>"; };
@@ -146,6 +148,7 @@
 				EC3336A52B787ACB00836AFB /* MusicView.swift */,
 				ECA1E21C2B75B64100EE4926 /* ImmersiveView.swift */,
 				9AF2D2EF2BA0F5490064D49D /* GameModel.swift */,
+				9A087E1D2BAA0E3500750AE0 /* HandTracking.swift */,
 				9AF2D2EB2BA0F3660064D49D /* ScoreView.swift */,
 				9AF2D2F12BA0F7120064D49D /* GlobalEntities.swift */,
 				EC6E9D462B7C62B700C1F0A3 /* FriendsView.swift */,
@@ -250,6 +253,7 @@
 				EC6E9D472B7C62B700C1F0A3 /* FriendsView.swift in Sources */,
 				ECF310752BA8CF6500CFFE00 /* RecentlyPlayedManager.swift in Sources */,
 				ECA1E21D2B75B64100EE4926 /* ImmersiveView.swift in Sources */,
+				9A087E1E2BAA0E3500750AE0 /* HandTracking.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

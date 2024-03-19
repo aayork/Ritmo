@@ -14,8 +14,10 @@ struct ImmersiveView: View {
     @Environment(\.openWindow) private var openWindow
     @Environment(\.dismissImmersiveSpace) private var dismissImmersiveSpace
     @Environment(GameModel.self) var gameModel
+    @ObservedObject var gestureModel: HandTracking
     @State var score = 0
     @State private var correctTime = false;
+    @State private var handSphere = Entity()
     
     let orbSpawner = Entity()
     let timer = Timer.publish(every: 5, on: .main, in: .common).autoconnect()
@@ -83,6 +85,11 @@ struct ImmersiveView: View {
        RealityView { content in
            content.add(orbSpawner)
            
+           let sphere = MeshResource.generateSphere(radius: 0.1)
+           let material = SimpleMaterial(color: .black, isMetallic: false)
+           handSphere = ModelEntity(mesh: sphere, materials: [material])
+           content.add(handSphere)
+           
            guard let immersiveEntity = try? await Entity(named: "Immersive", in: realityKitContentBundle) else {
                         fatalError("Unable to load immersive model")
                     }
@@ -93,11 +100,17 @@ struct ImmersiveView: View {
                dismissWindow(id: "windowGroup")
            }
             
+       } update: { updateContent in
+           if let rightHandTransform = gestureModel.rightHandTransform() {
+               let position = Pose3D(rightHandTransform)!.position
+               handSphere.transform.translation = SIMD3<Float>(position.vector)
+           } else {
+               print("hand transform not found")
+           }
        }
        .onReceive(timer) {time in
            spawnHand()
        }
-       
        .gesture(TapGesture().targetedToAnyEntity().onEnded({ value in
            if (correctTime) {
                changeColor(entity: value.entity, color: .green)

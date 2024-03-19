@@ -36,7 +36,7 @@ class GameModel {
         //self.togglePlayPause = {}
         self.musicView = MusicView()
         self.recentlyPlayed = RecentlyPlayedManager()
-        self.immsersiveView = ImmersiveView()
+        self.immsersiveView = ImmersiveView(gestureModel: HandTrackingContainer.handTracking)
     }
     /// Preload animation assets.
 }

@@ -1,0 +1,73 @@
+//
+//  HandTracking.swift
+//  Ritmo
+//
+//  Created by Max Pelot on 3/19/24.
+//
+
+import ARKit
+import SwiftUI
+
+/// A model that contains up-to-date hand coordinate information.
+class HandTracking: ObservableObject, @unchecked Sendable {
+    let session = ARKitSession()
+    var handTracking = HandTrackingProvider()
+    @Published var latestHandTracking: HandsUpdates = .init(left: nil, right: nil)
+    
+    struct HandsUpdates {
+        var left: HandAnchor?
+        var right: HandAnchor?
+    }
+    
+    func start() async {
+        do {
+            if HandTrackingProvider.isSupported {
+                print("ARKitSession starting.")
+                try await session.run([handTracking])
+            }
+        } catch {
+            print("ARKitSession error:", error)
+        }
+    }
+    
+    func publishHandTrackingUpdates() async {
+        for await update in handTracking.anchorUpdates {
+            switch update.event {
+            case .updated:
+                let anchor = update.anchor
+                
+                // Publish updates only if the hand and the relevant joints are tracked.
+                guard anchor.isTracked else { continue }
+                
+                // Update left hand info.
+                if anchor.chirality == .left {
+                    latestHandTracking.left = anchor
+                } else if anchor.chirality == .right { // Update right hand info.
+                    latestHandTracking.right = anchor
+                }
+            default:
+                break
+            }
+        }
+    }
+    
+    func monitorSessionEvents() async {
+        for await event in session.events {
+            switch event {
+            case .authorizationChanged(let type, let status):
+                if type == .handTracking && status != .allowed {
+                    // Stop the game, ask the user to grant hand tracking authorization again in Settings.
+                }
+            default:
+                print("Session event \(event)")
+            }
+        }
+    }
+    
+    func rightHandTransform()  -> simd_float4x4? {
+        guard let rightHandAnchor = latestHandTracking.right, rightHandAnchor.isTracked else {
+            return nil
+        }
+        return rightHandAnchor.originFromAnchorTransform
+    }
+}

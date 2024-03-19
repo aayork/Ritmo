@@ -33,8 +33,11 @@ struct RitmoApp: App {
         .windowResizability(.contentSize)
         
         ImmersiveSpace(id: "ImmersiveSpace") {
-            ImmersiveView()
+            ImmersiveView(gestureModel: HandTrackingContainer.handTracking)
                 .environment(self.gameModel)
         }
     }
+}
+enum HandTrackingContainer {
+    private(set) static var handTracking = HandTracking()
 }
