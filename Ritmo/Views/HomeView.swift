@@ -55,7 +55,7 @@ struct HomeView: View {
              style: .continuous
          )
         )
-        .background(Color.darkGray.opacity(0.8))
+        .background(Color.gunmetalGray.opacity(0.8))
     }
     
     private var contentStack: some View {
