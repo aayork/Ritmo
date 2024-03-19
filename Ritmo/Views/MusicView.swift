@@ -167,27 +167,11 @@ struct MusicView: View {
             }
         } else {
             print("Paused \(selectedSong?.name ?? "song")")
-            // Add code to pause music here
+            musicPlayer.stop()
         }
     }
     
-    private func playPreviousSong() {
-        if let currentSongIndex = songs.firstIndex(where: { $0.id == selectedSong?.id }), currentSongIndex > 0 {
-            let previousSongIndex = songs.index(before: currentSongIndex)
-            selectedSong = songs[previousSongIndex]
-            print("Playing previous song: \(songs[previousSongIndex].name)")
-            // Add code to play the previous song here
-        }
-    }
-    
-    private func playNextSong() {
-        if let currentSongIndex = songs.firstIndex(where: { $0.id == selectedSong?.id }), currentSongIndex < songs.count - 1 {
-            let nextSongIndex = songs.index(after: currentSongIndex)
-            selectedSong = songs[nextSongIndex]
-            print("Playing next song: \(songs[nextSongIndex].name)")
-            // Add code to play the next song here
-        }
-    }
+
     
     
     private var request: MusicCatalogSearchRequest {

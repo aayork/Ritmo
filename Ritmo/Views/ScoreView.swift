@@ -23,6 +23,7 @@ struct ScoreView: View {
                             Task {
                                 openWindow(id: "windowGroup")
                                 await dismissImmersiveSpace()
+                                await gameModel.musicView.togglePlaying()
                                 dismiss()
                             }
                             gameModel.reset()
@@ -106,6 +107,11 @@ struct ScoreView: View {
                     .offset(y: 15)
                 }
                 .padding(.vertical, 12)
+                .onDisappear {
+                    Task {
+                        await gameModel.musicView.togglePlaying()
+                    }
+                }
                 /*
                 .onAppear { // Step 2: Start timer on appear
                     Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in
