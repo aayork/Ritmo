@@ -63,7 +63,7 @@ struct MusicView: View {
                     }
                     .frame(height: 150, alignment: .leading)
                         .frame(minWidth: 0, maxWidth: .infinity)
-                        .background(Color("electricLime"))
+                        .background(Color.electricLime)
                     HStack {
 //                        Text("Play Now").font(.title)
 //                        if true {

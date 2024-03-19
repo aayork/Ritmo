@@ -15,14 +15,15 @@ struct WaveAnimation: View {
     
     var body: some View {
         ZStack {
-            // Deeper shade of purple background
-            Color(.black).opacity(0.7).ignoresSafeArea()
+            Color(.ritmoBlue).opacity(1.0).ignoresSafeArea()
             
             // Adjusted number of Wave views for full coverage
             ForEach(0..<70) { i in
                 Wave(offSet: Angle(degrees: waveOffset.degrees - Double(i) * 10), percent: percent, index: i, direction: i % 2 == 0 ? 1 : -1, hue: hue)
-                        .stroke(Color(hue: hue, saturation: 1.0, brightness: 1.0), lineWidth: 2)
+                    .stroke(Color.blue
+                    )
                         .ignoresSafeArea(.all)
+                        .blur(radius: 1.5)
                     }
             }
             .onAppear {
