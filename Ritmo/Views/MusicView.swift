@@ -48,60 +48,89 @@ struct MusicView: View {
                 }
             }
         } detail: {
-            if let song = selectedSong { // Step 3: Update detail view for selected song
+            //if let song = selectedSong { // Step 3: Update detail view for selected song
                 VStack {
-                    HStack {
-                        Text("Play Now").font(.title)
-                        if true {
-                            Text("Curated")
-                                .padding(8)
-                                .background(Color.pink)
-                                .clipShape(Capsule())
-                                .foregroundColor(.white)
-                        }
-                        
-                        // Difficulty indicator
-                        Text("Medium")
-                            .padding(8)
-                            .background(difficultyColor(for: "Medium"))
-                            .clipShape(Capsule())
-                            .foregroundColor(.white)
-                    }
-                    HStack {
-                        ArtworkImage(song.artwork, width: 400)
-                                        .cornerRadius(10)
-                        
-                        VStack {
-                            Text(song.name).font(.headline) // Display song name
-                            Text(song.artist).font(.subheadline) // Display artist name
-                        }
-                        .padding(.horizontal)
-                        // Play controls
+                    VStack(alignment: .leading) {
+                        Spacer()
                         HStack {
-                            Button(action: {
-                                Task {
-                                    gameModel.musicView = self
-                                    //gameModel.selectedSong = self.selectedSong
-                                    //gameModel.togglePlayPause = self.togglePlayPause
-                                    gameModel.recentlyPlayed.addSong(song: selectedSong!)
-                                    await togglePlaying()
-                                    await openImmersiveSpace(id: "ImmersiveSpace")
-                                }
-                            }) {
-                                Text("Start")
-                                    .padding()
-                                    .background(Rectangle().fill(Color.green))
-                            }
-                            .buttonStyle(PlainButtonStyle())
-                            .font(.largeTitle)
-                            .cornerRadius(20)
+                            Text("Pick a Tune")
+                                .font(.system(size: 70, weight: .heavy))
+                                .foregroundColor(Color.black)
+                                .padding()
+                            Spacer()
                         }
                     }
-                    .padding()
+                    .frame(height: 80, alignment: .leading)
+                        .frame(minWidth: 0, maxWidth: .infinity)
+                        .background(Color("electricLime"))
+                    HStack {
+//                        Text("Play Now").font(.title)
+//                        if true {
+//                            Text("Curated")
+//                                .padding(8)
+//                                .background(Color.pink)
+//                                .clipShape(Capsule())
+//                                .foregroundColor(.white)
+//                        }
+//                        
+//                        // Difficulty indicator
+//                        Text("Medium")
+//                            .padding(8)
+//                            .background(difficultyColor(for: "Medium"))
+//                            .clipShape(Capsule())
+//                            .foregroundColor(.white)
+                    }
+                    Spacer()
+                    HStack {
+                        Spacer()
+                        if let song = selectedSong {
+                            VStack(alignment: .leading) {
+                                ArtworkImage(song.artwork, width: 180)
+                                    .cornerRadius(30)
+                                
+                                Text(song.name) // Display song name
+                                    .font(.system(size: 20))
+                                    .foregroundStyle(Color("electricLime"))
+                                Text(song.artist).font(.system(size: 15)) // Display artist name
+                                
+                                
+                                
+                                Text("High Score")
+                                    .font(.system(size: 10))
+                                Text("00000")
+                                    .font(.system(size: 20))
+                                    .foregroundStyle(Color("electricLime"))
+                                
+                                // Play controls
+                                HStack {
+                                    Button(action: {
+                                        Task {
+                                            gameModel.musicView = self
+                                            //gameModel.selectedSong = self.selectedSong
+                                            //gameModel.togglePlayPause = self.togglePlayPause
+                                            gameModel.recentlyPlayed.addSong(song: selectedSong!)
+                                            await togglePlaying()
+                                            await openImmersiveSpace(id: "ImmersiveSpace")
+                                        }
+                                    }) {
+                                        Text("Start")
+                                            .padding()
+                                            .background(Rectangle().fill(Color.green))
+                                    }
+                                    .buttonStyle(PlainButtonStyle())
+                                    .font(.largeTitle)
+                                    .cornerRadius(20)
+                                }
+                            }
+                            .frame(width: 250)
+                            .padding()
+                        } else {
+                            Text("Select a song to play") // Prompt user to select a song
+                        }
+                    }
                 }
-            } else {
-                Text("Select a song to play") // Prompt user to select a song
-            }
+                .frame(minWidth: 0, maxWidth: .infinity)
+            
         }
         .searchable(text: $searchText)
         .navigationBarTitleDisplayMode(.inline)
@@ -230,3 +259,9 @@ struct MusicView: View {
         }
     }
 }
+
+#Preview {
+    MusicView()
+        .environment(GameModel().self)
+}
+
