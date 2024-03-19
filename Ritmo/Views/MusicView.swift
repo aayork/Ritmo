@@ -107,10 +107,7 @@ struct MusicView: View {
                                         Button(action: {
                                             Task {
                                                 gameModel.musicView = self
-                                                //gameModel.selectedSong = self.selectedSong
-                                                //gameModel.togglePlayPause = self.togglePlayPause
                                                 gameModel.recentlyPlayed.addSong(song: selectedSong!)
-                                                await togglePlaying()
                                                 await openImmersiveSpace(id: "ImmersiveSpace")
                                             }
                                         }) {
@@ -210,7 +207,7 @@ struct MusicView: View {
         return selectedSong?.name ?? "No Song Selected"
     }
     
-    private func togglePlaying() async {
+    func togglePlaying() async {
         // Toggle the playing state
         playing.toggle()
         print(playing)
@@ -224,7 +221,6 @@ struct MusicView: View {
                     // If authorized, play the selected song
                     do {
                         try await play(item.song)
-                        // RecentlyPlayedManager.addSong(<#RecentlyPlayedManager#>)
                     } catch {
                         print("Error playing song: \(error)")
                         playing = false
