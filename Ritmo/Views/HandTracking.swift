@@ -56,6 +56,7 @@ class HandTracking: ObservableObject, @unchecked Sendable {
             switch event {
             case .authorizationChanged(let type, let status):
                 if type == .handTracking && status != .allowed {
+                    print("HAND TRACKING NOT ALLOWED")
                     // Stop the game, ask the user to grant hand tracking authorization again in Settings.
                 }
             default:
