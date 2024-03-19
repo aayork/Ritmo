@@ -65,6 +65,9 @@ struct ScoreView: View {
                                 .frame(width: 300)
                             if !isButtonClicked { // This condition will hide the button after it's clicked
                                 Button(action: {
+                                    Task {
+                                        await gameModel.musicView.togglePlaying()
+                                    }
                                     Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in
                                         if progressValue < gameModel.musicView.selectedSong!.duration {
                                             progressValue += 1
