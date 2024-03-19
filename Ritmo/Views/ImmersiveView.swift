@@ -119,6 +119,15 @@ struct ImmersiveView: View {
                changeColor(entity: value.entity, color: .red)
            }
        }))
+       .task {
+           await gestureModel.start()
+       }
+       .task {
+           await gestureModel.publishHandTrackingUpdates()
+       }
+       .task {
+           await gestureModel.monitorSessionEvents()
+       }
        .preferredSurroundingsEffect(.systemDark)
    }
 }
