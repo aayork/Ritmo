@@ -167,7 +167,7 @@ struct MusicView: View {
             }
         } else {
             print("Paused \(selectedSong?.name ?? "song")")
-            musicPlayer.stop()
+            musicPlayer.pause()
         }
     }
     
