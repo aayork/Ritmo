@@ -55,7 +55,7 @@ struct MusicView: View {
                         Spacer()
                         HStack {
                             Text("Pick a Tune")
-                                .font(.system(size: 70, weight: .heavy))
+                                .font(.custom("Soulcraft_Wide", size: 70.0))
                                 .foregroundColor(Color.black)
                                 .padding()
                             Spacer()

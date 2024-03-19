@@ -15,14 +15,14 @@
 	</dict>
 	<key>UIAppFonts</key>
 	<array>
-		<string>Fonts/SoulcraftGX.ttf</string>
-		<string>Fonts/FormaDJRMicro-Regular.ttf</string>
-		<string>Fonts/FormaDJRMicro-Medium.ttf</string>
-		<string>Fonts/FormaDJRMicro-Light.ttf</string>
-		<string>Fonts/FormaDJRMicro-ExtraLight.ttf</string>
-		<string>Fonts/FormaDJRMicro-ExtraBold.ttf</string>
-		<string>Fonts/FormaDJRMicro-Bold.ttf</string>
-		<string>Fonts/FormaDJRMicro-Black.ttf</string>
+		<string>SoulcraftGX.ttf</string>
+		<string>FormaDJRMicro-Regular.ttf</string>
+		<string>FormaDJRMicro-Medium.ttf</string>
+		<string>FormaDJRMicro-Light.ttf</string>
+		<string>FormaDJRMicro-ExtraLight.ttf</string>
+		<string>FormaDJRMicro-ExtraBold.ttf</string>
+		<string>FormaDJRMicro-Bold.ttf</string>
+		<string>FormaDJRMicro-Black.ttf</string>
 	</array>
 </dict>
 </plist>
