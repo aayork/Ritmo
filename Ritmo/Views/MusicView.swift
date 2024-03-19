@@ -65,14 +65,12 @@ struct MusicView: View {
                         .frame(minWidth: 0, maxWidth: .infinity)
                         .background(Color.electricLime)
                     HStack {
-//                        Text("Play Now").font(.title)
-//                        if true {
-//                            Text("Curated")
-//                                .padding(8)
-//                                .background(Color.pink)
-//                                .clipShape(Capsule())
-//                                .foregroundColor(.white)
-//                        }
+//                        Text("Curated")
+//                             .padding(8)
+//                             .background(Color.pink)
+//                             .clipShape(Capsule())
+//                             .foregroundColor(.white)
+//
 //                        
 //                        // Difficulty indicator
 //                        Text("Medium")

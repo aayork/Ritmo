@@ -80,9 +80,6 @@ struct ImmersiveView: View {
     }
     
     var body: some View {
-       // Scoreboard
-       ScoreView()
-        
        RealityView { content in
            content.add(orbSpawner)
            

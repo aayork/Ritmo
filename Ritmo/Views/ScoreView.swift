@@ -13,6 +13,7 @@ struct ScoreView: View {
     @Environment(\.dismissImmersiveSpace) var dismissImmersiveSpace
     @Environment(\.dismiss) private var dismiss
     @State private var progressValue: Double = 0
+    @State private var isButtonClicked = false
     var body: some View {
         ZStack() {
             HStack(alignment: .top) {
@@ -62,16 +63,29 @@ struct ScoreView: View {
                                 .tint(Color(uiColor: UIColor(red: 212 / 255, green: 244 / 255, blue: 4 / 255, alpha: 1.0)))
                                 .padding(.vertical, 30)
                                 .frame(width: 300)
-                            Button(action: {
-                                Task {
+                            if !isButtonClicked { // This condition will hide the button after it's clicked
+                                Button(action: {
+                                    Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in
+                                        if progressValue < gameModel.musicView.selectedSong!.duration {
+                                            progressValue += 1
+                                        } else {
+                                            timer.invalidate() // Stop the timer if the duration is reached
+                                            Task {
+                                                await dismissImmersiveSpace()
+                                            }
+                                            dismiss()
+                                            openWindow(id: "windowGroup")
+                                        }
+                                    }
+                                    isButtonClicked = true // Hide the button after it's clicked
+                                }) {
+                                    Image(systemName: gameModel.musicView.playing ? "pause.fill" : "play.fill")
+                                        .padding()
+                                        .background(Circle().fill(Color.green))
                                 }
-                            }) {
-                                Image(systemName: gameModel.musicView.playing ? "pause.fill" : "play.fill")
-                                    .padding()
-                                    .background(Circle().fill(Color.green))
+                                .buttonStyle(PlainButtonStyle())
+                                .cornerRadius(360)
                             }
-                            .buttonStyle(PlainButtonStyle())
-                            .cornerRadius(360)
                         }
                         .frame(width: 460)
                     }
@@ -89,6 +103,7 @@ struct ScoreView: View {
                     .offset(y: 15)
                 }
                 .padding(.vertical, 12)
+                /*
                 .onAppear { // Step 2: Start timer on appear
                     Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in
                         if progressValue < gameModel.musicView.selectedSong!.duration {
@@ -98,6 +113,7 @@ struct ScoreView: View {
                         }
                     }
                 }
+                 */
             }
         }
     }

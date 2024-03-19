@@ -16,6 +16,7 @@ class GameModel {
     var readyToStart = false
     var musicView: MusicView
     var recentlyPlayed: RecentlyPlayedManager
+    var immsersiveView: ImmersiveView
     var score = 0
     var tab = 1
 
@@ -35,6 +36,7 @@ class GameModel {
         //self.togglePlayPause = {}
         self.musicView = MusicView()
         self.recentlyPlayed = RecentlyPlayedManager()
+        self.immsersiveView = ImmersiveView()
     }
     /// Preload animation assets.
 }
