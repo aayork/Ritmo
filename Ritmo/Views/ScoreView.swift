@@ -14,23 +14,61 @@ struct ScoreView: View {
     @Environment(\.dismiss) private var dismiss
     @State private var progressValue: Double = 0
     @State private var isButtonClicked = false
+    @Environment(\.scenePhase) private var scenePhase
     var body: some View {
         ZStack() {
+            // Button stuff
+            if !isButtonClicked { // This condition will hide the button after it's clicked
+                Button(action: {
+                    Task {
+                        // Wait until togglePlaying has finished
+                        await gameModel.musicView.togglePlaying()
+                        
+                        // Calculate the end time based on the song's duration
+                        let endTime = Date().addingTimeInterval(gameModel.musicView.selectedSong!.duration)
+                        
+                        // Start a loop to update progressValue until the song's duration is reached
+                        while Date() < endTime {
+                            // Check every second
+                            try await Task.sleep(nanoseconds: 1_000_000_000)
+                            
+                            // Update the progressValue
+                            progressValue += 1
+                            
+                            // Check if the song has finished playing
+                            if progressValue >= gameModel.musicView.selectedSong!.duration {
+                                // Perform the necessary actions after the song is finished
+                                await dismissImmersiveSpace()
+                                dismiss()
+                                openWindow(id: "windowGroup")
+                                break // Exit the loop
+                            }
+                        }
+                    }
+                    isButtonClicked = true // Hide the button after it's clicked
+                }) {
+                    Text("Play")
+                        .padding()
+                        .background(Rectangle().fill(Color.green))
+                }
+                .buttonStyle(PlainButtonStyle())
+                .cornerRadius(25)
+                .zIndex(1)
+                .background(
+                    Rectangle()
+                        .fill(Color.green)
+                        .frame(width: 460, height: 230) // Adjust the frame size as needed
+                        .blur(radius: 100) // Adjust the blur radius to control the spread of the glow
+                        .shadow(radius: 4)
+                )
+                // Additional padding to ensure the blur doesn't clip
+                .padding(10)
+            }
+            // Button stuff
+            
             HStack(alignment: .top) {
                 VStack(spacing: 0) {
                     HStack(alignment: .top) {
-                        Button {
-                            Task {
-                                openWindow(id: "windowGroup")
-                                await dismissImmersiveSpace()
-                                await gameModel.musicView.togglePlaying()
-                                dismiss()
-                            }
-                            gameModel.reset()
-                        } label: {
-                            Label("Exit", systemImage: "x.circle")
-                                .labelStyle(.iconOnly)
-                        }
                         VStack {
                             VStack {
                                 let songName = gameModel.musicView.selectedSong!.name
@@ -39,12 +77,10 @@ struct ScoreView: View {
                                     .font(.title3)
                                     .bold()
                                     .accessibilityHidden(true)
-                                    .offset(y: -5)
                                 Text(artistName)
                                     .font(.subheadline)
                                     .bold()
                                     .accessibilityHidden(true)
-                                    .offset(y: -5)
                             }
                             .padding(20)
                             Text("Score: " + String(gameModel.score))
@@ -52,7 +88,6 @@ struct ScoreView: View {
                                 .bold()
                                 .accessibilityLabel(Text("Score"))
                                 .accessibilityValue(String(gameModel.score))
-                                .offset(x: 5)
                         }
                         .padding(.leading, 10)
                         .padding(.trailing, 50)
@@ -64,32 +99,6 @@ struct ScoreView: View {
                                 .tint(Color(uiColor: UIColor(red: 212 / 255, green: 244 / 255, blue: 4 / 255, alpha: 1.0)))
                                 .padding(.vertical, 30)
                                 .frame(width: 300)
-                            if !isButtonClicked { // This condition will hide the button after it's clicked
-                                Button(action: {
-                                    Task {
-                                        await gameModel.musicView.togglePlaying()
-                                    }
-                                    Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in
-                                        if progressValue < gameModel.musicView.selectedSong!.duration {
-                                            progressValue += 1
-                                        } else {
-                                            timer.invalidate() // Stop the timer if the duration is reached
-                                            Task {
-                                                await dismissImmersiveSpace()
-                                            }
-                                            dismiss()
-                                            openWindow(id: "windowGroup")
-                                        }
-                                    }
-                                    isButtonClicked = true // Hide the button after it's clicked
-                                }) {
-                                    Image(systemName: gameModel.musicView.playing ? "pause.fill" : "play.fill")
-                                        .padding()
-                                        .background(Circle().fill(Color.green))
-                                }
-                                .buttonStyle(PlainButtonStyle())
-                                .cornerRadius(360)
-                            }
                         }
                         .frame(width: 460)
                     }
@@ -107,23 +116,19 @@ struct ScoreView: View {
                     .offset(y: 15)
                 }
                 .padding(.vertical, 12)
-                .onDisappear {
-                    Task {
-                        await gameModel.musicView.togglePlaying()
-                        print("disappear action fired")
-                    }
-                }
-                /*
-                .onAppear { // Step 2: Start timer on appear
-                    Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in
-                        if progressValue < gameModel.musicView.selectedSong!.duration {
-                            progressValue += 1
-                        } else {
-                            timer.invalidate() // Stop the timer if the duration is reached
+                .onChange(of: scenePhase) {
+                    if scenePhase == .inactive {
+                        Task {
+                            openWindow(id: "windowGroup")
+                            await dismissImmersiveSpace()
+                            if (gameModel.musicView.playing == true) {
+                                await gameModel.musicView.togglePlaying()
+                            }
+                            dismiss()
                         }
+                        gameModel.reset()
                     }
                 }
-                 */
             }
         }
     }

@@ -117,7 +117,7 @@ struct MusicView: View {
                                         }
                                         .buttonStyle(PlainButtonStyle())
                                         .font(.extraLargeTitle)
-                                        .cornerRadius(20)
+                                        .cornerRadius(35)
                                     }
                                 }
                                 .frame(width: 300)
