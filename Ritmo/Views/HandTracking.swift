@@ -369,7 +369,32 @@ class HandTracking: ObservableObject, @unchecked Sendable {
             littleFingerIntermediateTipTransformL,
             littleFingerKnuckleTransformL,
             littleFingerMetacarpalTransformL,
-            littleFingerTipTransformL
+            littleFingerTipTransformL,
+            
+            thumbIntermediateBaseTransformR,
+            thumbIntermediateTipTransformR,
+            thumbKnuckleTransformR,
+            thumbTipTransformR,
+            indexFingerIntermediateBaseTransformR,
+            indexFingerIntermediateTipTransformR,
+            indexFingerKnuckleTransformR,
+            indexFingerMetacarpalTransformR,
+            indexFingerTipTransformR,
+            middleFingerIntermediateBaseTransformR,
+            middleFingerIntermediateTipTransformR,
+            middleFingerKnuckleTransformR,
+            middleFingerMetacarpalTransformR,
+            middleFingerTipTransformR,
+            ringFingerIntermediateBaseTransformR,
+            ringFingerIntermediateTipTransformR,
+            ringFingerKnuckleTransformR,
+            ringFingerMetacarpalTransformR,
+            ringFingerTipTransformR,
+            littleFingerIntermediateBaseTransformR,
+            littleFingerIntermediateTipTransformR,
+            littleFingerKnuckleTransformR,
+            littleFingerMetacarpalTransformR,
+            littleFingerTipTransformR
         ]
         
         return positionList
