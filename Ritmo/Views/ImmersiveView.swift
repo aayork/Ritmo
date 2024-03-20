@@ -86,13 +86,13 @@ struct ImmersiveView: View {
        RealityView { content in
            content.add(orbSpawner)
            
-           let sphere = MeshResource.generateSphere(radius: 0.1)
+           let sphere = MeshResource.generateSphere(radius: 0.01)
            let material = SimpleMaterial(color: .black, isMetallic: false)
            handSphere = ModelEntity(mesh: sphere, materials: [material])
            content.add(handSphere)
            
            for i in 1...24 {
-               let sphere = MeshResource.generateSphere(radius: 0.1)
+               let sphere = MeshResource.generateSphere(radius: 0.01)
                let material = SimpleMaterial(color: .black, isMetallic: false)
                handSpheres[i] = ModelEntity(mesh: sphere, materials: [material])
                content.add(handSpheres[i])
