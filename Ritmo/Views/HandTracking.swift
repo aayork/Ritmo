@@ -92,7 +92,7 @@ class HandTracking: ObservableObject, @unchecked Sendable {
         }
     }
     
-    func getJointPositions()  -> [SIMD3<Float>]? {
+    func getHands()  -> [Hand]? {
         guard let leftHandAnchor = latestHandTracking.left,
               let rightHandAnchor = latestHandTracking.right,
               leftHandAnchor.isTracked, rightHandAnchor.isTracked else {
@@ -397,8 +397,6 @@ class HandTracking: ObservableObject, @unchecked Sendable {
             littleFingerTipTransformR
         ]
         
-        return positionList
-        
         let leftHand = Hand(
             thumbIntermediateBase: thumbIntermediateBaseTransformL,
             thumbIntermediateTip: thumbIntermediateTipTransformL,
@@ -453,7 +451,7 @@ class HandTracking: ObservableObject, @unchecked Sendable {
             littleFingerTip: littleFingerTipTransformR
         )
 
-        return nil
+        return [leftHand, rightHand]
     }
 }
 
