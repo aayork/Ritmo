@@ -91,7 +91,7 @@ struct ImmersiveView: View {
            handSphere = ModelEntity(mesh: sphere, materials: [material])
            content.add(handSphere)
            
-           for i in 1...24 {
+           for i in 1...48 {
                let sphere = MeshResource.generateSphere(radius: 0.01)
                let material = SimpleMaterial(color: .black, isMetallic: false)
                handSpheres.append(ModelEntity(mesh: sphere, materials: [material]))
@@ -116,7 +116,7 @@ struct ImmersiveView: View {
                return
            }
            
-           for i in(0...jointPositions.count) {
+           for i in 0...jointPositions.count - 1 {
                handSpheres[i].transform.translation = jointPositions[i]
            }
            
