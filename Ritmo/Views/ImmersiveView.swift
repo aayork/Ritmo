@@ -94,7 +94,7 @@ struct ImmersiveView: View {
            for i in 1...24 {
                let sphere = MeshResource.generateSphere(radius: 0.01)
                let material = SimpleMaterial(color: .black, isMetallic: false)
-               handSpheres[i] = ModelEntity(mesh: sphere, materials: [material])
+               handSpheres.append(ModelEntity(mesh: sphere, materials: [material]))
                content.add(handSpheres[i])
            }
            
@@ -109,7 +109,12 @@ struct ImmersiveView: View {
            }
             
        } update: { updateContent in
-           let jointPositions: [SIMD3<Float>] = gestureModel.getJointPositions()!
+           guard let jointPositions: [SIMD3<Float>] = gestureModel.getJointPositions()
+           else {
+               // womp womp
+               print("womp womp")
+               return
+           }
            
            for i in(0...jointPositions.count) {
                handSpheres[i].transform.translation = jointPositions[i]
