@@ -110,6 +110,7 @@ struct ScoreView: View {
                 .onDisappear {
                     Task {
                         await gameModel.musicView.togglePlaying()
+                        print("disappear action fired")
                     }
                 }
                 /*
