@@ -18,6 +18,7 @@ struct ImmersiveView: View {
     @State var score = 0
     @State private var correctTime = false;
     @State private var handSphere = Entity()
+    @State private var handSpheres = [Entity()]
     
     let orbSpawner = Entity()
     let timer = Timer.publish(every: 5, on: .main, in: .common).autoconnect()
@@ -90,6 +91,13 @@ struct ImmersiveView: View {
            handSphere = ModelEntity(mesh: sphere, materials: [material])
            content.add(handSphere)
            
+           for i in 1...24 {
+               let sphere = MeshResource.generateSphere(radius: 0.1)
+               let material = SimpleMaterial(color: .black, isMetallic: false)
+               handSpheres[i] = ModelEntity(mesh: sphere, materials: [material])
+               content.add(handSpheres[i])
+           }
+           
            guard let immersiveEntity = try? await Entity(named: "Immersive", in: realityKitContentBundle) else {
                         fatalError("Unable to load immersive model")
                     }
@@ -101,12 +109,18 @@ struct ImmersiveView: View {
            }
             
        } update: { updateContent in
-           if let rightHandTransform = gestureModel.rightHandTransform() {
-               let position = Pose3D(rightHandTransform)!.position
-               handSphere.transform.translation = SIMD3<Float>(position.vector)
-           } else {
-               print("hand transform not found")
+           let jointPositions: [SIMD3<Float>] = gestureModel.getJointPositions()!
+           
+           for i in(0...jointPositions.count) {
+               handSpheres[i].transform.translation = jointPositions[i]
            }
+           
+//           if let rightHandTransform = gestureModel.rightHandTransform() {
+//               let position = Pose3D(rightHandTransform)!.position
+//               handSphere.transform.translation = SIMD3<Float>(position.vector)
+//           } else {
+//               print("hand transform not found")
+//           }
        }
        .onReceive(timer) {time in
            spawnHand()
