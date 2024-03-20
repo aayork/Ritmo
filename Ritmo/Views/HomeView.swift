@@ -107,8 +107,3 @@ struct HomeView: View {
         .padding(-15)
     }
 }
-
-
-//#Preview {
-    //HomeView()
-//}
