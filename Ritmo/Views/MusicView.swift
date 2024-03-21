@@ -122,9 +122,9 @@ struct MusicView: View {
 
                                                 
                                         }
-                                        .buttonStyle(PlainButtonStyle())
                                         .font(.extraLargeTitle)
                                         .offset(y:10)
+                                        .clipShape(Rectangle())
                                     }
                                 }
                                 .frame(width: 300)
