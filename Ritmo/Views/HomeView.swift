@@ -103,7 +103,7 @@ struct HomeView: View {
                 VStack {
                     Text("HIGH SCORES")
                         .font(.custom("FormaDJRMicro-Bold", size: 30.0))
-                        .padding()
+                        .padding(5)
                     Text("1000 PTS")
                         .font(.custom("Soulcraft_Slanted-Condensed", size: 25.0))
                         .foregroundStyle(Color.electricLime)
@@ -129,7 +129,7 @@ struct HomeView: View {
                 VStack {
                     Text("POPULAR TRACKS")
                         .font(.custom("FormaDJRMicro-Bold", size: 30.0))
-                        .padding()
+                        .padding(5)
                     Text("SOMETHING IN THE ORANGE")
                         .font(.custom("Soulcraft_Slanted-Condensed", size: 25.0))
                         .foregroundStyle(Color.electricLime)
