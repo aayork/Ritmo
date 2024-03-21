@@ -89,6 +89,7 @@ struct HomeView: View {
                         .padding()
                         .frame(width: 300)
                         .background(Rectangle().fill(Color(red: 0.17, green: 0.17, blue: 0.17)))
+                        .cornerRadius(20)
                 }
                 .frame(width: 300)
                 .background(Rectangle().fill(Color(red: 0.17, green: 0.17, blue: 0.17)))
@@ -184,6 +185,7 @@ struct HomeView: View {
                             .padding()
                             .background(Rectangle().fill(Color.electricLime))
                             .foregroundStyle(Color.black)
+                            .cornerRadius(20)
                     }
                     .buttonStyle(PlainButtonStyle())
                     .font(.largeTitle)
