@@ -65,12 +65,6 @@ struct HomeView: View {
             contentStack
         }
         .padding()
-        .glassBackgroundEffect(
-         in: RoundedRectangle(
-             cornerRadius: 50,
-             style: .continuous
-         )
-        )
         .background(Color.gunmetalGray.opacity(0.8))
     }
     
