@@ -146,7 +146,7 @@ struct ImmersiveView: View {
             
        } update: { updateContent in
            
-           gestureModel.isFistL()
+           
            
            guard let hands = gestureModel.getHands()
            else {
@@ -220,6 +220,12 @@ struct ImmersiveView: View {
            xR.transform.translation = rightHand.x
            yR.transform.translation = rightHand.y
            zR.transform.translation = rightHand.z
+           
+           if (gestureModel.isFistL()!) {
+               changeColor(entity: xL, color: .green)
+           } else {
+               changeColor(entity: xL, color: .black)
+           }
        }
        .onReceive(timer) {time in
            spawnHand()
