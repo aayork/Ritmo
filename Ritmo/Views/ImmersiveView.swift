@@ -111,6 +111,8 @@ struct ImmersiveView: View {
             
        } update: { updateContent in
            
+           gestureModel.isFistL()
+           
            guard let hands = gestureModel.getHands()
            else {
                print("hand positions not found")
@@ -178,7 +180,6 @@ struct ImmersiveView: View {
        }
        .onReceive(timer) {time in
            spawnHand()
-           gestureModel.isFistL()
        }
        .gesture(TapGesture().targetedToAnyEntity().onEnded({ value in
            if (correctTime) {
