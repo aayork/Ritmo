@@ -16,7 +16,7 @@ class GameModel {
     var readyToStart = false
     var musicView: MusicView
     var recentlyPlayed: RecentlyPlayedManager
-    var immsersiveView: ImmersiveView
+    var immsersiveView: ImmersiveView?
     var score = 0
     var tab = 1
 
@@ -32,11 +32,13 @@ class GameModel {
     }
     
     /// Preload assets when the app launches to avoid pop-in during the game.
-    init(iv: ImmersiveView) {
+    init() {
         //self.togglePlayPause = {}
         self.musicView = MusicView()
         self.recentlyPlayed = RecentlyPlayedManager()
-        self.immsersiveView = iv
+        Task { @MainActor in
+            self.immsersiveView = ImmersiveView(gestureModel: HandTrackingContainer.handTracking)
+        }
     }
     /// Preload animation assets.
 }
