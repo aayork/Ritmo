@@ -18,6 +18,7 @@ class GameModel {
     var recentlyPlayed: RecentlyPlayedManager
     var immsersiveView: ImmersiveView?
     var handTracking: HandTracking?
+    var carousel: SnapCarouselView
     var score = 0
     var tab = 1
 
@@ -36,6 +37,7 @@ class GameModel {
     init() {
         self.musicView = MusicView()
         self.recentlyPlayed = RecentlyPlayedManager()
+        self.carousel = SnapCarouselView()
         Task { @MainActor in
             self.immsersiveView = ImmersiveView(gestureModel: HandTrackingContainer.handTracking)
             self.handTracking = HandTracking()
