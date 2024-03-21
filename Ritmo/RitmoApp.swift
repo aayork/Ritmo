@@ -20,8 +20,6 @@ struct RitmoApp: App {
         }
         .windowResizability(.contentSize)
         
-        // I think to show the R!TMO logo we can make a new window group here and call it from HomeView
-        
         WindowGroup(id: "scoreView") {
             ScoreView()
                 .environment(self.gameModel)
