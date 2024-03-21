@@ -24,6 +24,7 @@ struct ImmersiveView: View {
     @State private var yR = Entity()
     @State private var zR = Entity()
     @State private var handSpheres = [Entity()]
+    @State private var handTargets = [Entity()]
     
     let orbSpawner = Entity()
     @State var timer = Timer.publish(every: 5, on: .main, in: .common).autoconnect()
@@ -70,6 +71,9 @@ struct ImmersiveView: View {
             // Attach hands to the orbSpawner
             orbSpawner.addChild(handOne)
             orbSpawner.addChild(handTwo)
+        
+            handTargets.append(handOne)
+            handTargets.append(handTwo)
             
             // Move the hands towards the player
             var targetTransform = handOne.transform
@@ -81,6 +85,8 @@ struct ImmersiveView: View {
             
             // Despawn hands after stopping or after a fixed time
             DispatchQueue.main.asyncAfter(deadline: .now() + handTravelTime + 1) {
+                handTargets.remove(at: handTargets.firstIndex(of: handOne)!)
+                handTargets.remove(at: handTargets.firstIndex(of: handTwo)!)
                 handOne.removeFromParent()
                 handTwo.removeFromParent()
             }
@@ -259,6 +265,13 @@ struct ImmersiveView: View {
                changeColor(entity: xR, color: .green)
            } else {
                changeColor(entity: xR, color: .black)
+           }
+           
+           for handTarget in handTargets {
+               if (simd_distance(leftHand.middleFingerKnuckle, handTarget.position) < 0.2) {
+                   handTargets.remove(at: handTargets.firstIndex(of: handTarget)!)
+                   handTarget.removeFromParent()
+               }
            }
        }
 //       .onReceive(timer) {time in
