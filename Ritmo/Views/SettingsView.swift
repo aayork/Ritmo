@@ -55,6 +55,7 @@ struct SettingsView: View {
                 //.opacity(0.5)
                 
                 HStack {
+                    /*
                     Button("CREDITS") {}
                         .font(.custom("Soulcraft_Wide", size: 30.0))
                         .background(Color(red: 0.17, green: 0.17, blue: 0.17))
@@ -63,13 +64,29 @@ struct SettingsView: View {
                         .clipShape(Capsule())
                         .offset(x: 390)
                     Spacer()
+                     */
                     
-                    Button("TUTORIAL") {}
-                        .font(.custom("Soulcraft_Wide", size: 30.0))
-                        .background(Color(red: 0.17, green: 0.17, blue: 0.17))
-                        .foregroundColor(.white)
-                        .opacity(0.5)
-                        .clipShape(Capsule())
+                    
+                    Button{
+                        // action will be here
+                    } label: {
+                        Text("CREDITS")
+                            .foregroundColor(.white)
+                            .font(.custom("Soulcraft_Wide", size: 30.0))
+                            .frame(maxWidth: 225, minHeight: 52)
+                    }
+                    .offset(x: 325)
+                    .padding(.horizontal)
+                    Spacer()
+                    
+                    Button{
+                        // action will be here
+                    } label: {
+                        Text("TUTORIAL")
+                            .foregroundColor(.white)
+                            .font(.custom("Soulcraft_Wide", size: 30.0))
+                            .frame(maxWidth: 225, minHeight: 52)
+                    }
                     Spacer()
                 }
                 .padding(.horizontal)
