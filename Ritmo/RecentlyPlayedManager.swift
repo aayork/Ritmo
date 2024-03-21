@@ -11,10 +11,21 @@ class RecentlyPlayedManager {
     static let shared = RecentlyPlayedManager()
     private let key = "RecentlyPlayedSongs"
     private let maxCount = 5
+    private var valid = true
 
     func addSong(song: Item) {
         var songs = getRecentlyPlayedSongs()
-        songs.insert(song, at: 0) // Add new song at the beginning of the list
+        
+        for i in 0...songs.count - 1 {
+            if (song.name == songs[i].name && song.artist == songs[i].artist) {
+                valid = false
+            }
+        }
+        
+        if (valid == true) {
+            songs.insert(song, at: 0) // Add new song at the beginning of the list
+        }
+        
         if songs.count > maxCount {
             songs = Array(songs.prefix(maxCount)) // Keep only the first 5 items
         }

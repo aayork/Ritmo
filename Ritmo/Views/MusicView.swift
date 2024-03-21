@@ -124,6 +124,7 @@ struct MusicView: View {
                                         .background(Color.electricLime)
                                         .foregroundColor(.black)
                                         .clipShape(Capsule())
+                                        .offset(x: 40)
                                         Spacer()
         
 
