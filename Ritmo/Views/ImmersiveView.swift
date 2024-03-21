@@ -110,74 +110,75 @@ struct ImmersiveView: View {
            }
             
        } update: { updateContent in
-//           
-//           guard let hands = gestureModel.getHands()
-//           else {
-//               print("hand positions not found")
-//               return
-//           }
-//           
-//           let leftHand = hands[0]
-//           let rightHand = hands[1]
-//           
-//           let jointPositions: [SIMD3<Float>] = [
-//            leftHand.thumbIntermediateBase,
-//            leftHand.thumbIntermediateTip,
-//            leftHand.thumbKnuckle,
-//            leftHand.thumbTip,
-//            leftHand.indexFingerIntermediateBase,
-//            leftHand.indexFingerIntermediateTip,
-//            leftHand.indexFingerKnuckle,
-//            leftHand.indexFingerMetacarpal,
-//            leftHand.indexFingerTip,
-//            leftHand.middleFingerIntermediateBase,
-//            leftHand.middleFingerIntermediateTip,
-//            leftHand.middleFingerKnuckle,
-//            leftHand.middleFingerMetacarpal,
-//            leftHand.middleFingerTip,
-//            leftHand.ringFingerIntermediateBase,
-//            leftHand.ringFingerIntermediateTip,
-//            leftHand.ringFingerKnuckle,
-//            leftHand.ringFingerMetacarpal,
-//            leftHand.ringFingerTip,
-//            leftHand.littleFingerIntermediateBase,
-//            leftHand.littleFingerIntermediateTip,
-//            leftHand.littleFingerKnuckle,
-//            leftHand.littleFingerMetacarpal,
-//            leftHand.littleFingerTip,
-//               
-//            rightHand.thumbIntermediateBase,
-//            rightHand.thumbIntermediateTip,
-//            rightHand.thumbKnuckle,
-//            rightHand.thumbTip,
-//            rightHand.indexFingerIntermediateBase,
-//            rightHand.indexFingerIntermediateTip,
-//            rightHand.indexFingerKnuckle,
-//            rightHand.indexFingerMetacarpal,
-//            rightHand.indexFingerTip,
-//            rightHand.middleFingerIntermediateBase,
-//            rightHand.middleFingerIntermediateTip,
-//            rightHand.middleFingerKnuckle,
-//            rightHand.middleFingerMetacarpal,
-//            rightHand.middleFingerTip,
-//            rightHand.ringFingerIntermediateBase,
-//            rightHand.ringFingerIntermediateTip,
-//            rightHand.ringFingerKnuckle,
-//            rightHand.ringFingerMetacarpal,
-//            rightHand.ringFingerTip,
-//            rightHand.littleFingerIntermediateBase,
-//            rightHand.littleFingerIntermediateTip,
-//            rightHand.littleFingerKnuckle,
-//            rightHand.littleFingerMetacarpal,
-//            rightHand.littleFingerTip
-//           ]
-//           
-//           for i in 0...jointPositions.count - 1 {
-//               handSpheres[i].transform.translation = jointPositions[i]
-//           }
+           
+           guard let hands = gestureModel.getHands()
+           else {
+               print("hand positions not found")
+               return
+           }
+           
+           let leftHand = hands[0]
+           let rightHand = hands[1]
+           
+           let jointPositions: [SIMD3<Float>] = [
+            leftHand.thumbIntermediateBase,
+            leftHand.thumbIntermediateTip,
+            leftHand.thumbKnuckle,
+            leftHand.thumbTip,
+            leftHand.indexFingerIntermediateBase,
+            leftHand.indexFingerIntermediateTip,
+            leftHand.indexFingerKnuckle,
+            leftHand.indexFingerMetacarpal,
+            leftHand.indexFingerTip,
+            leftHand.middleFingerIntermediateBase,
+            leftHand.middleFingerIntermediateTip,
+            leftHand.middleFingerKnuckle,
+            leftHand.middleFingerMetacarpal,
+            leftHand.middleFingerTip,
+            leftHand.ringFingerIntermediateBase,
+            leftHand.ringFingerIntermediateTip,
+            leftHand.ringFingerKnuckle,
+            leftHand.ringFingerMetacarpal,
+            leftHand.ringFingerTip,
+            leftHand.littleFingerIntermediateBase,
+            leftHand.littleFingerIntermediateTip,
+            leftHand.littleFingerKnuckle,
+            leftHand.littleFingerMetacarpal,
+            leftHand.littleFingerTip,
+               
+            rightHand.thumbIntermediateBase,
+            rightHand.thumbIntermediateTip,
+            rightHand.thumbKnuckle,
+            rightHand.thumbTip,
+            rightHand.indexFingerIntermediateBase,
+            rightHand.indexFingerIntermediateTip,
+            rightHand.indexFingerKnuckle,
+            rightHand.indexFingerMetacarpal,
+            rightHand.indexFingerTip,
+            rightHand.middleFingerIntermediateBase,
+            rightHand.middleFingerIntermediateTip,
+            rightHand.middleFingerKnuckle,
+            rightHand.middleFingerMetacarpal,
+            rightHand.middleFingerTip,
+            rightHand.ringFingerIntermediateBase,
+            rightHand.ringFingerIntermediateTip,
+            rightHand.ringFingerKnuckle,
+            rightHand.ringFingerMetacarpal,
+            rightHand.ringFingerTip,
+            rightHand.littleFingerIntermediateBase,
+            rightHand.littleFingerIntermediateTip,
+            rightHand.littleFingerKnuckle,
+            rightHand.littleFingerMetacarpal,
+            rightHand.littleFingerTip
+           ]
+           
+           for i in 0...jointPositions.count - 1 {
+               handSpheres[i].transform.translation = jointPositions[i]
+           }
        }
        .onReceive(timer) {time in
            spawnHand()
+           gestureModel.isFistL()
        }
        .gesture(TapGesture().targetedToAnyEntity().onEnded({ value in
            if (correctTime) {
