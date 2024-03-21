@@ -122,7 +122,7 @@ struct HomeView: View {
                
                 
                 VStack {
-                    Text("POPULAR TRACKS")
+                    Text("OUR PICKS")
                         .font(.custom("FormaDJRMicro-Bold", size: 30.0))
                         .padding(5)
                     Text("SOMETHING IN THE ORANGE")
