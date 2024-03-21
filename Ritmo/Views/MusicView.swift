@@ -111,24 +111,22 @@ struct MusicView: View {
                                     HStack {
                                         
                                         
-                                        Button(action: {
+                                        Button("START", action: {
                                             Task {
                                                 gameModel.musicView = self
                                                 gameModel.recentlyPlayed.addSong(song: selectedSong!)
                                                 await openImmersiveSpace(id: "ImmersiveSpace")
                                             }
-                                        }) {
-                                            Text("START")
-                                                .font(.custom("Soulcraft_Wide", size: 30.0))
-                                                .padding()
-                                                .background(Rectangle().fill(Color.electricLime))
-                                                .foregroundStyle(Color.black)
-                                                .cornerRadius(10)
-                                        }
-                                        .buttonStyle(PlainButtonStyle())
-                                        .padding(.vertical)
-                                        .font(.largeTitle)
-                                        .cornerRadius(10)
+                                        })
+                                        .font(.custom("Soulcraft_Wide", size: 30.0))
+                                        .padding(20)
+                                        .padding(.horizontal)
+                                        .background(Color.electricLime)
+                                        .foregroundColor(.black)
+                                        .clipShape(Capsule())
+                                        Spacer()
+        
+
                                         
                                     }
                                         

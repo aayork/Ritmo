@@ -95,6 +95,7 @@ struct HomeView: View {
                 .background(Rectangle().fill(Color(red: 0.17, green: 0.17, blue: 0.17)))
                 .buttonStyle(PlainButtonStyle())
                 .font(.largeTitle)
+                .clipShape(Rectangle())
                 .cornerRadius(20)
                 // .offset(y: -200)
                 
@@ -204,6 +205,7 @@ struct HomeView: View {
                     }
                     .buttonStyle(PlainButtonStyle())
                     .font(.largeTitle)
+                    .clipShape(Rectangle())
                     .cornerRadius(20)
                 }
             }
