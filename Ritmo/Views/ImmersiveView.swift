@@ -55,6 +55,8 @@ struct ImmersiveView: View {
             let handTwo = ModelEntity()
             handTwo.addChild(importEntityTwo)
             handTwo.position = [-0.5, 1.3, -5]
+        
+            print(handTwo.position)
             
             // Add interaction components if needed
             handOne.components.set(InputTargetComponent())

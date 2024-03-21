@@ -13,6 +13,8 @@ struct SettingsView: View {
     
     var body: some View {
         ZStack {
+            Color.gunmetalGray.opacity(0.8)
+                            .edgesIgnoringSafeArea(.all) 
             VStack {
                 Text("SETTINGS")
                     .font(.custom("Soulcraft_Wide", size: 50.0))
@@ -75,8 +77,6 @@ struct SettingsView: View {
                 .padding(.horizontal)
             }
         }
-        .padding()
-        .background(Color.gunmetalGray.opacity(0.8))
     }
     
 }
