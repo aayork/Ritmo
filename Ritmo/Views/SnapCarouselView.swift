@@ -80,14 +80,27 @@ struct CarouselCardView: View {
     let distanceFromCenter: CGFloat
     
     var body: some View {
-        ArtworkImage(card.artwork, width: 400)
-            .scaledToFit()
-            .frame(width: 400, height: 400)
-            .clipShape(Circle())
-            .blur(radius: distanceFromCenter / 100) // Apply blur based on distance
-            .scaleEffect(card.id == selectedCardID ? 1.0 : 0.8)
-            .grayscale(card.id == selectedCardID ? 0.0 : 1.0)
-            .opacity(max(0, 1 - (Double(distanceFromCenter) / 450)))
+        VStack {
+            ArtworkImage(card.artwork, width: 400)
+                .scaledToFit()
+                .frame(width: 400, height: 400)
+                .clipShape(Circle())
+                .blur(radius: distanceFromCenter / 100) // Apply blur based on distance
+                .scaleEffect(card.id == selectedCardID ? 1.0 : 0.8)
+                .grayscale(card.id == selectedCardID ? 0.0 : 1.0)
+                .opacity(max(0, 1 - (Double(distanceFromCenter) / 450)))
+            if (card.id == selectedCardID) {
+                HStack {
+                    Text(card.name)
+                        .font(.custom("FormaDJRMicro-Bold", size: 17.0))
+                    Text(" - ")
+                        .font(.custom("FormaDJRMicro-Bold", size: 17.0))
+                    Text(card.artist)
+                        .font(.custom("FormaDJRMicro-Bold", size: 17.0))
+                }
+                .padding()
+            }
+        }
     }
 }
 
