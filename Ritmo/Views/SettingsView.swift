@@ -38,7 +38,7 @@ struct SettingsView: View {
                     Text("Controls")
                         .font(.custom("FormaDJRMicro-Light", size: 30))
                         .frame(maxWidth: .infinity, alignment: .leading)
-                        .padding(.horizontal)
+                        .padding(.horizontal, 30)
                     HStack {
                         Button("GESTURES") {}
                         Button("AUDIO") {}
@@ -57,17 +57,15 @@ struct SettingsView: View {
                 HStack {
                     Button("CREDITS") {}
                         .font(.custom("Soulcraft_Wide", size: 30.0))
-                        .padding(20)
                         .background(Color(red: 0.17, green: 0.17, blue: 0.17))
                         .foregroundColor(.white)
                         .opacity(0.5)
                         .clipShape(Capsule())
-                        .offset(x: 325)
+                        .offset(x: 390)
                     Spacer()
                     
                     Button("TUTORIAL") {}
                         .font(.custom("Soulcraft_Wide", size: 30.0))
-                        .padding(20)
                         .background(Color(red: 0.17, green: 0.17, blue: 0.17))
                         .foregroundColor(.white)
                         .opacity(0.5)
@@ -75,6 +73,9 @@ struct SettingsView: View {
                     Spacer()
                 }
                 .padding(.horizontal)
+                Text("Glory, Glory")
+                    .font(.custom("Allura", size: 30.0))
+                Text("Made with ❤️ in Athens")
             }
         }
     }
