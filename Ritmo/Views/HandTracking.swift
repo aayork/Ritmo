@@ -344,7 +344,7 @@ class HandTracking: ObservableObject, @unchecked Sendable {
             SIMD4(posR.x + 1, posR.y, posR.z, 1))
         
         let xR = matrix_multiply(
-            leftHandAnchor.originFromAnchorTransform, xMatrixR
+            rightHandAnchor.originFromAnchorTransform, xMatrixR
         ).columns.3.xyz
         
         let yMatrixR = simd_matrix(
@@ -354,7 +354,7 @@ class HandTracking: ObservableObject, @unchecked Sendable {
             SIMD4(posR.x, posR.y + 1, posR.z, 1))
         
         let yR = matrix_multiply(
-            leftHandAnchor.originFromAnchorTransform, yMatrixR
+            rightHandAnchor.originFromAnchorTransform, yMatrixR
         ).columns.3.xyz
         
         let zMatrixR = simd_matrix(
@@ -364,7 +364,7 @@ class HandTracking: ObservableObject, @unchecked Sendable {
             SIMD4(posR.x, posR.y, posR.z + 1, 1))
         
         let zR = matrix_multiply(
-            leftHandAnchor.originFromAnchorTransform, zMatrixR
+            rightHandAnchor.originFromAnchorTransform, zMatrixR
         ).columns.3.xyz
 
         let indexFingerTipTransformR = matrix_multiply(
