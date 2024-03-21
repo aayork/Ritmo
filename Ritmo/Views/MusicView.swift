@@ -109,6 +109,8 @@ struct MusicView: View {
                                 
                                     // Play controls
                                     HStack {
+                                        
+                                        
                                         Button(action: {
                                             Task {
                                                 gameModel.musicView = self
@@ -116,23 +118,28 @@ struct MusicView: View {
                                                 await openImmersiveSpace(id: "ImmersiveSpace")
                                             }
                                         }) {
-                                            Text("Start")
+                                            Text("START")
+                                                .font(.custom("Soulcraft_Wide", size: 30.0))
                                                 .padding()
-                                                .background(Rectangle().fill(Color.green).cornerRadius(25))
-
-                                                
+                                                .background(Rectangle().fill(Color.electricLime))
+                                                .foregroundStyle(Color.black)
+                                                .cornerRadius(10)
                                         }
-                                        .font(.extraLargeTitle)
-                                        .offset(y:10)
+                                        .buttonStyle(PlainButtonStyle())
+                                        .font(.largeTitle)
+                                        .cornerRadius(10)
+                                        
                                     }
+                                        
                                 }
                                 .frame(width: 300)
                                 .position(x:110, y:25)
                                 .padding()
+                                        
                             }
                         } else {
                             Text("Please search for a song...")
-                                .position(x:485, y:225)
+                                .position(x:475, y:-100)
                         }
                     }
                 }
