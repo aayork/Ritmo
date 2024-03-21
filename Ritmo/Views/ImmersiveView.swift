@@ -150,6 +150,7 @@ struct ImmersiveView: View {
            Task {
                openWindow(id: "scoreView")
                dismissWindow(id: "windowGroup")
+               gameModel.immsersiveView = self
                stopTimer()
            }
             
