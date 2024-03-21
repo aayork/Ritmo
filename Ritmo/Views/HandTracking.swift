@@ -212,7 +212,7 @@ class HandTracking: ObservableObject, @unchecked Sendable {
             indexFingerMetacarpalL.anchorFromJointTransform.columns.0,
             indexFingerMetacarpalL.anchorFromJointTransform.columns.1,
             indexFingerMetacarpalL.anchorFromJointTransform.columns.2,
-            SIMD4(posL.x + 1, posL.y, posL.z, 1))
+            SIMD4(posL.x + 0.1, posL.y, posL.z, 1))
         
         let xL = matrix_multiply(
             leftHandAnchor.originFromAnchorTransform, xMatrix
@@ -222,7 +222,7 @@ class HandTracking: ObservableObject, @unchecked Sendable {
             indexFingerMetacarpalL.anchorFromJointTransform.columns.0,
             indexFingerMetacarpalL.anchorFromJointTransform.columns.1,
             indexFingerMetacarpalL.anchorFromJointTransform.columns.2,
-            SIMD4(posL.x, posL.y + 1, posL.z, 1))
+            SIMD4(posL.x, posL.y + 0.1, posL.z, 1))
         
         let yL = matrix_multiply(
             leftHandAnchor.originFromAnchorTransform, yMatrix
@@ -232,7 +232,7 @@ class HandTracking: ObservableObject, @unchecked Sendable {
             indexFingerMetacarpalL.anchorFromJointTransform.columns.0,
             indexFingerMetacarpalL.anchorFromJointTransform.columns.1,
             indexFingerMetacarpalL.anchorFromJointTransform.columns.2,
-            SIMD4(posL.x, posL.y, posL.z + 1, 1))
+            SIMD4(posL.x, posL.y, posL.z + 0.1, 1))
         
         let zL = matrix_multiply(
             leftHandAnchor.originFromAnchorTransform, zMatrix
