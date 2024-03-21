@@ -272,6 +272,10 @@ struct ImmersiveView: View {
                    handTargets.remove(at: handTargets.firstIndex(of: handTarget)!)
                    handTarget.removeFromParent()
                }
+               if (simd_distance(rightHand.middleFingerKnuckle, handTarget.position) < 0.2) {
+                   handTargets.remove(at: handTargets.firstIndex(of: handTarget)!)
+                   handTarget.removeFromParent()
+               }
            }
        }
 //       .onReceive(timer) {time in
