@@ -92,7 +92,7 @@ struct MusicView: View {
                                 ArtworkImage(song.artwork, width: 400)
                                     .cornerRadius(50)
                                     .position(x:250, y:-25)
-                                VStack(alignment: .leading) {
+                                VStack() {
                                 
                                     Text(song.name) // Display song name
                                         .font(.system(size: 35, weight: .heavy))
@@ -126,6 +126,7 @@ struct MusicView: View {
                                                 .cornerRadius(10)
                                         }
                                         .buttonStyle(PlainButtonStyle())
+                                        .padding(.vertical)
                                         .font(.largeTitle)
                                         .cornerRadius(10)
                                         
