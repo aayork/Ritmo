@@ -124,7 +124,6 @@ struct MusicView: View {
                                         }
                                         .font(.extraLargeTitle)
                                         .offset(y:10)
-                                        .clipShape(Rectangle())
                                     }
                                 }
                                 .frame(width: 300)
