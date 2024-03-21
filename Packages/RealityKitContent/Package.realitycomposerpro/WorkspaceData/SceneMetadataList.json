@@ -68,14 +68,29 @@
       [
         "AF09ED6F-1707-48FD-8720-65B998362C09",
         "Root",
-        "AmbientAudio"
+        "handwork",
+        "RootNode",
+        "Armature",
+        "Bone",
+        "Bone005"
       ],
       {
-        "isExpanded" : false,
-        "isLocked" : false,
-        "selectedAudioFilePrim" : {
-          "string" : "\/Root\/StarWars60_wav"
-        }
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "AF09ED6F-1707-48FD-8720-65B998362C09",
+        "Root",
+        "handwork",
+        "RootNode",
+        "Armature",
+        "Bone",
+        "Bone005",
+        "Bone006"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
       },
       [
         "AF09ED6F-1707-48FD-8720-65B998362C09",
@@ -97,8 +112,7 @@
         "Root",
         "handwork",
         "RootNode",
-        "Armature",
-        "Bone"
+        "hand"
       ],
       {
         "isExpanded" : true,
@@ -118,6 +132,18 @@
       [
         "AF09ED6F-1707-48FD-8720-65B998362C09",
         "Root",
+        "AmbientAudio"
+      ],
+      {
+        "isExpanded" : false,
+        "isLocked" : false,
+        "selectedAudioFilePrim" : {
+          "string" : "\/Root\/StarWars60_wav"
+        }
+      },
+      [
+        "AF09ED6F-1707-48FD-8720-65B998362C09",
+        "Root",
         "handwork"
       ],
       {
@@ -128,7 +154,9 @@
         "AF09ED6F-1707-48FD-8720-65B998362C09",
         "Root",
         "handwork",
-        "RootNode"
+        "RootNode",
+        "Armature",
+        "Bone"
       ],
       {
         "isExpanded" : true,
@@ -148,45 +176,17 @@
       },
       [
         "AF09ED6F-1707-48FD-8720-65B998362C09",
+        "Root",
+        "handwork",
+        "RootNode"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "AF09ED6F-1707-48FD-8720-65B998362C09",
         "Root"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "AF09ED6F-1707-48FD-8720-65B998362C09",
-        "Root",
-        "handwork",
-        "RootNode",
-        "Armature",
-        "Bone",
-        "Bone005"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "AF09ED6F-1707-48FD-8720-65B998362C09",
-        "Root",
-        "handwork",
-        "RootNode",
-        "hand"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "AF09ED6F-1707-48FD-8720-65B998362C09",
-        "Root",
-        "handwork",
-        "RootNode",
-        "Armature",
-        "Bone",
-        "Bone005",
-        "Bone006"
       ],
       {
         "isExpanded" : true,

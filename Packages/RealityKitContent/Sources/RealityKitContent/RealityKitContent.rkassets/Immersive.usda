@@ -191,14 +191,5 @@ def Xform "Root"
             }
         }
     }
-
-    def "Fist_fixed" (
-        active = true
-        prepend references = @Fist_fixed.usdz@
-    )
-    {
-        float3 xformOp:scale = (1, 1, 1)
-        float3 xformOp:translate = (0.08, 0.15, -1.80769)
-    }
 }
 
