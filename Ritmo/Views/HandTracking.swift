@@ -126,10 +126,10 @@ class HandTracking: ObservableObject, @unchecked Sendable {
         && middleTip!.x < middleIBase!.x
         && ringTip!.x < ringIBase!.x
         && littleTip!.x < littleIBase!.x
-        && (indexTip!.y < indexIBase!.y
-        || middleTip!.y < middleIBase!.y
-        || ringTip!.y < ringIBase!.y
-        || littleTip!.y < littleIBase!.y)
+//        && (indexTip!.y < indexIBase!.y
+//        || middleTip!.y < middleIBase!.y
+//        || ringTip!.y < ringIBase!.y
+//        || littleTip!.y < littleIBase!.y)
         && thumbTip!.z > thumbKnuckle!.z
         
         return fist
@@ -157,10 +157,10 @@ class HandTracking: ObservableObject, @unchecked Sendable {
         && middleTip!.x > middleIBase!.x
         && ringTip!.x > ringIBase!.x
         && littleTip!.x > littleIBase!.x
-        && (indexTip!.y > indexIBase!.y
-        || middleTip!.y > middleIBase!.y
-        || ringTip!.y > ringIBase!.y
-        || littleTip!.y > littleIBase!.y)
+//        && (indexTip!.y > indexIBase!.y
+//        || middleTip!.y > middleIBase!.y
+//        || ringTip!.y > ringIBase!.y
+//        || littleTip!.y > littleIBase!.y)
         && thumbTip!.z < thumbKnuckle!.z
         
         return fist

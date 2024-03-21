@@ -23,6 +23,7 @@ struct ScoreView: View {
                     Task {
                         // Wait until togglePlaying has finished
                         await gameModel.musicView.togglePlaying()
+                        gameModel.immsersiveView?.startTimer()
                         
                         // Calculate the end time based on the song's duration
                         let endTime = Date().addingTimeInterval(gameModel.musicView.selectedSong!.duration)

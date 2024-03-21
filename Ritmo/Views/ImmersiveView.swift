@@ -26,7 +26,7 @@ struct ImmersiveView: View {
     @State private var handSpheres = [Entity()]
     
     let orbSpawner = Entity()
-    let timer = Timer.publish(every: 5, on: .main, in: .common).autoconnect()
+    @State var timer = Timer.publish(every: 5, on: .main, in: .common).autoconnect()
     let handTravelTime = 4.0 // The time it takes the hand to reach the player
     let acceptInputWindow = 0.8 // The time window in which the player can successfully match a gesture
     
@@ -87,6 +87,14 @@ struct ImmersiveView: View {
         entity.addChild(sphereEntity)
     }
     
+    func startTimer() {
+        self.timer = Timer.publish(every: 5, on: .main, in: .common).autoconnect()
+    }
+    
+    func stopTimer() {
+        //self.timer.upstream.connect().cancel()
+    }
+    
     var body: some View {
        RealityView { content in
            //gestureModel.isFistL()
@@ -142,11 +150,10 @@ struct ImmersiveView: View {
            Task {
                openWindow(id: "scoreView")
                dismissWindow(id: "windowGroup")
+               stopTimer()
            }
             
        } update: { updateContent in
-           
-           
            
            guard let hands = gestureModel.getHands()
            else {
@@ -233,9 +240,9 @@ struct ImmersiveView: View {
                changeColor(entity: xR, color: .black)
            }
        }
-       .onReceive(timer) {time in
-           spawnHand()
-       }
+//       .onReceive(timer) {time in
+//           spawnHand()
+//       }
        .gesture(TapGesture().targetedToAnyEntity().onEnded({ value in
            if (correctTime) {
                changeColor(entity: value.entity, color: .green)
