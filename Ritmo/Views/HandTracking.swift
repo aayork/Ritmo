@@ -46,6 +46,14 @@ class HandTracking: ObservableObject, @unchecked Sendable {
         var littleFingerTip: SIMD3<Float>
     }
     
+    struct Finger {
+        var intermediateBase: SIMD3<Float>
+        var intermediateTip: SIMD3<Float>
+        var knuckle: SIMD3<Float>
+        var metacarpal: SIMD3<Float>
+        var tip: SIMD3<Float>
+    }
+    
     func start() async {
         do {
             if HandTrackingProvider.isSupported {
@@ -90,6 +98,20 @@ class HandTracking: ObservableObject, @unchecked Sendable {
                 print("Session event \(event)")
             }
         }
+    }
+    
+    func isFistL() -> Bool? {
+        guard let leftHandAnchor = latestHandTracking.left,
+              leftHandAnchor.isTracked else {
+            return nil
+        }
+        print("TRANSFORMS:")
+        print(leftHandAnchor.handSkeleton?.joint(.thumbTip).parentFromJointTransform.columns.3.xyz)
+        print(leftHandAnchor.handSkeleton?.joint(.indexFingerTip).parentFromJointTransform.columns.3.xyz)
+        print(leftHandAnchor.handSkeleton?.joint(.middleFingerTip).parentFromJointTransform.columns.3.xyz)
+        print(leftHandAnchor.handSkeleton?.joint(.ringFingerTip).parentFromJointTransform.columns.3.xyz)
+        print(leftHandAnchor.handSkeleton?.joint(.littleFingerTip).parentFromJointTransform.columns.3.xyz)
+        return false
     }
     
     func getHands()  -> [Hand]? {
@@ -452,6 +474,10 @@ class HandTracking: ObservableObject, @unchecked Sendable {
         )
 
         return [leftHand, rightHand]
+    }
+    
+    func getCurl(finger: Finger) -> Int {
+        return 0
     }
 }
 

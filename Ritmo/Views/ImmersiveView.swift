@@ -84,6 +84,7 @@ struct ImmersiveView: View {
     
     var body: some View {
        RealityView { content in
+           gestureModel.isFistL()
            content.add(orbSpawner)
            
            let sphere = MeshResource.generateSphere(radius: 0.01)
@@ -177,6 +178,7 @@ struct ImmersiveView: View {
        }
        .onReceive(timer) {time in
            spawnHand()
+           gestureModel.isFistL()
        }
        .gesture(TapGesture().targetedToAnyEntity().onEnded({ value in
            if (correctTime) {
