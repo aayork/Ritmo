@@ -226,6 +226,12 @@ struct ImmersiveView: View {
            } else {
                changeColor(entity: xL, color: .black)
            }
+           
+           if (gestureModel.isFistR()!) {
+               changeColor(entity: xR, color: .green)
+           } else {
+               changeColor(entity: xR, color: .black)
+           }
        }
        .onReceive(timer) {time in
            spawnHand()

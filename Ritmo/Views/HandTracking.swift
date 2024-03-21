@@ -126,11 +126,42 @@ class HandTracking: ObservableObject, @unchecked Sendable {
         && middleTip!.x < middleIBase!.x
         && ringTip!.x < ringIBase!.x
         && littleTip!.x < littleIBase!.x
-        && indexTip!.y < indexIBase!.y
-        && middleTip!.y < middleIBase!.y
-        && ringTip!.y < ringIBase!.y
-        && littleTip!.y < littleIBase!.y
+        && (indexTip!.y < indexIBase!.y
+        || middleTip!.y < middleIBase!.y
+        || ringTip!.y < ringIBase!.y
+        || littleTip!.y < littleIBase!.y)
         && thumbTip!.z > thumbKnuckle!.z
+        
+        return fist
+    }
+    
+    func isFistR() -> Bool? {
+        guard let rightHandAnchor = latestHandTracking.right,
+              rightHandAnchor.isTracked else {
+            return nil
+        }
+        let indexTip = rightHandAnchor.handSkeleton?.joint(.indexFingerTip).anchorFromJointTransform.columns.3.xyz
+        let middleTip = rightHandAnchor.handSkeleton?.joint(.middleFingerTip).anchorFromJointTransform.columns.3.xyz
+        let ringTip = rightHandAnchor.handSkeleton?.joint(.ringFingerTip).anchorFromJointTransform.columns.3.xyz
+        let littleTip = rightHandAnchor.handSkeleton?.joint(.littleFingerTip).anchorFromJointTransform.columns.3.xyz
+        
+        let indexIBase = rightHandAnchor.handSkeleton?.joint(.indexFingerIntermediateBase).anchorFromJointTransform.columns.3.xyz
+        let middleIBase = rightHandAnchor.handSkeleton?.joint(.middleFingerIntermediateBase).anchorFromJointTransform.columns.3.xyz
+        let ringIBase = rightHandAnchor.handSkeleton?.joint(.ringFingerIntermediateBase).anchorFromJointTransform.columns.3.xyz
+        let littleIBase = rightHandAnchor.handSkeleton?.joint(.littleFingerIntermediateBase).anchorFromJointTransform.columns.3.xyz
+        
+        let thumbTip = rightHandAnchor.handSkeleton?.joint(.thumbTip).anchorFromJointTransform.columns.3.xyz
+        let thumbKnuckle = rightHandAnchor.handSkeleton?.joint(.thumbKnuckle).anchorFromJointTransform.columns.3.xyz
+        
+        let fist = indexTip!.x > indexIBase!.x
+        && middleTip!.x > middleIBase!.x
+        && ringTip!.x > ringIBase!.x
+        && littleTip!.x > littleIBase!.x
+        && (indexTip!.y > indexIBase!.y
+        || middleTip!.y > middleIBase!.y
+        || ringTip!.y > ringIBase!.y
+        || littleTip!.y > littleIBase!.y)
+        && thumbTip!.z < thumbKnuckle!.z
         
         return fist
     }
@@ -362,7 +393,7 @@ class HandTracking: ObservableObject, @unchecked Sendable {
             indexFingerMetacarpalR.anchorFromJointTransform.columns.0,
             indexFingerMetacarpalR.anchorFromJointTransform.columns.1,
             indexFingerMetacarpalR.anchorFromJointTransform.columns.2,
-            SIMD4(posR.x + 0.2, posR.y, posR.z, 1))
+            SIMD4(posR.x - 0.2, posR.y, posR.z, 1))
         
         let xR = matrix_multiply(
             rightHandAnchor.originFromAnchorTransform, xMatrixR
