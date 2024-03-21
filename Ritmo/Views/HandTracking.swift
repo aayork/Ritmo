@@ -45,6 +45,9 @@ class HandTracking: ObservableObject, @unchecked Sendable {
         var littleFingerKnuckle: SIMD3<Float>
         var littleFingerMetacarpal: SIMD3<Float>
         var littleFingerTip: SIMD3<Float>
+        var x: SIMD3<Float>
+        var y: SIMD3<Float>
+        var z: SIMD3<Float>
     }
     
     struct Finger {
@@ -202,6 +205,38 @@ class HandTracking: ObservableObject, @unchecked Sendable {
         let indexFingerMetacarpalTransformL = matrix_multiply(
             leftHandAnchor.originFromAnchorTransform, indexFingerMetacarpalL.anchorFromJointTransform
         ).columns.3.xyz
+        
+        let posL = indexFingerMetacarpalL.anchorFromJointTransform.columns.3.xyz
+        
+        let xMatrix = simd_matrix(
+            indexFingerMetacarpalL.anchorFromJointTransform.columns.0,
+            indexFingerMetacarpalL.anchorFromJointTransform.columns.1,
+            indexFingerMetacarpalL.anchorFromJointTransform.columns.2,
+            SIMD4(posL.x + 1, posL.y, posL.z, 1))
+        
+        let xL = matrix_multiply(
+            leftHandAnchor.originFromAnchorTransform, xMatrix
+        ).columns.3.xyz
+        
+        let yMatrix = simd_matrix(
+            indexFingerMetacarpalL.anchorFromJointTransform.columns.0,
+            indexFingerMetacarpalL.anchorFromJointTransform.columns.1,
+            indexFingerMetacarpalL.anchorFromJointTransform.columns.2,
+            SIMD4(posL.x, posL.y + 1, posL.z, 1))
+        
+        let yL = matrix_multiply(
+            leftHandAnchor.originFromAnchorTransform, yMatrix
+        ).columns.3.xyz
+        
+        let zMatrix = simd_matrix(
+            indexFingerMetacarpalL.anchorFromJointTransform.columns.0,
+            indexFingerMetacarpalL.anchorFromJointTransform.columns.1,
+            indexFingerMetacarpalL.anchorFromJointTransform.columns.2,
+            SIMD4(posL.x, posL.y, posL.z + 1, 1))
+        
+        let zL = matrix_multiply(
+            leftHandAnchor.originFromAnchorTransform, zMatrix
+        ).columns.3.xyz
 
         let indexFingerTipTransformL = matrix_multiply(
             leftHandAnchor.originFromAnchorTransform, indexFingerTipL.anchorFromJointTransform
@@ -298,6 +333,38 @@ class HandTracking: ObservableObject, @unchecked Sendable {
 
         let indexFingerMetacarpalTransformR = matrix_multiply(
             rightHandAnchor.originFromAnchorTransform, indexFingerMetacarpalR.anchorFromJointTransform
+        ).columns.3.xyz
+        
+        let posR = indexFingerMetacarpalR.anchorFromJointTransform.columns.3.xyz
+        
+        let xMatrixR = simd_matrix(
+            indexFingerMetacarpalR.anchorFromJointTransform.columns.0,
+            indexFingerMetacarpalR.anchorFromJointTransform.columns.1,
+            indexFingerMetacarpalR.anchorFromJointTransform.columns.2,
+            SIMD4(posR.x + 1, posR.y, posR.z, 1))
+        
+        let xR = matrix_multiply(
+            leftHandAnchor.originFromAnchorTransform, xMatrixR
+        ).columns.3.xyz
+        
+        let yMatrixR = simd_matrix(
+            indexFingerMetacarpalR.anchorFromJointTransform.columns.0,
+            indexFingerMetacarpalR.anchorFromJointTransform.columns.1,
+            indexFingerMetacarpalR.anchorFromJointTransform.columns.2,
+            SIMD4(posR.x, posR.y + 1, posR.z, 1))
+        
+        let yR = matrix_multiply(
+            leftHandAnchor.originFromAnchorTransform, yMatrixR
+        ).columns.3.xyz
+        
+        let zMatrixR = simd_matrix(
+            indexFingerMetacarpalR.anchorFromJointTransform.columns.0,
+            indexFingerMetacarpalR.anchorFromJointTransform.columns.1,
+            indexFingerMetacarpalR.anchorFromJointTransform.columns.2,
+            SIMD4(posR.x, posR.y, posR.z + 1, 1))
+        
+        let zR = matrix_multiply(
+            leftHandAnchor.originFromAnchorTransform, zMatrixR
         ).columns.3.xyz
 
         let indexFingerTipTransformR = matrix_multiply(
@@ -440,7 +507,10 @@ class HandTracking: ObservableObject, @unchecked Sendable {
             littleFingerIntermediateTip: littleFingerIntermediateTipTransformL,
             littleFingerKnuckle: littleFingerKnuckleTransformL,
             littleFingerMetacarpal: littleFingerMetacarpalTransformL,
-            littleFingerTip: littleFingerTipTransformL
+            littleFingerTip: littleFingerTipTransformL,
+            x: xL,
+            y: yL,
+            z: zL
         )
         
         let rightHand = Hand(
@@ -467,7 +537,10 @@ class HandTracking: ObservableObject, @unchecked Sendable {
             littleFingerIntermediateTip: littleFingerIntermediateTipTransformR,
             littleFingerKnuckle: littleFingerKnuckleTransformR,
             littleFingerMetacarpal: littleFingerMetacarpalTransformR,
-            littleFingerTip: littleFingerTipTransformR
+            littleFingerTip: littleFingerTipTransformR,
+            x: xR,
+            y: yR,
+            z: zR
         )
 
         return [leftHand, rightHand]
