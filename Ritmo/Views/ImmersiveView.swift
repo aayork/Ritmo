@@ -31,59 +31,70 @@ struct ImmersiveView: View {
     let acceptInputWindow = 0.8 // The time window in which the player can successfully match a gesture
     
     func spawnHand() {
-        // Import entity from RealityKit package
-        let entityName = Bool.random() ? "Fist_fixed" : "OPENfixed"
+            // Randomly choose between "Fist_fixed" and "OPENfixed"
+            let entityName = Bool.random() ? "Fist_fixed" : "OPENfixed"
         
+            let entityTwoName = Bool.random() ? "Fist_fixed" : "OPENfixed"
+            
+            // Attempt to load the chosen entity
+            guard let importEntity = try? Entity.load(named: entityName, in: realityKitContentBundle) else {
+                print("Failed to load entity: \(entityName)")
+                return
+            }
         
-        let importEntity = try? Entity.load(named: entityName, in: realityKitContentBundle)
+            guard let importEntityTwo = try? Entity.load(named: entityTwoName, in: realityKitContentBundle) else {
+                print("Failed to load entity: \(entityName)")
+                return
+            }
+
+            // Instantiate parent hand
+            let handOne = ModelEntity()
+            handOne.addChild(importEntity)
+            handOne.position = [0.5, 1.3, -5] // Adjust the Y value to float the hand above the ground
         
-        /*
+            let handTwo = ModelEntity()
+            handTwo.addChild(importEntityTwo)
+            handTwo.position = [-0.5, 1.3, -5]
+            
+            // Add interaction components if needed
+            handOne.components.set(InputTargetComponent())
+            handOne.components.set(CollisionComponent(shapes: [.generateSphere(radius: 0.1)]))
+            handOne.components.set(GroundingShadowComponent(castsShadow: true))
         
-        // Create circle around the sphere
-        let circle = MeshResource.generateCylinder(height: 0.01, radius: 0.2)
-        let white = SimpleMaterial(color: .white, isMetallic: false)
-        let circleEntity = ModelEntity(mesh: circle, materials: [white])
-         
-         */
-        
-        // Instantiate parent hand
-        let hand = ModelEntity()
-        
-        // Make the sphere and circle a child of the hand
-        // importEntity!.addChild(circleEntity)
-        hand.addChild(importEntity!)
-        
-        // Position the sphere entity above the ground or any reference point
-        importEntity!.transform = Transform(pitch: Float.pi / 2, yaw: 0.0, roll: 0.0) // Set the sphere to face the camera
-        hand.position = [0, 1.3, -5] // Adjust the Y value to float the hand
-        
-        // Add interaction - assuming RealityKit 2.0 for gestures handling, add if needed
-        hand.components.set(InputTargetComponent())
-        hand.components.set(CollisionComponent(shapes: [.generateSphere(radius: 0.1)]))
-        
-        // Make the orb cast a shadow
-        hand.components.set(GroundingShadowComponent(castsShadow: true))
-        
-        // Attach the orb to the spawner
-        orbSpawner.addChild(hand)
-    
-        // Set hand to move towards player and the circle indicator to shrink
-        var moveItMoveIt = hand.transform
-        moveItMoveIt.translation += SIMD3(0, 0, 5)
-        hand.move(to: moveItMoveIt, relativeTo: nil, duration: handTravelTime + 1, timingFunction: .linear)
-        var scaleTransform: Transform = Transform()
-        scaleTransform.scale = SIMD3(0.25, 0.25, 0.25)
-        // circleEntity.move(to: circleEntity.transform, relativeTo: circleEntity.parent)
-        // circleEntity.move(to: scaleTransform, relativeTo: circleEntity.parent, duration: handTravelTime, timingFunction: .linear)
-        
-        // set correctTime to true during the window
-        Task {
-            try? await Task.sleep(until: .now + .seconds(handTravelTime - acceptInputWindow / 2), clock: .continuous)
-            correctTime = true;
-            try? await Task.sleep(until: .now + .seconds(acceptInputWindow), clock: .continuous)
-            correctTime = false;
+            handTwo.components.set(InputTargetComponent())
+            handTwo.components.set(CollisionComponent(shapes: [.generateSphere(radius: 0.1)]))
+            handTwo.components.set(GroundingShadowComponent(castsShadow: true))
+            
+            // Attach the hand to the orbSpawner
+            orbSpawner.addChild(handOne)
+            orbSpawner.addChild(handTwo)
+            
+            // Move the hand towards the player
+            var targetTransform = handOne.transform
+            var targetTransformTwo = handTwo.transform
+            targetTransform.translation += SIMD3(0, 0, 5)
+            targetTransformTwo.translation += SIMD3(0, 0, 5)
+            handOne.move(to: targetTransform, relativeTo: nil, duration: handTravelTime + 1, timingFunction: .linear)
+            handTwo.move(to: targetTransformTwo, relativeTo: nil, duration: handTravelTime + 1, timingFunction: .linear)
+            
+            // Despawn the hand after it stops moving or after a fixed time
+            DispatchQueue.main.asyncAfter(deadline: .now() + handTravelTime + 1) {
+                handOne.removeFromParent()
+                handTwo.removeFromParent()
+            }
+            
+            // Handle the correct time window for interaction
+            handleCorrectTimeWindow()
         }
-    }
+        
+        private func handleCorrectTimeWindow() {
+            Task {
+                try? await Task.sleep(until: .now + .seconds(Int(handTravelTime - acceptInputWindow / 2)), clock: .continuous)
+                correctTime = true
+                try? await Task.sleep(until: .now + .seconds(Int(acceptInputWindow)), clock: .continuous)
+                correctTime = false
+            }
+        }
     
     // Attach a sphere with the given color to the given entity
     func changeColor(entity: Entity, color: UIColor) {
