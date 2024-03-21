@@ -32,11 +32,11 @@ class GameModel {
     }
     
     /// Preload assets when the app launches to avoid pop-in during the game.
-    init() {
+    init(iv: ImmersiveView) {
         //self.togglePlayPause = {}
         self.musicView = MusicView()
         self.recentlyPlayed = RecentlyPlayedManager()
-        self.immsersiveView = ImmersiveView(gestureModel: HandTrackingContainer.handTracking)
+        self.immsersiveView = iv
     }
     /// Preload animation assets.
 }

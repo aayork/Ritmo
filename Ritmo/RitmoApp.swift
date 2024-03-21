@@ -36,6 +36,7 @@ struct RitmoApp: App {
         }
     }
 }
+@MainActor
 enum HandTrackingContainer {
     private(set) static var handTracking = HandTracking()
 }
