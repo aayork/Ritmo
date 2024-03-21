@@ -67,11 +67,11 @@ struct ImmersiveView: View {
             handTwo.components.set(CollisionComponent(shapes: [.generateSphere(radius: 0.1)]))
             handTwo.components.set(GroundingShadowComponent(castsShadow: true))
             
-            // Attach the hand to the orbSpawner
+            // Attach hands to the orbSpawner
             orbSpawner.addChild(handOne)
             orbSpawner.addChild(handTwo)
             
-            // Move the hand towards the player
+            // Move the hands towards the player
             var targetTransform = handOne.transform
             var targetTransformTwo = handTwo.transform
             targetTransform.translation += SIMD3(0, 0, 5)
@@ -79,7 +79,7 @@ struct ImmersiveView: View {
             handOne.move(to: targetTransform, relativeTo: nil, duration: handTravelTime + 1, timingFunction: .linear)
             handTwo.move(to: targetTransformTwo, relativeTo: nil, duration: handTravelTime + 1, timingFunction: .linear)
             
-            // Despawn the hand after it stops moving or after a fixed time
+            // Despawn hands after stopping or after a fixed time
             DispatchQueue.main.asyncAfter(deadline: .now() + handTravelTime + 1) {
                 handOne.removeFromParent()
                 handTwo.removeFromParent()

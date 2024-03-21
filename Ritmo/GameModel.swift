@@ -17,6 +17,7 @@ class GameModel {
     var musicView: MusicView
     var recentlyPlayed: RecentlyPlayedManager
     var immsersiveView: ImmersiveView?
+    var handTracking: HandTracking?
     var score = 0
     var tab = 1
 
@@ -33,11 +34,11 @@ class GameModel {
     
     /// Preload assets when the app launches to avoid pop-in during the game.
     init() {
-        //self.togglePlayPause = {}
         self.musicView = MusicView()
         self.recentlyPlayed = RecentlyPlayedManager()
         Task { @MainActor in
             self.immsersiveView = ImmersiveView(gestureModel: HandTrackingContainer.handTracking)
+            self.handTracking = HandTracking()
         }
     }
     /// Preload animation assets.
