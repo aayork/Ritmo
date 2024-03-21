@@ -54,16 +54,21 @@ struct MusicView: View {
                     VStack(alignment: .leading) {
                         Spacer()
                         HStack {
-                            Text("Pick a Tune")
-                                .font(.custom("Soulcraft_Wide", size: 70.0))
-                                .foregroundColor(Color.black)
-                                .padding()
-                            Spacer()
+                            ZStack {
+                                WaveAnimation()
+                                Text("Pick a Tune")
+                                    .font(.custom("Soulcraft_Wide", size: 70.0))
+                                    .foregroundColor(Color.ritmoWhite)
+                                    .padding()
+                                    .offset(x: -195, y: 150)
+                            }
+                            .frame(height: 400)
+                            .clipShape(Rectangle())
                         }
                     }
-                    .frame(height: 150, alignment: .leading)
-                        .frame(minWidth: 0, maxWidth: .infinity)
-                        .background(Color.electricLime)
+                    .offset(y: -250)
+                    //.frame(height: 150, alignment: .leading)
+                      //  .frame(minWidth: 0, maxWidth: .infinity)
                     HStack {
 //                        Text("Curated")
 //                             .padding(8)
@@ -86,7 +91,7 @@ struct MusicView: View {
                             HStack {
                                 ArtworkImage(song.artwork, width: 400)
                                     .cornerRadius(50)
-                                    .position(x:250, y:225)
+                                    .position(x:250, y:-25)
                                 VStack(alignment: .leading) {
                                 
                                     Text(song.name) // Display song name
@@ -112,16 +117,15 @@ struct MusicView: View {
                                             }
                                         }) {
                                             Text("Start")
-                                            .padding()
                                             .background(Rectangle().fill(Color.green))
                                         }
+                                        .padding()
                                         .buttonStyle(PlainButtonStyle())
                                         .font(.extraLargeTitle)
-                                        .cornerRadius(35)
                                     }
                                 }
                                 .frame(width: 300)
-                                .position(x:110, y:225)
+                                .position(x:110, y:25)
                                 .padding()
                             }
                         } else {

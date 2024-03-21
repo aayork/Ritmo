@@ -22,18 +22,18 @@ struct WaveAnimation: View {
                 Wave(offSet: Angle(degrees: waveOffset.degrees - Double(i) * 10), percent: percent, index: i, direction: i % 2 == 0 ? 1 : -1, hue: hue)
                     .stroke(Color.blue
                     )
-                        .ignoresSafeArea(.all)
-                        .blur(radius: 1.5)
-                    }
+                    .ignoresSafeArea(.all)
+                    .blur(radius: 1.5)
             }
-            .onAppear {
-                    withAnimation(.linear(duration: 5).repeatForever(autoreverses: true)) {
-                        self.hue = 0.65 // Animate hue from 0 to 1
-                    }
-                    withAnimation(.linear(duration: 2.5).repeatForever(autoreverses: false)) {
-                        self.waveOffset = Angle(degrees: 360)
-                    }
-                }
+        }
+        .onAppear {
+            withAnimation(.linear(duration: 5).repeatForever(autoreverses: true)) {
+                self.hue = 0.65 // Animate hue from 0 to 1
+            }
+            withAnimation(.linear(duration: 2.5).repeatForever(autoreverses: false)) {
+                self.waveOffset = Angle(degrees: 360)
+            }
+        }
     }
 }
 
