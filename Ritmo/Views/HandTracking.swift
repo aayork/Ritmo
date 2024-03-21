@@ -107,11 +107,7 @@ class HandTracking: ObservableObject, @unchecked Sendable {
             return nil
         }
         print("TRANSFORMS:")
-        print(leftHandAnchor.handSkeleton?.joint(.thumbTip).parentFromJointTransform.columns.3.xyz)
-        print(leftHandAnchor.handSkeleton?.joint(.indexFingerTip).parentFromJointTransform.columns.3.xyz)
-        print(leftHandAnchor.handSkeleton?.joint(.middleFingerTip).parentFromJointTransform.columns.3.xyz)
-        print(leftHandAnchor.handSkeleton?.joint(.ringFingerTip).parentFromJointTransform.columns.3.xyz)
-        print(leftHandAnchor.handSkeleton?.joint(.littleFingerTip).parentFromJointTransform.columns.3.xyz)
+        print("Thumb: \(leftHandAnchor.handSkeleton?.joint(.thumbTip).anchorFromJointTransform.columns.3.xyz)\n Index: \(leftHandAnchor.handSkeleton?.joint(.indexFingerTip).anchorFromJointTransform.columns.3.xyz)\n Middle: \(leftHandAnchor.handSkeleton?.joint(.middleFingerTip).anchorFromJointTransform.columns.3.xyz)\n Ring: \(leftHandAnchor.handSkeleton?.joint(.ringFingerTip).anchorFromJointTransform.columns.3.xyz)\n Little: \(leftHandAnchor.handSkeleton?.joint(.littleFingerTip).anchorFromJointTransform.columns.3.xyz)\n")
         return false
     }
     
