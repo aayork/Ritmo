@@ -93,8 +93,7 @@ struct ScoreView: View {
                                 .accessibilityLabel(Text("Score"))
                                 .accessibilityValue(String(gameModel.score))
                         }
-                        .padding(.leading, 10)
-                        .padding(.trailing, 50)
+                        .padding()
                     }
                     HStack {
                         HStack {
@@ -117,7 +116,6 @@ struct ScoreView: View {
                         )
                     )
                     .frame(width: 460, height: 70)
-                    .offset(y: 15)
                 }
                 .padding(.vertical, 12)
                 .onChange(of: scenePhase) {
