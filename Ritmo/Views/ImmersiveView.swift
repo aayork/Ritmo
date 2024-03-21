@@ -32,18 +32,25 @@ struct ImmersiveView: View {
     
     func spawnHand() {
         // Import entity from RealityKit package
-        let importEntity = try? Entity.load(named: "RubberGlove", in: realityKitContentBundle)
+        let entityName = Bool.random() ? "Fist_fixed" : "OPENfixed"
+        
+        
+        let importEntity = try? Entity.load(named: entityName, in: realityKitContentBundle)
+        
+        /*
         
         // Create circle around the sphere
         let circle = MeshResource.generateCylinder(height: 0.01, radius: 0.2)
         let white = SimpleMaterial(color: .white, isMetallic: false)
         let circleEntity = ModelEntity(mesh: circle, materials: [white])
+         
+         */
         
         // Instantiate parent hand
         let hand = ModelEntity()
         
         // Make the sphere and circle a child of the hand
-        importEntity!.addChild(circleEntity)
+        // importEntity!.addChild(circleEntity)
         hand.addChild(importEntity!)
         
         // Position the sphere entity above the ground or any reference point
@@ -66,8 +73,8 @@ struct ImmersiveView: View {
         hand.move(to: moveItMoveIt, relativeTo: nil, duration: handTravelTime + 1, timingFunction: .linear)
         var scaleTransform: Transform = Transform()
         scaleTransform.scale = SIMD3(0.25, 0.25, 0.25)
-        circleEntity.move(to: circleEntity.transform, relativeTo: circleEntity.parent)
-        circleEntity.move(to: scaleTransform, relativeTo: circleEntity.parent, duration: handTravelTime, timingFunction: .linear)
+        // circleEntity.move(to: circleEntity.transform, relativeTo: circleEntity.parent)
+        // circleEntity.move(to: scaleTransform, relativeTo: circleEntity.parent, duration: handTravelTime, timingFunction: .linear)
         
         // set correctTime to true during the window
         Task {
