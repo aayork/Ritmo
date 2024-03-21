@@ -17,7 +17,9 @@ struct ImmersiveView: View {
     @ObservedObject var gestureModel: HandTracking
     @State var score = 0
     @State private var correctTime = false;
-    @State private var handSphere = Entity()
+    @State private var x = Entity()
+    @State private var y = Entity()
+    @State private var z = Entity()
     @State private var handSpheres = [Entity()]
     
     let orbSpawner = Entity()
@@ -87,17 +89,32 @@ struct ImmersiveView: View {
            //gestureModel.isFistL()
            content.add(orbSpawner)
            
-           let sphere = MeshResource.generateSphere(radius: 0.01)
-           let material = SimpleMaterial(color: .black, isMetallic: false)
-           handSphere = ModelEntity(mesh: sphere, materials: [material])
-           content.add(handSphere)
+//           let sphere = MeshResource.generateSphere(radius: 0.01)
+//           let material = SimpleMaterial(color: .black, isMetallic: false)
+//           handSphere = ModelEntity(mesh: sphere, materials: [material])
+//           content.add(handSphere)
            
-           for i in 1...54 {
+           for i in 1...46 {
                let sphere = MeshResource.generateSphere(radius: 0.01)
                let material = SimpleMaterial(color: .black, isMetallic: false)
                handSpheres.append(ModelEntity(mesh: sphere, materials: [material]))
                content.add(handSpheres[i])
            }
+           
+           let sphereX = MeshResource.generateSphere(radius: 0.01)
+           let materialX = SimpleMaterial(color: .red, isMetallic: false)
+           x = ModelEntity(mesh: sphereX, materials: [materialX])
+           content.add(x)
+           
+           let sphereY = MeshResource.generateSphere(radius: 0.01)
+           let materialY = SimpleMaterial(color: .green, isMetallic: false)
+           y = ModelEntity(mesh: sphereY, materials: [materialY])
+           content.add(y)
+           
+           let sphereZ = MeshResource.generateSphere(radius: 0.01)
+           let materialZ = SimpleMaterial(color: .blue, isMetallic: false)
+           z = ModelEntity(mesh: sphereZ, materials: [materialZ])
+           content.add(z)
            
            guard let immersiveEntity = try? await Entity(named: "Immersive", in: realityKitContentBundle) else {
                         fatalError("Unable to load immersive model")
@@ -177,6 +194,10 @@ struct ImmersiveView: View {
            for i in 0...jointPositions.count - 1 {
                handSpheres[i].transform.translation = jointPositions[i]
            }
+           
+           x.transform.translation = leftHand.x
+           y.transform.translation = leftHand.y
+           z.transform.translation = leftHand.z
        }
        .onReceive(timer) {time in
            spawnHand()
