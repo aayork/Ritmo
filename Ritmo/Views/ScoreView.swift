@@ -48,6 +48,7 @@ struct ScoreView: View {
                     isButtonClicked = true // Hide the button after it's clicked
                 }) {
                     Text("Play")
+                        .font(.custom("Soulcraft_Wide", size: 20.0))
                         .padding()
                         .background(Rectangle().fill(Color.green))
                 }
