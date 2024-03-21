@@ -191,19 +191,5 @@ def Xform "Root"
             }
         }
     }
-
-    def "HandAnimated2" (
-        active = true
-        prepend apiSchemas = ["MaterialBindingAPI"]
-        prepend references = @HandAnimated2.usdz@
-    )
-    {
-        rel material:binding = </Root/HandAnimated2/GridMaterial/GridMaterial> (
-            bindMaterialAs = "weakerThanDescendants"
-        )
-        float3 xformOp:scale = (1, 1, 1)
-        float3 xformOp:translate = (0.8124084, 2.9802322e-8, -2.2276945)
-        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
-    }
 }
 
