@@ -117,11 +117,14 @@ struct MusicView: View {
                                             }
                                         }) {
                                             Text("Start")
-                                            .background(Rectangle().fill(Color.green))
+                                                .padding()
+                                                .background(Rectangle().fill(Color.green).cornerRadius(25))
+
+                                                
                                         }
-                                        .padding()
                                         .buttonStyle(PlainButtonStyle())
                                         .font(.extraLargeTitle)
+                                        .offset(y:10)
                                     }
                                 }
                                 .frame(width: 300)
