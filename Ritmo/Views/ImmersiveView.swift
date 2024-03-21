@@ -178,7 +178,6 @@ struct ImmersiveView: View {
        }
        .onReceive(timer) {time in
            spawnHand()
-           gestureModel.isFistL()
        }
        .gesture(TapGesture().targetedToAnyEntity().onEnded({ value in
            if (correctTime) {
