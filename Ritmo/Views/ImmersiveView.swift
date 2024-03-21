@@ -84,7 +84,7 @@ struct ImmersiveView: View {
     
     var body: some View {
        RealityView { content in
-           gestureModel.isFistL()
+           //gestureModel.isFistL()
            content.add(orbSpawner)
            
            let sphere = MeshResource.generateSphere(radius: 0.01)
