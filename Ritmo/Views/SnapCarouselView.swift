@@ -84,7 +84,7 @@ struct CarouselCardView: View {
             ArtworkImage(card.artwork, width: 400)
                 .scaledToFit()
                 .frame(width: 400, height: 400)
-                .cornerRadius(20)
+                .clipShape(Circle())
                 .blur(radius: distanceFromCenter / 100) // Apply blur based on distance
                 .scaleEffect(card.id == selectedCardID ? 1.0 : 0.8)
                 .grayscale(card.id == selectedCardID ? 0.0 : 1.0)
