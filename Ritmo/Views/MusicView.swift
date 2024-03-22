@@ -90,7 +90,7 @@ struct MusicView: View {
                         if let song = selectedSong {
                             HStack {
                                 ArtworkImage(song.artwork, width: 400)
-                                    .cornerRadius(50)
+                                    .cornerRadius(20)
                                     .position(x:250, y:-25)
                                 VStack() {
                                 
