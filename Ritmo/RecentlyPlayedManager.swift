@@ -15,9 +15,9 @@ class RecentlyPlayedManager {
 
     func addSong(song: Item) {
         var songs = getRecentlyPlayedSongs()
-        
-        for i in 0...songs.count - 1 {
-            if (song.name == songs[i].name && song.artist == songs[i].artist) {
+   
+        for i in songs {
+            if (i.name == song.name) {
                 valid = false
             }
         }
