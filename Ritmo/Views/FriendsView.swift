@@ -15,7 +15,7 @@ struct FriendsView: View {
         var artist: String
         var score: Int
     }
-    // Sample data
+
     let songs = [
         Song(title: "Shape of You", artist: "Ed Sheeran", score: 85),
         Song(title: "Blinding Lights", artist: "The Weeknd", score: 92),
@@ -58,9 +58,6 @@ struct FriendsView: View {
                 .background(Color(.systemBackground))
                 .cornerRadius(10)
                 .shadow(radius: 5)
-                .onAppear {
-                    // Trigger any specific animations here
-                }
             }
             .padding(20)
         }

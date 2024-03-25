@@ -11,13 +11,11 @@ struct WaveAnimation: View {
     
     @State private var percent = 20.0
     @State private var waveOffset = Angle(degrees: 0)
-    @State private var hue = 0.0 // New state for animating color
+    @State private var hue = 0.0
     
     var body: some View {
         ZStack {
             Color(.ritmoBlue).opacity(1.0).ignoresSafeArea()
-            
-            // Adjusted number of Wave views for full coverage
             ForEach(0..<70) { i in
                 Wave(offSet: Angle(degrees: waveOffset.degrees - Double(i) * 10), percent: percent, index: i, direction: i % 2 == 0 ? 1 : -1, hue: hue)
                     .stroke(Color.blue

@@ -16,7 +16,6 @@ struct SnapCarouselView: View {
     init() {
             let recentlyPlayed = RecentlyPlayedManager.shared.getRecentlyPlayedSongs()
             _cards = State(initialValue: recentlyPlayed)
-            
             // Find the middle index
             let middleIndex = recentlyPlayed.count / 2
             

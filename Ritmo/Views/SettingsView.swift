@@ -52,23 +52,9 @@ struct SettingsView: View {
                 .frame(width: 1000, height: 400)
                 .background(Rectangle().fill(Color(red: 0.17, green: 0.17, blue: 0.17)))
                 .cornerRadius(20)
-                //.opacity(0.5)
                 
                 HStack {
-                    /*
-                    Button("CREDITS") {}
-                        .font(.custom("Soulcraft_Wide", size: 30.0))
-                        .background(Color(red: 0.17, green: 0.17, blue: 0.17))
-                        .foregroundColor(.white)
-                        .opacity(0.5)
-                        .clipShape(Capsule())
-                        .offset(x: 390)
-                    Spacer()
-                     */
-                    
-                    
                     Button{
-                        // action will be here
                     } label: {
                         Text("CREDITS")
                             .foregroundColor(.white)
@@ -79,8 +65,7 @@ struct SettingsView: View {
                     .padding(.horizontal)
                     Spacer()
                     
-                    Button{
-                        // action will be here
+                    Button {
                     } label: {
                         Text("TUTORIAL")
                             .foregroundColor(.white)
