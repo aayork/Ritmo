@@ -77,7 +77,7 @@ struct SettingsView: View {
                 .padding(.horizontal)
                 Text("Glory, Glory")
                     .font(.custom("Allura", size: 30.0))
-                Text("Made with ❤️ in Athens")
+                    .opacity(/*@START_MENU_TOKEN@*/0.8/*@END_MENU_TOKEN@*/)
             }
         }
     }

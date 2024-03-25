@@ -58,11 +58,9 @@ struct HomeView: View {
             VStack {
                 Image("ritmoYellow")
                 Button("HOW TO PLAY", action: {
-                    Task {
-                        SettingsView()
-                    }
+                    // Open tutorial here
                 })
-                .buttonStyle(StandardButtonStyle())
+                .buttonStyle(GrayButtonStyle())
                 
                 VStack {
                     Text("HIGH SCORES")
@@ -129,13 +127,13 @@ struct HomeView: View {
                     Button("PLAY NOW", action: {
                         tabSelection = 2
                     })
-                    .buttonStyle(PlayButtonStyle())
+                    .buttonStyle(YellowButtonStyle())
                 }
             }
         }
     }
     
-    struct StandardButtonStyle: ButtonStyle {
+    struct GrayButtonStyle: ButtonStyle {
         func makeBody(configuration: Configuration) -> some View {
             configuration.label
                 .padding()
@@ -153,7 +151,7 @@ struct HomeView: View {
         }
     }
     
-    struct PlayButtonStyle: ButtonStyle {
+    struct YellowButtonStyle: ButtonStyle {
         func makeBody(configuration: Configuration) -> some View {
             configuration.label
                 .font(.custom("Soulcraft_Wide", size: 50.0))

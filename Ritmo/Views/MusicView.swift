@@ -134,7 +134,7 @@ struct MusicView: View {
                             }
                         } else {
                             Text("Please search for a song...")
-                                .position(x:475, y:-100)
+                                .position(x:475, y:-25)
                         }
                     }
                 }
