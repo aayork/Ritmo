@@ -118,12 +118,7 @@ struct MusicView: View {
                                                 await openImmersiveSpace(id: "ImmersiveSpace")
                                             }
                                         })
-                                        .font(.custom("Soulcraft_Wide", size: 30.0))
-                                        .padding(20)
-                                        .padding(.horizontal)
-                                        .background(Color.electricLime)
-                                        .foregroundColor(.black)
-                                        .clipShape(Capsule())
+                                        .buttonStyle(PlayButtonStyle())
                                         .offset(x: 40)
                                         Spacer()
         
@@ -253,6 +248,23 @@ struct MusicView: View {
             default:
                 break
             }
+        }
+    }
+    
+    struct PlayButtonStyle: ButtonStyle {
+        func makeBody(configuration: Configuration) -> some View {
+            configuration.label
+                .font(.custom("Soulcraft_Wide", size: 50.0))
+                .padding()
+                .background(Rectangle().fill(Color.electricLime))
+                .hoverEffect()
+                .cornerRadius(20)
+                .foregroundStyle(Color.black)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 20)
+                        .stroke(Color.white, lineWidth: configuration.isPressed ? 3 : 0)
+                )
+                .scaleEffect(configuration.isPressed ? 0.95 : 1.0)
         }
     }
 }

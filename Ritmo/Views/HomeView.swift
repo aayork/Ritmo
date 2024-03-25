@@ -31,7 +31,6 @@ struct RecentlyPlayedSong: Identifiable {
     var id = UUID()
     var title: String
     var artist: String
-    // Assume each song has an associated cover art image named in your asset catalog
     var coverImageName: String
 }
 
@@ -43,22 +42,8 @@ struct HomeView: View {
         RecentlyPlayedSong(title: "Song 3", artist: "Artist 3", coverImageName: "cover3"),
         RecentlyPlayedSong(title: "Song 4", artist: "Artist 4", coverImageName: "cover4"),
     ]
-    
-    
-    
-    @State var letterWidths: [Int:Double] = [:]
-    
         
     @State var title = "RECENTLY PLAYED"
-    
-    let letterAngle = 500 * ((2 * .pi) / 1256.64) // Cumulative width of letters up to this point times the angle per unit
-
-    
-    var lettersOffset: [(offset: Int, element: Character)] {
-        return Array(title.enumerated())
-    }
-    var radius = 700.0
-    
     
     var body: some View {
         ZStack {
@@ -70,30 +55,14 @@ struct HomeView: View {
     
     private var contentStack: some View {
         HStack {
-            VStack { // Info Stack
+            VStack {
                 Image("ritmoYellow")
-                    // .offset(y: -200)
-                Button(action: {
+                Button("HOW TO PLAY", action: {
                     Task {
                         SettingsView()
                     }
-                }) {
-                    Text("HOW TO PLAY")
-                        .font(.custom("FormaDJRMicro-Bold", size: 30.0))
-                        .padding()
-                        .frame(width: 300)
-                        .background(Rectangle().fill(Color(red: 0.17, green: 0.17, blue: 0.17)))
-                        .cornerRadius(20)
-                }
-                .frame(width: 300)
-                .background(Rectangle().fill(Color(red: 0.17, green: 0.17, blue: 0.17)))
-                .buttonStyle(PlainButtonStyle())
-                .font(.largeTitle)
-                .clipShape(Rectangle())
-                .cornerRadius(20)
-                // .offset(y: -200)
-                
-                
+                })
+                .buttonStyle(StandardButtonStyle())
                 
                 VStack {
                     Text("HIGH SCORES")
@@ -118,8 +87,6 @@ struct HomeView: View {
                 .frame(width: 300, height: 250.0)
                 .background(Rectangle().fill(Color(red: 0.17, green: 0.17, blue: 0.17)))
                 .cornerRadius(20)
-                // .offset(y: -200)
-               
                 
                 VStack {
                     Text("OUR PICKS")
@@ -144,11 +111,9 @@ struct HomeView: View {
                 .frame(width: 300, height: 250.0)
                 .background(Rectangle().fill(Color(red: 0.17, green: 0.17, blue: 0.17)))
                 .cornerRadius(20)
-                // .offset(y: -200)
-              
-                
             }
             .zIndex(/*@START_MENU_TOKEN@*/1.0/*@END_MENU_TOKEN@*/)
+            
             HStack {
                 VStack(alignment: .center) {
                     Text("RECENTLY PLAYED")
@@ -158,90 +123,50 @@ struct HomeView: View {
                         .frame(alignment: .topLeading)
                         .foregroundStyle(Color.electricLime)
                     
-                    
-                    /* My attempt at curved lettering:
-                    
-                    
-                    ZStack {
-                        ForEach(lettersOffset, id: \.offset) { index, letter in // Mark 1
-                            VStack {
-                                Text(String(letter))
-                                    .font(.custom("Soulcraft_Wide", size: 50.0))
-                                    .foregroundColor(.electricLime)
-                                    .kerning(700)
-                                    .background(LetterWidthSize()) // Mark 2
-                                    .onPreferenceChange(WidthLetterPreferenceKey.self, perform: { width in  // Mark 2
-                                        letterWidths[index] = width
-                                    })
-                                        Spacer() // Mark 1
-                                    }
-                                    .rotationEffect(fetchAngle(at: index)) // Mark 3
-                                }
-                            }
-                            .frame(width: 200, height: 200)
-                            .rotationEffect(.degrees(240))
-                    */ // It was a failed attempt.
-                    
-                    
-                    
                     SnapCarouselView()
                         .zIndex(2.0)
                     
-                    Button(action: {
+                    Button("PLAY NOW", action: {
                         tabSelection = 2
-                    }) {
-                        Text("PLAY NOW!")
-                            .font(.custom("Soulcraft_Wide", size: 50.0))
-                            .padding()
-                            .background(Rectangle().fill(Color.electricLime))
-                            .foregroundStyle(Color.black)
-                            .cornerRadius(20)
-                    }
-                    .buttonStyle(PlainButtonStyle())
-                    .font(.largeTitle)
-                    .clipShape(Rectangle())
-                    .cornerRadius(20)
+                    })
+                    .buttonStyle(PlayButtonStyle())
                 }
             }
-        } // HStack
-        
-        
-        
-    }
-    
-    func fetchAngle(at letterPosition: Int) -> Angle {
-            let times2pi: (Double) -> Double = { $0 * 2 * .pi }
-            
-            let circumference = times2pi(radius)
-                            
-            let finalAngle = times2pi(letterWidths.filter{$0.key <= letterPosition}.map(\.value).reduce(0, +) / circumference)
-            
-            return .radians(finalAngle)
-        }
-    
-    
-    struct WidthLetterPreferenceKey: PreferenceKey {
-        static var defaultValue: Double = 0
-        static func reduce(value: inout Double, nextValue: () -> Double) {
-            value = nextValue()
-        }
-    }
-
-    struct LetterWidthSize: View {
-        var body: some View {
-            GeometryReader { geometry in // using this to get the width of EACH letter
-                Color
-                    .clear
-                    .preference(key: WidthLetterPreferenceKey.self,
-                                value: geometry.size.width)
-            }
         }
     }
     
-    private func multicolorBackground() -> some View {
-        ZStack {
-            WaveAnimation()
+    struct StandardButtonStyle: ButtonStyle {
+        func makeBody(configuration: Configuration) -> some View {
+            configuration.label
+                .padding()
+                .frame(width: 300)
+                .font(.custom("FormaDJRMicro-Bold", size: 30.0))
+                .background(Rectangle().fill(Color(red: 0.17, green: 0.17, blue: 0.17)))
+                .hoverEffect()
+                .cornerRadius(20)
+                .foregroundColor(.white)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 20)
+                        .stroke(Color.white, lineWidth: configuration.isPressed ? 3 : 0)
+                )
+                .scaleEffect(configuration.isPressed ? 0.95 : 1.0)
         }
-        .padding(-15)
+    }
+    
+    struct PlayButtonStyle: ButtonStyle {
+        func makeBody(configuration: Configuration) -> some View {
+            configuration.label
+                .font(.custom("Soulcraft_Wide", size: 50.0))
+                .padding()
+                .background(Rectangle().fill(Color.electricLime))
+                .hoverEffect()
+                .cornerRadius(20)
+                .foregroundStyle(Color.black)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 20)
+                        .stroke(Color.white, lineWidth: configuration.isPressed ? 3 : 0)
+                )
+                .scaleEffect(configuration.isPressed ? 0.95 : 1.0)
+        }
     }
 }
