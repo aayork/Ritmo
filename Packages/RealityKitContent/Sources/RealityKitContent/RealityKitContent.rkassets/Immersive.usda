@@ -7,7 +7,7 @@
 
 def Xform "Root"
 {
-    reorder nameChildren = ["Sphere_Left", "Sphere_Right", "GridMaterial"]
+    reorder nameChildren = ["GridMaterial", "AcousticGuitar", "AmbientAudio", "DrumKit", "Movie_Boom_Microphone", "drums_mp3", "instruments_mp3", "vocals_mp3", "GlassLowpoly_newpaerticles", "handwork"]
     def "GridMaterial" (
         active = true
         prepend references = @Materials/GridMaterial.usda@
@@ -190,6 +190,14 @@ def Xform "Root"
                 }
             }
         }
+    }
+
+    def "GlassLowpoly_newpaerticles" (
+        active = true
+        prepend references = @GlassLowpoly_newpaerticles.usdz@
+    )
+    {
+        float3 xformOp:scale = (1, 1, 1)
     }
 }
 
