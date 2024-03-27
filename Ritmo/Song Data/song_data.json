@@ -1,5 +1,5 @@
 {
-  "song": { // Having trouble accessing data inside the "song" key so I have removed it for now.
+  "song": {
     "title": "Example Song",
     "artist": "Example Artist",
     "duration": 240,  // Duration of the song in seconds
