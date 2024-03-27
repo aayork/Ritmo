@@ -8,7 +8,7 @@
 import SwiftUI
 
 /*
- IF YOU NEED TO USE A CUSTOM FONT, THESE ARE THEIR NAMES:
+ IF YOU NEED TO USE A CUSTOM FONT; THESE ARE THEIR NAMES:
  
  Family: Forma DJR Micro
     - FormaDJRMicro-Regular

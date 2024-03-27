@@ -1,0 +1,24 @@
+{
+  "song": {
+    "title": "Example Song",
+    "artist": "Example Artist",
+    "duration": 240,
+    "bpm": 120
+  },
+  "gesture_entities": [
+    {
+      "type": "fist",
+      "timing": 3000,
+      "position": {"x": 0, "y": 1, "z": -2},
+      "orientation": {"pitch": 0, "yaw": 0, "roll": 0}
+    },
+    {
+      "type": "peace_sign",
+      "timing": 6000,
+      "position": {"x": 1, "y": 0, "z": -2},
+      "orientation": {"pitch": 0, "yaw": 0, "roll": 0}
+    }
+  ]
+}
+
+!! THIS IS JUST AN EXAMPLE FILE, VALID JSON DOES NOT ALLOW FOR COMMENTS !!
