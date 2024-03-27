@@ -169,13 +169,14 @@ struct ImmersiveView: View {
            content.add(zR)
            
            guard let immersiveEntity = try? await Entity(named: "Immersive", in: realityKitContentBundle) else {
-                        fatalError("Unable to load immersive model")
-                    }
+                fatalError("Unable to load immersive model")
+            }
            content.add(immersiveEntity)
            
            Task {
                openWindow(id: "scoreView")
                dismissWindow(id: "windowGroup")
+               // Attach itself to the gameModel
                gameModel.immsersiveView = self
                stopTimer()
            }
@@ -192,55 +193,55 @@ struct ImmersiveView: View {
            let rightHand = hands[1]
            
            let jointPositions: [SIMD3<Float>] = [
-            leftHand.thumbIntermediateBase,
-            leftHand.thumbIntermediateTip,
-            leftHand.thumbKnuckle,
-            leftHand.thumbTip,
-            leftHand.indexFingerIntermediateBase,
-            leftHand.indexFingerIntermediateTip,
-            leftHand.indexFingerKnuckle,
-            leftHand.indexFingerMetacarpal,
-            leftHand.indexFingerTip,
-            leftHand.middleFingerIntermediateBase,
-            leftHand.middleFingerIntermediateTip,
-            leftHand.middleFingerKnuckle,
-            leftHand.middleFingerMetacarpal,
-            leftHand.middleFingerTip,
-            leftHand.ringFingerIntermediateBase,
-            leftHand.ringFingerIntermediateTip,
-            leftHand.ringFingerKnuckle,
-            leftHand.ringFingerMetacarpal,
-            leftHand.ringFingerTip,
-            leftHand.littleFingerIntermediateBase,
-            leftHand.littleFingerIntermediateTip,
-            leftHand.littleFingerKnuckle,
-            leftHand.littleFingerMetacarpal,
-            leftHand.littleFingerTip,
-               
-            rightHand.thumbIntermediateBase,
-            rightHand.thumbIntermediateTip,
-            rightHand.thumbKnuckle,
-            rightHand.thumbTip,
-            rightHand.indexFingerIntermediateBase,
-            rightHand.indexFingerIntermediateTip,
-            rightHand.indexFingerKnuckle,
-            rightHand.indexFingerMetacarpal,
-            rightHand.indexFingerTip,
-            rightHand.middleFingerIntermediateBase,
-            rightHand.middleFingerIntermediateTip,
-            rightHand.middleFingerKnuckle,
-            rightHand.middleFingerMetacarpal,
-            rightHand.middleFingerTip,
-            rightHand.ringFingerIntermediateBase,
-            rightHand.ringFingerIntermediateTip,
-            rightHand.ringFingerKnuckle,
-            rightHand.ringFingerMetacarpal,
-            rightHand.ringFingerTip,
-            rightHand.littleFingerIntermediateBase,
-            rightHand.littleFingerIntermediateTip,
-            rightHand.littleFingerKnuckle,
-            rightHand.littleFingerMetacarpal,
-            rightHand.littleFingerTip
+                leftHand.thumbIntermediateBase,
+                leftHand.thumbIntermediateTip,
+                leftHand.thumbKnuckle,
+                leftHand.thumbTip,
+                leftHand.indexFingerIntermediateBase,
+                leftHand.indexFingerIntermediateTip,
+                leftHand.indexFingerKnuckle,
+                leftHand.indexFingerMetacarpal,
+                leftHand.indexFingerTip,
+                leftHand.middleFingerIntermediateBase,
+                leftHand.middleFingerIntermediateTip,
+                leftHand.middleFingerKnuckle,
+                leftHand.middleFingerMetacarpal,
+                leftHand.middleFingerTip,
+                leftHand.ringFingerIntermediateBase,
+                leftHand.ringFingerIntermediateTip,
+                leftHand.ringFingerKnuckle,
+                leftHand.ringFingerMetacarpal,
+                leftHand.ringFingerTip,
+                leftHand.littleFingerIntermediateBase,
+                leftHand.littleFingerIntermediateTip,
+                leftHand.littleFingerKnuckle,
+                leftHand.littleFingerMetacarpal,
+                leftHand.littleFingerTip,
+
+                rightHand.thumbIntermediateBase,
+                rightHand.thumbIntermediateTip,
+                rightHand.thumbKnuckle,
+                rightHand.thumbTip,
+                rightHand.indexFingerIntermediateBase,
+                rightHand.indexFingerIntermediateTip,
+                rightHand.indexFingerKnuckle,
+                rightHand.indexFingerMetacarpal,
+                rightHand.indexFingerTip,
+                rightHand.middleFingerIntermediateBase,
+                rightHand.middleFingerIntermediateTip,
+                rightHand.middleFingerKnuckle,
+                rightHand.middleFingerMetacarpal,
+                rightHand.middleFingerTip,
+                rightHand.ringFingerIntermediateBase,
+                rightHand.ringFingerIntermediateTip,
+                rightHand.ringFingerKnuckle,
+                rightHand.ringFingerMetacarpal,
+                rightHand.ringFingerTip,
+                rightHand.littleFingerIntermediateBase,
+                rightHand.littleFingerIntermediateTip,
+                rightHand.littleFingerKnuckle,
+                rightHand.littleFingerMetacarpal,
+                rightHand.littleFingerTip
            ]
            
            for i in 0...jointPositions.count - 1 {
@@ -255,13 +256,13 @@ struct ImmersiveView: View {
            yR.transform.translation = rightHand.y
            zR.transform.translation = rightHand.z
            
-           if (gestureModel.isFistL()!) {
+           if (gestureModel.checkGesture("left_fist")!) {
                changeColor(entity: xL, color: .green)
            } else {
                changeColor(entity: xL, color: .black)
            }
            
-           if (gestureModel.isFistR()!) {
+           if (gestureModel.checkGesture("right_fist")!) {
                changeColor(entity: xR, color: .green)
            } else {
                changeColor(entity: xR, color: .black)
