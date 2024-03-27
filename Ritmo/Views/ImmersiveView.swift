@@ -8,6 +8,7 @@
 import SwiftUI
 import RealityKit
 import RealityKitContent
+import MusicKit
 
 struct ImmersiveView: View {
     @Environment(\.dismissWindow) private var dismissWindow
@@ -31,7 +32,12 @@ struct ImmersiveView: View {
     let handTravelTime = 4.0 // The time it takes the hand to reach the player
     let acceptInputWindow = 0.8 // The time window in which the player can successfully match a gesture
     
-    func spawnHand() {
+    func spawnEntities() {
+        
+            
+            // Read data from JSON
+            parseJSON(songName: gameModel.musicView.getSongName())
+        
             // Randomly choose between "Fist_fixed" and "OPENfixed"
             let entityName = Bool.random() ? "Fist_fixed" : "OPENfixed"
         
@@ -118,18 +124,85 @@ struct ImmersiveView: View {
     }
     
     func stopTimer() {
-        //self.timer.upstream.connect().cancel()
+        self.timer.upstream.connect().cancel()
     }
+    
+    // Read data from JSON
+    func readJSONFromFile(songName: String) -> Data? {
+        guard let filePath = Bundle.main.path(forResource: songName, ofType: "json") else {
+            print("File not found")
+            return nil
+        }
+        
+        do {
+            let fileURL = URL(fileURLWithPath: filePath)
+            let data = try Data(contentsOf: fileURL)
+            return data
+        } catch {
+            print("Error reading file:", error)
+            return nil
+        }
+    }
+    
+    // Parse JSON data into Song object
+    func parseJSON(songName: String) {
+        guard let jsonData = readJSONFromFile(songName: songName) else { return }
+        
+        do {
+            let decoder = JSONDecoder()
+            let song = try decoder.decode(SongJSON.self, from: jsonData)
+            
+            // Access song properties
+            print("Song Title:", song.title)
+            print("Artist:", song.artist)
+            print("Duration:", song.duration)
+            print("BPM:", song.bpm)
+            
+            // Access gesture entities
+            /*
+            for entity in song.gestureEntities {
+                print("Gesture Type:", entity.type)
+                print("Timing:", entity.timing)
+                print("Position:", entity.position)
+                print("Orientation:", entity.orientation)
+            }
+             */
+        } catch {
+            print("Error parsing JSON:", error)
+        }
+    }
+    
+    struct SongJSON: Codable {
+        let title: String
+        let artist: String
+        let duration: Int
+        let bpm: Int
+    }
+
+    struct GestureEntity: Codable {
+        let type: String
+        let timing: Int
+        let position: Position
+        let orientation: Orientation
+    }
+
+    struct Position: Codable {
+        let x: Float
+        let y: Float
+        let z: Float
+    }
+
+    struct Orientation: Codable {
+        let pitch: Float
+        let yaw: Float
+        let roll: Float
+    }
+    
     
     var body: some View {
        RealityView { content in
-           //gestureModel.isFistL()
-           content.add(orbSpawner)
            
-//           let sphere = MeshResource.generateSphere(radius: 0.01)
-//           let material = SimpleMaterial(color: .black, isMetallic: false)
-//           handSphere = ModelEntity(mesh: sphere, materials: [material])
-//           content.add(handSphere)
+           content.add(orbSpawner)
            
            for i in 1...48 {
                let sphere = MeshResource.generateSphere(radius: 0.01)
@@ -279,9 +352,6 @@ struct ImmersiveView: View {
                }
            }
        }
-//       .onReceive(timer) {time in
-//           spawnHand()
-//       }
        .gesture(TapGesture().targetedToAnyEntity().onEnded({ value in
            if (correctTime) {
                changeColor(entity: value.entity, color: .green)

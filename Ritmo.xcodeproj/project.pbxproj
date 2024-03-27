@@ -14,6 +14,8 @@
 		EC10F9132B963E3B008741EA /* WaveAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC10F9122B963E3B008741EA /* WaveAnimation.swift */; };
 		EC3336A62B787ACB00836AFB /* MusicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC3336A52B787ACB00836AFB /* MusicView.swift */; };
 		EC35DBD92BAC849A000B4ABD /* Allura-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EC35DBD82BAC849A000B4ABD /* Allura-Regular.ttf */; };
+		EC50B65E2BB4C50200927329 /* song_data.json in Resources */ = {isa = PBXBuildFile; fileRef = EC50B65D2BB4C50200927329 /* song_data.json */; };
+		EC50B6602BB4CA6B00927329 /* Party In the U.S.A..json in Resources */ = {isa = PBXBuildFile; fileRef = EC50B65F2BB4CA6B00927329 /* Party In the U.S.A..json */; };
 		EC5EC91B2BA682C800809821 /* SnapCarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC5EC91A2BA682C800809821 /* SnapCarouselView.swift */; };
 		EC605FE92B77D06A005EC21A /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC605FE82B77D06A005EC21A /* SettingsView.swift */; };
 		EC64789A2B77C4F300F12A54 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6478992B77C4F300F12A54 /* HomeView.swift */; };
@@ -43,6 +45,8 @@
 		EC10F9122B963E3B008741EA /* WaveAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaveAnimation.swift; sourceTree = "<group>"; };
 		EC3336A52B787ACB00836AFB /* MusicView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicView.swift; sourceTree = "<group>"; };
 		EC35DBD82BAC849A000B4ABD /* Allura-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Allura-Regular.ttf"; sourceTree = "<group>"; };
+		EC50B65D2BB4C50200927329 /* song_data.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = song_data.json; sourceTree = "<group>"; };
+		EC50B65F2BB4CA6B00927329 /* Party In the U.S.A..json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "Party In the U.S.A..json"; sourceTree = "<group>"; };
 		EC5EC91A2BA682C800809821 /* SnapCarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapCarouselView.swift; sourceTree = "<group>"; };
 		EC605FE82B77D06A005EC21A /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		EC6478992B77C4F300F12A54 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -79,6 +83,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		EC50B65C2BB4C4B900927329 /* Song Data */ = {
+			isa = PBXGroup;
+			children = (
+				EC50B65D2BB4C50200927329 /* song_data.json */,
+				EC50B65F2BB4CA6B00927329 /* Party In the U.S.A..json */,
+			);
+			path = "Song Data";
+			sourceTree = "<group>";
+		};
 		EC69294F2BA9CF8D00EF3AFE /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -122,6 +135,7 @@
 				9AF2D2F12BA0F7120064D49D /* GlobalEntities.swift */,
 				ECC092552B7844A5002B4013 /* Views */,
 				EC69294F2BA9CF8D00EF3AFE /* Fonts */,
+				EC50B65C2BB4C4B900927329 /* Song Data */,
 				ECDD66992B8D2E96005987B0 /* Ritmo.entitlements */,
 				ECA1E21E2B75B64200EE4926 /* Assets.xcassets */,
 				ECA1E2232B75B64200EE4926 /* Info.plist */,
@@ -229,7 +243,9 @@
 				ECA1E2222B75B64200EE4926 /* Preview Assets.xcassets in Resources */,
 				EC6929552BA9CFD900EF3AFE /* FormaDJRMicro-Medium.ttf in Resources */,
 				ECA1E21F2B75B64200EE4926 /* Assets.xcassets in Resources */,
+				EC50B65E2BB4C50200927329 /* song_data.json in Resources */,
 				EC6929532BA9CFD100EF3AFE /* FormaDJRMicro-Regular.ttf in Resources */,
+				EC50B6602BB4CA6B00927329 /* Party In the U.S.A..json in Resources */,
 				EC6929592BA9CFE800EF3AFE /* FormaDJRMicro-ExtraLight.ttf in Resources */,
 				EC6929572BA9CFE000EF3AFE /* FormaDJRMicro-Light.ttf in Resources */,
 				EC35DBD92BAC849A000B4ABD /* Allura-Regular.ttf in Resources */,

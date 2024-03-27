@@ -1,0 +1,36 @@
+{
+    "title": "Party in the U.S.A.",
+    "artist": "Miley Cyrus",
+    "duration": 203,
+    "bpm": 96,
+    "gesture_entities": [
+        {
+            "type": "fist",
+            "timing": 3000,
+            "position": {
+                "x": 0,
+                "y": 1,
+                "z": -2
+            },
+            "orientation": {
+                "pitch": 0,
+                "yaw": 0,
+                "roll": 0
+            }
+        },
+        {
+            "type": "peace_sign",
+            "timing": 6000,
+            "position": {
+                "x": 1,
+                "y": 0,
+                "z": -2
+            },
+            "orientation": {
+                "pitch": 0,
+                "yaw": 0,
+                "roll": 0
+            }
+        }
+    ]
+}
