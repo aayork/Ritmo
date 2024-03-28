@@ -151,12 +151,14 @@ struct ImmersiveView: View {
         do {
             let decoder = JSONDecoder()
             let response = try decoder.decode(Response.self, from: jsonData)
+            //let gestureEntities = response["gesture_entities"] as? [[String: Any]]
             
             // Access song properties
             print("Song Title:", response.song.title)
             print("Artist:", response.song.artist)
             print("Duration:", response.song.duration)
             print("BPM:", response.song.bpm)
+            print("Test:", response.gestureEntities[0].type)
             
         } catch {
             print("Error parsing JSON:", error)
@@ -165,6 +167,7 @@ struct ImmersiveView: View {
     
     struct Response: Codable {
         var song: SongJSON
+        var gestureEntities: [GestureEntity]
     }
     
     struct SongJSON: Codable {
