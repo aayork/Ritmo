@@ -151,15 +151,24 @@ struct ImmersiveView: View {
         do {
             let decoder = JSONDecoder()
             let response = try decoder.decode(Response.self, from: jsonData)
-            //let gestureEntities = response["gesture_entities"] as? [[String: Any]]
-            let gesture_entities = try decoder.decode([GestureEntity].self, from: jsonData)
             
-            // Access song properties
             print("Song Title:", response.song.title)
             print("Artist:", response.song.artist)
             print("Duration:", response.song.duration)
             print("BPM:", response.song.bpm)
-            print("Test:", gesture_entities[0].type)
+            
+            // Convert gesture entities array to a dictionary with timing as the key
+            let gestureEntitiesDict = Dictionary(grouping: response.gesture_entities) { $0.timing }
+                    
+            // Now you have a dictionary with the timing as keys and arrays of GestureEntity as values
+            // If you expect only one gesture entity per timing, you can further simplify this dictionary.
+            let simplifiedGestureEntitiesDict = gestureEntitiesDict.mapValues { $0.first! }
+
+            // Use simplifiedGestureEntitiesDict or gestureEntitiesDict as needed
+            // For example, printing the dictionary:
+            for (timing, gesture) in simplifiedGestureEntitiesDict {
+                print("Timing: \(timing), Gesture: \(gesture.type)")
+            }
             
         } catch {
             print("Error parsing JSON:", error)
@@ -168,6 +177,7 @@ struct ImmersiveView: View {
     
     struct Response: Codable {
         var song: SongJSON
+        var gesture_entities: [GestureEntity]
     }
     
     struct SongJSON: Codable {
