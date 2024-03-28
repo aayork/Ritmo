@@ -50,7 +50,7 @@ struct HomeView: View {
             contentStack
         }
         .padding()
-        .background(Color.gunmetalGray.opacity(0.8))
+        .background(Color.gunmetalGray.opacity(0.5))
     }
     
     private var contentStack: some View {

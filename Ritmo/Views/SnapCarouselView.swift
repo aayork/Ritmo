@@ -14,15 +14,12 @@ struct SnapCarouselView: View {
     @State private var selectedCardID: UUID?
 
     init() {
-            let recentlyPlayed = RecentlyPlayedManager.shared.getRecentlyPlayedSongs()
-            _cards = State(initialValue: recentlyPlayed)
-            // Find the middle index
-            let middleIndex = recentlyPlayed.count / 2
-            
-            // Set the current index and selected card ID to the middle item
-            _currentIndex = State(initialValue: max(0, middleIndex)) // Ensure it's not negative
-            _selectedCardID = State(initialValue: recentlyPlayed.indices.contains(middleIndex) ? recentlyPlayed[middleIndex].id : nil)
-        }
+        let recentlyPlayed = RecentlyPlayedManager.shared.getRecentlyPlayedSongs()
+        let firstIndex = 0
+        _cards = State(initialValue: recentlyPlayed)
+        _currentIndex = State(initialValue: max(0, firstIndex)) // Ensure it's not negative
+        _selectedCardID = State(initialValue: recentlyPlayed.indices.contains(firstIndex) ? recentlyPlayed[firstIndex].id : nil)
+    }
     
     var body: some View {
         GeometryReader { geometry in
