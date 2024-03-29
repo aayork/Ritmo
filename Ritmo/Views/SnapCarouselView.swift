@@ -22,41 +22,62 @@ struct SnapCarouselView: View {
     }
     
     var body: some View {
-        GeometryReader { geometry in
-            ZStack(alignment: .center) {
-                if (cards.count == 5) {
-                    ForEach(cards.indices, id: \.self) { index in
-                        let card = cards[index]
-                        let totalWidth = geometry.size.width
-                        let cardWidth = totalWidth / CGFloat(cards.count)
-                        let halfTotalWidth = totalWidth / 2
-                        let halfCardWidth = cardWidth / 2
-                        let currentIndexOffset = CGFloat(currentIndex) * cardWidth
-                        let indexOffset = CGFloat(index) * cardWidth
-                        let offset = halfTotalWidth - currentIndexOffset - halfCardWidth + indexOffset
-                        
-                        // Calculate the distance from the center to adjust opacity and blur
-                        let distanceFromCenter = abs(halfTotalWidth - (offset + halfCardWidth))
-                        
-                        CarouselCardView(card: card, selectedCardID: selectedCardID, geometry: geometry, distanceFromCenter: distanceFromCenter)
-                            .offset(x: offset, y: 0)
-                        // Calculate zIndex based on how close the item is to the currently selected item
-                            .zIndex(Double(cards.count - abs(currentIndex - index)))
-                    }
-                } else {
-                    Text("Play more music for recents!")
-                        .offset(x: 440, y: 225)
-                }
+        VStack {
+            if cards.count == 5 {
+                Text("RECENTLY PLAYED")
+                    .font(.custom("Soulcraft_Wide", size: 50.0))
+                    .padding()
+                    .padding(.bottom, 8)
+                    .frame(alignment: .topLeading)
+                    .foregroundStyle(Color.electricLime)
+            } else {
+                Text("WELCOME")
+                    .font(.custom("Soulcraft_Wide", size: 50.0))
+                    .padding()
+                    .padding(.bottom, 8)
+                    .frame(alignment: .topLeading)
+                    .foregroundStyle(Color.electricLime)
             }
-            .gesture(
-                DragGesture()
-                    .onEnded { value in
-                        updateCurrentIndexAndSelectedCardID(with: value.translation.width)
+            GeometryReader { geometry in
+                ZStack(alignment: .center) {
+                    if (cards.count == 5) {
+                        ForEach(cards.indices, id: \.self) { index in
+                            let card = cards[index]
+                            let totalWidth = geometry.size.width
+                            let cardWidth = totalWidth / CGFloat(cards.count)
+                            let halfTotalWidth = totalWidth / 2
+                            let halfCardWidth = cardWidth / 2
+                            let currentIndexOffset = CGFloat(currentIndex) * cardWidth
+                            let indexOffset = CGFloat(index) * cardWidth
+                            let offset = halfTotalWidth - currentIndexOffset - halfCardWidth + indexOffset
+                            
+                            // Calculate the distance from the center to adjust opacity and blur
+                            let distanceFromCenter = abs(halfTotalWidth - (offset + halfCardWidth))
+                            
+                            
+                            
+                            
+                            CarouselCardView(card: card, selectedCardID: selectedCardID, geometry: geometry, distanceFromCenter: distanceFromCenter)
+                                .offset(x: offset, y: 0)
+                            // Calculate zIndex based on how close the item is to the currently selected item
+                                .zIndex(Double(cards.count - abs(currentIndex - index)))
+                            
+                        }
+                    } else {
+                        Text("Welcome to Ritmo! blurb goes here (or 3d beethoven?)")
+                            .offset(x: 430, y: 225)
                     }
-            )
+                }
+                .gesture(
+                    DragGesture()
+                        .onEnded { value in
+                            updateCurrentIndexAndSelectedCardID(with: value.translation.width)
+                        }
+                )
+            }
+            .padding()
+            .offset(x: -110)
         }
-        .padding()
-        .offset(x: -110)
     }
     
     private func updateCurrentIndexAndSelectedCardID(with translationWidth: CGFloat) {

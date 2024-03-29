@@ -114,12 +114,14 @@ struct HomeView: View {
             
             HStack {
                 VStack(alignment: .center) {
+                    /*
                     Text("RECENTLY PLAYED")
                         .font(.custom("Soulcraft_Wide", size: 50.0))
                         .padding()
                         .padding(.bottom, 8)
                         .frame(alignment: .topLeading)
                         .foregroundStyle(Color.electricLime)
+                     */
                     
                     SnapCarouselView()
                         .zIndex(2.0)

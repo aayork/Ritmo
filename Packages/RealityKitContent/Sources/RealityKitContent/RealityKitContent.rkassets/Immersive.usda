@@ -89,5 +89,23 @@ def Xform "Root"
             uniform token info:id = "RealityKit.GroundingShadow"
         }
     }
+
+    def "Beethoven_1_FDM_FFF" (
+        active = true
+        prepend apiSchemas = ["MaterialBindingAPI"]
+        customData = {
+            float3 rotationEulerHint = (1.5707959, 3.1415927, 3.1415927)
+        }
+        prepend references = @Beethoven_1_FDM-FFF.usdz@
+    )
+    {
+        rel material:binding = None (
+            bindMaterialAs = "weakerThanDescendants"
+        )
+        quatf xformOp:orient = (0.70710677, -0.70710677, -6.181724e-8, 2.5121479e-15)
+        float3 xformOp:scale = (0.01, 0.01, 0.01)
+        float3 xformOp:translate = (-1.3249985, -8.940697e-8, -1.155083)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
 }
 
