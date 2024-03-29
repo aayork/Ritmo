@@ -13,7 +13,7 @@ struct SettingsView: View {
     
     var body: some View {
         ZStack {
-            Color.gunmetalGray.opacity(0.8)
+            Color.gunmetalGray.opacity(0.5)
                             .edgesIgnoringSafeArea(.all) 
             VStack {
                 Text("SETTINGS")
@@ -75,9 +75,6 @@ struct SettingsView: View {
                     Spacer()
                 }
                 .padding(.horizontal)
-                Text("Glory, Glory")
-                    .font(.custom("Allura", size: 30.0))
-                    .opacity(/*@START_MENU_TOKEN@*/0.8/*@END_MENU_TOKEN@*/)
             }
         }
     }

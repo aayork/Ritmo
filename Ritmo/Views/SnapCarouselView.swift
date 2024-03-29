@@ -7,6 +7,8 @@
 
 import SwiftUI
 import MusicKit
+import RealityKit
+import RealityKitContent
 
 struct SnapCarouselView: View {
     @State private var currentIndex: Int
@@ -31,12 +33,40 @@ struct SnapCarouselView: View {
                     .frame(alignment: .topLeading)
                     .foregroundStyle(Color.electricLime)
             } else {
-                Text("WELCOME")
-                    .font(.custom("Soulcraft_Wide", size: 50.0))
-                    .padding()
-                    .padding(.bottom, 8)
-                    .frame(alignment: .topLeading)
-                    .foregroundStyle(Color.electricLime)
+                VStack {
+                    Text("WELCOME")
+                        .font(.custom("Soulcraft_Wide", size: 50.0))
+                        .padding()
+                        .padding(.bottom, 8)
+                        .frame(alignment: .topLeading)
+                        .foregroundStyle(Color.electricLime)
+                       
+                    
+                    Model3D(named: "Beethoven", bundle: realityKitContentBundle) { model in
+                         model
+                             .resizable()
+                             .aspectRatio(contentMode: .fit)
+                             // .rotation3DEffect(Angle(degrees: Double(180.0)), anchor: <#T##UnitPoint3D#>)
+                     } placeholder: {
+                         Text("Beethoven")
+                     }
+                     
+                    /*
+                    
+                    RealityView { content in
+                        if let beethoven = try? await ModelEntity(named: "Beethoven", in: realityKitContentBundle) {
+                                    content.add(beethoven)
+                            beethoven.scale /= 10
+                                }
+                                Task {
+                                    
+                                }
+                            }
+                     */
+                    
+                    
+                    Text("Welcome to Ritmo! blurb goes here (or 3d beethoven?)")
+                }
             }
             GeometryReader { geometry in
                 ZStack(alignment: .center) {
@@ -63,9 +93,6 @@ struct SnapCarouselView: View {
                                 .zIndex(Double(cards.count - abs(currentIndex - index)))
                             
                         }
-                    } else {
-                        Text("Welcome to Ritmo! blurb goes here (or 3d beethoven?)")
-                            .offset(x: 430, y: 225)
                     }
                 }
                 .gesture(
