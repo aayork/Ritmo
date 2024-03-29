@@ -273,4 +273,3 @@ struct MusicView: View {
     MusicView()
         .environment(GameModel().self)
 }
-
