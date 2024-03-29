@@ -41,31 +41,16 @@ struct SnapCarouselView: View {
                         .frame(alignment: .topLeading)
                         .foregroundStyle(Color.electricLime)
                        
-                    
+                  
                     Model3D(named: "Beethoven", bundle: realityKitContentBundle) { model in
                          model
                              .resizable()
                              .aspectRatio(contentMode: .fit)
-                             // .rotation3DEffect(Angle(degrees: Double(180.0)), anchor: <#T##UnitPoint3D#>)
+                             .rotation3DEffect(.degrees(90), axis: (x: 1, y: 0, z: 0))
                      } placeholder: {
                          Text("Beethoven")
                      }
-                     
-                    /*
-                    
-                    RealityView { content in
-                        if let beethoven = try? await ModelEntity(named: "Beethoven", in: realityKitContentBundle) {
-                                    content.add(beethoven)
-                            beethoven.scale /= 10
-                                }
-                                Task {
-                                    
-                                }
-                            }
-                     */
-                    
-                    
-                    Text("Welcome to Ritmo! blurb goes here (or 3d beethoven?)")
+                     .offset(y: 70)
                 }
             }
             GeometryReader { geometry in
