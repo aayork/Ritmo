@@ -157,17 +157,12 @@ struct ImmersiveView: View {
             print("Duration:", response.song.duration)
             print("BPM:", response.song.bpm)
             
-            // Convert gesture entities array to a dictionary with timing as the key
             let gestureEntitiesDict = Dictionary(grouping: response.gesture_entities) { $0.timing }
-                    
-            // Now you have a dictionary with the timing as keys and arrays of GestureEntity as values
-            // If you expect only one gesture entity per timing, you can further simplify this dictionary.
+            
             let simplifiedGestureEntitiesDict = gestureEntitiesDict.mapValues { $0.first! }
 
-            // Use simplifiedGestureEntitiesDict or gestureEntitiesDict as needed
-            // For example, printing the dictionary:
             for (timing, gesture) in simplifiedGestureEntitiesDict {
-                print("Timing: \(timing), Gesture: \(gesture.type)")
+                print("Timing: \(timing), Gesture: \(gesture.type), Position: \(gesture.position)")
             }
             
         } catch {
@@ -188,12 +183,12 @@ struct ImmersiveView: View {
     }
 
     struct GestureEntity: Codable {
-        let type: String
         let timing: Int
+        let type: String
         let position: Position
         let orientation: Orientation
     }
-
+    
     struct Position: Codable {
         let x: Float
         let y: Float

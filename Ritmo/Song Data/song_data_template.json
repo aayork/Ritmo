@@ -7,16 +7,16 @@
   },
   "gesture_entities": [
     {
-      "type": "fist",
-      "timing": 3000,
-      "position": {"x": 0, "y": 1, "z": -2},
-      "orientation": {"pitch": 0, "yaw": 0, "roll": 0}
+        "timing": 3000,
+        "type": "right_fist",
+        "position": {"x": 0, "y": 1, "z": -2},
+        "orientation": {"pitch": 0, "yaw": 0, "roll": 0}
     },
     {
-      "type": "peace_sign",
-      "timing": 6000,
-      "position": {"x": 1, "y": 0, "z": -2},
-      "orientation": {"pitch": 0, "yaw": 0, "roll": 0}
+        "timing": 6000,
+        "type": "left_fist",
+        "position": {"x": 1, "y": 0, "z": -2},
+        "orientation": {"pitch": 0, "yaw": 0, "roll": 0}
     }
   ]
 }
