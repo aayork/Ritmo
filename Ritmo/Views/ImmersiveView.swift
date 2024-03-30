@@ -39,9 +39,9 @@ struct ImmersiveView: View {
             parseJSON(songName: gameModel.musicView.getSongName())
         
             // Randomly choose between "Fist_fixed" and "OPENfixed"
-            let entityName = Bool.random() ? "Fist_fixed" : "OPENfixed"
+            let entityName = Bool.random() ? "right_fist" : "right_open"
         
-            let entityTwoName = Bool.random() ? "Fist_fixed" : "OPENfixed"
+            let entityTwoName = Bool.random() ? "left_fixed" : "left_open"
             
             // Attempt to load the chosen entity
             guard let importEntity = try? Entity.load(named: entityName, in: realityKitContentBundle) else {
