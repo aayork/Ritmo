@@ -1,0 +1,35 @@
+{
+  "song": {
+    "title": "Something in the Orange",
+    "artist": "Zach Bryan",
+    "duration": 228,
+    "bpm": 175,
+    "creator": "Ritmo!"
+  },
+  "gesture_entities": [
+    {
+      "timing": 1000,
+      "type": "right_fist",
+      "position": {"x": 0, "y": 1, "z": -2},
+      "orientation": {"pitch": 0, "yaw": 0, "roll": 0}
+    },
+    {
+      "timing": 2000,
+      "type": "left_open",
+      "position": {"x": -1, "y": 1, "z": -2},
+      "orientation": {"pitch": 0, "yaw": 30, "roll": 0}
+    },
+    {
+      "timing": 3000,
+      "type": "right_peaceSign",
+      "position": {"x": 1, "y": 0, "z": -2},
+      "orientation": {"pitch": 0, "yaw": -30, "roll": 0}
+    },
+    {
+      "timing": 4000,
+      "type": "left_fist",
+      "position": {"x": 0, "y": 1, "z": -2},
+      "orientation": {"pitch": 20, "yaw": 0, "roll": 0}
+    }
+  ]
+}
