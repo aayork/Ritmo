@@ -159,6 +159,7 @@ struct ImmersiveView: View {
             print("Artist:", response.song.artist)
             print("Duration:", response.song.duration)
             print("BPM:", response.song.bpm)
+            print("Creator:", response.song.creator)
             
             let gestureEntitiesDict = Dictionary(grouping: response.gesture_entities) { $0.timing }
             
@@ -186,6 +187,7 @@ struct ImmersiveView: View {
         let artist: String
         let duration: Int
         let bpm: Int
+        let creator: String
     }
 
     struct GestureEntity: Codable {

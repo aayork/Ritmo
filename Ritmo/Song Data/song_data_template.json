@@ -3,7 +3,8 @@
     "title": "Example Song",
     "artist": "Example Artist",
     "duration": 240,
-    "bpm": 120
+    "bpm": 120,
+    "creator": "Ritmo!"
   },
   "gesture_entities": [
     {

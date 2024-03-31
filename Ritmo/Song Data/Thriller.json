@@ -3,7 +3,8 @@
       "title": "Thriller",
       "artist": "Michael Jackson",
       "duration": 357,
-      "bpm": 118
+      "bpm": 118,
+      "creator": "Ritmo!"
   },
   "gesture_entities": [
     {
