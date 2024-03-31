@@ -16,6 +16,7 @@
 		EC35DBD92BAC849A000B4ABD /* Allura-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EC35DBD82BAC849A000B4ABD /* Allura-Regular.ttf */; };
 		EC50B65E2BB4C50200927329 /* song_data_template.json in Resources */ = {isa = PBXBuildFile; fileRef = EC50B65D2BB4C50200927329 /* song_data_template.json */; };
 		EC50B6602BB4CA6B00927329 /* Party In the U.S.A..json in Resources */ = {isa = PBXBuildFile; fileRef = EC50B65F2BB4CA6B00927329 /* Party In the U.S.A..json */; };
+		EC5355722BB9F1C900555054 /* Thriller.json in Resources */ = {isa = PBXBuildFile; fileRef = EC5355712BB9F1C900555054 /* Thriller.json */; };
 		EC5EC91B2BA682C800809821 /* SnapCarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC5EC91A2BA682C800809821 /* SnapCarouselView.swift */; };
 		EC605FE92B77D06A005EC21A /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC605FE82B77D06A005EC21A /* SettingsView.swift */; };
 		EC64789A2B77C4F300F12A54 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6478992B77C4F300F12A54 /* HomeView.swift */; };
@@ -48,6 +49,7 @@
 		EC35DBD82BAC849A000B4ABD /* Allura-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Allura-Regular.ttf"; sourceTree = "<group>"; };
 		EC50B65D2BB4C50200927329 /* song_data_template.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = song_data_template.json; sourceTree = "<group>"; };
 		EC50B65F2BB4CA6B00927329 /* Party In the U.S.A..json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "Party In the U.S.A..json"; sourceTree = "<group>"; };
+		EC5355712BB9F1C900555054 /* Thriller.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Thriller.json; sourceTree = "<group>"; };
 		EC5EC91A2BA682C800809821 /* SnapCarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapCarouselView.swift; sourceTree = "<group>"; };
 		EC605FE82B77D06A005EC21A /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		EC6478992B77C4F300F12A54 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -90,6 +92,7 @@
 			children = (
 				EC50B65D2BB4C50200927329 /* song_data_template.json */,
 				EC50B65F2BB4CA6B00927329 /* Party In the U.S.A..json */,
+				EC5355712BB9F1C900555054 /* Thriller.json */,
 			);
 			path = "Song Data";
 			sourceTree = "<group>";
@@ -243,6 +246,7 @@
 				EC69295F2BA9CFFE00EF3AFE /* FormaDJRMicro-Black.ttf in Resources */,
 				EC69295B2BA9CFEE00EF3AFE /* FormaDJRMicro-ExtraBold.ttf in Resources */,
 				EC6929512BA9CFC500EF3AFE /* SoulcraftGX.ttf in Resources */,
+				EC5355722BB9F1C900555054 /* Thriller.json in Resources */,
 				ECA1E2222B75B64200EE4926 /* Preview Assets.xcassets in Resources */,
 				EC6929552BA9CFD900EF3AFE /* FormaDJRMicro-Medium.ttf in Resources */,
 				ECA1E21F2B75B64200EE4926 /* Assets.xcassets in Resources */,

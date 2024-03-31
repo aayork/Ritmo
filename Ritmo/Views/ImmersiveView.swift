@@ -29,14 +29,15 @@ struct ImmersiveView: View {
     
     let orbSpawner = Entity()
     @State var timer = Timer.publish(every: 5, on: .main, in: .common).autoconnect()
+    @State var songTiming: Dictionary<Int, GestureEntity>?
     let handTravelTime = 4.0 // The time it takes the hand to reach the player
     let acceptInputWindow = 0.8 // The time window in which the player can successfully match a gesture
     
-    func spawnEntities() {
+    func gameLoop() {
         
             
             // Read data from JSON
-            parseJSON(songName: gameModel.musicView.getSongName())
+            songTiming = parseJSON(songName: gameModel.musicView.getSongName())
         
             // Randomly choose between "Fist_fixed" and "OPENfixed"
             let entityName = Bool.random() ? "right_fist" : "right_open"
@@ -96,6 +97,8 @@ struct ImmersiveView: View {
                 handOne.removeFromParent()
                 handTwo.removeFromParent()
             }
+        
+            gameModel.highScore.addScore(song: gameModel.musicView.selectedSong! ,score: score) // Add the score of the song to the score list
             
             // Handle the correct time window for interaction
             handleCorrectTimeWindow()
@@ -143,10 +146,10 @@ struct ImmersiveView: View {
             return nil
         }
     }
-    
+
     // Parse JSON data into Song object
-    func parseJSON(songName: String) {
-        guard let jsonData = readJSONFromFile(songName: songName) else { return }
+    func parseJSON(songName: String) -> Dictionary<Int,GestureEntity>? {
+        guard let jsonData = readJSONFromFile(songName: songName) else { return nil }
         
         do {
             let decoder = JSONDecoder()
@@ -165,9 +168,12 @@ struct ImmersiveView: View {
                 print("Timing: \(timing), Gesture: \(gesture.type), Position: \(gesture.position)")
             }
             
+            return simplifiedGestureEntitiesDict
+            
         } catch {
             print("Error parsing JSON:", error)
         }
+        return nil
     }
     
     struct Response: Codable {

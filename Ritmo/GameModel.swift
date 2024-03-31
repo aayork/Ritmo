@@ -16,6 +16,7 @@ class GameModel {
     var readyToStart = false
     var musicView: MusicView
     var recentlyPlayed: RecentlyPlayedManager
+    var highScore: HighScoreManager
     var immsersiveView: ImmersiveView?
     var handTracking: HandTracking?
     var carousel: SnapCarouselView
@@ -38,6 +39,7 @@ class GameModel {
         self.musicView = MusicView()
         self.recentlyPlayed = RecentlyPlayedManager()
         self.carousel = SnapCarouselView()
+        self.highScore = HighScoreManager()
         Task { @MainActor in
             self.immsersiveView = ImmersiveView(gestureModel: HandTrackingContainer.handTracking)
             self.handTracking = HandTracking()

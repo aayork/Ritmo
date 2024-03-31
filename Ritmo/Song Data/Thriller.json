@@ -1,0 +1,47 @@
+{
+  "song": {
+      "title": "Thriller",
+      "artist": "Michael Jackson",
+      "duration": 357,
+      "bpm": 118
+  },
+  "gesture_entities": [
+    {
+      "timing": 500,
+      "type": "left_fist",
+      "position": {"x": -0.5, "y": 1, "z": 0},
+      "orientation": {"pitch": 0, "yaw": 45, "roll": 0}
+    },
+    {
+      "timing": 1000,
+      "type": "right_fist",
+      "position": {"x": 0.5, "y": 1, "z": 0},
+      "orientation": {"pitch": 0, "yaw": -45, "roll": 0}
+    },
+    {
+      "timing": 1500,
+      "type": "left_open",
+      "position": {"x": -0.5, "y": 1.5, "z": 0},
+      "orientation": {"pitch": 30, "yaw": 45, "roll": 0}
+    },
+    {
+      "timing": 2000,
+      "type": "right_open",
+      "position": {"x": 0.5, "y": 1.5, "z": 0},
+      "orientation": {"pitch": -30, "yaw": -45, "roll": 0}
+    },
+    {
+      "timing": 2500,
+      "type": "left_peaceSign",
+      "position": {"x": -0.75, "y": 1, "z": 0},
+      "orientation": {"pitch": 0, "yaw": 90, "roll": 0}
+    },
+    {
+      "timing": 3000,
+      "type": "right_peaceSign",
+      "position": {"x": 0.75, "y": 1, "z": 0},
+      "orientation": {"pitch": 0, "yaw": -90, "roll": 0}
+    }
+  ]
+}
+

@@ -33,7 +33,7 @@ struct ScoreView: View {
                             // Check every second
                             try await Task.sleep(nanoseconds: 1_000_000_000)
                             
-                            gameModel.immsersiveView?.spawnEntities()
+                            gameModel.immsersiveView?.gameLoop()
                             
                             // Update the progressValue
                             progressValue += 1

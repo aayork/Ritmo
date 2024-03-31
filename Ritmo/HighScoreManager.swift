@@ -7,26 +7,34 @@
 
 import Foundation
 
+// Define a struct to hold both the song and its score
+struct SongScore: Codable {
+    let song: Item  // Assuming Item is Codable
+    let score: Int
+}
+
 class HighScoreManager {
     static let shared = HighScoreManager()
     private let key = "HighScores"
 
-    func addSong(song: Item) {
+    func addScore(song: Item, score: Int) {
         var scores = getHighScores()
         
-        scores.insert(song, at: 0) // Add new score at beginning of list
+        // Create a new SongScore object and add it at the beginning of the list
+        let newScore = SongScore(song: song, score: score)
+        scores.insert(newScore, at: 0)
         
-        // Store the updated list of scores
+        // Store the updated list of SongScore objects
         let encoder = JSONEncoder()
         if let encoded = try? encoder.encode(scores) {
             UserDefaults.standard.set(encoded, forKey: key)
         }
     }
 
-    func getHighScores() -> [Item] {
+    func getHighScores() -> [SongScore] {
         if let savedScores = UserDefaults.standard.object(forKey: key) as? Data {
             let decoder = JSONDecoder()
-            if let loadedScores = try? decoder.decode([Item].self, from: savedScores) {
+            if let loadedScores = try? decoder.decode([SongScore].self, from: savedScores) {
                 return loadedScores
             }
         }

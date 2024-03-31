@@ -44,6 +44,10 @@ struct MusicView: View {
                             Text(song.name).font(.headline)
                             Text(song.artist).font(.subheadline)
                         }
+                        if (gameModel.immsersiveView?.parseJSON(songName: song.name) != nil) {
+                            Image("ritmoStar")
+                                .shadow(color: .blue, radius: 10)
+                        }
                     }
                     .padding()
                 }
