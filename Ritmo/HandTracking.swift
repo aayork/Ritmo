@@ -116,6 +116,8 @@ class HandTracking: ObservableObject, @unchecked Sendable {
             return isOpen(isLeft)
         case "peaceSign":
             return isPeaceSign(isLeft)
+        case "fingerGun":
+            return isFingerGun(isLeft)
         default:
             return false
         }
@@ -239,6 +241,41 @@ class HandTracking: ObservableObject, @unchecked Sendable {
         && littleTip!.x > littleIBase!.x
         && thumbTip!.z < thumbKnuckle!.z
         && indexKnuckle!.z - middleKnuckle!.z < indexTip!.z - middleTip!.z
+    }
+    
+    func isFingerGun(_ isLeft: Bool) -> Bool? {
+        guard let handAnchor = isLeft ? latestHandTracking.left : latestHandTracking.right,
+              handAnchor.isTracked else {
+            return nil
+        }
+        let indexTip = handAnchor.handSkeleton?.joint(.indexFingerTip).anchorFromJointTransform.columns.3.xyz
+        let middleTip = handAnchor.handSkeleton?.joint(.middleFingerTip).anchorFromJointTransform.columns.3.xyz
+        let ringTip = handAnchor.handSkeleton?.joint(.ringFingerTip).anchorFromJointTransform.columns.3.xyz
+        let littleTip = handAnchor.handSkeleton?.joint(.littleFingerTip).anchorFromJointTransform.columns.3.xyz
+        
+        let indexITip = handAnchor.handSkeleton?.joint(.indexFingerIntermediateTip).anchorFromJointTransform.columns.3.xyz
+        
+        let middleIBase = handAnchor.handSkeleton?.joint(.middleFingerIntermediateBase).anchorFromJointTransform.columns.3.xyz
+        let ringIBase = handAnchor.handSkeleton?.joint(.ringFingerIntermediateBase).anchorFromJointTransform.columns.3.xyz
+        let littleIBase = handAnchor.handSkeleton?.joint(.littleFingerIntermediateBase).anchorFromJointTransform.columns.3.xyz
+        
+        let thumbTip = handAnchor.handSkeleton?.joint(.thumbTip).anchorFromJointTransform.columns.3.xyz
+        let thumbITip = handAnchor.handSkeleton?.joint(.thumbIntermediateTip).anchorFromJointTransform.columns.3.xyz
+        
+        return isLeft ?
+        // Left hand logic
+        indexTip!.x > indexITip!.x
+        && middleTip!.x < middleIBase!.x
+        && ringTip!.x < ringIBase!.x
+        && littleTip!.x < littleIBase!.x
+        && thumbTip!.z > thumbITip!.z
+        :
+        // Right hand logic
+        indexTip!.x < indexITip!.x
+        && middleTip!.x > middleIBase!.x
+        && ringTip!.x > ringIBase!.x
+        && littleTip!.x > littleIBase!.x
+        && thumbTip!.z < thumbITip!.z
     }
     
     func getHands()  -> [Hand]? {
