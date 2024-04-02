@@ -35,9 +35,10 @@ struct ImmersiveView: View {
     
     func gameLoop() {
             // If JSON not found, base BPM on genre (EX: Country has a slower BPM)
+        if ((songTiming!.keys.contains(gameModel.songTime))) {
+            print("match")
+        }
             
-            // Read data from JSON
-            songTiming = parseJSON(songName: gameModel.musicView.getSongName())
         
             // Randomly choose between "Fist_fixed" and "OPENfixed"
             let entityName = Bool.random() ? "right_fist" : "right_open"
@@ -262,16 +263,23 @@ struct ImmersiveView: View {
                dismissWindow(id: "windowGroup")
                // Attach itself to the gameModel
                gameModel.immsersiveView = self
+               // Read data from JSON
+               songTiming = parseJSON(songName: gameModel.musicView.getSongName())
                stopTimer()
            }
             
-       } update: { updateContent in
+       } update : { updateContent in
+           
            
            guard let hands = gestureModel.getHands()
            else {
                print("hand positions not found")
                return
            }
+           
+//           if ((songTiming?.keys.contains(gameModel.songTime)) != nil) {
+//               print("match")
+//           }
            
            let leftHand = hands[0]
            let rightHand = hands[1]

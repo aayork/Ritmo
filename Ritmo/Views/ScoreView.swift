@@ -14,6 +14,10 @@ struct ScoreView: View {
     @Environment(\.dismiss) private var dismiss
     @State private var progressValue: Double = 0
     @State private var isButtonClicked = false
+    @State private var gameLoopCount = 0;
+    @State private var isPlaying = false;
+    @State var timer = Timer.publish(every: 0.001, on: .main, in: .common).autoconnect()
+    private var gameLoopTime = 1_000; // 1 second in millis
     @Environment(\.scenePhase) private var scenePhase
     var body: some View {
         ZStack() {
@@ -23,32 +27,15 @@ struct ScoreView: View {
                     Task {
                         // Wait until togglePlaying has finished
                         await gameModel.musicView.togglePlaying()
-                        // gameModel.immsersiveView?.startTimer()
                         
                         // Calculate the end time based on the song's duration
                         let endTime = Date().addingTimeInterval(gameModel.musicView.selectedSong!.duration)
                         
-                        // Start a loop to update progressValue until the song's duration is reached
-                        while Date() < endTime {
-                            // Check every second
-                            try await Task.sleep(nanoseconds: 1_000_000_000)
-                            
-                            gameModel.immsersiveView?.gameLoop()
-                            
-                            // Update the progressValue
-                            progressValue += 1
-                            
-                            // Check if the song has finished playing
-                            if progressValue >= gameModel.musicView.selectedSong!.duration {
-                                // Perform the necessary actions after the song is finished
-                                await dismissImmersiveSpace()
-                                dismiss()
-                                openWindow(id: "windowGroup")
-                                break // Exit the loop
-                            }
-                        }
+                        isPlaying = true;
+                        
+                        isButtonClicked = true // Hide the button after it's clicked
+                        
                     }
-                    isButtonClicked = true // Hide the button after it's clicked
                 }) {
                     Text("Play")
                         .font(.custom("Soulcraft_Wide", size: 20.0))
@@ -129,6 +116,35 @@ struct ScoreView: View {
                             dismiss()
                         }
                         gameModel.reset()
+                    }
+                }
+                .onReceive(timer) { input in
+                    Task {
+                        if (isPlaying) {
+                            gameLoopCount += 1
+                            gameModel.songTime += 1
+                            
+                            gameModel.immsersiveView?.gameLoop()
+                            
+                            //occurs every second
+                            if (gameLoopCount >= gameLoopTime) {
+                                //print("second has passed")
+                                gameLoopCount = 0
+                                //gameModel.immsersiveView?.gameLoop()
+                                // Update the progressValue
+                                progressValue += 1
+                            }
+                            //print(gameLoopCount)
+                            
+                            // Check if the song has finished playing
+                            if progressValue >= gameModel.musicView.selectedSong!.duration {
+                                // Perform the necessary actions after the song is finished
+                                await dismissImmersiveSpace()
+                                dismiss()
+                                openWindow(id: "windowGroup")
+                                isPlaying = false
+                            }
+                        }
                     }
                 }
             }
