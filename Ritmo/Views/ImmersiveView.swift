@@ -35,9 +35,9 @@ struct ImmersiveView: View {
     
     func gameLoop() {
             // If JSON not found, base BPM on genre (EX: Country has a slower BPM)
-        if ((songTiming!.keys.contains(gameModel.songTime))) {
-            print("match")
-        }
+//            if ((songTiming?.keys.contains(gameModel.songTime))) {
+//                print("match")
+//            }
             
         
             // Randomly choose between "Fist_fixed" and "OPENfixed"

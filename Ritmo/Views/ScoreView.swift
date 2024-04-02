@@ -128,11 +128,12 @@ struct ScoreView: View {
                             
                             //occurs every second
                             if (gameLoopCount >= gameLoopTime) {
-                                //print("second has passed")
+                                // print("second has passed")
                                 gameLoopCount = 0
-                                //gameModel.immsersiveView?.gameLoop()
+                                // gameModel.immsersiveView?.gameLoop()
                                 // Update the progressValue
                                 progressValue += 1
+                                print("Songtime: ", gameModel.songTime)
                             }
                             //print(gameLoopCount)
                             
