@@ -34,7 +34,7 @@ struct ImmersiveView: View {
     let acceptInputWindow = 0.8 // The time window in which the player can successfully match a gesture
     
     func gameLoop() {
-        
+            // If JSON not found, base BPM on genre (EX: Country has a slower BPM)
             
             // Read data from JSON
             songTiming = parseJSON(songName: gameModel.musicView.getSongName())
