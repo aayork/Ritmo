@@ -185,9 +185,8 @@ struct ImmersiveView: View {
     
     func testJSON(songName: String) -> Bool? {
             print("testJSON")
-            guard let jsonData = readJSONFromFile(songName: songName) else { return nil }
+        guard readJSONFromFile(songName: songName) != nil else { return nil }
             do {
-                let decoder = JSONDecoder()
                 return true
             }
     }

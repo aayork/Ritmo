@@ -25,7 +25,6 @@ struct ScoreView: View {
                 Button(action: {
                     Task {
                         await gameModel.musicView.togglePlaying() // Wait until togglePlaying has finished
-                        let endTime = Date().addingTimeInterval(gameModel.musicView.selectedSong!.duration) // Calculate the end time based on the song's duration
                         gameModel.isPlaying = true;
                         isButtonClicked = true // Hide the button after it's clicked
                     }
