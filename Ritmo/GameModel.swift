@@ -7,6 +7,7 @@
 
 import AVKit
 import RealityKit
+import RealityKitContent
 import SwiftUI
 
 /// State that drives the different screens of the game and options that players select.
@@ -42,10 +43,34 @@ class GameModel {
         self.recentlyPlayed = RecentlyPlayedManager()
         self.carousel = SnapCarouselView()
         self.highScore = HighScoreManager()
+        
+        guard let importEntity = try? Entity.load(named: "right_open", in: realityKitContentBundle) else {
+            print("Failed to load entity: left_open")
+            return
+        }
+        openTest = importEntity
+        
+        guard let importEntity = try? Entity.load(named: "right_fist", in: realityKitContentBundle) else {
+            print("Failed to load entity: left_open")
+            return
+        }
+        fistTest = importEntity
+        
+        guard let importEntity = try? Entity.load(named: "right_peaceSign", in: realityKitContentBundle) else {
+            print("Failed to load entity: left_open")
+            return
+        }
+        peaceSignTest = importEntity
+        
+        guard let importEntity = try? Entity.load(named: "right_gun", in: realityKitContentBundle) else {
+            print("Failed to load entity: left_open")
+            return
+        }
+        fingerGunTest = importEntity
+        
         Task { @MainActor in
             self.immsersiveView = ImmersiveView(gestureModel: HandTrackingContainer.handTracking)
             self.handTracking = HandTracking()
         }
     }
-    /// Preload animation assets.
 }
