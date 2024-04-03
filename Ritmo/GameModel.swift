@@ -23,6 +23,7 @@ class GameModel {
     var score = 0
     var tab = 1
     var songTime = 0 //millis
+    var isPlaying = false
 
     /// Removes 3D content when then game is over.
     func clear() {

@@ -15,7 +15,6 @@ struct ScoreView: View {
     @State private var progressValue: Double = 0
     @State private var isButtonClicked = false
     @State private var gameLoopCount = 0;
-    @State private var isPlaying = false;
     @State var timer = Timer.publish(every: 0.001, on: .main, in: .common).autoconnect()
     private var gameLoopTime = 1_000; // 1 second in millis
     @Environment(\.scenePhase) private var scenePhase
@@ -31,7 +30,7 @@ struct ScoreView: View {
                         // Calculate the end time based on the song's duration
                         let endTime = Date().addingTimeInterval(gameModel.musicView.selectedSong!.duration)
                         
-                        isPlaying = true;
+                        gameModel.isPlaying = true;
                         
                         isButtonClicked = true // Hide the button after it's clicked
                         
@@ -120,17 +119,15 @@ struct ScoreView: View {
                 }
                 .onReceive(timer) { input in
                     Task {
-                        if (isPlaying) {
+                        if (gameModel.isPlaying) {
                             gameLoopCount += 1
                             gameModel.songTime += 1
                             
-                            gameModel.immsersiveView?.gameLoop()
-                            
                             //occurs every second
                             if (gameLoopCount >= gameLoopTime) {
-                                // print("second has passed")
+                                
                                 gameLoopCount = 0
-                                // gameModel.immsersiveView?.gameLoop()
+                                
                                 // Update the progressValue
                                 progressValue += 1
                                 print("Songtime: ", gameModel.songTime)
@@ -143,10 +140,14 @@ struct ScoreView: View {
                                 await dismissImmersiveSpace()
                                 dismiss()
                                 openWindow(id: "windowGroup")
-                                isPlaying = false
+                                gameModel.isPlaying = false
                             }
                         }
                     }
+                    Task {
+                        gameModel.immsersiveView?.gameLoop()
+                    }
+                    
                 }
             }
         }

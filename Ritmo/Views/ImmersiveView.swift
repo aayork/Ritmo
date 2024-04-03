@@ -29,7 +29,9 @@ struct ImmersiveView: View {
     
     let orbSpawner = Entity()
     @State var timer = Timer.publish(every: 5, on: .main, in: .common).autoconnect()
-    @State var songTiming: Dictionary<Int, GestureEntity>?
+    //@State var songTiming: Dictionary<Int, GestureEntity>?
+    @State var songTiming: [GestureEntity] = []
+    @State var timingIndex = 0
     let handTravelTime = 4.0 // The time it takes the hand to reach the player
     let acceptInputWindow = 0.8 // The time window in which the player can successfully match a gesture
     
@@ -39,71 +41,78 @@ struct ImmersiveView: View {
 //                print("match")
 //            }
             
-        
-            // Randomly choose between "Fist_fixed" and "OPENfixed"
-            let entityName = Bool.random() ? "right_fist" : "right_open"
-        
-            let entityTwoName = Bool.random() ? "left_fixed" : "left_open"
-            
-            // Attempt to load the chosen entity
-            guard let importEntity = try? Entity.load(named: entityName, in: realityKitContentBundle) else {
-                print("Failed to load entity: \(entityName)")
-                return
+        if (timingIndex < songTiming.count) {
+            if (gameModel.songTime == songTiming[timingIndex].timing) {
+                print(songTiming)
+                timingIndex += 1
             }
-        
-            guard let importEntityTwo = try? Entity.load(named: entityTwoName, in: realityKitContentBundle) else {
-                print("Failed to load entity: \(entityName)")
-                return
-            }
-
-            // Instantiate parent hand
-            let handOne = ModelEntity()
-            handOne.addChild(importEntity)
-            handOne.position = [0.5, 1.3, -5] // Adjust the Y value to float the hand above the ground
-        
-            let handTwo = ModelEntity()
-            handTwo.addChild(importEntityTwo)
-            handTwo.position = [-0.5, 1.3, -5]
-        
-            print(handTwo.position)
-            
-            // Add interaction components if needed
-            handOne.components.set(InputTargetComponent())
-            handOne.components.set(CollisionComponent(shapes: [.generateSphere(radius: 0.1)]))
-            handOne.components.set(GroundingShadowComponent(castsShadow: true))
-        
-            handTwo.components.set(InputTargetComponent())
-            handTwo.components.set(CollisionComponent(shapes: [.generateSphere(radius: 0.1)]))
-            handTwo.components.set(GroundingShadowComponent(castsShadow: true))
-            
-            // Attach hands to the orbSpawner
-            orbSpawner.addChild(handOne)
-            orbSpawner.addChild(handTwo)
-        
-            handTargets.append(handOne)
-            handTargets.append(handTwo)
-            
-            // Move the hands towards the player
-            var targetTransform = handOne.transform
-            var targetTransformTwo = handTwo.transform
-            targetTransform.translation += SIMD3(0, 0, 5)
-            targetTransformTwo.translation += SIMD3(0, 0, 5)
-            handOne.move(to: targetTransform, relativeTo: nil, duration: handTravelTime + 1, timingFunction: .linear)
-            handTwo.move(to: targetTransformTwo, relativeTo: nil, duration: handTravelTime + 1, timingFunction: .linear)
-            
-            // Despawn hands after stopping or after a fixed time
-            DispatchQueue.main.asyncAfter(deadline: .now() + handTravelTime + 1) {
-                handTargets.remove(at: handTargets.firstIndex(of: handOne)!)
-                handTargets.remove(at: handTargets.firstIndex(of: handTwo)!)
-                handOne.removeFromParent()
-                handTwo.removeFromParent()
-            }
-        
-            gameModel.highScore.addScore(song: gameModel.musicView.selectedSong! ,score: score) // Add the score of the song to the score list
-            
-            // Handle the correct time window for interaction
-            handleCorrectTimeWindow()
         }
+        
+    
+        // Randomly choose between "Fist_fixed" and "OPENfixed"
+//            let entityName = Bool.random() ? "right_fist" : "right_open"
+//
+//            let entityTwoName = Bool.random() ? "left_fixed" : "left_open"
+//
+//            // Attempt to load the chosen entity
+//            guard let importEntity = try? Entity.load(named: entityName, in: realityKitContentBundle) else {
+//                print("Failed to load entity: \(entityName)")
+//                return
+//            }
+//
+//            guard let importEntityTwo = try? Entity.load(named: entityTwoName, in: realityKitContentBundle) else {
+//                print("Failed to load entity: \(entityName)")
+//                return
+//            }
+//
+//            // Instantiate parent hand
+//            let handOne = ModelEntity()
+//            handOne.addChild(importEntity)
+//            handOne.position = [0.5, 1.3, -5] // Adjust the Y value to float the hand above the ground
+//
+//            let handTwo = ModelEntity()
+//            handTwo.addChild(importEntityTwo)
+//            handTwo.position = [-0.5, 1.3, -5]
+//
+//            print(handTwo.position)
+//
+//            // Add interaction components if needed
+//            handOne.components.set(InputTargetComponent())
+//            handOne.components.set(CollisionComponent(shapes: [.generateSphere(radius: 0.1)]))
+//            handOne.components.set(GroundingShadowComponent(castsShadow: true))
+//
+//            handTwo.components.set(InputTargetComponent())
+//            handTwo.components.set(CollisionComponent(shapes: [.generateSphere(radius: 0.1)]))
+//            handTwo.components.set(GroundingShadowComponent(castsShadow: true))
+//
+//            // Attach hands to the orbSpawner
+//            orbSpawner.addChild(handOne)
+//            orbSpawner.addChild(handTwo)
+//
+//            handTargets.append(handOne)
+//            handTargets.append(handTwo)
+//
+//            // Move the hands towards the player
+//            var targetTransform = handOne.transform
+//            var targetTransformTwo = handTwo.transform
+//            targetTransform.translation += SIMD3(0, 0, 5)
+//            targetTransformTwo.translation += SIMD3(0, 0, 5)
+//            handOne.move(to: targetTransform, relativeTo: nil, duration: handTravelTime + 1, timingFunction: .linear)
+//            handTwo.move(to: targetTransformTwo, relativeTo: nil, duration: handTravelTime + 1, timingFunction: .linear)
+//
+//            // Despawn hands after stopping or after a fixed time
+//            DispatchQueue.main.asyncAfter(deadline: .now() + handTravelTime + 1) {
+//                handTargets.remove(at: handTargets.firstIndex(of: handOne)!)
+//                handTargets.remove(at: handTargets.firstIndex(of: handTwo)!)
+//                handOne.removeFromParent()
+//                handTwo.removeFromParent()
+//            }
+    
+        //gameModel.highScore.addScore(song: gameModel.musicView.selectedSong! ,score: score) // Add the score of the song to the score list
+        
+        // Handle the correct time window for interaction
+        //handleCorrectTimeWindow()
+    }
         
         private func handleCorrectTimeWindow() {
             Task {
@@ -149,7 +158,8 @@ struct ImmersiveView: View {
     }
 
     // Parse JSON data into Song object
-    func parseJSON(songName: String) -> Dictionary<Int,GestureEntity>? {
+    func parseJSON(songName: String) -> [GestureEntity]? {
+        print("parseJSON")
         guard let jsonData = readJSONFromFile(songName: songName) else { return nil }
         
         do {
@@ -162,21 +172,57 @@ struct ImmersiveView: View {
             print("BPM:", response.song.bpm)
             print("Creator:", response.song.creator)
             
-            let gestureEntitiesDict = Dictionary(grouping: response.gesture_entities) { $0.timing }
-            
-            let simplifiedGestureEntitiesDict = gestureEntitiesDict.mapValues { $0.first! }
-
-            for (timing, gesture) in simplifiedGestureEntitiesDict {
-                print("Timing: \(timing), Gesture: \(gesture.type), Position: \(gesture.position)")
-            }
-            
-            return simplifiedGestureEntitiesDict
-            
+            return response.gesture_entities
         } catch {
             print("Error parsing JSON:", error)
         }
         return nil
     }
+    
+    // Test JSON
+    func testJSON(songName: String) -> Bool? {
+        print("testJSON")
+        guard let jsonData = readJSONFromFile(songName: songName) else { return nil }
+        
+        do {
+            let decoder = JSONDecoder()
+            let response = try decoder.decode(Response.self, from: jsonData)
+            
+            return true
+        } catch {
+            print("Error parsing JSON:", error)
+        }
+        return nil
+    }
+    
+//    func parseJSON(songName: String) -> Dictionary<Int,GestureEntity>? {
+//        guard let jsonData = readJSONFromFile(songName: songName) else { return nil }
+//        
+//        do {
+//            let decoder = JSONDecoder()
+//            let response = try decoder.decode(Response.self, from: jsonData)
+//            
+//            print("Song Title:", response.song.title)
+//            print("Artist:", response.song.artist)
+//            print("Duration:", response.song.duration)
+//            print("BPM:", response.song.bpm)
+//            print("Creator:", response.song.creator)
+//            
+//            let gestureEntitiesDict = Dictionary(grouping: response.gesture_entities) { $0.timing }
+//            
+//            let simplifiedGestureEntitiesDict = gestureEntitiesDict.mapValues { $0.first! }
+//
+//            for (timing, gesture) in simplifiedGestureEntitiesDict {
+//                print("Timing: \(timing), Gesture: \(gesture.type), Position: \(gesture.position)")
+//            }
+//            
+//            return simplifiedGestureEntitiesDict
+//            
+//        } catch {
+//            print("Error parsing JSON:", error)
+//        }
+//        return nil
+//    }
     
     struct Response: Codable {
         var song: SongJSON
@@ -263,23 +309,25 @@ struct ImmersiveView: View {
                dismissWindow(id: "windowGroup")
                // Attach itself to the gameModel
                gameModel.immsersiveView = self
+               print("runtask")
                // Read data from JSON
-               songTiming = parseJSON(songName: gameModel.musicView.getSongName())
+               guard let songTiming = parseJSON(songName: gameModel.musicView.getSongName())
+               else {
+                   print("songTiming is nil")
+                   return
+               }
+               self.songTiming = songTiming
+               print(self.songTiming.count)
                stopTimer()
            }
             
        } update : { updateContent in
-           
            
            guard let hands = gestureModel.getHands()
            else {
                print("hand positions not found")
                return
            }
-           
-//           if ((songTiming?.keys.contains(gameModel.songTime)) != nil) {
-//               print("match")
-//           }
            
            let leftHand = hands[0]
            let rightHand = hands[1]
