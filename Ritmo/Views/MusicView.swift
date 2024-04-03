@@ -71,23 +71,6 @@ struct MusicView: View {
                         }
                     }
                     .offset(y: -250)
-                    //.frame(height: 150, alignment: .leading)
-                      //  .frame(minWidth: 0, maxWidth: .infinity)
-                    HStack {
-//                        Text("Curated")
-//                             .padding(8)
-//                             .background(Color.pink)
-//                             .clipShape(Capsule())
-//                             .foregroundColor(.white)
-//
-//                        
-//                        // Difficulty indicator
-//                        Text("Medium")
-//                            .padding(8)
-//                            .background(difficultyColor(for: "Medium"))
-//                            .clipShape(Capsule())
-//                            .foregroundColor(.white)
-                    }
                     Spacer()
                     HStack {
                         Spacer()
@@ -113,8 +96,6 @@ struct MusicView: View {
                                 
                                     // Play controls
                                     HStack {
-                                        
-                                        
                                         Button("START", action: {
                                             Task {
                                                 gameModel.musicView = self
@@ -125,11 +106,7 @@ struct MusicView: View {
                                         .buttonStyle(PlayButtonStyle())
                                         .offset(x: 40)
                                         Spacer()
-        
-
-                                        
                                     }
-                                        
                                 }
                                 .frame(width: 300)
                                 .position(x:110, y:25)
@@ -171,7 +148,6 @@ struct MusicView: View {
         playing.toggle()
         if playing {
             print("Playing \(selectedSong?.name ?? "song")")
-            // Add your code to play music here
             do {
                 try await play(selectedSong!.song)
             } catch {
@@ -244,7 +220,7 @@ struct MusicView: View {
                 do {
                     let result = try await request.response()
                     self.songs = result.songs.compactMap {
-                        Item(name: $0.title, artist: $0.artistName, song: $0.self, artwork: $0.artwork!, duration: $0.duration!, genre: $0.genres)
+                        Item(name: $0.title, artist: $0.artistName, song: $0.self, artwork: $0.artwork!, duration: $0.duration! * 1000, genre: $0.genres)
                     }
                 } catch {
                     print("Error fetching music")

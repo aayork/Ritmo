@@ -122,21 +122,15 @@ struct ScoreView: View {
                         if (gameModel.isPlaying) {
                             gameLoopCount += 1
                             gameModel.songTime += 1
+                            progressValue += 1
                             
                             //occurs every second
                             if (gameLoopCount >= gameLoopTime) {
-                                
                                 gameLoopCount = 0
-                                
-                                // Update the progressValue
-                                progressValue += 1
                                 print("Songtime: ", gameModel.songTime)
                             }
-                            //print(gameLoopCount)
-                            
                             // Check if the song has finished playing
                             if progressValue >= gameModel.musicView.selectedSong!.duration {
-                                // Perform the necessary actions after the song is finished
                                 await dismissImmersiveSpace()
                                 dismiss()
                                 openWindow(id: "windowGroup")
