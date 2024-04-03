@@ -106,13 +106,13 @@ struct ImmersiveView: View {
     }
     
     func testJSON(songName: String) -> Bool? {
-        print("testJSON")
-        guard let jsonData = readJSONFromFile(songName: songName) else { return nil }
-        do {
-            let decoder = JSONDecoder()
-            return true
+            print("testJSON")
+            guard let jsonData = readJSONFromFile(songName: songName) else { return nil }
+            do {
+                let decoder = JSONDecoder()
+                return true
+            }
         }
-    }
     
     struct Response: Codable {
         var song: SongJSON

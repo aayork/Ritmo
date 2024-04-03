@@ -11,7 +11,7 @@ struct ScoreView: View {
     @Environment(GameModel.self) var gameModel
     @Environment(\.openWindow) private var openWindow
     @Environment(\.dismissImmersiveSpace) var dismissImmersiveSpace
-    @Environment(\.dismiss) private var dismiss
+    @Environment(\.dismissWindow) private var dismissWindow
     @State private var progressValue: Double = 0
     @State private var isButtonClicked = false
     @State private var gameLoopCount = 0;
@@ -24,16 +24,10 @@ struct ScoreView: View {
             if !isButtonClicked { // This condition will hide the button after it's clicked
                 Button(action: {
                     Task {
-                        // Wait until togglePlaying has finished
-                        await gameModel.musicView.togglePlaying()
-                        
-                        // Calculate the end time based on the song's duration
-                        let endTime = Date().addingTimeInterval(gameModel.musicView.selectedSong!.duration)
-                        
+                        await gameModel.musicView.togglePlaying() // Wait until togglePlaying has finished
+                        let endTime = Date().addingTimeInterval(gameModel.musicView.selectedSong!.duration) // Calculate the end time based on the song's duration
                         gameModel.isPlaying = true;
-                        
                         isButtonClicked = true // Hide the button after it's clicked
-                        
                     }
                 }) {
                     Text("Play")
@@ -107,12 +101,13 @@ struct ScoreView: View {
                 .onChange(of: scenePhase) {
                     if scenePhase == .inactive {
                         Task {
+                            // Check if the song has finished playing
                             openWindow(id: "windowGroup")
                             await dismissImmersiveSpace()
                             if (gameModel.musicView.playing == true) {
                                 await gameModel.musicView.togglePlaying()
                             }
-                            dismiss()
+                            gameModel.isPlaying = false
                         }
                         gameModel.reset()
                     }
@@ -124,24 +119,23 @@ struct ScoreView: View {
                             gameModel.songTime += 1
                             progressValue += 1
                             
+                            if progressValue >= gameModel.musicView.selectedSong!.duration {
+                                progressValue = 0
+                                dismissWindow(id: "scoreView")
+                                await dismissImmersiveSpace()
+                                openWindow(id: "windowGroup")
+                            }
+                            
                             //occurs every second
                             if (gameLoopCount >= gameLoopTime) {
                                 gameLoopCount = 0
                                 print("Songtime: ", gameModel.songTime)
-                            }
-                            // Check if the song has finished playing
-                            if progressValue >= gameModel.musicView.selectedSong!.duration {
-                                await dismissImmersiveSpace()
-                                dismiss()
-                                openWindow(id: "windowGroup")
-                                gameModel.isPlaying = false
                             }
                         }
                     }
                     Task {
                         gameModel.immsersiveView?.gameLoop()
                     }
-                    
                 }
             }
         }
