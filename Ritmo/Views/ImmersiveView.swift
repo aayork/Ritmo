@@ -267,6 +267,16 @@ struct ImmersiveView: View {
            zR = ModelEntity(mesh: sphereZR, materials: [materialZR])
            content.add(zR)
            
+           openTest.position = SIMD3(x: -1, y: 1, z: -1)
+           content.add(openTest)
+           fistTest.position = SIMD3(x: -0.5, y: 1, z: -1)
+           content.add(fistTest)
+           peaceSignTest.position = SIMD3(x: 0, y: 1, z: -1)
+           content.add(peaceSignTest)
+           fingerGunTest.position = SIMD3(x: 0.5, y: 1, z: -1)
+           content.add(fingerGunTest)
+           
+           
            guard let immersiveEntity = try? await Entity(named: "Immersive", in: realityKitContentBundle) else {
                 fatalError("Unable to load immersive model")
             }

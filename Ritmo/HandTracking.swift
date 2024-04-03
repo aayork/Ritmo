@@ -211,11 +211,7 @@ class HandTracking: ObservableObject, @unchecked Sendable {
         
         let indexITip = handAnchor.handSkeleton?.joint(.indexFingerIntermediateTip).anchorFromJointTransform.columns.3.xyz
         let middleITip = handAnchor.handSkeleton?.joint(.middleFingerIntermediateTip).anchorFromJointTransform.columns.3.xyz
-        let ringITip = handAnchor.handSkeleton?.joint(.ringFingerIntermediateTip).anchorFromJointTransform.columns.3.xyz
-        let littleITip = handAnchor.handSkeleton?.joint(.littleFingerIntermediateTip).anchorFromJointTransform.columns.3.xyz
-        
-        let indexIBase = handAnchor.handSkeleton?.joint(.indexFingerIntermediateBase).anchorFromJointTransform.columns.3.xyz
-        let middleIBase = handAnchor.handSkeleton?.joint(.middleFingerIntermediateBase).anchorFromJointTransform.columns.3.xyz
+
         let ringIBase = handAnchor.handSkeleton?.joint(.ringFingerIntermediateBase).anchorFromJointTransform.columns.3.xyz
         let littleIBase = handAnchor.handSkeleton?.joint(.littleFingerIntermediateBase).anchorFromJointTransform.columns.3.xyz
         
