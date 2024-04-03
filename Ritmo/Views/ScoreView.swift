@@ -118,7 +118,7 @@ struct ScoreView: View {
                             gameLoopCount += 1
                             gameModel.songTime += 1
                             progressValue += 1
-                            gameModel.immsersiveView?.spawner(bpm: 120)
+                            gameModel.immsersiveView?.spawner(bpm: 94)
                             if progressValue >= gameModel.musicView.selectedSong!.duration {
                                 progressValue = 0
                                 dismissWindow(id: "scoreView")
