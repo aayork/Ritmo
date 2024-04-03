@@ -31,6 +31,7 @@ struct ImmersiveView: View {
     @State var timer = Timer.publish(every: 5, on: .main, in: .common).autoconnect()
     @State var songTiming: [GestureEntity] = []
     @State var timingIndex = 0
+    @State var previousSongTime = 0
     let handTravelTime = 4.0 // The time it takes the hand to reach the player
     let acceptInputWindow = 0.8 // The time window in which the player can successfully match a gesture
     
@@ -42,21 +43,98 @@ struct ImmersiveView: View {
                 timingIndex += 1
             }
         }
+        
+        if (testJSON(songName: gameModel.musicView.selectedSong!.name) != nil) {
+            print("JSON exists.")
+        } else {
+            print("JSON does NOT exist.")
+        }
     
         //gameModel.highScore.addScore(song: gameModel.musicView.selectedSong! ,score: score) // Add the score of the song to the score list
         
         // Handle the correct time window for interaction
         // handleCorrectTimeWindow()
     }
-        
-        private func handleCorrectTimeWindow() {
-            Task {
-                try? await Task.sleep(until: .now + .seconds(Int(handTravelTime - acceptInputWindow / 2)), clock: .continuous)
-                correctTime = true
-                try? await Task.sleep(until: .now + .seconds(Int(acceptInputWindow)), clock: .continuous)
-                correctTime = false
+    
+    func spawner(bpm: Int) { // Use beats per minute as an argument
+        if (testJSON(songName: gameModel.musicView.selectedSong!.name) != nil) {
+            print("JSON exists.")
+        } else {
+            let spawnInterval = 60000 / bpm // This is the amount of milliseconds that elapse during each beat
+            if gameModel.songTime - previousSongTime == spawnInterval {
+                // Randomly choose between "Fist_fixed" and "OPENfixed"
+                previousSongTime = gameModel.songTime
+                let entityNames = ["right_fist", "right_open", "right_peaceSign"]
+                let randomIndex = Int.random(in: 0..<entityNames.count)
+                let entityName = entityNames[randomIndex]
+                
+                let entityTwoNames = ["left_fist", "left_open", "left_peaceSign"]
+                let randomIndexTwo = Int.random(in: 0..<entityTwoNames.count)
+                let entityTwoName = entityTwoNames[randomIndexTwo]
+                
+                // Attempt to load the chosen entity
+                guard let importEntity = try? Entity.load(named: entityName, in: realityKitContentBundle) else {
+                    print("Failed to load entity: \(entityName)")
+                    return
+                }
+                
+                guard let importEntityTwo = try? Entity.load(named: entityTwoName, in: realityKitContentBundle) else {
+                    print("Failed to load entity: \(entityName)")
+                    return
+                }
+                
+                // Instantiate parent hand
+                let handOne = ModelEntity()
+                handOne.addChild(importEntity)
+                handOne.position = [0.5, 1.3, -5] // Adjust the Y value to float the hand above the ground
+                
+                let handTwo = ModelEntity()
+                handTwo.addChild(importEntityTwo)
+                handTwo.position = [-0.5, 1.3, -5]
+                
+                // Add interaction components if needed
+                handOne.components.set(InputTargetComponent())
+                handOne.components.set(CollisionComponent(shapes: [.generateSphere(radius: 0.1)]))
+                handOne.components.set(GroundingShadowComponent(castsShadow: true))
+                
+                handTwo.components.set(InputTargetComponent())
+                handTwo.components.set(CollisionComponent(shapes: [.generateSphere(radius: 0.1)]))
+                handTwo.components.set(GroundingShadowComponent(castsShadow: true))
+                
+                // Attach hands to the orbSpawner
+                orbSpawner.addChild(handOne)
+                orbSpawner.addChild(handTwo)
+                
+                handTargets.append(handOne)
+                handTargets.append(handTwo)
+                
+                // Move the hands towards the player
+                var targetTransform = handOne.transform
+                var targetTransformTwo = handTwo.transform
+                targetTransform.translation += SIMD3(0, 0, 5)
+                targetTransformTwo.translation += SIMD3(0, 0, 5)
+                handOne.move(to: targetTransform, relativeTo: nil, duration: handTravelTime + 1, timingFunction: .linear)
+                handTwo.move(to: targetTransformTwo, relativeTo: nil, duration: handTravelTime + 1, timingFunction: .linear)
+                
+                // Despawn hands after stopping or after a fixed time
+                DispatchQueue.main.asyncAfter(deadline: .now() + handTravelTime + 1) {
+                    // handTargets.remove(at: handTargets.firstIndex(of: handOne)!) // These just made it lag
+                    // handTargets.remove(at: handTargets.firstIndex(of: handTwo)!)
+                    handOne.removeFromParent()
+                    handTwo.removeFromParent()
+                }
             }
         }
+    }
+        
+    private func handleCorrectTimeWindow() {
+        Task {
+            try? await Task.sleep(until: .now + .seconds(Int(handTravelTime - acceptInputWindow / 2)), clock: .continuous)
+            correctTime = true
+            try? await Task.sleep(until: .now + .seconds(Int(acceptInputWindow)), clock: .continuous)
+            correctTime = false
+        }
+    }
     
     func startTimer() {
         self.timer = Timer.publish(every: 5, on: .main, in: .common).autoconnect()
@@ -112,7 +190,7 @@ struct ImmersiveView: View {
                 let decoder = JSONDecoder()
                 return true
             }
-        }
+    }
     
     struct Response: Codable {
         var song: SongJSON
