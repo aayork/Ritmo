@@ -27,7 +27,7 @@ struct ImmersiveView: View {
     @State private var handSpheres = [Entity()]
     @State private var handTargets = [Entity()]
     
-    let orbSpawner = Entity()
+    let entity = Entity()
     @State var timer = Timer.publish(every: 5, on: .main, in: .common).autoconnect()
     @State var songTiming: [GestureEntity] = []
     @State var timingIndex = 0
@@ -59,6 +59,37 @@ struct ImmersiveView: View {
     func spawner(bpm: Int) { // Use beats per minute as an argument
         if (testJSON(songName: gameModel.musicView.selectedSong!.name) != nil) {
             print("JSON exists.")
+            var currentIndex = 0
+            if songTiming[currentIndex].timing == gameModel.songTime {
+                let entityName = songTiming[currentIndex].type
+                
+                // Attempt to load the chosen entity
+                guard let importEntity = try? Entity.load(named: entityName, in: realityKitContentBundle) else {
+                    print("Failed to load entity: \(entityName)")
+                    return
+                }
+                
+                let hand = ModelEntity()
+                hand.addChild(importEntity)
+                // hand.position = songTiming[currentIndex].position
+                hand.position = [0.5, 1.3, -5]
+                
+                hand.components.set(InputTargetComponent())
+                hand.components.set(CollisionComponent(shapes: [.generateSphere(radius: 0.1)]))
+                hand.components.set(GroundingShadowComponent(castsShadow: true))
+                
+                // Move the hands towards the player
+                var targetTransform = hand.transform
+                targetTransform.translation += SIMD3(0, 0, 5)
+                hand.move(to: targetTransform, relativeTo: nil, duration: handTravelTime + 1, timingFunction: .linear)
+                
+                // Despawn hands after stopping or after a fixed time
+                DispatchQueue.main.asyncAfter(deadline: .now() + handTravelTime + 1) {
+                    hand.removeFromParent()
+                }
+                
+                currentIndex += 1
+            }
         } else {
             let spawnInterval = 60000 / bpm // This is the amount of milliseconds that elapse during each beat
             if gameModel.songTime - previousSongTime == spawnInterval {
@@ -91,12 +122,7 @@ struct ImmersiveView: View {
                 let handTwo = ModelEntity()
                 handTwo.addChild(importEntityTwo)
                 handTwo.position = [-0.5, 1.3, -5]
-                
-                var material = SimpleMaterial()
-                material.color = .init(tint: .electricLime)
-                material.metallic = .init(floatLiteral: 100.0)
-                handTwo.model?.materials[0] = material
-                
+
                 // Add interaction components if needed
                 handOne.components.set(InputTargetComponent())
                 handOne.components.set(CollisionComponent(shapes: [.generateSphere(radius: 0.1)]))
@@ -106,17 +132,12 @@ struct ImmersiveView: View {
                 handTwo.components.set(CollisionComponent(shapes: [.generateSphere(radius: 0.1)]))
                 handTwo.components.set(GroundingShadowComponent(castsShadow: true))
                 
-                // Attach hands to the orbSpawner
-                orbSpawner.addChild(handOne)
-                orbSpawner.addChild(handTwo)
+                // Attach hands to the entity
+                entity.addChild(handOne)
+                entity.addChild(handTwo)
                 
                 handTargets.append(handOne)
                 handTargets.append(handTwo)
-                
-                var smpl = SimpleMaterial()
-                        smpl.color.tint = .blue
-                        smpl.metallic = 0.7
-                        smpl.roughness = 0.2
                 
                 // Move the hands towards the player
                 var targetTransform = handOne.transform
@@ -237,7 +258,7 @@ struct ImmersiveView: View {
     var body: some View {
        RealityView { content in
            
-           content.add(orbSpawner)
+           content.add(entity)
            
            for i in 1...48 {
                let sphere = MeshResource.generateSphere(radius: 0.01)
