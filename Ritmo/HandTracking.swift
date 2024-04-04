@@ -21,6 +21,7 @@ class HandTracking: ObservableObject, @unchecked Sendable {
     }
     
     struct Hand {
+        var hand: HandAnchor
         var thumbIntermediateBase: SIMD3<Float>
         var thumbIntermediateTip: SIMD3<Float>
         var thumbKnuckle: SIMD3<Float>
@@ -104,7 +105,7 @@ class HandTracking: ObservableObject, @unchecked Sendable {
         }
     }
     
-    func checkGesture(_ gesture: String) -> Bool? {
+    public func checkGesture(_ gesture: String) -> Bool? {
         // Geture is a string with the format: [isLeft]_[gestureName]
         let info = gesture.split(separator: "_")
         let isLeft = info[0] == "left"
@@ -592,6 +593,7 @@ class HandTracking: ObservableObject, @unchecked Sendable {
         ).columns.3.xyz
         
         let leftHand = Hand(
+            hand: leftHandAnchor,
             thumbIntermediateBase: thumbIntermediateBaseTransformL,
             thumbIntermediateTip: thumbIntermediateTipTransformL,
             thumbKnuckle: thumbKnuckleTransformL,
@@ -622,6 +624,7 @@ class HandTracking: ObservableObject, @unchecked Sendable {
         )
         
         let rightHand = Hand(
+            hand: rightHandAnchor,
             thumbIntermediateBase: thumbIntermediateBaseTransformR,
             thumbIntermediateTip: thumbIntermediateTipTransformR,
             thumbKnuckle: thumbKnuckleTransformR,
