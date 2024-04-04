@@ -286,13 +286,21 @@ struct ImmersiveView: View {
            content.add(zR)
            
            openTest.position = SIMD3(x: -1, y: 1, z: -1)
+           openTest.name = "right_open"
            content.add(openTest)
+           handTargets.append(openTest)
            fistTest.position = SIMD3(x: -0.5, y: 1, z: -1)
+           fistTest.name = "right_fist"
            content.add(fistTest)
+           handTargets.append(fistTest)
            peaceSignTest.position = SIMD3(x: 0, y: 1, z: -1)
+           peaceSignTest.name = "right_peaceSign"
            content.add(peaceSignTest)
+           handTargets.append(peaceSignTest)
            fingerGunTest.position = SIMD3(x: 0.5, y: 1, z: -1)
+           fingerGunTest.name = "right_fingerGun"
            content.add(fingerGunTest)
+           handTargets.append(fingerGunTest)
            
            
            guard let immersiveEntity = try? await Entity(named: "Immersive", in: realityKitContentBundle) else {
@@ -393,11 +401,11 @@ struct ImmersiveView: View {
            zR.transform.translation = rightHand.z
            
            for handTarget in handTargets {
-               if (simd_distance(leftHand.middleFingerKnuckle, handTarget.position) < 0.2) {
+               if (simd_distance(leftHand.hand.originFromAnchorTransform.columns.3.xyz, handTarget.position) < 0.2 && gestureModel.checkGesture(handTarget.name)!) {
                    handTargets.remove(at: handTargets.firstIndex(of: handTarget)!)
                    handTarget.removeFromParent()
                }
-               if (simd_distance(rightHand.middleFingerKnuckle, handTarget.position) < 0.2) {
+               if (simd_distance(rightHand.hand.originFromAnchorTransform.columns.3.xyz, handTarget.position) < 0.2 && gestureModel.checkGesture(handTarget.name)!) {
                    handTargets.remove(at: handTargets.firstIndex(of: handTarget)!)
                    handTarget.removeFromParent()
                }
