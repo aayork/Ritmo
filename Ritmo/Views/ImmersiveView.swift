@@ -49,16 +49,10 @@ struct ImmersiveView: View {
         } else {
             print("JSON does NOT exist.")
         }
-    
-        //gameModel.highScore.addScore(song: gameModel.musicView.selectedSong! ,score: score) // Add the score of the song to the score list
-        
-        // Handle the correct time window for interaction
-        // handleCorrectTimeWindow()
     }
     
     func spawner(bpm: Int) { // Use beats per minute as an argument
         if (testJSON(songName: gameModel.musicView.selectedSong!.name) != nil) {
-            print("JSON exists.")
             var currentIndex = 0
             if songTiming[currentIndex].timing == gameModel.songTime {
                 let entityName = songTiming[currentIndex].type
@@ -155,15 +149,6 @@ struct ImmersiveView: View {
                     handTwo.removeFromParent()
                 }
             }
-        }
-    }
-        
-    private func handleCorrectTimeWindow() {
-        Task {
-            try? await Task.sleep(until: .now + .seconds(Int(handTravelTime - acceptInputWindow / 2)), clock: .continuous)
-            correctTime = true
-            try? await Task.sleep(until: .now + .seconds(Int(acceptInputWindow)), clock: .continuous)
-            correctTime = false
         }
     }
     
@@ -430,5 +415,8 @@ struct ImmersiveView: View {
            await gestureModel.monitorSessionEvents()
        }
        .preferredSurroundingsEffect(.systemDark)
+       .onDisappear() {
+           gameModel.highScore.addScore(song: gameModel.musicView.selectedSong! ,score: score) // Add the score of the song to the score list
+       }
    }
 }
