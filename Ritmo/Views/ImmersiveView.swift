@@ -72,6 +72,9 @@ struct ImmersiveView: View {
                 hand.components.set(CollisionComponent(shapes: [.generateSphere(radius: 0.1)]))
                 hand.components.set(GroundingShadowComponent(castsShadow: true))
                 
+                entity.addChild(hand)
+                handTargets.append(hand)
+                
                 // Move the hands towards the player
                 var targetTransform = hand.transform
                 targetTransform.translation += SIMD3(0, 0, 5)
