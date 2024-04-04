@@ -92,6 +92,11 @@ struct ImmersiveView: View {
                 handTwo.addChild(importEntityTwo)
                 handTwo.position = [-0.5, 1.3, -5]
                 
+                var material = SimpleMaterial()
+                material.color = .init(tint: .electricLime)
+                material.metallic = .init(floatLiteral: 100.0)
+                handTwo.model?.materials[0] = material
+                
                 // Add interaction components if needed
                 handOne.components.set(InputTargetComponent())
                 handOne.components.set(CollisionComponent(shapes: [.generateSphere(radius: 0.1)]))
@@ -107,6 +112,11 @@ struct ImmersiveView: View {
                 
                 handTargets.append(handOne)
                 handTargets.append(handTwo)
+                
+                var smpl = SimpleMaterial()
+                        smpl.color.tint = .blue
+                        smpl.metallic = 0.7
+                        smpl.roughness = 0.2
                 
                 // Move the hands towards the player
                 var targetTransform = handOne.transform
