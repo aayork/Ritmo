@@ -285,18 +285,42 @@ struct ImmersiveView: View {
            zR = ModelEntity(mesh: sphereZR, materials: [materialZR])
            content.add(zR)
            
+           
+           let sphereOTP = MeshResource.generateSphere(radius: 0.01)
+           let materialOTP = SimpleMaterial(color: .purple, isMetallic: false)
+           let openTestPoint = ModelEntity(mesh: sphereOTP, materials: [materialOTP])
+           openTestPoint.position = SIMD3(x: -1, y: 1, z: -1)
+           content.add(openTestPoint)
            openTest.position = SIMD3(x: -1, y: 1, z: -1)
            openTest.name = "right_open"
            content.add(openTest)
            handTargets.append(openTest)
+           
+           let sphereFTP = MeshResource.generateSphere(radius: 0.01)
+           let materialFTP = SimpleMaterial(color: .purple, isMetallic: false)
+           let fistTestPoint = ModelEntity(mesh: sphereFTP, materials: [materialFTP])
+           fistTestPoint.position = SIMD3(x: -0.5, y: 1, z: -1)
+           content.add(fistTestPoint)
            fistTest.position = SIMD3(x: -0.5, y: 1, z: -1)
            fistTest.name = "right_fist"
            content.add(fistTest)
            handTargets.append(fistTest)
+           
+           let spherePSTP = MeshResource.generateSphere(radius: 0.01)
+           let materialPSTP = SimpleMaterial(color: .purple, isMetallic: false)
+           let peaceSignTestPoint = ModelEntity(mesh: spherePSTP, materials: [materialPSTP])
+           peaceSignTestPoint.position = SIMD3(x: -1, y: 1, z: -1)
+           content.add(peaceSignTestPoint)
            peaceSignTest.position = SIMD3(x: 0, y: 1, z: -1)
            peaceSignTest.name = "right_peaceSign"
            content.add(peaceSignTest)
            handTargets.append(peaceSignTest)
+           
+           let sphereFGTP = MeshResource.generateSphere(radius: 0.01)
+           let materialFGTP = SimpleMaterial(color: .purple, isMetallic: false)
+           let fingerGunTestPoint = ModelEntity(mesh: sphereFGTP, materials: [materialFGTP])
+           fingerGunTestPoint.position = SIMD3(x: -1, y: 1, z: -1)
+           content.add(fingerGunTestPoint)
            fingerGunTest.position = SIMD3(x: 0.5, y: 1, z: -1)
            fingerGunTest.name = "right_fingerGun"
            content.add(fingerGunTest)
