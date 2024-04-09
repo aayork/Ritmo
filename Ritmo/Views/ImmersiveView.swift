@@ -425,11 +425,15 @@ struct ImmersiveView: View {
            zR.transform.translation = rightHand.z
            
            for handTarget in handTargets {
-               if (simd_distance(leftHand.hand.originFromAnchorTransform.columns.3.xyz, handTarget.position) < 0.2 && gestureModel.checkGesture(handTarget.name)!) {
+               let e = Entity()
+               e.setTransformMatrix(leftHand.hand.originFromAnchorTransform, relativeTo: handTarget)
+               if (simd_distance(leftHand.hand.originFromAnchorTransform.columns.3.xyz, handTarget.position) < 0.3 && gestureModel.checkGesture(handTarget.name)! && e.orientation(relativeTo: handTarget).angle < 20 * .pi / 180 ) {
                    handTargets.remove(at: handTargets.firstIndex(of: handTarget)!)
                    handTarget.removeFromParent()
                }
-               if (simd_distance(rightHand.hand.originFromAnchorTransform.columns.3.xyz, handTarget.position) < 0.2 && gestureModel.checkGesture(handTarget.name)!) {
+               
+               e.setTransformMatrix(rightHand.hand.originFromAnchorTransform, relativeTo: handTarget)
+               if (simd_distance(rightHand.hand.originFromAnchorTransform.columns.3.xyz, handTarget.position) < 0.3 && gestureModel.checkGesture(handTarget.name)! && e.orientation(relativeTo: handTarget).angle < 20 * .pi / 180 ) {
                    handTargets.remove(at: handTargets.firstIndex(of: handTarget)!)
                    handTarget.removeFromParent()
                }
