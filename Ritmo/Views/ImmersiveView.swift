@@ -437,18 +437,17 @@ struct ImmersiveView: View {
 //                   handTargets.remove(at: handTargets.firstIndex(of: handTarget)!)
 //                   handTarget.removeFromParent()
 //               }
-               let e = Entity()
-               e.setTransformMatrix(leftHand.hand.originFromAnchorTransform, relativeTo: handTarget)
-               if (simd_distance(leftHand.hand.originFromAnchorTransform.columns.3.xyz, handTarget.position) < 0.3) {
+
+               if (simd_distance(leftHand.hand.originFromAnchorTransform.columns.3.xyz, handTarget.position) < 0.3 && gestureModel.checkGesture(handTarget.name)!) {
                    handTargets.remove(at: handTargets.firstIndex(of: handTarget)!)
                    handTarget.removeFromParent()
                }
                
-               e.setTransformMatrix(rightHand.hand.originFromAnchorTransform, relativeTo: handTarget)
-               if (simd_distance(rightHand.hand.originFromAnchorTransform.columns.3.xyz, handTarget.position) < 0.3) {
+               if (simd_distance(rightHand.hand.originFromAnchorTransform.columns.3.xyz, handTarget.position) < 0.3 && gestureModel.checkGesture(handTarget.name)!) {
                    handTargets.remove(at: handTargets.firstIndex(of: handTarget)!)
                    handTarget.removeFromParent()
                }
+
            }
        }
        .gesture(TapGesture().targetedToAnyEntity().onEnded({ value in
