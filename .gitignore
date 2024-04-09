@@ -6,6 +6,7 @@
 ### Xcode ###
 ## User settings
 xcuserdata/
+*.fleet
 
 ## Xcode 8 and earlier
 *.xcscmblueprint
