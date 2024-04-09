@@ -309,9 +309,9 @@ struct ImmersiveView: View {
            let spherePSTP = MeshResource.generateSphere(radius: 0.01)
            let materialPSTP = SimpleMaterial(color: .purple, isMetallic: false)
            let peaceSignTestPoint = ModelEntity(mesh: spherePSTP, materials: [materialPSTP])
-           peaceSignTestPoint.position = SIMD3(x: -1, y: 1, z: -1)
+           peaceSignTestPoint.position = SIMD3(x: 1, y: 1, z: -1)
            content.add(peaceSignTestPoint)
-           peaceSignTest.position = SIMD3(x: 0, y: 1, z: -1)
+           peaceSignTest.position = SIMD3(x: 1, y: 1, z: -1)
            peaceSignTest.name = "right_peaceSign"
            content.add(peaceSignTest)
            handTargets.append(peaceSignTest)
@@ -319,7 +319,7 @@ struct ImmersiveView: View {
            let sphereFGTP = MeshResource.generateSphere(radius: 0.01)
            let materialFGTP = SimpleMaterial(color: .purple, isMetallic: false)
            let fingerGunTestPoint = ModelEntity(mesh: sphereFGTP, materials: [materialFGTP])
-           fingerGunTestPoint.position = SIMD3(x: -1, y: 1, z: -1)
+           fingerGunTestPoint.position = SIMD3(x: 0.5, y: 1, z: -1)
            content.add(fingerGunTestPoint)
            fingerGunTest.position = SIMD3(x: 0.5, y: 1, z: -1)
            fingerGunTest.name = "right_fingerGun"

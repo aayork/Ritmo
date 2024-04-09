@@ -148,18 +148,18 @@ class HandTracking: ObservableObject, @unchecked Sendable {
         && middleTip!.x > middleITip!.x
         && ringTip!.x > ringITip!.x
         && littleTip!.x > littleITip!.x
-        && thumbTip!.z > thumbITip!.z
+        && thumbTip!.z < thumbITip!.z
         && thumbTip!.z < indexTip!.z
         && indexTip!.z < middleTip!.z
         && middleTip!.z < ringTip!.z
         && ringTip!.z < littleTip!.z
         :
         // Right hand logic
-        indexTip!.x > indexITip!.x
+        indexTip!.x < indexITip!.x
         && middleTip!.x < middleITip!.x
         && ringTip!.x < ringITip!.x
         && littleTip!.x < littleITip!.x
-        && thumbTip!.z < thumbITip!.z
+        && thumbTip!.z > thumbITip!.z
         && thumbTip!.z > indexTip!.z
         && indexTip!.z > middleTip!.z
         && middleTip!.z > ringTip!.z
@@ -265,14 +265,14 @@ class HandTracking: ObservableObject, @unchecked Sendable {
         && middleTip!.x < middleIBase!.x
         && ringTip!.x < ringIBase!.x
         && littleTip!.x < littleIBase!.x
-        && thumbTip!.z > thumbITip!.z
+        && thumbTip!.z < thumbITip!.z
         :
         // Right hand logic
         indexTip!.x < indexITip!.x
         && middleTip!.x > middleIBase!.x
         && ringTip!.x > ringIBase!.x
         && littleTip!.x > littleIBase!.x
-        && thumbTip!.z < thumbITip!.z
+        && thumbTip!.z > thumbITip!.z
     }
     
     func getHands()  -> [Hand]? {
