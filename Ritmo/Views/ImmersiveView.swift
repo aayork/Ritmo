@@ -425,15 +425,27 @@ struct ImmersiveView: View {
            zR.transform.translation = rightHand.z
            
            for handTarget in handTargets {
+//               let e = Entity()
+//               e.setTransformMatrix(leftHand.hand.originFromAnchorTransform, relativeTo: handTarget)
+//               if (simd_distance(leftHand.hand.originFromAnchorTransform.columns.3.xyz, handTarget.position) < 0.3 && gestureModel.checkGesture(handTarget.name)! && e.orientation(relativeTo: handTarget).angle < 20 * .pi / 180 ) {
+//                   handTargets.remove(at: handTargets.firstIndex(of: handTarget)!)
+//                   handTarget.removeFromParent()
+//               }
+//               
+//               e.setTransformMatrix(rightHand.hand.originFromAnchorTransform, relativeTo: handTarget)
+//               if (simd_distance(rightHand.hand.originFromAnchorTransform.columns.3.xyz, handTarget.position) < 0.3 && gestureModel.checkGesture(handTarget.name)! && e.orientation(relativeTo: handTarget).angle < 20 * .pi / 180 ) {
+//                   handTargets.remove(at: handTargets.firstIndex(of: handTarget)!)
+//                   handTarget.removeFromParent()
+//               }
                let e = Entity()
                e.setTransformMatrix(leftHand.hand.originFromAnchorTransform, relativeTo: handTarget)
-               if (simd_distance(leftHand.hand.originFromAnchorTransform.columns.3.xyz, handTarget.position) < 0.3 && gestureModel.checkGesture(handTarget.name)! && e.orientation(relativeTo: handTarget).angle < 20 * .pi / 180 ) {
+               if (simd_distance(leftHand.hand.originFromAnchorTransform.columns.3.xyz, handTarget.position) < 0.3) {
                    handTargets.remove(at: handTargets.firstIndex(of: handTarget)!)
                    handTarget.removeFromParent()
                }
                
                e.setTransformMatrix(rightHand.hand.originFromAnchorTransform, relativeTo: handTarget)
-               if (simd_distance(rightHand.hand.originFromAnchorTransform.columns.3.xyz, handTarget.position) < 0.3 && gestureModel.checkGesture(handTarget.name)! && e.orientation(relativeTo: handTarget).angle < 20 * .pi / 180 ) {
+               if (simd_distance(rightHand.hand.originFromAnchorTransform.columns.3.xyz, handTarget.position) < 0.3) {
                    handTargets.remove(at: handTargets.firstIndex(of: handTarget)!)
                    handTarget.removeFromParent()
                }
