@@ -55,43 +55,43 @@ class GameModel {
         leftOpen = importEntity
         
         guard let importEntity = try? Entity.load(named: "left_fist", in: realityKitContentBundle) else {
-            print("Failed to load entity: left_open")
+            print("Failed to load entity: left_fist")
             return
         }
         leftFist = importEntity
         
         guard let importEntity = try? Entity.load(named: "left_peaceSign", in: realityKitContentBundle) else {
-            print("Failed to load entity: left_open")
+            print("Failed to load entity: left_peaceSign")
             return
         }
         leftPeaceSign = importEntity
         
-        guard let importEntity = try? Entity.load(named: "left_gun", in: realityKitContentBundle) else {
-            print("Failed to load entity: left_open")
+        guard let importEntity = try? Entity.load(named: "left_point", in: realityKitContentBundle) else {
+            print("Failed to load entity: left_point")
             return
         }
         leftPoint = importEntity
         
         guard let importEntity = try? Entity.load(named: "right_open", in: realityKitContentBundle) else {
-            print("Failed to load entity: left_open")
+            print("Failed to load entity: right_open")
             return
         }
         rightOpen = importEntity
         
         guard let importEntity = try? Entity.load(named: "right_fist", in: realityKitContentBundle) else {
-            print("Failed to load entity: left_open")
+            print("Failed to load entity: right_fist")
             return
         }
         rightFist = importEntity
         
         guard let importEntity = try? Entity.load(named: "right_peaceSign", in: realityKitContentBundle) else {
-            print("Failed to load entity: left_open")
+            print("Failed to load entity: right_peaceSign")
             return
         }
         rightPeaceSign = importEntity
         
-        guard let importEntity = try? Entity.load(named: "right_gun", in: realityKitContentBundle) else {
-            print("Failed to load entity: left_open")
+        guard let importEntity = try? Entity.load(named: "right_point", in: realityKitContentBundle) else {
+            print("Failed to load entity: right_point")
             return
         }
         rightPoint = importEntity
