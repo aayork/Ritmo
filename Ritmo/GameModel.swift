@@ -14,7 +14,6 @@ import SwiftUI
 @Observable
 class GameModel {
     /// A Boolean value that indicates that game assets have loaded.
-    var readyToStart = false
     var musicView: MusicView
     var recentlyPlayed: RecentlyPlayedManager
     var highScore: HighScoreManager
@@ -25,6 +24,7 @@ class GameModel {
     var tab = 1
     var songTime = 0 //millis
     var isPlaying = false
+    var curated = false
 
     /// Removes 3D content when then game is over.
     func clear() {

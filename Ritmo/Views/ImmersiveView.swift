@@ -56,7 +56,7 @@ struct ImmersiveView: View {
     }
     
     func spawner(bpm: Int) { // Use beats per minute as an argument
-        if (testJSON(songName: gameModel.musicView.selectedSong!.name) != nil) {
+        if (gameModel.curated) {
             print("current index:", currentIndex)
             if songTiming[currentIndex].timing == gameModel.songTime {
                 let entityName = songTiming[currentIndex].type

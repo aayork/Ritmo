@@ -100,6 +100,7 @@ struct MusicView: View {
                                             Task {
                                                 gameModel.musicView = self
                                                 gameModel.recentlyPlayed.addSong(song: selectedSong!)
+                                                gameModel.curated = gameModel.immsersiveView?.testJSON(songName: song.name) != nil
                                                 await openImmersiveSpace(id: "ImmersiveSpace")
                                             }
                                         })
