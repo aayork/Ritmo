@@ -49,6 +49,7 @@ struct ImmersiveView: View {
         } else {
             print("JSON does NOT exist.")
         }
+        
     }
     
     func spawner(bpm: Int) { // Use beats per minute as an argument
@@ -326,11 +327,54 @@ struct ImmersiveView: View {
            content.add(fingerGunTest)
            handTargets.append(fingerGunTest)
            
-           
-           guard let immersiveEntity = try? await Entity(named: "Immersive", in: realityKitContentBundle) else {
-                fatalError("Unable to load immersive model")
-            }
-           content.add(immersiveEntity)
+           // Assuming 'gameModel.musicView.selectedSong?.genres' is an optional array of String
+           if let genres = gameModel.musicView.selectedSong?.genres {
+               // Use a switch statement to check for specific genres
+               // Assuming you want to check the first genre that matches your criteria
+               // This could be adapted based on how you want to prioritize or handle multiple genres
+               let genre = genres.first(where: { $0 == "Rock" || $0 == "Pop" || $0 == "Country" }) // Add more genres as needed
+               
+               switch genre {
+               case "Rock":
+                   do {
+                       let immersiveEntity = try await Entity(named: "RockScene", in: realityKitContentBundle)
+                       content.add(immersiveEntity)
+                   } catch {
+                       print("Error loading RockScene: \(error)")
+                   }
+               case "Pop":
+                   do {
+                       let immersiveEntity = try await Entity(named: "DefaultScene", in: realityKitContentBundle)
+                       content.add(immersiveEntity)
+                   } catch {
+                       print("Error loading PopScene: \(error)")
+                   }
+               case "Country":
+                   do {
+                       let immersiveEntity = try await Entity(named: "DefaultScene", in: realityKitContentBundle)
+                       content.add(immersiveEntity)
+                   } catch {
+                       print("Error loading JazzScene: \(error)")
+                   }
+               default:
+                   // Handle any genre not explicitly matched above or if no genre is found
+                   do {
+                       let immersiveEntity = try await Entity(named: "DefaultScene", in: realityKitContentBundle)
+                       content.add(immersiveEntity)
+                   } catch {
+                       print("Error loading DefaultScene: \(error)")
+                   }
+               }
+           } else {
+               // Handle the case where genres is nil or empty
+               do {
+                   let immersiveEntity = try await Entity(named: "DefaultScene", in: realityKitContentBundle)
+                   content.add(immersiveEntity)
+               } catch {
+                   print("Error loading DefaultScene: \(error)")
+               }
+           }
+
            
            Task {
                openWindow(id: "scoreView")
@@ -425,19 +469,6 @@ struct ImmersiveView: View {
            zR.transform.translation = rightHand.z
            
            for handTarget in handTargets {
-//               let e = Entity()
-//               e.setTransformMatrix(leftHand.hand.originFromAnchorTransform, relativeTo: handTarget)
-//               if (simd_distance(leftHand.hand.originFromAnchorTransform.columns.3.xyz, handTarget.position) < 0.3 && gestureModel.checkGesture(handTarget.name)! && e.orientation(relativeTo: handTarget).angle < 20 * .pi / 180 ) {
-//                   handTargets.remove(at: handTargets.firstIndex(of: handTarget)!)
-//                   handTarget.removeFromParent()
-//               }
-//               
-//               e.setTransformMatrix(rightHand.hand.originFromAnchorTransform, relativeTo: handTarget)
-//               if (simd_distance(rightHand.hand.originFromAnchorTransform.columns.3.xyz, handTarget.position) < 0.3 && gestureModel.checkGesture(handTarget.name)! && e.orientation(relativeTo: handTarget).angle < 20 * .pi / 180 ) {
-//                   handTargets.remove(at: handTargets.firstIndex(of: handTarget)!)
-//                   handTarget.removeFromParent()
-//               }
-
                if (simd_distance(leftHand.hand.originFromAnchorTransform.columns.3.xyz, handTarget.position) < 0.3 && gestureModel.checkGesture(handTarget.name)!) {
                    handTargets.remove(at: handTargets.firstIndex(of: handTarget)!)
                    handTarget.removeFromParent()
