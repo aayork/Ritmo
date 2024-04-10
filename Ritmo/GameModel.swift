@@ -33,7 +33,11 @@ class GameModel {
     
     /// Resets game state information.
     func reset() {
+        tab = 1
+        songTime = 0
         score = 0
+        isPlaying = false
+        curated = false
         clear()
     }
     
