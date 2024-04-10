@@ -11,19 +11,19 @@ import SwiftUI
  IF YOU NEED TO USE A CUSTOM FONT; THESE ARE THEIR NAMES:
  
  Family: Forma DJR Micro
-    - FormaDJRMicro-Regular
-    - FormaDJRMicro-ExtraLight
-    - FormaDJRMicro-Light
-    - FormaDJRMicro-Medium
-    - FormaDJRMicro-Bold
-    - FormaDJRMicro-ExtraBold
-    - FormaDJRMicro-Black
+ - FormaDJRMicro-Regular
+ - FormaDJRMicro-ExtraLight
+ - FormaDJRMicro-Light
+ - FormaDJRMicro-Medium
+ - FormaDJRMicro-Bold
+ - FormaDJRMicro-ExtraBold
+ - FormaDJRMicro-Black
  
  Family: Soulcraft
-    - Soulcraft
-    - Soulcraft_Slanted-Condensed
-    - Soulcraft_Wide
-    - Soulcraft_Slanted-Wide
+ - Soulcraft
+ - Soulcraft_Slanted-Condensed
+ - Soulcraft_Wide
+ - Soulcraft_Slanted-Wide
  
  */
 
@@ -36,15 +36,10 @@ struct RecentlyPlayedSong: Identifiable {
 
 struct HomeView: View {
     @Binding var tabSelection: Int
-    @State private var recentlyPlayedSongs: [RecentlyPlayedSong] = [
-        RecentlyPlayedSong(title: "Song 1", artist: "Artist 1", coverImageName: "cover1"),
-        RecentlyPlayedSong(title: "Song 2", artist: "Artist 2", coverImageName: "cover2"),
-        RecentlyPlayedSong(title: "Song 3", artist: "Artist 3", coverImageName: "cover3"),
-        RecentlyPlayedSong(title: "Song 4", artist: "Artist 4", coverImageName: "cover4"),
-    ]
-        
+    
     @State var title = "RECENTLY PLAYED"
-
+    
+    @State private var highScores: [SongScore] = HighScoreManager.shared.getHighScores()
     
     var body: some View {
         ZStack {
@@ -67,21 +62,22 @@ struct HomeView: View {
                     Text("HIGH SCORES")
                         .font(.custom("FormaDJRMicro-Bold", size: 30.0))
                         .padding(1)
-                    Text("1000 PTS")
-                        .font(.custom("Soulcraft_Slanted-Condensed", size: 25.0))
-                        .foregroundStyle(Color.electricLime)
-                    Text("Party in the U.S.A. - Miley Cirus")
-                        .font(.custom("FormaDJRMicro-Bold", size: 17.0))
-                    Text("850 PTS")
-                        .font(.custom("Soulcraft_Slanted-Condensed", size: 25.0))
-                        .foregroundStyle(Color.electricLime)
-                    Text("Wham bam Shang-A-Lang - Silver")
-                        .font(.custom("FormaDJRMicro-Bold", size: 17.0))
-                    Text("700 PTS")
-                        .font(.custom("Soulcraft_Slanted-Condensed", size: 25.0))
-                        .foregroundStyle(Color.electricLime)
-                    Text("Moon - Kanye West")
-                        .font(.custom("FormaDJRMicro-Bold", size: 17.0))
+                    
+                    if highScores.isEmpty {
+                        Text("There are no high scores yet")
+                            .font(.custom("FormaDJRMicro-Bold", size: 17.0))
+                            .foregroundStyle(Color.white)
+                    } else {
+                        ForEach(highScores, id: \.song.id) { score in
+                            VStack {
+                                Text("Score: \(score.score)")
+                                    .font(.custom("Soulcraft_Slanted-Condensed", size: 25.0))
+                                    .foregroundStyle(Color.electricLime)
+                                Text("\(score.songName) - \(score.songArtist)")
+                                    .font(.custom("FormaDJRMicro-Bold", size: 17.0))
+                            }
+                        }
+                    }
                 }
                 .frame(width: 300, height: 250.0)
                 .background(Rectangle().fill(Color(red: 0.17, green: 0.17, blue: 0.17)))

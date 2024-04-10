@@ -17,6 +17,7 @@ struct ImmersiveView: View {
     @Environment(GameModel.self) var gameModel
     @ObservedObject var gestureModel: HandTracking
     @State var score = 0
+    @State var currentIndex = 0
     @State private var correctTime = false;
     @State private var xL = Entity()
     @State private var yL = Entity()
@@ -54,39 +55,41 @@ struct ImmersiveView: View {
     
     func spawner(bpm: Int) { // Use beats per minute as an argument
         if (testJSON(songName: gameModel.musicView.selectedSong!.name) != nil) {
-            var currentIndex = 0
+            print("current index:", currentIndex)
             if songTiming[currentIndex].timing == gameModel.songTime {
                 let entityName = songTiming[currentIndex].type
                 
                 // Attempt to load the chosen entity
-                guard let importEntity = try? Entity.load(named: entityName, in: realityKitContentBundle) else {
+                guard let hand = try? ModelEntity.load(named: entityName, in: realityKitContentBundle) else {
                     print("Failed to load entity: \(entityName)")
                     return
                 }
                 
-                let hand = ModelEntity()
-                hand.addChild(importEntity)
-                // hand.position = songTiming[currentIndex].position
-                hand.position = [0.5, 1.3, -5]
+                hand.position = SIMD3<Float>(songTiming[currentIndex].position.x, songTiming[currentIndex].position.y, songTiming[currentIndex].position.z - 5)
                 
                 hand.components.set(InputTargetComponent())
                 hand.components.set(CollisionComponent(shapes: [.generateSphere(radius: 0.1)]))
                 hand.components.set(GroundingShadowComponent(castsShadow: true))
                 
                 entity.addChild(hand)
-                handTargets.append(hand)
                 
                 // Move the hands towards the player
                 var targetTransform = hand.transform
                 targetTransform.translation += SIMD3(0, 0, 5)
-                hand.move(to: targetTransform, relativeTo: nil, duration: handTravelTime + 1, timingFunction: .linear)
+                hand.move(to: targetTransform, relativeTo: nil, duration: handTravelTime - 1, timingFunction: .linear)
+                
+                if true { // Add check for gesture here
+                    gameModel.score += 10
+                }
                 
                 // Despawn hands after stopping or after a fixed time
-                DispatchQueue.main.asyncAfter(deadline: .now() + handTravelTime + 1) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + handTravelTime - 1) {
                     hand.removeFromParent()
                 }
                 
-                currentIndex += 1
+                if songTiming.count - 1 != currentIndex {
+                    currentIndex += 1
+                }
             }
         } else {
             let spawnInterval = 60000 / bpm // This is the amount of milliseconds that elapse during each beat
@@ -144,6 +147,10 @@ struct ImmersiveView: View {
                 targetTransformTwo.translation += SIMD3(0, 0, 5)
                 handOne.move(to: targetTransform, relativeTo: nil, duration: handTravelTime + 1, timingFunction: .linear)
                 handTwo.move(to: targetTransformTwo, relativeTo: nil, duration: handTravelTime + 1, timingFunction: .linear)
+                
+                if true { // Add check for gesture here
+                    gameModel.score += 10
+                }
                 
                 // Despawn hands after stopping or after a fixed time
                 DispatchQueue.main.asyncAfter(deadline: .now() + handTravelTime + 1) {
@@ -497,7 +504,7 @@ struct ImmersiveView: View {
        }
        .preferredSurroundingsEffect(.systemDark)
        .onDisappear() {
-           gameModel.highScore.addScore(song: gameModel.musicView.selectedSong! ,score: score) // Add the score of the song to the score list
+           gameModel.highScore.addScore(song: gameModel.musicView.selectedSong! ,score: gameModel.score) // Add the score of the song to the score list
        }
    }
 }
