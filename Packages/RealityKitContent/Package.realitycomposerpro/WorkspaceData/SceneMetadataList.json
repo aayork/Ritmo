@@ -15,14 +15,6 @@
     "objectMetadataList" : [
       [
         "1B9CE6D0-C407-437B-8BB1-D8BAF942CFBD",
-        "_materials"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "1B9CE6D0-C407-437B-8BB1-D8BAF942CFBD",
         "_materials",
         "GlassMaterial"
       ],
@@ -33,6 +25,14 @@
       [
         "1B9CE6D0-C407-437B-8BB1-D8BAF942CFBD",
         "Single_Hand_022"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "1B9CE6D0-C407-437B-8BB1-D8BAF942CFBD",
+        "_materials"
       ],
       {
         "isExpanded" : true,
@@ -73,14 +73,6 @@
     "objectMetadataList" : [
       [
         "8CFA6B8B-7B91-423D-A96C-B656C37B25A2",
-        "_materials"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "8CFA6B8B-7B91-423D-A96C-B656C37B25A2",
         "Single_Hand_011"
       ],
       {
@@ -91,6 +83,14 @@
         "8CFA6B8B-7B91-423D-A96C-B656C37B25A2",
         "_materials",
         "GlassMaterial"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "8CFA6B8B-7B91-423D-A96C-B656C37B25A2",
+        "_materials"
       ],
       {
         "isExpanded" : true,
@@ -131,7 +131,7 @@
     "objectMetadataList" : [
       [
         "57FCFF1D-4B98-475B-BC40-4BD7547BB7F7",
-        "_materials"
+        "Single_Hand_021_001"
       ],
       {
         "isExpanded" : true,
@@ -139,7 +139,7 @@
       },
       [
         "57FCFF1D-4B98-475B-BC40-4BD7547BB7F7",
-        "Single_Hand_021_001"
+        "_materials"
       ],
       {
         "isExpanded" : true,
@@ -163,15 +163,6 @@
     "objectMetadataList" : [
       [
         "70D8C1B1-777C-4B3A-9685-3E55BF569365",
-        "_materials",
-        "GlassMaterial"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "70D8C1B1-777C-4B3A-9685-3E55BF569365",
         "Single_Hand_021_001"
       ],
       {
@@ -181,6 +172,15 @@
       [
         "70D8C1B1-777C-4B3A-9685-3E55BF569365",
         "_materials"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "70D8C1B1-777C-4B3A-9685-3E55BF569365",
+        "_materials",
+        "GlassMaterial"
       ],
       {
         "isExpanded" : true,
@@ -238,6 +238,14 @@
     "objectMetadataList" : [
       [
         "A4A782C2-D001-4BC6-AF06-A40B6CCE0962",
+        "Single_Hand_005"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "A4A782C2-D001-4BC6-AF06-A40B6CCE0962",
         "_materials",
         "GlassMaterial"
       ],
@@ -252,19 +260,19 @@
       {
         "isExpanded" : true,
         "isLocked" : false
-      },
-      [
-        "A4A782C2-D001-4BC6-AF06-A40B6CCE0962",
-        "Single_Hand_005"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
       }
     ]
   },
   "A0819113-F600-4D8F-BC37-689DA54099F5" : {
     "objectMetadataList" : [
+      [
+        "A0819113-F600-4D8F-BC37-689DA54099F5",
+        "_materials"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
       [
         "A0819113-F600-4D8F-BC37-689DA54099F5",
         "_materials",
@@ -281,27 +289,11 @@
       {
         "isExpanded" : true,
         "isLocked" : false
-      },
-      [
-        "A0819113-F600-4D8F-BC37-689DA54099F5",
-        "_materials"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
       }
     ]
   },
   "A1066055-C05A-4ED1-9AF7-C4320A534E71" : {
     "objectMetadataList" : [
-      [
-        "A1066055-C05A-4ED1-9AF7-C4320A534E71",
-        "_materials"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
       [
         "A1066055-C05A-4ED1-9AF7-C4320A534E71",
         "Single_Hand_002"
@@ -318,6 +310,14 @@
       {
         "isExpanded" : true,
         "isLocked" : false
+      },
+      [
+        "A1066055-C05A-4ED1-9AF7-C4320A534E71",
+        "_materials"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
       }
     ]
   },
@@ -328,8 +328,23 @@
         "Root",
         "handwork",
         "RootNode",
+        "Armature"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "AF09ED6F-1707-48FD-8720-65B998362C09",
+        "Root",
+        "handwork",
+        "RootNode",
         "Armature",
-        "Bone"
+        "Bone",
+        "Bone005",
+        "Bone006",
+        "Bone007",
+        "Bone008"
       ],
       {
         "isExpanded" : true,
@@ -350,12 +365,32 @@
       [
         "AF09ED6F-1707-48FD-8720-65B998362C09",
         "Root",
+        "GlassMaterial"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "AF09ED6F-1707-48FD-8720-65B998362C09",
+        "Root",
+        "handwork",
+        "RootNode"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "AF09ED6F-1707-48FD-8720-65B998362C09",
+        "Root",
         "handwork",
         "RootNode",
         "Armature",
         "Bone",
         "Bone005",
-        "Bone006"
+        "Bone006",
+        "Bone007"
       ],
       {
         "isExpanded" : true,
@@ -369,6 +404,26 @@
         "Armature",
         "Bone",
         "Bone005"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "AF09ED6F-1707-48FD-8720-65B998362C09",
+        "Root"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "AF09ED6F-1707-48FD-8720-65B998362C09",
+        "Root",
+        "handwork",
+        "RootNode",
+        "Armature",
+        "Bone"
       ],
       {
         "isExpanded" : true,
@@ -394,8 +449,7 @@
         "Armature",
         "Bone",
         "Bone005",
-        "Bone006",
-        "Bone007"
+        "Bone006"
       ],
       {
         "isExpanded" : true,
@@ -407,60 +461,6 @@
         "handwork",
         "RootNode",
         "hand"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "AF09ED6F-1707-48FD-8720-65B998362C09",
-        "Root",
-        "handwork",
-        "RootNode",
-        "Armature"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "AF09ED6F-1707-48FD-8720-65B998362C09",
-        "Root",
-        "GlassMaterial"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "AF09ED6F-1707-48FD-8720-65B998362C09",
-        "Root"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "AF09ED6F-1707-48FD-8720-65B998362C09",
-        "Root",
-        "handwork",
-        "RootNode"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "AF09ED6F-1707-48FD-8720-65B998362C09",
-        "Root",
-        "handwork",
-        "RootNode",
-        "Armature",
-        "Bone",
-        "Bone005",
-        "Bone006",
-        "Bone007",
-        "Bone008"
       ],
       {
         "isExpanded" : true,
@@ -480,8 +480,7 @@
       },
       [
         "B4478B48-8EA0-4342-8BD8-6E6604AF4D84",
-        "_materials",
-        "GlassMaterial"
+        "_materials"
       ],
       {
         "isExpanded" : true,
@@ -489,7 +488,8 @@
       },
       [
         "B4478B48-8EA0-4342-8BD8-6E6604AF4D84",
-        "_materials"
+        "_materials",
+        "GlassMaterial"
       ],
       {
         "isExpanded" : true,
@@ -551,15 +551,6 @@
     "objectMetadataList" : [
       [
         "D1C305E7-8CF9-418B-94D4-900AF2BCA813",
-        "_materials",
-        "GlassMaterial"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "D1C305E7-8CF9-418B-94D4-900AF2BCA813",
         "Single_Hand_010"
       ],
       {
@@ -573,6 +564,15 @@
       {
         "isExpanded" : true,
         "isLocked" : false
+      },
+      [
+        "D1C305E7-8CF9-418B-94D4-900AF2BCA813",
+        "_materials",
+        "GlassMaterial"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
       }
     ]
   },
@@ -580,7 +580,7 @@
     "objectMetadataList" : [
       [
         "D7C5C0F8-B0BE-4CEA-AE28-07D1721895D2",
-        "_materials"
+        "Single_Hand_002"
       ],
       {
         "isExpanded" : true,
@@ -588,7 +588,7 @@
       },
       [
         "D7C5C0F8-B0BE-4CEA-AE28-07D1721895D2",
-        "Single_Hand_002"
+        "_materials"
       ],
       {
         "isExpanded" : true,
@@ -616,6 +616,30 @@
       [
         "D66134B1-3681-4A8E-AFE5-29F257229F3B",
         "Root"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      }
+    ]
+  },
+  "DB27CA56-BBA6-484D-97C3-39B32E7A2C00" : {
+    "objectMetadataList" : [
+      [
+        "DB27CA56-BBA6-484D-97C3-39B32E7A2C00",
+        "Single_Hand_022"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      }
+    ]
+  },
+  "EFE75318-16FE-42DF-A154-4D7603CEB4FE" : {
+    "objectMetadataList" : [
+      [
+        "EFE75318-16FE-42DF-A154-4D7603CEB4FE",
+        "Single_Hand_022"
       ],
       {
         "isExpanded" : true,
