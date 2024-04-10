@@ -1,0 +1,129 @@
+#usda 1.0
+(
+    defaultPrim = "Root"
+    metersPerUnit = 1
+    upAxis = "Y"
+)
+
+def Xform "Root"
+{
+    reorder nameChildren = ["GridMaterial", "Sphere"]
+    rel material:binding = None (
+        bindMaterialAs = "weakerThanDescendants"
+    )
+
+    def "GridMaterial" (
+        active = true
+        prepend references = @Materials/GridMaterial.usda@
+    )
+    {
+        float3 xformOp:scale = (1, 1, 1)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def "Piano" (
+        active = true
+        customData = {
+            float3 rotationEulerHint = (0, 2.4425244, 0)
+        }
+        prepend references = @Piano.usdz@
+    )
+    {
+        quatf xformOp:orient = (0.3424601, 0, 0.9395324, 0)
+        float3 xformOp:scale = (0.12700003, 0.12700003, 0.12700003)
+        float3 xformOp:translate = (1.9242738, 0, 1.9023601)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def "Electric_guitar_1" (
+        active = true
+        customData = {
+            float3 rotationEulerHint = (0.8262358, -0.4068064, -1.2211634)
+        }
+        prepend references = @Electric guitar-1.usdc@
+    )
+    {
+        quatf xformOp:orient = (0.7814161, 0.21607257, -0.37701467, -0.4478409)
+        float3 xformOp:scale = (0.035823252, 0.03582325, 0.035823263)
+        float3 xformOp:translate = (2.0613954, 0.6949558, -1.4031336)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def "Drumkitter" (
+        active = true
+        customData = {
+            float3 rotationEulerHint = (0, 0.8969084, 0)
+        }
+        prepend references = @Drumkitter.usdz@
+    )
+    {
+        quatf xformOp:orient = (0.9011184, 0, 0.43357307, 0)
+        float3 xformOp:scale = (0.35213643, 0.35213643, 0.35213643)
+        float3 xformOp:translate = (0.7921695, 0, -2.0781186)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def "Speaker" (
+        active = true
+        prepend references = @Speaker.usdz@
+    )
+    {
+        float3 xformOp:scale = (1, 1, 1)
+        float3 xformOp:translate = (-0.73714936, 0, 0.76277083)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def "Speaker_1" (
+        active = true
+        prepend references = @Speaker.usdz@
+    )
+    {
+        quatf xformOp:orient = (0.99999994, 0, 0, 0)
+        float3 xformOp:scale = (1.5233002, 1.5233002, 1.5233002)
+        float3 xformOp:translate = (-1.2262496, 5.9604645e-8, 0.6342841)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def "Guitar_Amp" (
+        active = true
+        customData = {
+            float3 rotationEulerHint = (0, -1.7999604, 0)
+        }
+        prepend references = @Guitar Amp.usdz@
+    )
+    {
+        quatf xformOp:orient = (-0.6216252, 0, 0.7833149, 0)
+        float3 xformOp:scale = (0.0008162277, 0.0008162277, 0.0008162277)
+        float3 xformOp:translate = (2.2994616, 0.06462906, -0.9841105)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def "Microphone" (
+        active = true
+        customData = {
+            float3 rotationEulerHint = (-9.278589e-8, 2.595713e-8, 0.5455592)
+        }
+        prepend references = @Microphone.usdz@
+    )
+    {
+        quatf xformOp:orient = (0.96302575, -4.8174147e-8, 0, 0.26940933)
+        float3 xformOp:scale = (0.018539464, 0.018539464, 0.018539464)
+        float3 xformOp:translate = (1.5040427, 0.29748133, -0.10869013)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def "Bass" (
+        active = true
+        customData = {
+            float3 rotationEulerHint = (-2.263304, -0.4972508, 1.7902042)
+        }
+        prepend references = @Bass.usdz@
+    )
+    {
+        quatf xformOp:orient = (-0.43152362, 0.46705523, 0.74995583, -0.18224426)
+        float3 xformOp:scale = (0.61398166, 0.61398166, 0.6139816)
+        float3 xformOp:translate = (2.2147686, 0.63435507, 0.27205515)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+}
+

@@ -351,14 +351,14 @@ struct ImmersiveView: View {
                    }
                case "Pop":
                    do {
-                       let immersiveEntity = try await Entity(named: "DefaultScene", in: realityKitContentBundle)
+                       let immersiveEntity = try await Entity(named: "PopScene", in: realityKitContentBundle)
                        content.add(immersiveEntity)
                    } catch {
                        print("Error loading PopScene: \(error)")
                    }
                case "Country":
                    do {
-                       let immersiveEntity = try await Entity(named: "DefaultScene", in: realityKitContentBundle)
+                       let immersiveEntity = try await Entity(named: "CountryScene", in: realityKitContentBundle)
                        content.add(immersiveEntity)
                    } catch {
                        print("Error loading JazzScene: \(error)")
