@@ -48,21 +48,21 @@ struct ImmersiveView: View {
                 
                 switch entityName {
                 case "left_open":
-                    hand = leftOpen
+                    hand = leftOpen.clone(recursive: true)
                 case "left_fist":
-                    hand = leftFist
+                    hand = leftFist.clone(recursive: true)
                 case "left_peaceSign":
-                    hand = leftPeaceSign
+                    hand = leftPeaceSign.clone(recursive: true)
                 case "left_point":
-                    hand = leftPoint
+                    hand = leftPoint.clone(recursive: true)
                 case "right_open":
-                    hand = rightOpen
+                    hand = rightOpen.clone(recursive: true)
                 case "right_fist":
-                    hand = rightFist
+                    hand = rightFist.clone(recursive: true)
                 case "right_peaceSign":
-                    hand = rightPeaceSign
+                    hand = rightPeaceSign.clone(recursive: true)
                 case "right_point":
-                    hand = rightPoint
+                    hand = rightPoint.clone(recursive: true)
                 default:
                     hand = Entity()
                 }
