@@ -20,6 +20,12 @@
       "orientation": {"pitch": 0, "yaw": -45, "roll": 0}
     },
     {
+      "timing": 1010,
+      "type": "right_fist",
+      "position": {"x": -0.5, "y": 1, "z": 0},
+      "orientation": {"pitch": 0, "yaw": -45, "roll": 0}
+    },
+    {
       "timing": 1500,
       "type": "left_open",
       "position": {"x": -0.5, "y": 1.5, "z": 0},
