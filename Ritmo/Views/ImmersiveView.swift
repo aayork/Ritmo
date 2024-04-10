@@ -46,13 +46,6 @@ struct ImmersiveView: View {
                 timingIndex += 1
             }
         }
-        
-        if (testJSON(songName: gameModel.musicView.selectedSong!.name) != nil) {
-            print("JSON exists.")
-        } else {
-            print("JSON does NOT exist.")
-        }
-        
     }
     
     func spawner(bpm: Int) { // Use beats per minute as an argument

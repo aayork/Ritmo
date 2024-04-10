@@ -160,65 +160,6 @@ struct MusicView: View {
         }
     }
     
-    /*
-    func songInfo(songName: String, songArtist: String) {
-        // Replace YOUR_ACCESS_TOKEN with your actual Spotify access token
-        let accessToken = "YOUR_ACCESS_TOKEN"
-        let songTitle = "Song Title"
-        let songAuthor = "Song Author"
-        let query = "\(songTitle) \(songAuthor)".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
-
-        let searchURL = URL(string: "https://api.spotify.com/v1/search?q=\(query)&type=track&limit=1")!
-
-        var searchRequest = URLRequest(url: searchURL)
-        searchRequest.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
-
-        let session = URLSession.shared
-        let searchTask = session.dataTask(with: searchRequest) { data, response, error in
-            guard let data = data, error == nil else {
-                print("Error during data task:", error ?? "Unknown error")
-                return
-            }
-            
-            do {
-                // Parse the search results to find the first track's ID
-                if let json = try JSONSerialization.jsonObject(with: data) as? [String: Any],
-                   let tracks = json["tracks"] as? [String: Any],
-                   let items = tracks["items"] as? [[String: Any]],
-                   let firstItem = items.first,
-                   let trackId = firstItem["id"] as? String {
-                    
-                    // Now, use the track ID to get the track's audio features, including BPM
-                    let featuresURL = URL(string: "https://api.spotify.com/v1/audio-features/\(trackId)")!
-                    var featuresRequest = URLRequest(url: featuresURL)
-                    featuresRequest.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
-                    
-                    let featuresTask = session.dataTask(with: featuresRequest) { data, response, error in
-                        guard let data = data, error == nil else {
-                            print("Error during data task:", error ?? "Unknown error")
-                            return
-                        }
-                        
-                        // Parse the audio features response to find the BPM
-                        if let json = try JSONSerialization.jsonObject(with: data) as? [String: Any],
-                           let bpm = json["tempo"] as? Double {
-                            print("BPM for \(songTitle) by \(songAuthor): \(bpm)")
-                        }
-                    }
-                    
-                    featuresTask.resume()
-                }
-            } catch {
-                print("Error parsing JSON:", error)
-            }
-        }
-
-        searchTask.resume()
-        
-    
-    }
-     */
-    
     private var request: MusicCatalogSearchRequest {
         var request = MusicCatalogSearchRequest(term: searchText, types: [Song.self])
         request.limit = 25
