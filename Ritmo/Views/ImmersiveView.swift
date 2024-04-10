@@ -17,6 +17,7 @@ struct ImmersiveView: View {
     @Environment(GameModel.self) var gameModel
     @ObservedObject var gestureModel: HandTracking
     @State var score = 0
+    @State var currentIndex = 0
     @State private var correctTime = false;
     @State private var xL = Entity()
     @State private var yL = Entity()
@@ -26,7 +27,7 @@ struct ImmersiveView: View {
     @State private var zR = Entity()
     @State private var handSpheres = [Entity()]
     @State private var handTargets = [Entity()]
-    
+
     let entity = Entity()
     @State var timer = Timer.publish(every: 5, on: .main, in: .common).autoconnect()
     @State var songTiming: [GestureEntity] = []
@@ -34,6 +35,8 @@ struct ImmersiveView: View {
     @State var previousSongTime = 0
     let handTravelTime = 4.0 // The time it takes the hand to reach the player
     let acceptInputWindow = 0.8 // The time window in which the player can successfully match a gesture
+    
+    @State private var imageName = "stageView"
     
     func gameLoop() {
             
@@ -49,43 +52,46 @@ struct ImmersiveView: View {
         } else {
             print("JSON does NOT exist.")
         }
+        
     }
     
     func spawner(bpm: Int) { // Use beats per minute as an argument
         if (testJSON(songName: gameModel.musicView.selectedSong!.name) != nil) {
-            var currentIndex = 0
+            print("current index:", currentIndex)
             if songTiming[currentIndex].timing == gameModel.songTime {
                 let entityName = songTiming[currentIndex].type
                 
                 // Attempt to load the chosen entity
-                guard let importEntity = try? Entity.load(named: entityName, in: realityKitContentBundle) else {
+                guard let hand = try? ModelEntity.load(named: entityName, in: realityKitContentBundle) else {
                     print("Failed to load entity: \(entityName)")
                     return
                 }
                 
-                let hand = ModelEntity()
-                hand.addChild(importEntity)
-                // hand.position = songTiming[currentIndex].position
-                hand.position = [0.5, 1.3, -5]
+                hand.position = SIMD3<Float>(songTiming[currentIndex].position.x, songTiming[currentIndex].position.y, songTiming[currentIndex].position.z - 5)
                 
                 hand.components.set(InputTargetComponent())
                 hand.components.set(CollisionComponent(shapes: [.generateSphere(radius: 0.1)]))
                 hand.components.set(GroundingShadowComponent(castsShadow: true))
                 
                 entity.addChild(hand)
-                handTargets.append(hand)
                 
                 // Move the hands towards the player
                 var targetTransform = hand.transform
                 targetTransform.translation += SIMD3(0, 0, 5)
-                hand.move(to: targetTransform, relativeTo: nil, duration: handTravelTime + 1, timingFunction: .linear)
+                hand.move(to: targetTransform, relativeTo: nil, duration: handTravelTime - 1, timingFunction: .linear)
+                
+                if true { // Add check for gesture here
+                    gameModel.score += 10
+                }
                 
                 // Despawn hands after stopping or after a fixed time
-                DispatchQueue.main.asyncAfter(deadline: .now() + handTravelTime + 1) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + handTravelTime - 1) {
                     hand.removeFromParent()
                 }
                 
-                currentIndex += 1
+                if songTiming.count - 1 != currentIndex {
+                    currentIndex += 1
+                }
             }
         } else {
             let spawnInterval = 60000 / bpm // This is the amount of milliseconds that elapse during each beat
@@ -143,6 +149,10 @@ struct ImmersiveView: View {
                 targetTransformTwo.translation += SIMD3(0, 0, 5)
                 handOne.move(to: targetTransform, relativeTo: nil, duration: handTravelTime + 1, timingFunction: .linear)
                 handTwo.move(to: targetTransformTwo, relativeTo: nil, duration: handTravelTime + 1, timingFunction: .linear)
+                
+                if true { // Add check for gesture here
+                    gameModel.score += 10
+                }
                 
                 // Despawn hands after stopping or after a fixed time
                 DispatchQueue.main.asyncAfter(deadline: .now() + handTravelTime + 1) {
@@ -246,6 +256,21 @@ struct ImmersiveView: View {
     var body: some View {
        RealityView { content in
            
+           let rootEntity = Entity()
+
+           guard let texture = try? await TextureResource(named: imageName) else {
+               return
+           }
+           
+           var material = UnlitMaterial()
+           material.color = .init(texture: .init(texture))
+
+           rootEntity.components.set(ModelComponent(mesh: .generateSphere(radius: 1E3), materials: [material]))
+           rootEntity.scale *= .init(x: -1, y: 1, z: 1)
+           rootEntity.transform.translation += SIMD3<Float>(0.0, 1.0, 0.0)
+
+           content.add(rootEntity)
+           
            content.add(entity)
            
            for i in 1...48 {
@@ -326,11 +351,54 @@ struct ImmersiveView: View {
            content.add(fingerGunTest)
            handTargets.append(fingerGunTest)
            
-           
-           guard let immersiveEntity = try? await Entity(named: "Immersive", in: realityKitContentBundle) else {
-                fatalError("Unable to load immersive model")
-            }
-           content.add(immersiveEntity)
+           // Assuming 'gameModel.musicView.selectedSong?.genres' is an optional array of String
+           if let genres = gameModel.musicView.selectedSong?.genres {
+               // Use a switch statement to check for specific genres
+               // Assuming you want to check the first genre that matches your criteria
+               // This could be adapted based on how you want to prioritize or handle multiple genres
+               let genre = genres.first(where: { $0 == "Rock" || $0 == "Pop" || $0 == "Country" }) // Add more genres as needed
+               
+               switch genre {
+               case "Rock":
+                   do {
+                       let immersiveEntity = try await Entity(named: "RockScene", in: realityKitContentBundle)
+                       content.add(immersiveEntity)
+                   } catch {
+                       print("Error loading RockScene: \(error)")
+                   }
+               case "Pop":
+                   do {
+                       let immersiveEntity = try await Entity(named: "PopScene", in: realityKitContentBundle)
+                       content.add(immersiveEntity)
+                   } catch {
+                       print("Error loading PopScene: \(error)")
+                   }
+               case "Country":
+                   do {
+                       let immersiveEntity = try await Entity(named: "CountryScene", in: realityKitContentBundle)
+                       content.add(immersiveEntity)
+                   } catch {
+                       print("Error loading JazzScene: \(error)")
+                   }
+               default:
+                   // Handle any genre not explicitly matched above or if no genre is found
+                   do {
+                       let immersiveEntity = try await Entity(named: "DefaultScene", in: realityKitContentBundle)
+                       content.add(immersiveEntity)
+                   } catch {
+                       print("Error loading DefaultScene: \(error)")
+                   }
+               }
+           } else {
+               // Handle the case where genres is nil or empty
+               do {
+                   let immersiveEntity = try await Entity(named: "DefaultScene", in: realityKitContentBundle)
+                   content.add(immersiveEntity)
+               } catch {
+                   print("Error loading DefaultScene: \(error)")
+               }
+           }
+
            
            Task {
                openWindow(id: "scoreView")
@@ -425,19 +493,6 @@ struct ImmersiveView: View {
            zR.transform.translation = rightHand.z
            
            for handTarget in handTargets {
-//               let e = Entity()
-//               e.setTransformMatrix(leftHand.hand.originFromAnchorTransform, relativeTo: handTarget)
-//               if (simd_distance(leftHand.hand.originFromAnchorTransform.columns.3.xyz, handTarget.position) < 0.3 && gestureModel.checkGesture(handTarget.name)! && e.orientation(relativeTo: handTarget).angle < 20 * .pi / 180 ) {
-//                   handTargets.remove(at: handTargets.firstIndex(of: handTarget)!)
-//                   handTarget.removeFromParent()
-//               }
-//               
-//               e.setTransformMatrix(rightHand.hand.originFromAnchorTransform, relativeTo: handTarget)
-//               if (simd_distance(rightHand.hand.originFromAnchorTransform.columns.3.xyz, handTarget.position) < 0.3 && gestureModel.checkGesture(handTarget.name)! && e.orientation(relativeTo: handTarget).angle < 20 * .pi / 180 ) {
-//                   handTargets.remove(at: handTargets.firstIndex(of: handTarget)!)
-//                   handTarget.removeFromParent()
-//               }
-
                if (simd_distance(leftHand.hand.originFromAnchorTransform.columns.3.xyz, handTarget.position) < 0.3 && gestureModel.checkGesture(handTarget.name)!) {
                    handTargets.remove(at: handTargets.firstIndex(of: handTarget)!)
                    handTarget.removeFromParent()
@@ -466,7 +521,7 @@ struct ImmersiveView: View {
        }
        .preferredSurroundingsEffect(.systemDark)
        .onDisappear() {
-           gameModel.highScore.addScore(song: gameModel.musicView.selectedSong! ,score: score) // Add the score of the song to the score list
+           gameModel.highScore.addScore(song: gameModel.musicView.selectedSong! ,score: gameModel.score) // Add the score of the song to the score list
        }
    }
 }

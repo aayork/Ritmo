@@ -1,0 +1,94 @@
+#usda 1.0
+(
+    defaultPrim = "Root"
+    metersPerUnit = 1
+    upAxis = "Y"
+)
+
+def Xform "Root"
+{
+    reorder nameChildren = ["GridMaterial", "Sphere"]
+    rel material:binding = None (
+        bindMaterialAs = "weakerThanDescendants"
+    )
+
+    def "GridMaterial" (
+        active = true
+        prepend references = @Materials/GridMaterial.usda@
+    )
+    {
+        float3 xformOp:scale = (1, 1, 1)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def "geetar" (
+        active = true
+        customData = {
+            float3 rotationEulerHint = (1.4696065, -0.26820314, -1.2048931)
+        }
+        prepend references = @geetar.usdz@
+    )
+    {
+        quatf xformOp:orient = (0.65664697, 0.49123865, -0.45823765, -0.34280843)
+        float3 xformOp:scale = (1, 1, 1)
+        float3 xformOp:translate = (-1.4888954, 0.47330722, -0.7763668)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def "Drums" (
+        active = true
+        customData = {
+            float3 rotationEulerHint = (0, 0.71795183, 0)
+        }
+        prepend references = @Drums.usdz@
+    )
+    {
+        quatf xformOp:orient = (0.9362571, 0, 0.3513156, 0)
+        float3 xformOp:scale = (0.004319381, 0.004319381, 0.004319381)
+        float3 xformOp:translate = (-2.4333405, 0, -0.32905746)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def "steror" (
+        active = true
+        customData = {
+            float3 rotationEulerHint = (0, -2.205598, 0)
+        }
+        prepend references = @steror.usdz@
+    )
+    {
+        quatf xformOp:orient = (0.45109996, 0, -0.89247346, 0)
+        float3 xformOp:scale = (0.013793886, 0.013793886, 0.013793886)
+        float3 xformOp:translate = (1.2790349, -6.146729e-8, -1.0815622)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def "Guitar__2_r" (
+        active = true
+        customData = {
+            float3 rotationEulerHint = (1.2791064, -0.33814037, -0.88474303)
+        }
+        prepend references = @Guitar (2)r.usdz@
+    )
+    {
+        quatf xformOp:orient = (0.7577785, 0.47389844, -0.37386736, -0.24782096)
+        float3 xformOp:scale = (0.56712157, 0.56712157, 0.56712157)
+        float3 xformOp:translate = (0.4608115, 0.79974467, -1.3061328)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def "miccc" (
+        active = true
+        customData = {
+            float3 rotationEulerHint = (0, -1.235991, 0)
+        }
+        prepend references = @miccc.usdz@
+    )
+    {
+        quatf xformOp:orient = (0.8150415, 0, -0.5794025, 0)
+        float3 xformOp:scale = (0.70827556, 0.70827556, 0.70827556)
+        float3 xformOp:translate = (1.6138957, 0, -0.23812118)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+}
+

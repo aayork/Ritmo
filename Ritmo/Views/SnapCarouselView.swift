@@ -14,6 +14,7 @@ struct SnapCarouselView: View {
     @State private var currentIndex: Int
     @State private var cards: [Item]
     @State private var selectedCardID: UUID?
+    @State private var showWelcomeModal = false
 
     init() {
         let recentlyPlayed = RecentlyPlayedManager.shared.getRecentlyPlayedSongs()
@@ -40,17 +41,18 @@ struct SnapCarouselView: View {
                         .padding(.bottom, 8)
                         .frame(alignment: .topLeading)
                         .foregroundStyle(Color.electricLime)
-                       
-                  
-                    Model3D(named: "Beethoven", bundle: realityKitContentBundle) { model in
-                         model
-                             .resizable()
-                             .aspectRatio(contentMode: .fit)
-                             .rotation3DEffect(.degrees(90), axis: (x: 1, y: 0, z: 0))
-                     } placeholder: {
-                         Text("Beethoven")
-                     }
-                     .offset(y: 70)
+                    
+                    VStack {
+                        Text("Ritmo!")
+                            .font(.title)
+                            .padding()
+                        Text("Thanks for downloading! Please sign in to an Apple Music account with an active subscription to enjoy our app.")
+                            .padding()
+                    }
+                    .frame(width: 400, height: 400)
+                    .background(Color(red: 0.17, green: 0.17, blue: 0.17))
+                    .cornerRadius(20)
+                    .shadow(radius: 10)
                 }
             }
             GeometryReader { geometry in
@@ -69,12 +71,9 @@ struct SnapCarouselView: View {
                             // Calculate the distance from the center to adjust opacity and blur
                             let distanceFromCenter = abs(halfTotalWidth - (offset + halfCardWidth))
                             
-                            
-                            
-                            
                             CarouselCardView(card: card, selectedCardID: selectedCardID, geometry: geometry, distanceFromCenter: distanceFromCenter)
                                 .offset(x: offset, y: 0)
-                            // Calculate zIndex based on how close the item is to the currently selected item
+                                // Calculate zIndex based on how close the item is to the currently selected item
                                 .zIndex(Double(cards.count - abs(currentIndex - index)))
                             
                         }

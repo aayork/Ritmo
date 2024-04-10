@@ -17,7 +17,7 @@ struct Item: Identifiable, Hashable, Codable {
     let song: Song // This is the playable music item
     let artwork: Artwork
     let duration: TimeInterval
-    let genre: MusicItemCollection<Genre>?
+    let genres: [String]
 }
 
 struct MusicView: View {
@@ -275,8 +275,12 @@ struct MusicView: View {
             case .authorized:
                 do {
                     let result = try await request.response()
-                    self.songs = result.songs.compactMap {
-                        Item(name: $0.title, artist: $0.artistName, song: $0.self, artwork: $0.artwork!, duration: $0.duration! * 1000, genre: $0.genres)
+                    self.songs = result.songs.compactMap { song in
+                        return Item(name: song.title, artist: song.artistName, song: song.self, artwork: song.artwork!, duration: song.duration! * 1000, genres: song.genreNames)
+                    }
+                    
+                    for song in self.songs {
+                        print("Song: \(song.name), Artist: \(song.artist), Genres: \(song.genres.joined(separator: ", "))")
                     }
                 } catch {
                     print("Error fetching music")
