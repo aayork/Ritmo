@@ -108,20 +108,23 @@ class HandTracking: ObservableObject, @unchecked Sendable {
     public func checkGesture(_ gesture: String) -> Bool? {
         // Geture is a string with the format: [isLeft]_[gestureName]
         let info = gesture.split(separator: "_")
-        let isLeft = info[0] == "left"
-        
-        switch info[1] {
-        case "fist":
-            return isFist(isLeft)
-        case "open":
-            return isOpen(isLeft)
-        case "peaceSign":
-            return isPeaceSign(isLeft)
-        case "fingerGun":
-            return isFingerGun(isLeft)
-        default:
-            return false
+        if (info.count == 2) {
+            let isLeft = info[0] == "left"
+            
+            switch info[1] {
+            case "fist":
+                return isFist(isLeft)
+            case "open":
+                return isOpen(isLeft)
+            case "peaceSign":
+                return isPeaceSign(isLeft)
+            case "fingerGun":
+                return isFingerGun(isLeft)
+            default:
+                return false
+            }
         }
+        return false;
     }
     
     func isOpen(_ isLeft: Bool) -> Bool? {
