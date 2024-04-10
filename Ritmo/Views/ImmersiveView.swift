@@ -38,27 +38,40 @@ struct ImmersiveView: View {
     
     @State private var imageName = "stageView"
     
-    func gameLoop() {
-            
-        if (timingIndex < songTiming.count) {
-            if (gameModel.songTime == songTiming[timingIndex].timing) {
-                print(songTiming)
-                timingIndex += 1
-            }
-        }
-    }
-    
-    func spawner(bpm: Int) { // Use beats per minute as an argument
+    func gameLoop(bpm: Int) { // Use beats per minute as an argument
         if (gameModel.curated) {
             print("current index:", currentIndex)
             if songTiming[currentIndex].timing == gameModel.songTime {
                 let entityName = songTiming[currentIndex].type
                 
-                // Attempt to load the chosen entity
-                guard let hand = try? ModelEntity.load(named: entityName, in: realityKitContentBundle) else {
-                    print("Failed to load entity: \(entityName)")
-                    return
+                let hand: Entity
+                
+                switch entityName {
+                case "left_open":
+                    hand = leftOpen
+                case "left_fist":
+                    hand = leftFist
+                case "left_peaceSign":
+                    hand = leftPeaceSign
+                case "left_fingerGun":
+                    hand = leftFingerGun
+                case "right_open":
+                    hand = rightOpen
+                case "right_fist":
+                    hand = rightFist
+                case "right_peaceSign":
+                    hand = rightPeaceSign
+                case "right_fingerGun":
+                    hand = rightFingerGun
+                default:
+                    hand = Entity()
                 }
+                
+                // Attempt to load the chosen entity
+//                guard let hand = try? ModelEntity.load(named: entityName, in: realityKitContentBundle) else {
+//                    print("Failed to load entity: \(entityName)")
+//                    return
+//                }
                 
                 hand.position = SIMD3<Float>(songTiming[currentIndex].position.x, songTiming[currentIndex].position.y, songTiming[currentIndex].position.z - 5)
                 
@@ -82,7 +95,7 @@ struct ImmersiveView: View {
                     hand.removeFromParent()
                 }
                 
-                if songTiming.count - 1 != currentIndex {
+                if (songTiming.count - 1 != currentIndex) {
                     currentIndex += 1
                 }
             }
@@ -304,45 +317,45 @@ struct ImmersiveView: View {
            content.add(zR)
            
            
-           let sphereOTP = MeshResource.generateSphere(radius: 0.01)
-           let materialOTP = SimpleMaterial(color: .purple, isMetallic: false)
-           let openTestPoint = ModelEntity(mesh: sphereOTP, materials: [materialOTP])
-           openTestPoint.position = SIMD3(x: -1, y: 1, z: -1)
-           content.add(openTestPoint)
-           openTest.position = SIMD3(x: -1, y: 1, z: -1)
-           openTest.name = "right_open"
-           content.add(openTest)
-           handTargets.append(openTest)
-           
-           let sphereFTP = MeshResource.generateSphere(radius: 0.01)
-           let materialFTP = SimpleMaterial(color: .purple, isMetallic: false)
-           let fistTestPoint = ModelEntity(mesh: sphereFTP, materials: [materialFTP])
-           fistTestPoint.position = SIMD3(x: -0.5, y: 1, z: -1)
-           content.add(fistTestPoint)
-           fistTest.position = SIMD3(x: -0.5, y: 1, z: -1)
-           fistTest.name = "right_fist"
-           content.add(fistTest)
-           handTargets.append(fistTest)
-           
-           let spherePSTP = MeshResource.generateSphere(radius: 0.01)
-           let materialPSTP = SimpleMaterial(color: .purple, isMetallic: false)
-           let peaceSignTestPoint = ModelEntity(mesh: spherePSTP, materials: [materialPSTP])
-           peaceSignTestPoint.position = SIMD3(x: 1, y: 1, z: -1)
-           content.add(peaceSignTestPoint)
-           peaceSignTest.position = SIMD3(x: 1, y: 1, z: -1)
-           peaceSignTest.name = "right_peaceSign"
-           content.add(peaceSignTest)
-           handTargets.append(peaceSignTest)
-           
-           let sphereFGTP = MeshResource.generateSphere(radius: 0.01)
-           let materialFGTP = SimpleMaterial(color: .purple, isMetallic: false)
-           let fingerGunTestPoint = ModelEntity(mesh: sphereFGTP, materials: [materialFGTP])
-           fingerGunTestPoint.position = SIMD3(x: 0.5, y: 1, z: -1)
-           content.add(fingerGunTestPoint)
-           fingerGunTest.position = SIMD3(x: 0.5, y: 1, z: -1)
-           fingerGunTest.name = "right_fingerGun"
-           content.add(fingerGunTest)
-           handTargets.append(fingerGunTest)
+//           let sphereOTP = MeshResource.generateSphere(radius: 0.01)
+//           let materialOTP = SimpleMaterial(color: .purple, isMetallic: false)
+//           let openTestPoint = ModelEntity(mesh: sphereOTP, materials: [materialOTP])
+//           openTestPoint.position = SIMD3(x: -1, y: 1, z: -1)
+//           content.add(openTestPoint)
+//           openTest.position = SIMD3(x: -1, y: 1, z: -1)
+//           openTest.name = "right_open"
+//           content.add(openTest)
+//           handTargets.append(openTest)
+//           
+//           let sphereFTP = MeshResource.generateSphere(radius: 0.01)
+//           let materialFTP = SimpleMaterial(color: .purple, isMetallic: false)
+//           let fistTestPoint = ModelEntity(mesh: sphereFTP, materials: [materialFTP])
+//           fistTestPoint.position = SIMD3(x: -0.5, y: 1, z: -1)
+//           content.add(fistTestPoint)
+//           fistTest.position = SIMD3(x: -0.5, y: 1, z: -1)
+//           fistTest.name = "right_fist"
+//           content.add(fistTest)
+//           handTargets.append(fistTest)
+//           
+//           let spherePSTP = MeshResource.generateSphere(radius: 0.01)
+//           let materialPSTP = SimpleMaterial(color: .purple, isMetallic: false)
+//           let peaceSignTestPoint = ModelEntity(mesh: spherePSTP, materials: [materialPSTP])
+//           peaceSignTestPoint.position = SIMD3(x: 1, y: 1, z: -1)
+//           content.add(peaceSignTestPoint)
+//           peaceSignTest.position = SIMD3(x: 1, y: 1, z: -1)
+//           peaceSignTest.name = "right_peaceSign"
+//           content.add(peaceSignTest)
+//           handTargets.append(peaceSignTest)
+//           
+//           let sphereFGTP = MeshResource.generateSphere(radius: 0.01)
+//           let materialFGTP = SimpleMaterial(color: .purple, isMetallic: false)
+//           let fingerGunTestPoint = ModelEntity(mesh: sphereFGTP, materials: [materialFGTP])
+//           fingerGunTestPoint.position = SIMD3(x: 0.5, y: 1, z: -1)
+//           content.add(fingerGunTestPoint)
+//           fingerGunTest.position = SIMD3(x: 0.5, y: 1, z: -1)
+//           fingerGunTest.name = "right_fingerGun"
+//           content.add(fingerGunTest)
+//           handTargets.append(fingerGunTest)
            
            // Assuming 'gameModel.musicView.selectedSong?.genres' is an optional array of String
            if let genres = gameModel.musicView.selectedSong?.genres {
