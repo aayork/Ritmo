@@ -9,8 +9,12 @@ import RealityKit
 
 let spaceOrigin = Entity()
 
-var openTest = Entity()
-var fistTest = Entity()
-var peaceSignTest = Entity()
-var fingerGunTest = Entity()
+var leftOpen = Entity()
+var leftFist = Entity()
+var leftPeaceSign = Entity()
+var leftFingerGun = Entity()
+var rightOpen = Entity()
+var rightFist = Entity()
+var rightPeaceSign = Entity()
+var rightFingerGun = Entity()
 

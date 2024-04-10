@@ -44,29 +44,53 @@ class GameModel {
         self.carousel = SnapCarouselView()
         self.highScore = HighScoreManager()
         
+        guard let importEntity = try? Entity.load(named: "left_open", in: realityKitContentBundle) else {
+            print("Failed to load entity: left_open")
+            return
+        }
+        leftOpen = importEntity
+        
+        guard let importEntity = try? Entity.load(named: "left_fist", in: realityKitContentBundle) else {
+            print("Failed to load entity: left_open")
+            return
+        }
+        leftFist = importEntity
+        
+        guard let importEntity = try? Entity.load(named: "left_peaceSign", in: realityKitContentBundle) else {
+            print("Failed to load entity: left_open")
+            return
+        }
+        leftPeaceSign = importEntity
+        
+        guard let importEntity = try? Entity.load(named: "left_gun", in: realityKitContentBundle) else {
+            print("Failed to load entity: left_open")
+            return
+        }
+        leftFingerGun = importEntity
+        
         guard let importEntity = try? Entity.load(named: "right_open", in: realityKitContentBundle) else {
             print("Failed to load entity: left_open")
             return
         }
-        openTest = importEntity
+        rightOpen = importEntity
         
         guard let importEntity = try? Entity.load(named: "right_fist", in: realityKitContentBundle) else {
             print("Failed to load entity: left_open")
             return
         }
-        fistTest = importEntity
+        rightFist = importEntity
         
         guard let importEntity = try? Entity.load(named: "right_peaceSign", in: realityKitContentBundle) else {
             print("Failed to load entity: left_open")
             return
         }
-        peaceSignTest = importEntity
+        rightPeaceSign = importEntity
         
         guard let importEntity = try? Entity.load(named: "right_gun", in: realityKitContentBundle) else {
             print("Failed to load entity: left_open")
             return
         }
-        fingerGunTest = importEntity
+        rightFingerGun = importEntity
         
         Task { @MainActor in
             self.immsersiveView = ImmersiveView(gestureModel: HandTrackingContainer.handTracking)
