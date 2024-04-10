@@ -53,16 +53,16 @@ struct ImmersiveView: View {
                     hand = leftFist
                 case "left_peaceSign":
                     hand = leftPeaceSign
-                case "left_fingerGun":
-                    hand = leftFingerGun
+                case "left_point":
+                    hand = leftPoint
                 case "right_open":
                     hand = rightOpen
                 case "right_fist":
                     hand = rightFist
                 case "right_peaceSign":
                     hand = rightPeaceSign
-                case "right_fingerGun":
-                    hand = rightFingerGun
+                case "right_point":
+                    hand = rightPoint
                 default:
                     hand = Entity()
                 }

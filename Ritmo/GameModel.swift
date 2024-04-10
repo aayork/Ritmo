@@ -66,7 +66,7 @@ class GameModel {
             print("Failed to load entity: left_open")
             return
         }
-        leftFingerGun = importEntity
+        leftPoint = importEntity
         
         guard let importEntity = try? Entity.load(named: "right_open", in: realityKitContentBundle) else {
             print("Failed to load entity: left_open")
@@ -90,7 +90,7 @@ class GameModel {
             print("Failed to load entity: left_open")
             return
         }
-        rightFingerGun = importEntity
+        rightPoint = importEntity
         
         Task { @MainActor in
             self.immsersiveView = ImmersiveView(gestureModel: HandTrackingContainer.handTracking)

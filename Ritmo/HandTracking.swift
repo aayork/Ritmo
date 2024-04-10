@@ -118,8 +118,8 @@ class HandTracking: ObservableObject, @unchecked Sendable {
                 return isOpen(isLeft)
             case "peaceSign":
                 return isPeaceSign(isLeft)
-            case "fingerGun":
-                return isFingerGun(isLeft)
+            case "point":
+                return isPoint(isLeft)
             default:
                 return false
             }
@@ -243,7 +243,7 @@ class HandTracking: ObservableObject, @unchecked Sendable {
         && indexKnuckle!.z - middleKnuckle!.z < indexTip!.z - middleTip!.z
     }
     
-    func isFingerGun(_ isLeft: Bool) -> Bool? {
+    func isPoint(_ isLeft: Bool) -> Bool? {
         guard let handAnchor = isLeft ? latestHandTracking.left : latestHandTracking.right,
               handAnchor.isTracked else {
             return nil
