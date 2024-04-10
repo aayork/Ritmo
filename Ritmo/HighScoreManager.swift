@@ -21,19 +21,23 @@ class HighScoreManager {
 
     func addScore(song: Item, score: Int) {
         var scores = getHighScores()
-        
-        // Create a new SongScore object and add it at the beginning of the list
-        let newScore = SongScore(song: song, songArtist: song.artist, songName: song.name, score: score)
-        scores.insert(newScore, at: 0)
-        
-        // Sort the scores in descending order
-        scores.sort { $0.score > $1.score }
-        
-        // Store the updated list of SongScore objects
-        let encoder = JSONEncoder()
-        if let encoded = try? encoder.encode(scores) {
-            UserDefaults.standard.set(encoded, forKey: key)
-        }
+            if let index = scores.firstIndex(where: { $0.songArtist == song.artist && $0.songName == song.name }) {
+            // Song exists, update score
+            scores[index].score += score // Use just `score` if you want to replace the score instead of adding
+            } else {
+            // Song does not exist, create a new entry
+            let newScore = SongScore(song: song, songArtist: song.artist, songName: song.name, score: score)
+            scores.append(newScore) // Appending then sorting, instead of inserting at 0
+            }
+                
+            // Sort the scores in descending order
+            scores.sort { $0.score > $1.score }
+                
+            // Store the updated list of SongScore objects
+            let encoder = JSONEncoder()
+            if let encoded = try? encoder.encode(scores) {
+                UserDefaults.standard.set(encoded, forKey: key)
+            }
     }
 
 
