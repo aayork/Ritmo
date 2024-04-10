@@ -67,6 +67,9 @@ struct ImmersiveView: View {
                     hand = Entity()
                 }
                 
+                hand.name = entityName
+                handTargets.append(hand)
+                
                 // Attempt to load the chosen entity
 //                guard let hand = try? ModelEntity.load(named: entityName, in: realityKitContentBundle) else {
 //                    print("Failed to load entity: \(entityName)")
