@@ -70,12 +70,6 @@ struct ImmersiveView: View {
                 hand.name = entityName
                 handTargets.append(hand)
                 
-                // Attempt to load the chosen entity
-//                guard let hand = try? ModelEntity.load(named: entityName, in: realityKitContentBundle) else {
-//                    print("Failed to load entity: \(entityName)")
-//                    return
-//                }
-                
                 hand.position = SIMD3<Float>(songTiming[currentIndex].position.x, songTiming[currentIndex].position.y, songTiming[currentIndex].position.z - 5)
                 
                 hand.components.set(InputTargetComponent())
@@ -88,10 +82,6 @@ struct ImmersiveView: View {
                 var targetTransform = hand.transform
                 targetTransform.translation += SIMD3(0, 0, 5)
                 hand.move(to: targetTransform, relativeTo: nil, duration: handTravelTime - 1, timingFunction: .linear)
-                
-                if true { // Add check for gesture here
-                    gameModel.score += 10
-                }
                 
                 // Despawn hands after stopping or after a fixed time
                 DispatchQueue.main.asyncAfter(deadline: .now() + handTravelTime - 1) {
@@ -111,64 +101,51 @@ struct ImmersiveView: View {
                 let randomIndex = Int.random(in: 0..<entityNames.count)
                 let entityName = entityNames[randomIndex]
                 
-                let entityTwoNames = ["left_fist", "left_open", "left_peaceSign"]
-                let randomIndexTwo = Int.random(in: 0..<entityTwoNames.count)
-                let entityTwoName = entityTwoNames[randomIndexTwo]
+                let hand: Entity
                 
-                // Attempt to load the chosen entity
-                guard let importEntity = try? Entity.load(named: entityName, in: realityKitContentBundle) else {
-                    print("Failed to load entity: \(entityName)")
-                    return
+                switch entityName {
+                case "left_open":
+                    hand = leftOpen.clone(recursive: true)
+                case "left_fist":
+                    hand = leftFist.clone(recursive: true)
+                case "left_peaceSign":
+                    hand = leftPeaceSign.clone(recursive: true)
+                case "left_point":
+                    hand = leftPoint.clone(recursive: true)
+                case "right_open":
+                    hand = rightOpen.clone(recursive: true)
+                case "right_fist":
+                    hand = rightFist.clone(recursive: true)
+                case "right_peaceSign":
+                    hand = rightPeaceSign.clone(recursive: true)
+                case "right_point":
+                    hand = rightPoint.clone(recursive: true)
+                default:
+                    hand = Entity()
                 }
                 
-                guard let importEntityTwo = try? Entity.load(named: entityTwoName, in: realityKitContentBundle) else {
-                    print("Failed to load entity: \(entityName)")
-                    return
-                }
+                hand.name = entityName
+                handTargets.append(hand)
                 
-                // Instantiate parent hand
-                let handOne = ModelEntity()
-                handOne.addChild(importEntity)
-                handOne.position = [0.5, 1.3, -5] // Adjust the Y value to float the hand above the ground
+                hand.position = [0.5, 1.3, -5]
+                hand.components.set(InputTargetComponent())
+                hand.components.set(CollisionComponent(shapes: [.generateSphere(radius: 0.1)]))
+                hand.components.set(GroundingShadowComponent(castsShadow: true))
                 
-                let handTwo = ModelEntity()
-                handTwo.addChild(importEntityTwo)
-                handTwo.position = [-0.5, 1.3, -5]
-
-                // Add interaction components if needed
-                handOne.components.set(InputTargetComponent())
-                handOne.components.set(CollisionComponent(shapes: [.generateSphere(radius: 0.1)]))
-                handOne.components.set(GroundingShadowComponent(castsShadow: true))
-                
-                handTwo.components.set(InputTargetComponent())
-                handTwo.components.set(CollisionComponent(shapes: [.generateSphere(radius: 0.1)]))
-                handTwo.components.set(GroundingShadowComponent(castsShadow: true))
-                
-                // Attach hands to the entity
-                entity.addChild(handOne)
-                entity.addChild(handTwo)
-                
-                handTargets.append(handOne)
-                handTargets.append(handTwo)
+                entity.addChild(hand)
                 
                 // Move the hands towards the player
-                var targetTransform = handOne.transform
-                var targetTransformTwo = handTwo.transform
+                var targetTransform = hand.transform
                 targetTransform.translation += SIMD3(0, 0, 5)
-                targetTransformTwo.translation += SIMD3(0, 0, 5)
-                handOne.move(to: targetTransform, relativeTo: nil, duration: handTravelTime + 1, timingFunction: .linear)
-                handTwo.move(to: targetTransformTwo, relativeTo: nil, duration: handTravelTime + 1, timingFunction: .linear)
-                
-                if true { // Add check for gesture here
-                    gameModel.score += 10
-                }
+                hand.move(to: targetTransform, relativeTo: nil, duration: handTravelTime - 1, timingFunction: .linear)
                 
                 // Despawn hands after stopping or after a fixed time
-                DispatchQueue.main.asyncAfter(deadline: .now() + handTravelTime + 1) {
-                    // handTargets.remove(at: handTargets.firstIndex(of: handOne)!) // These just made it lag
-                    // handTargets.remove(at: handTargets.firstIndex(of: handTwo)!)
-                    handOne.removeFromParent()
-                    handTwo.removeFromParent()
+                DispatchQueue.main.asyncAfter(deadline: .now() + handTravelTime - 1) {
+                    hand.removeFromParent()
+                }
+                
+                if (songTiming.count - 1 != currentIndex) {
+                    currentIndex += 1
                 }
             }
         }
@@ -264,6 +241,8 @@ struct ImmersiveView: View {
     
     var body: some View {
        RealityView { content in
+           /// This code adds in the image for the progressive space, but I think it's ugly so leaving it out for now
+           /*
            
            let rootEntity = Entity()
 
@@ -279,6 +258,8 @@ struct ImmersiveView: View {
            rootEntity.transform.translation += SIMD3<Float>(0.0, 1.0, 0.0)
 
            content.add(rootEntity)
+            
+            */
            
            content.add(entity)
            
@@ -318,47 +299,6 @@ struct ImmersiveView: View {
            let materialZR = SimpleMaterial(color: .blue, isMetallic: false)
            zR = ModelEntity(mesh: sphereZR, materials: [materialZR])
            content.add(zR)
-           
-           
-//           let sphereOTP = MeshResource.generateSphere(radius: 0.01)
-//           let materialOTP = SimpleMaterial(color: .purple, isMetallic: false)
-//           let openTestPoint = ModelEntity(mesh: sphereOTP, materials: [materialOTP])
-//           openTestPoint.position = SIMD3(x: -1, y: 1, z: -1)
-//           content.add(openTestPoint)
-//           openTest.position = SIMD3(x: -1, y: 1, z: -1)
-//           openTest.name = "right_open"
-//           content.add(openTest)
-//           handTargets.append(openTest)
-//           
-//           let sphereFTP = MeshResource.generateSphere(radius: 0.01)
-//           let materialFTP = SimpleMaterial(color: .purple, isMetallic: false)
-//           let fistTestPoint = ModelEntity(mesh: sphereFTP, materials: [materialFTP])
-//           fistTestPoint.position = SIMD3(x: -0.5, y: 1, z: -1)
-//           content.add(fistTestPoint)
-//           fistTest.position = SIMD3(x: -0.5, y: 1, z: -1)
-//           fistTest.name = "right_fist"
-//           content.add(fistTest)
-//           handTargets.append(fistTest)
-//           
-//           let spherePSTP = MeshResource.generateSphere(radius: 0.01)
-//           let materialPSTP = SimpleMaterial(color: .purple, isMetallic: false)
-//           let peaceSignTestPoint = ModelEntity(mesh: spherePSTP, materials: [materialPSTP])
-//           peaceSignTestPoint.position = SIMD3(x: 1, y: 1, z: -1)
-//           content.add(peaceSignTestPoint)
-//           peaceSignTest.position = SIMD3(x: 1, y: 1, z: -1)
-//           peaceSignTest.name = "right_peaceSign"
-//           content.add(peaceSignTest)
-//           handTargets.append(peaceSignTest)
-//           
-//           let sphereFGTP = MeshResource.generateSphere(radius: 0.01)
-//           let materialFGTP = SimpleMaterial(color: .purple, isMetallic: false)
-//           let fingerGunTestPoint = ModelEntity(mesh: sphereFGTP, materials: [materialFGTP])
-//           fingerGunTestPoint.position = SIMD3(x: 0.5, y: 1, z: -1)
-//           content.add(fingerGunTestPoint)
-//           fingerGunTest.position = SIMD3(x: 0.5, y: 1, z: -1)
-//           fingerGunTest.name = "right_fingerGun"
-//           content.add(fingerGunTest)
-//           handTargets.append(fingerGunTest)
            
            // Assuming 'gameModel.musicView.selectedSong?.genres' is an optional array of String
            if let genres = gameModel.musicView.selectedSong?.genres {
@@ -505,11 +445,13 @@ struct ImmersiveView: View {
                if (simd_distance(leftHand.hand.originFromAnchorTransform.columns.3.xyz, handTarget.position) < 0.3 && gestureModel.checkGesture(handTarget.name)!) {
                    handTargets.remove(at: handTargets.firstIndex(of: handTarget)!)
                    handTarget.removeFromParent()
+                   gameModel.score += 10
                }
                
                if (simd_distance(rightHand.hand.originFromAnchorTransform.columns.3.xyz, handTarget.position) < 0.3 && gestureModel.checkGesture(handTarget.name)!) {
                    handTargets.remove(at: handTargets.firstIndex(of: handTarget)!)
                    handTarget.removeFromParent()
+                   gameModel.score += 10
                }
 
            }
