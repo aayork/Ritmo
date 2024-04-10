@@ -133,7 +133,9 @@ struct ScoreView: View {
                         }
                     }
                     Task {
-                        gameModel.immsersiveView?.gameLoop(bpm: 94)
+                        if (gameModel.isPlaying) {
+                            gameModel.immsersiveView?.gameLoop(bpm: 94)
+                        }
                     }
                 }
             }
