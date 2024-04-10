@@ -100,8 +100,8 @@ struct ScoreView: View {
                 .onChange(of: scenePhase) {
                     if scenePhase == .inactive {
                         Task {
-                            // Check if the song has finished playing
                             openWindow(id: "windowGroup")
+                            dismissWindow(id: "scoreView")
                             await dismissImmersiveSpace()
                             if (gameModel.musicView.playing == true) {
                                 await gameModel.musicView.togglePlaying()
