@@ -24,61 +24,56 @@ def Xform "Root"
     def "Drum_Set" (
         active = true
         customData = {
-            float3 rotationEulerHint = (0, -1.1625736, 0)
+            float3 rotationEulerHint = (0, -2.2097614, 0)
         }
         prepend references = @Drum Set.usdz@
     )
     {
-        quatf xformOp:orient = (0.8357567, 0, -0.54909986, 0)
-        float3 xformOp:scale = (1.9158902, 1.9158905, 1.9158902)
-        float3 xformOp:translate = (-6.1316624, 0.41987312, 2.3662562)
+        quatf xformOp:orient = (-0.4492411, 0, 0.89341056, 0)
+        float3 xformOp:scale = (0.75, 0.7500001, 0.75)
+        float3 xformOp:translate = (-2.4243839, 0.109870076, -1.6152999)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
     }
 
     def "Guitar" (
         active = true
         customData = {
-            float3 rotationEulerHint = (-3.6645942, -0.030168584, 2.3015354)
+            float3 rotationEulerHint = (-0.025132738, -0.030194186, -2.91171e-11)
         }
         prepend references = @Guitar.usdz@
     )
     {
-        quatf xformOp:orient = (0.09210899, 0.39743888, 0.8803448, 0.24197349)
-        float3 xformOp:scale = (2.0094488, 2.0094492, 2.0094492)
-        float3 xformOp:translate = (-1.2021136, 2.436233, 5.4336977)
+        quatf xformOp:orient = (0.9998071, -0.012564607, -0.015095329, -0.00018970347)
+        float3 xformOp:scale = (0.9, 0.9000002, 0.9000002)
+        float3 xformOp:translate = (-0.49055403, 0.7591601, -2.1490428)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
-    }
-
-    def "Tambourine" (
-        active = true
-        customData = {
-            float3 rotationEulerHint = (-1.112183, -0.3989271, 0.87273735)
-        }
-        prepend references = @Tambourine.usdz@
-    )
-    {
-        quatf xformOp:orient = (0.7986819, -0.39779258, -0.3712, 0.25705802)
-        float3 xformOp:scale = (0.0000014597509, 0.0000014597509, 0.0000014597512)
-        float3 xformOp:translate = (5.4815946, 1.0670353, 6.0727615)
-        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
-
-        def RealityKitComponent "MotionState"
-        {
-            uniform token info:id = "RealityKit.MotionState"
-        }
     }
 
     def "Cowbell" (
         active = true
         customData = {
-            float3 rotationEulerHint = (0.50075537, 1.2094033, 4.635837e-7)
+            float3 rotationEulerHint = (0.50075436, 2.256536, 2.3841858e-7)
         }
         prepend references = @Cowbell.usdz@
     )
     {
-        quatf xformOp:orient = (0.79701996, 0.20383313, 0.5507898, -0.14086112)
-        float3 xformOp:scale = (4.417411, 4.417411, 4.4174094)
-        float3 xformOp:translate = (5.6514635, 2.0076003, 1.6320157)
+        quatf xformOp:orient = (0.414873, 0.106101155, 0.87549454, -0.22390237)
+        float3 xformOp:scale = (2.417, 2.417, 2.416999)
+        float3 xformOp:translate = (2.303809, 1.1121892, -1.9483855)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def "Bass_Violin" (
+        active = true
+        customData = {
+            float3 rotationEulerHint = (0, 0, 0)
+        }
+        prepend references = @Bass Violin.usdz@
+    )
+    {
+        quatf xformOp:orient = (1, 0, 0, 0)
+        float3 xformOp:scale = (0.3, 0.3, 0.3)
+        float3 xformOp:translate = (1.1601633, 1.28, -2.00733)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
     }
 }
