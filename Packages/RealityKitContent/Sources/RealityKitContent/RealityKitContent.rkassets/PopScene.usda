@@ -35,20 +35,6 @@ def Xform "Root"
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
     }
 
-    def "Electric_guitar_1" (
-        active = true
-        customData = {
-            float3 rotationEulerHint = (-1.2276645, 2.1521645, -0.7150612)
-        }
-        prepend references = @Electric guitar-1.usdc@
-    )
-    {
-        quatf xformOp:orient = (0.54097605, -0.004405568, 0.76965, 0.33906403)
-        float3 xformOp:scale = (0.035823252, 0.03582325, 0.035823263)
-        float3 xformOp:translate = (0.26759738, 0.6482098, -1.3931754)
-        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
-    }
-
     def "Drumkitter" (
         active = true
         customData = {
@@ -123,6 +109,20 @@ def Xform "Root"
         quatf xformOp:orient = (-0.63386726, 0.050651282, 0.4276109, -0.6424917)
         float3 xformOp:scale = (0.61398166, 0.61398166, 0.6139816)
         float3 xformOp:translate = (1.408016, 0.71870106, -1.718394)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def "FIXEdguitar" (
+        active = true
+        customData = {
+            float3 rotationEulerHint = (0, 0.34906587, 0)
+        }
+        prepend references = @FIXEdguitar.usdz@
+    )
+    {
+        quatf xformOp:orient = (0.9848077, 0, 0.17364818, 0)
+        float3 xformOp:scale = (3, 3, 3)
+        float3 xformOp:translate = (0.13278599, 0.4060793, -1.67039)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
     }
 }
