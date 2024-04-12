@@ -95,53 +95,84 @@ struct ImmersiveView: View {
         } else {
             let spawnInterval = 60000 / bpm // This is the amount of milliseconds that elapse during each beat
             if gameModel.songTime - previousSongTime == spawnInterval {
-                // Randomly choose between "Fist_fixed" and "OPENfixed"
+                // Randomly choose between hand gesture
                 previousSongTime = gameModel.songTime
-                let entityNames = ["right_fist", "right_open", "right_peaceSign"]
-                let randomIndex = Int.random(in: 0..<entityNames.count)
-                let entityName = entityNames[randomIndex]
+                let rightEntityNames = ["right_fist", "right_open", "right_peaceSign","","",""]
+                let randomRightIndex = Int.random(in: 0..<rightEntityNames.count)
+                let rightEntityName = rightEntityNames[randomRightIndex]
                 
-                let hand: Entity
+                let leftEntityNames = ["left_fist", "left_open", "left_peaceSign","","",""]
+                let randomLeftIndex = Int.random(in: 0..<leftEntityNames.count)
+                let leftEntityName = leftEntityNames[randomLeftIndex]
                 
-                switch entityName {
-                case "left_open":
-                    hand = leftOpen.clone(recursive: true)
-                case "left_fist":
-                    hand = leftFist.clone(recursive: true)
-                case "left_peaceSign":
-                    hand = leftPeaceSign.clone(recursive: true)
-                case "left_point":
-                    hand = leftPoint.clone(recursive: true)
+                let rightHand: Entity
+                let leftHand: Entity
+                
+                switch rightEntityName {
                 case "right_open":
-                    hand = rightOpen.clone(recursive: true)
+                    rightHand = rightOpen.clone(recursive: true)
                 case "right_fist":
-                    hand = rightFist.clone(recursive: true)
+                    rightHand = rightFist.clone(recursive: true)
                 case "right_peaceSign":
-                    hand = rightPeaceSign.clone(recursive: true)
+                    rightHand = rightPeaceSign.clone(recursive: true)
                 case "right_point":
-                    hand = rightPoint.clone(recursive: true)
+                    rightHand = rightPoint.clone(recursive: true)
                 default:
-                    hand = Entity()
+                    rightHand = Entity()
                 }
                 
-                hand.name = entityName
-                handTargets.append(hand)
+                switch leftEntityName {
+                case "left_open":
+                    leftHand = leftOpen.clone(recursive: true)
+                case "left_fist":
+                    leftHand = leftFist.clone(recursive: true)
+                case "left_peaceSign":
+                    leftHand = leftPeaceSign.clone(recursive: true)
+                case "left_point":
+                    leftHand = leftPoint.clone(recursive: true)
+                default:
+                    leftHand = Entity()
+                }
                 
-                hand.position = [0.5, 1.3, -5]
-                hand.components.set(InputTargetComponent())
-                hand.components.set(CollisionComponent(shapes: [.generateSphere(radius: 0.1)]))
-                hand.components.set(GroundingShadowComponent(castsShadow: true))
+                rightHand.name = rightEntityName
+                handTargets.append(rightHand)
                 
-                entity.addChild(hand)
+                leftHand.name = leftEntityName
+                handTargets.append(leftHand)
+                
+                let rightYPosition = Float.random(in: 0.9...1.3)
+                let rightXPosition = Float.random(in: 0.1...0.7)
+                
+                rightHand.position = [rightXPosition, rightYPosition, -5]
+                rightHand.components.set(InputTargetComponent())
+                rightHand.components.set(CollisionComponent(shapes: [.generateSphere(radius: 0.1)]))
+                rightHand.components.set(GroundingShadowComponent(castsShadow: true))
+                
+                let leftYPosition = Float.random(in: 0.9...1.3)
+                let leftXPosition = Float.random(in: -0.7...(-0.1))
+                
+                leftHand.position = [leftXPosition, leftYPosition, -5]
+                leftHand.components.set(InputTargetComponent())
+                leftHand.components.set(CollisionComponent(shapes: [.generateSphere(radius: 0.1)]))
+                leftHand.components.set(GroundingShadowComponent(castsShadow: true))
+                
+                entity.addChild(rightHand)
+                entity.addChild(leftHand)
                 
                 // Move the hands towards the player
-                var targetTransform = hand.transform
-                targetTransform.translation += SIMD3(0, 0, 5)
-                hand.move(to: targetTransform, relativeTo: nil, duration: handTravelTime - 1, timingFunction: .linear)
+                var rightTargetTransform = rightHand.transform
+                rightTargetTransform.translation += SIMD3(0, 0, 5)
+                rightHand.move(to: rightTargetTransform, relativeTo: nil, duration: handTravelTime - 1, timingFunction: .linear)
+                
+                
+                var leftTargetTransform = leftHand.transform
+                leftTargetTransform.translation += SIMD3(0, 0, 5)
+                leftHand.move(to: leftTargetTransform, relativeTo: nil, duration: handTravelTime - 1, timingFunction: .linear)
                 
                 // Despawn hands after stopping or after a fixed time
                 DispatchQueue.main.asyncAfter(deadline: .now() + handTravelTime - 1) {
-                    hand.removeFromParent()
+                    rightHand.removeFromParent()
+                    leftHand.removeFromParent()
                 }
                 
                 if (songTiming.count - 1 != currentIndex) {
@@ -241,26 +272,6 @@ struct ImmersiveView: View {
     
     var body: some View {
        RealityView { content in
-           /// This code adds in the image for the progressive space, but I think it's ugly so leaving it out for now
-           /*
-           
-           let rootEntity = Entity()
-
-           guard let texture = try? await TextureResource(named: imageName) else {
-               return
-           }
-           
-           var material = UnlitMaterial()
-           material.color = .init(texture: .init(texture))
-
-           rootEntity.components.set(ModelComponent(mesh: .generateSphere(radius: 1E3), materials: [material]))
-           rootEntity.scale *= .init(x: -1, y: 1, z: 1)
-           rootEntity.transform.translation += SIMD3<Float>(0.0, 1.0, 0.0)
-
-           content.add(rootEntity)
-            
-            */
-           
            content.add(entity)
            
            for i in 1...48 {
@@ -332,10 +343,10 @@ struct ImmersiveView: View {
                default:
                    // Handle any genre not explicitly matched above or if no genre is found
                    do {
-                       let immersiveEntity = try await Entity(named: "DefaultScene", in: realityKitContentBundle)
+                       let immersiveEntity = try await Entity(named: "PopScene", in: realityKitContentBundle)
                        content.add(immersiveEntity)
                    } catch {
-                       print("Error loading DefaultScene: \(error)")
+                       print("Error loading PopScene: \(error)")
                    }
                }
            } else {

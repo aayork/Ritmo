@@ -34,7 +34,6 @@ struct RitmoApp: App {
             ImmersiveView(gestureModel: HandTrackingContainer.handTracking)
                 .environment(self.gameModel)
         }
-        // .immersionStyle(selection: .constant(.progressive), in: .progressive)
     }
 }
 @MainActor
