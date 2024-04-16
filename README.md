@@ -1,6 +1,2 @@
-Main: primary objectives with the app
+Our goal with Ritmo! is to create an experience that takes advantage of all of the immersive systems that visionOS has to offer. We’re inspired by classics like guitar hero and just dance to create a transformative adventure for our users.
 
-> > Ritmo will provide a fun and educational experience to those who are passionate about music. Inspired by classics like Guitar Hero, Ritmo will be a game that focuses on technical abilities related to music. While users are not technically learning how to conduct or play instruments, we hope that users can learn about rhythm and music in a game-like manner. Our app will create a unique experience inside of spatial computing unlike anything else, immersing users into a variety of musical environments. Ultimately, our end goal is to create an enriching game like and learning tool for new and experienced lovers of music alike.
-> >
-> > Safety: how will the user be safe and okay while using the app
-> > Our app will provide an exciting and entertaining game environment for the user. Ritmo will offer a streamlined experience that will provide the user with a way to play and observe conducting and instrument skills. While a user will not be directly learning how to conduct or play an instrument, there will be the element of learning how to play along with rhythms and beats. We will ensure a safe environment for the user, allowing them to utilize the VisionPro toggle between Mixed Reality and complete Virtual Reality, and limited movement within the elements of the game.

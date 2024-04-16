@@ -27,14 +27,12 @@ struct ContentView: View {
                     Text("Play")
                 }
                 .tag(2)
-            /*
             FriendsView()
                 .tabItem {
                     Image(systemName: "person.fill")
                     Text("Friends")
                 }
                 .tag(3)
-             */
             SettingsView()
                 .tabItem {
                     Image(systemName: "gearshape")
