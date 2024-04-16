@@ -9,6 +9,7 @@ import SwiftUI
 import GameKit
 
 struct FriendsView: View {
+    let localPlayer = GKLocalPlayer.local
     @State var showGameCenter = false
     
     var body: some View {
