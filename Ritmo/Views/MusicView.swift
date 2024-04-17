@@ -31,102 +31,106 @@ struct MusicView: View {
     let musicPlayer = ApplicationMusicPlayer.shared
     
     var body: some View {
-        NavigationSplitView {
-            List(songs, selection: $selectedSong) { song in
-                Button(action: {
-                    self.selectedSong = song
-                })
-                {
-                    HStack {
-                        ArtworkImage(song.artwork, width: 75)
-                            .cornerRadius(10)
-                        VStack(alignment: .leading) {
-                            Text(song.name).font(.headline)
-                            Text(song.artist).font(.subheadline)
+        ZStack {
+            Color.ritmoBlue.opacity(0.3)
+                            .edgesIgnoringSafeArea(.all)
+            NavigationSplitView {
+                List(songs, selection: $selectedSong) { song in
+                    Button(action: {
+                        self.selectedSong = song
+                    })
+                    {
+                        HStack {
+                            ArtworkImage(song.artwork, width: 75)
+                                .cornerRadius(10)
+                            VStack(alignment: .leading) {
+                                Text(song.name).font(.headline)
+                                Text(song.artist).font(.subheadline)
+                            }
+                            if (gameModel.immsersiveView?.testJSON(songName: song.name) != nil) {
+                                Image("ritmoStar")
+                                    .shadow(color: .blue, radius: 10)
+                            }
                         }
-                        if (gameModel.immsersiveView?.testJSON(songName: song.name) != nil) {
-                            Image("ritmoStar")
-                                .shadow(color: .blue, radius: 10)
-                        }
+                        .padding()
                     }
-                    .padding()
                 }
-            }
-        } detail: {
-            //if let song = selectedSong { // Step 3: Update detail view for selected song
-                VStack {
-                    VStack(alignment: .leading) {
+            } detail: {
+                //if let song = selectedSong { // Step 3: Update detail view for selected song
+                    VStack {
+                        VStack(alignment: .leading) {
+                            Spacer()
+                            HStack {
+                                ZStack {
+                                    WaveAnimation()
+                                    Text("Pick a Tune")
+                                        .font(.custom("Soulcraft_Wide", size: 70.0))
+                                        .foregroundColor(Color.ritmoWhite)
+                                        .padding()
+                                        .offset(x: -195, y: 150)
+                                }
+                                .frame(height: 400)
+                                .clipShape(Rectangle())
+                            }
+                        }
+                        .offset(y: -250)
                         Spacer()
                         HStack {
-                            ZStack {
-                                WaveAnimation()
-                                Text("Pick a Tune")
-                                    .font(.custom("Soulcraft_Wide", size: 70.0))
-                                    .foregroundColor(Color.ritmoWhite)
-                                    .padding()
-                                    .offset(x: -195, y: 150)
-                            }
-                            .frame(height: 400)
-                            .clipShape(Rectangle())
-                        }
-                    }
-                    .offset(y: -250)
-                    Spacer()
-                    HStack {
-                        Spacer()
-                        if let song = selectedSong {
-                            HStack {
-                                ArtworkImage(song.artwork, width: 400)
-                                    .cornerRadius(20)
-                                    .position(x:250, y:-25)
-                                VStack() {
-                                
-                                    Text(song.name) // Display song name
-                                        .font(.system(size: 35, weight: .heavy))
-                                        .foregroundStyle(Color("electricLime"))
-                                    Text(song.artist).font(.system(size: 25)) // Display artist name
-                                
-                                
-                                
-                                    Text("High Score: ")
-                                        .font(.system(size: 20))
-                                    Text(String(highScore))
-                                        .font(.system(size: 30))
-                                        .foregroundStyle(Color("electricLime"))
-                                
-                                    // Play controls
-                                    HStack {
-                                        Button("START", action: {
-                                            Task {
-                                                gameModel.musicView = self
-                                                gameModel.recentlyPlayed.addSong(song: selectedSong!)
-                                                gameModel.curated = gameModel.immsersiveView?.testJSON(songName: song.name) != nil
-                                                await openImmersiveSpace(id: "ImmersiveSpace")
-                                            }
-                                        })
-                                        .buttonStyle(PlayButtonStyle())
-                                        .offset(x: 40)
-                                        Spacer()
+                            Spacer()
+                            if let song = selectedSong {
+                                HStack {
+                                    ArtworkImage(song.artwork, width: 400)
+                                        .cornerRadius(20)
+                                        .position(x:250, y:-25)
+                                    VStack() {
+                                    
+                                        Text(song.name) // Display song name
+                                            .font(.system(size: 35, weight: .heavy))
+                                            .foregroundStyle(Color("electricLime"))
+                                        Text(song.artist).font(.system(size: 25)) // Display artist name
+                                    
+                                    
+                                    
+                                        Text("High Score: ")
+                                            .font(.system(size: 20))
+                                        Text(String(highScore))
+                                            .font(.system(size: 30))
+                                            .foregroundStyle(Color("electricLime"))
+                                    
+                                        // Play controls
+                                        HStack {
+                                            Button("START", action: {
+                                                Task {
+                                                    gameModel.musicView = self
+                                                    gameModel.recentlyPlayed.addSong(song: selectedSong!)
+                                                    gameModel.curated = gameModel.immsersiveView?.testJSON(songName: song.name) != nil
+                                                    await openImmersiveSpace(id: "ImmersiveSpace")
+                                                }
+                                            })
+                                            .buttonStyle(PlayButtonStyle())
+                                            .offset(x: 40)
+                                            Spacer()
+                                        }
                                     }
+                                    .frame(width: 300)
+                                    .position(x:110, y:25)
+                                    .padding()
+                                            
                                 }
-                                .frame(width: 300)
-                                .position(x:110, y:25)
-                                .padding()
-                                        
+                            } else {
+                                Text("Please search for a song...")
+                                    .position(x:475, y:-25)
                             }
-                        } else {
-                            Text("Please search for a song...")
-                                .position(x:475, y:-25)
                         }
                     }
-                }
-                .frame(minWidth: 0, maxWidth: .infinity)
-            
+                    .frame(minWidth: 0, maxWidth: .infinity)
+                
+            }
+            .searchable(text: $searchText)
+            .navigationBarTitleDisplayMode(.inline)
+            .onChange(of: searchText, initial: true) { oldValue, newValue in
+                fetchMusic()
         }
-        .searchable(text: $searchText)
-        .navigationBarTitleDisplayMode(.inline)
-        .onChange(of: searchText, initial: true) { oldValue, newValue in
-            fetchMusic()
         }
     } // View
     

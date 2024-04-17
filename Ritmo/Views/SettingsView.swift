@@ -13,14 +13,13 @@ struct SettingsView: View {
     
     var body: some View {
         ZStack {
-            Color.gunmetalGray.opacity(0.5)
-                            .edgesIgnoringSafeArea(.all) 
+            BlurredBackground()
             VStack {
                 Text("SETTINGS")
                     .font(.custom("Soulcraft_Wide", size: 50.0))
                     .padding()
                     .padding(.bottom, 8)
-                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .frame(maxWidth: .infinity, alignment: .center)
                     .foregroundStyle(Color.electricLime)
                 
                 VStack {
@@ -50,7 +49,7 @@ struct SettingsView: View {
                     .padding(.horizontal)
                 }
                 .frame(width: 1000, height: 400)
-                .background(Rectangle().fill(Color(red: 0.17, green: 0.17, blue: 0.17)))
+                .background(Rectangle().fill(Color(red: 0.17, green: 0.17, blue: 0.17)).opacity(0.6))
                 .cornerRadius(20)
                 
                 HStack {
@@ -79,6 +78,18 @@ struct SettingsView: View {
         }
     }
     
+}
+
+struct BlurredBackground: View {
+    var body: some View {
+        LinearGradient(
+            gradient: Gradient(colors: [Color.ritmoBlue, Color.ritmoOrange]),
+            startPoint: .topLeading,
+            endPoint: .bottomTrailing
+        )
+        .blur(radius: 50) // Adjust the blur radius as needed
+        .ignoresSafeArea() // Ensures the background extends to the edges of the display
+    }
 }
 
 struct SettingsView_Previews: PreviewProvider {

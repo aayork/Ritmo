@@ -15,7 +15,7 @@ struct SnapCarouselView: View {
     @State private var cards: [Item]
     @State private var selectedCardID: UUID?
     @State private var showWelcomeModal = false
-
+    
     init() {
         let recentlyPlayed = RecentlyPlayedManager.shared.getRecentlyPlayedSongs()
         let firstIndex = 0
@@ -26,34 +26,12 @@ struct SnapCarouselView: View {
     
     var body: some View {
         VStack {
-            if cards.count == 5 {
-                Text("RECENTLY PLAYED")
-                    .font(.custom("Soulcraft_Wide", size: 50.0))
-                    .padding()
-                    .frame(alignment: .topLeading)
-                    .foregroundStyle(Color.electricLime)
-            } else {
-                VStack {
-                    Text("WELCOME")
-                        .font(.custom("Soulcraft_Wide", size: 50.0))
-                        .padding()
-                        .padding(.bottom, 8)
-                        .frame(alignment: .topLeading)
-                        .foregroundStyle(Color.electricLime)
-                    
-                    VStack {
-                        Text("Ritmo!")
-                            .font(.title)
-                            .padding()
-                        Text("Thanks for downloading! Please sign in to an Apple Music account with an active subscription to enjoy our app.")
-                            .padding()
-                    }
-                    .frame(width: 400, height: 400)
-                    .background(Color(red: 0.17, green: 0.17, blue: 0.17))
-                    .cornerRadius(20)
-                    .shadow(radius: 10)
-                }
-            }
+            Text("RECENTLY PLAYED")
+                .font(.custom("Soulcraft_Wide", size: 50.0))
+                .padding()
+                .frame(alignment: .topLeading)
+                .foregroundStyle(Color.electricLime)
+            
             GeometryReader { geometry in
                 ZStack(alignment: .center) {
                     if (cards.count == 5) {
@@ -72,7 +50,7 @@ struct SnapCarouselView: View {
                             
                             CarouselCardView(card: card, selectedCardID: selectedCardID, geometry: geometry, distanceFromCenter: distanceFromCenter)
                                 .offset(x: offset - 20, y: 0)
-                                // Calculate zIndex based on how close the item is to the currently selected item
+                            // Calculate zIndex based on how close the item is to the currently selected item
                                 .zIndex(Double(cards.count - abs(currentIndex - index)))
                             
                         }
@@ -117,9 +95,9 @@ struct CarouselCardView: View {
                 .scaledToFit()
                 .frame(width: 400, height: 400)
                 .clipShape(RoundedRectangle(cornerRadius: 25.0))
-                // .blur(radius: distanceFromCenter / 100) // Apply blur based on distance
+            // .blur(radius: distanceFromCenter / 100) // Apply blur based on distance
                 .scaleEffect(card.id == selectedCardID ? 1.0 : 0.8)
-                // .grayscale(card.id == selectedCardID ? 0.0 : 1.0)
+            // .grayscale(card.id == selectedCardID ? 0.0 : 1.0)
                 .opacity(max(0, 1 - (Double(distanceFromCenter) / 450)))
             if (card.id == selectedCardID) {
                 HStack {
