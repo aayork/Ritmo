@@ -52,11 +52,11 @@ struct HomeView: View {
     private var contentStack: some View {
         HStack {
             VStack {
-                Image("ritmoYellow")
-                Button("HOW TO PLAY", action: {
-                    // Open tutorial here
-                })
-                .buttonStyle(GrayButtonStyle())
+//                Image("ritmoYellow")
+//                Button("HOW TO PLAY", action: {
+//                    // Open tutorial here
+//                })
+//                .buttonStyle(GrayButtonStyle())
                 
                 VStack {
                     Text("HIGH SCORES")
@@ -75,13 +75,18 @@ struct HomeView: View {
                                     .foregroundStyle(Color.electricLime)
                                 Text("\(score.songName) - \(score.songArtist)")
                                     .font(.custom("FormaDJRMicro-Bold", size: 17.0))
+                                    .lineLimit(1)
                             }
+                            .padding(.vertical, 5)
                         }
                     }
+                    Spacer()
                 }
-                .frame(width: 300, height: 250.0)
+                .frame(width: 300)
+                .padding(.vertical)
                 .background(Rectangle().fill(Color(red: 0.17, green: 0.17, blue: 0.17)))
                 .cornerRadius(20)
+                .padding(.vertical)
                 
                 VStack {
                     Text("OUR PICKS")
@@ -109,17 +114,44 @@ struct HomeView: View {
             }
             .zIndex(/*@START_MENU_TOKEN@*/1.0/*@END_MENU_TOKEN@*/)
             
-            HStack {
+            Spacer()
+            
+            //if (RecentlyPlayedManager.shared.getRecentlyPlayedSongs().count >= 5) {
+            if (true) {
                 VStack(alignment: .center) {
                     SnapCarouselView()
                         .zIndex(2.0)
+                    Spacer()
                     
                     Button("PLAY NOW", action: {
                         tabSelection = 2
                     })
                     .buttonStyle(YellowButtonStyle())
+                    Spacer()
+                }
+            } else {
+                VStack {
+                    Spacer()
+                    Text("Welcome to")
+                        .font(.custom("Soulcraft_Slanted-Wide", size: 40.0))
+                    Image("ritmoYellow")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 600)
+                    Spacer()
+                    Button("Get Started", action: {
+                        tabSelection = 3
+                    })
+                    .buttonStyle(YellowButtonStyle())
+                    .padding(.vertical)
+                    Button("PLAY NOW", action: {
+                        tabSelection = 2
+                    })
+                    .buttonStyle(GrayButtonStyle())
+                    Spacer()
                 }
             }
+            Spacer()
         }
     }
     
@@ -144,7 +176,7 @@ struct HomeView: View {
     struct YellowButtonStyle: ButtonStyle {
         func makeBody(configuration: Configuration) -> some View {
             configuration.label
-                .font(.custom("Soulcraft_Wide", size: 50.0))
+                .font(.custom("Soulcraft_Wide", size: 40.0))
                 .padding()
                 .background(Rectangle().fill(Color.electricLime))
                 .hoverEffect()

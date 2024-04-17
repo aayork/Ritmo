@@ -30,7 +30,6 @@ struct SnapCarouselView: View {
                 Text("RECENTLY PLAYED")
                     .font(.custom("Soulcraft_Wide", size: 50.0))
                     .padding()
-                    .padding(.bottom, 8)
                     .frame(alignment: .topLeading)
                     .foregroundStyle(Color.electricLime)
             } else {
@@ -72,7 +71,7 @@ struct SnapCarouselView: View {
                             let distanceFromCenter = abs(halfTotalWidth - (offset + halfCardWidth))
                             
                             CarouselCardView(card: card, selectedCardID: selectedCardID, geometry: geometry, distanceFromCenter: distanceFromCenter)
-                                .offset(x: offset, y: 0)
+                                .offset(x: offset - 20, y: 0)
                                 // Calculate zIndex based on how close the item is to the currently selected item
                                 .zIndex(Double(cards.count - abs(currentIndex - index)))
                             
@@ -124,12 +123,10 @@ struct CarouselCardView: View {
                 .opacity(max(0, 1 - (Double(distanceFromCenter) / 450)))
             if (card.id == selectedCardID) {
                 HStack {
-                    Text(card.name)
-                        .font(.custom("FormaDJRMicro-Bold", size: 17.0))
-                    Text(" - ")
-                        .font(.custom("FormaDJRMicro-Bold", size: 17.0))
-                    Text(card.artist)
-                        .font(.custom("FormaDJRMicro-Bold", size: 17.0))
+                    Text("\(card.name) - \(card.artist)")
+                        .font(.custom("FormaDJRMicro-Bold", size: 24.0))
+                        .frame(width: 400)
+                        .lineLimit(2)
                 }
                 .padding()
             }
