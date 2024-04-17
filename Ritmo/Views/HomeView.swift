@@ -115,7 +115,7 @@ struct HomeView: View {
                             .foregroundStyle(Color.electricLime)
                             .frame(maxWidth: .infinity, alignment: .leading)
                             .padding(.horizontal, 15)
-                        Text("Miley Cirus")
+                        Text("Miley Cyrus")
                             .font(.custom("FormaDJRMicro-Bold", size: 17.0))
                             .frame(maxWidth: .infinity, alignment: .leading)
                             .padding(.horizontal, 15)

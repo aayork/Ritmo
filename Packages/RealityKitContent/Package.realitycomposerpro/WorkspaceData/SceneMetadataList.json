@@ -52,8 +52,7 @@
       },
       [
         "4BA3AD97-6E8A-4C8E-99F8-2BCEC57BA3EE",
-        "_materials",
-        "GlassMaterial"
+        "_materials"
       ],
       {
         "isExpanded" : true,
@@ -61,7 +60,8 @@
       },
       [
         "4BA3AD97-6E8A-4C8E-99F8-2BCEC57BA3EE",
-        "_materials"
+        "_materials",
+        "GlassMaterial"
       ],
       {
         "isExpanded" : true,
@@ -102,7 +102,7 @@
     "objectMetadataList" : [
       [
         "8F025AF8-6A37-4E83-9276-B9423DB2309F",
-        "_materials"
+        "Single_Hand_010"
       ],
       {
         "isExpanded" : true,
@@ -110,7 +110,7 @@
       },
       [
         "8F025AF8-6A37-4E83-9276-B9423DB2309F",
-        "Single_Hand_010"
+        "_materials"
       ],
       {
         "isExpanded" : true,
@@ -131,7 +131,7 @@
     "objectMetadataList" : [
       [
         "57FCFF1D-4B98-475B-BC40-4BD7547BB7F7",
-        "Single_Hand_021_001"
+        "_materials"
       ],
       {
         "isExpanded" : true,
@@ -139,7 +139,7 @@
       },
       [
         "57FCFF1D-4B98-475B-BC40-4BD7547BB7F7",
-        "_materials"
+        "Single_Hand_021_001"
       ],
       {
         "isExpanded" : true,
@@ -200,7 +200,8 @@
       },
       [
         "77CECEE0-932D-4BA8-8165-6C402C8DBA42",
-        "_materials"
+        "_materials",
+        "GlassMaterial"
       ],
       {
         "isExpanded" : true,
@@ -208,8 +209,7 @@
       },
       [
         "77CECEE0-932D-4BA8-8165-6C402C8DBA42",
-        "_materials",
-        "GlassMaterial"
+        "_materials"
       ],
       {
         "isExpanded" : true,
@@ -262,7 +262,7 @@
     "objectMetadataList" : [
       [
         "A2FFB7F8-87B3-4FA8-8CF2-C2D615E4F3CA",
-        "_materials"
+        "Single_Hand_021_001"
       ],
       {
         "isExpanded" : true,
@@ -270,7 +270,7 @@
       },
       [
         "A2FFB7F8-87B3-4FA8-8CF2-C2D615E4F3CA",
-        "Single_Hand_021_001"
+        "_materials"
       ],
       {
         "isExpanded" : true,
@@ -290,8 +290,7 @@
       },
       [
         "A4A782C2-D001-4BC6-AF06-A40B6CCE0962",
-        "_materials",
-        "GlassMaterial"
+        "_materials"
       ],
       {
         "isExpanded" : true,
@@ -299,7 +298,8 @@
       },
       [
         "A4A782C2-D001-4BC6-AF06-A40B6CCE0962",
-        "_materials"
+        "_materials",
+        "GlassMaterial"
       ],
       {
         "isExpanded" : true,
@@ -311,7 +311,8 @@
     "objectMetadataList" : [
       [
         "A0819113-F600-4D8F-BC37-689DA54099F5",
-        "Single_Hand_022"
+        "_materials",
+        "GlassMaterial"
       ],
       {
         "isExpanded" : true,
@@ -319,8 +320,7 @@
       },
       [
         "A0819113-F600-4D8F-BC37-689DA54099F5",
-        "_materials",
-        "GlassMaterial"
+        "Single_Hand_022"
       ],
       {
         "isExpanded" : true,
@@ -383,6 +383,17 @@
         "Root",
         "handwork",
         "RootNode",
+        "hand"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "AF09ED6F-1707-48FD-8720-65B998362C09",
+        "Root",
+        "handwork",
+        "RootNode",
         "Armature",
         "Bone",
         "Bone005",
@@ -395,24 +406,7 @@
       },
       [
         "AF09ED6F-1707-48FD-8720-65B998362C09",
-        "Root",
-        "AcousticGuitar"
-      ],
-      {
-        "isExpanded" : false,
-        "isLocked" : false,
-        "selectedAudioFilePrim" : {
-          "string" : "\/Root\/back_on_74_mp3"
-        }
-      },
-      [
-        "AF09ED6F-1707-48FD-8720-65B998362C09",
-        "Root",
-        "handwork",
-        "RootNode",
-        "Armature",
-        "Bone",
-        "Bone005"
+        "Root"
       ],
       {
         "isExpanded" : true,
@@ -421,9 +415,22 @@
       [
         "AF09ED6F-1707-48FD-8720-65B998362C09",
         "Root",
+        "AmbientAudio"
+      ],
+      {
+        "isExpanded" : false,
+        "isLocked" : false,
+        "selectedAudioFilePrim" : {
+          "string" : "\/Root\/StarWars60_wav"
+        }
+      },
+      [
+        "AF09ED6F-1707-48FD-8720-65B998362C09",
+        "Root",
         "handwork",
         "RootNode",
-        "hand"
+        "Armature",
+        "Bone"
       ],
       {
         "isExpanded" : true,
@@ -449,36 +456,7 @@
         "AF09ED6F-1707-48FD-8720-65B998362C09",
         "Root",
         "handwork",
-        "RootNode",
-        "Armature",
-        "Bone"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "AF09ED6F-1707-48FD-8720-65B998362C09",
-        "Root",
-        "handwork",
         "RootNode"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "AF09ED6F-1707-48FD-8720-65B998362C09",
-        "Root",
-        "GlassMaterial"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "AF09ED6F-1707-48FD-8720-65B998362C09",
-        "Root"
       ],
       {
         "isExpanded" : true,
@@ -501,13 +479,35 @@
       [
         "AF09ED6F-1707-48FD-8720-65B998362C09",
         "Root",
-        "AmbientAudio"
+        "GlassMaterial"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "AF09ED6F-1707-48FD-8720-65B998362C09",
+        "Root",
+        "handwork",
+        "RootNode",
+        "Armature",
+        "Bone",
+        "Bone005"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "AF09ED6F-1707-48FD-8720-65B998362C09",
+        "Root",
+        "AcousticGuitar"
       ],
       {
         "isExpanded" : false,
         "isLocked" : false,
         "selectedAudioFilePrim" : {
-          "string" : "\/Root\/StarWars60_wav"
+          "string" : "\/Root\/back_on_74_mp3"
         }
       }
     ]
@@ -516,7 +516,8 @@
     "objectMetadataList" : [
       [
         "B4478B48-8EA0-4342-8BD8-6E6604AF4D84",
-        "Single_Hand_001"
+        "_materials",
+        "GlassMaterial"
       ],
       {
         "isExpanded" : true,
@@ -532,8 +533,7 @@
       },
       [
         "B4478B48-8EA0-4342-8BD8-6E6604AF4D84",
-        "_materials",
-        "GlassMaterial"
+        "Single_Hand_001"
       ],
       {
         "isExpanded" : true,
@@ -545,7 +545,8 @@
     "objectMetadataList" : [
       [
         "CB766F92-EE55-4A63-9401-E7B8C009764D",
-        "Root"
+        "Root",
+        "GridMaterial"
       ],
       {
         "isExpanded" : true,
@@ -553,8 +554,7 @@
       },
       [
         "CB766F92-EE55-4A63-9401-E7B8C009764D",
-        "Root",
-        "GridMaterial"
+        "Root"
       ],
       {
         "isExpanded" : true,
@@ -566,7 +566,7 @@
     "objectMetadataList" : [
       [
         "D0C4F891-F5EE-4E7F-8C21-37D9ED409F19",
-        "Single_Hand_011"
+        "_materials"
       ],
       {
         "isExpanded" : true,
@@ -574,7 +574,7 @@
       },
       [
         "D0C4F891-F5EE-4E7F-8C21-37D9ED409F19",
-        "_materials"
+        "Single_Hand_011"
       ],
       {
         "isExpanded" : true,
