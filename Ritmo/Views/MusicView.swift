@@ -41,11 +41,13 @@ struct MusicView: View {
                     })
                     {
                         HStack {
-                            ArtworkImage(song.artwork, width: 75)
+                            ArtworkImage(song.artwork, width: 100)
                                 .cornerRadius(10)
                             VStack(alignment: .leading) {
-                                Text(song.name).font(.headline)
-                                Text(song.artist).font(.subheadline)
+                                Text(song.name).font(.custom("FormaDJRMicro-Bold", size: 18.0))
+                                    .foregroundStyle(Color("ritmoWhite"))
+                                Text(song.artist).font(.custom("FormaDJRMicro-light", size: 14.0))
+                                    .foregroundStyle(Color("ritmoWhite"))
                             }
                             if (gameModel.immsersiveView?.testJSON(songName: song.name) != nil) {
                                 Image("ritmoStar")
@@ -85,17 +87,18 @@ struct MusicView: View {
                                     VStack() {
                                     
                                         Text(song.name) // Display song name
-                                            .font(.system(size: 35, weight: .heavy))
+                                            .font(.custom("FormaDJRMicro-Bold", size: 30.0))
                                             .foregroundStyle(Color("electricLime"))
-                                        Text(song.artist).font(.system(size: 25)) // Display artist name
+                                        Text(song.artist).font(.custom("FormaDJRMicro-Medium", size: 25.0)) // Display artist name
                                     
                                     
-                                    
+                                    /*
                                         Text("High Score: ")
                                             .font(.system(size: 20))
                                         Text(String(highScore))
                                             .font(.system(size: 30))
                                             .foregroundStyle(Color("electricLime"))
+                                     */
                                     
                                         // Play controls
                                         HStack {
@@ -113,12 +116,13 @@ struct MusicView: View {
                                         }
                                     }
                                     .frame(width: 300)
-                                    .position(x:110, y:25)
+                                    .position(x:195, y: -10)
                                     .padding()
                                             
                                 }
                             } else {
                                 Text("Please search for a song...")
+                                    .font(.custom("FormaDJRMicro-Medium", size: 14.0))
                                     .position(x:475, y:-25)
                             }
                         }
