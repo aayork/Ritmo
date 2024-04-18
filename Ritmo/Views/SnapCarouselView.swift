@@ -95,10 +95,8 @@ struct CarouselCardView: View {
                 .scaledToFit()
                 .frame(width: 400, height: 400)
                 .clipShape(RoundedRectangle(cornerRadius: 25.0))
-            // .blur(radius: distanceFromCenter / 100) // Apply blur based on distance
-                .scaleEffect(card.id == selectedCardID ? 1.0 : 0.8)
-            // .grayscale(card.id == selectedCardID ? 0.0 : 1.0)
-                .opacity(max(0, 1 - (Double(distanceFromCenter) / 450)))
+                .scaleEffect(max(0.4, 1 - (Double(distanceFromCenter) / 700)))
+                .opacity(max(0, 1 - (Double(distanceFromCenter) / 600)))
             if (card.id == selectedCardID) {
                 HStack {
                     Text("\(card.name) - \(card.artist)")
