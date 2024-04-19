@@ -56,6 +56,9 @@ struct HomeView: View {
             if (RecentlyPlayedManager.shared.getRecentlyPlayedSongs().count >= 5) {
                 VStack {
                     Image("ritmoYellow")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 250)
                     Button("HOW TO PLAY", action: {
                         // Open tutorial here
                     })

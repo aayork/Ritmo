@@ -33,6 +33,8 @@ struct SettingsView: View {
                     .foregroundStyle(Color.electricLime)
                 
                 VStack {
+                    
+                    /*
                     Text("Hand Height")
                         .font(.custom("FormaDJRMicro-Medium", size: 30))
                         .frame(maxWidth: .infinity, alignment: .leading)
@@ -41,6 +43,7 @@ struct SettingsView: View {
                         .tint(Color.electricLime)
                         .padding(.horizontal)
                         .padding(.bottom)
+                     */
                     
                     HStack {
                         Button(action: {
