@@ -28,7 +28,7 @@ struct ImmersiveView: View {
     @State private var handSpheres = [Entity()]
     @State private var handTargets = [Entity()]
 
-    let entity = Entity()
+    let rootEntity = Entity()
     @State var timer = Timer.publish(every: 5, on: .main, in: .common).autoconnect()
     @State var songTiming: [GestureEntity] = []
     @State var timingIndex = 0
@@ -76,7 +76,7 @@ struct ImmersiveView: View {
                 hand.components.set(CollisionComponent(shapes: [.generateSphere(radius: 0.1)]))
                 hand.components.set(GroundingShadowComponent(castsShadow: true))
                 
-                entity.addChild(hand)
+                rootEntity.addChild(hand)
                 
                 // Move the hands towards the player
                 var targetTransform = hand.transform
@@ -85,6 +85,7 @@ struct ImmersiveView: View {
                 
                 // Despawn hands after stopping or after a fixed time
                 DispatchQueue.main.asyncAfter(deadline: .now() + handTravelTime - 1) {
+                    handTargets.remove(at: handTargets.firstIndex(of: hand) ?? -1)
                     hand.removeFromParent()
                 }
                 
@@ -156,8 +157,8 @@ struct ImmersiveView: View {
                 leftHand.components.set(CollisionComponent(shapes: [.generateSphere(radius: 0.1)]))
                 leftHand.components.set(GroundingShadowComponent(castsShadow: true))
                 
-                entity.addChild(rightHand)
-                entity.addChild(leftHand)
+                rootEntity.addChild(rightHand)
+                rootEntity.addChild(leftHand)
                 
                 // Move the hands towards the player
                 var rightTargetTransform = rightHand.transform
@@ -171,7 +172,9 @@ struct ImmersiveView: View {
                 
                 // Despawn hands after stopping or after a fixed time
                 DispatchQueue.main.asyncAfter(deadline: .now() + handTravelTime - 1) {
+                    handTargets.remove(at: handTargets.firstIndex(of: rightHand) ?? -1)
                     rightHand.removeFromParent()
+                    handTargets.remove(at: handTargets.firstIndex(of: leftHand) ?? -1)
                     leftHand.removeFromParent()
                 }
                 
@@ -272,7 +275,7 @@ struct ImmersiveView: View {
     
     var body: some View {
        RealityView { content in
-           content.add(entity)
+           content.add(rootEntity)
            
            /*
            
