@@ -11,7 +11,7 @@ import RealityKit
 import RealityKitContent
 
 struct SnapCarouselView: View {
-    @State private var currentIndex: Int
+    @State var currentIndex: Int
     @State private var cards: [Item]
     @State private var selectedCardID: UUID?
     @State private var showWelcomeModal = false
