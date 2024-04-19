@@ -36,6 +36,10 @@ struct RecentlyPlayedSong: Identifiable {
 
 struct HomeView: View {
     @Binding var tabSelection: Int
+    @Environment(GameModel.self) var gameModel
+    @Environment(\.openImmersiveSpace) private var openImmersiveSpace
+    @State var selectedSong: Item?
+    var carousel = SnapCarouselView()
     
     @State private var highScores: [SongScore] = HighScoreManager.shared.getHighScores()
     
@@ -129,12 +133,17 @@ struct HomeView: View {
                 Spacer()
                 
                 VStack(alignment: .center) {
-                    SnapCarouselView()
+                    carousel
                         .zIndex(2.0)
                     Spacer()
                     
                     Button("PLAY NOW", action: {
-                        tabSelection = 2
+                        Task {
+                            let song = RecentlyPlayedManager.shared.getRecentlyPlayedSongs()[carousel.currentIndex]
+                            gameModel.recentlyPlayed.addSong(song: song)
+                            gameModel.curated = await gameModel.immsersiveView?.testJSON(songName: song.name) != nil
+                            await openImmersiveSpace(id: "ImmersiveSpace")
+                        }
                     })
                     .buttonStyle(YellowButtonStyle())
                     Spacer()
