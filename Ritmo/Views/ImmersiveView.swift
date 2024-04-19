@@ -140,16 +140,16 @@ struct ImmersiveView: View {
                 leftHand.name = leftEntityName
                 handTargets.append(leftHand)
                 
-                let rightYPosition = Float.random(in: 0.9...1.3)
-                let rightXPosition = Float.random(in: 0.1...0.7)
+                let rightYPosition = Float.random(in: 1.1...1.3)
+                let rightXPosition = Float.random(in: 0.4...0.7)
                 
                 rightHand.position = [rightXPosition, rightYPosition, -5]
                 rightHand.components.set(InputTargetComponent())
                 rightHand.components.set(CollisionComponent(shapes: [.generateSphere(radius: 0.1)]))
                 rightHand.components.set(GroundingShadowComponent(castsShadow: true))
                 
-                let leftYPosition = Float.random(in: 0.9...1.3)
-                let leftXPosition = Float.random(in: -0.7...(-0.1))
+                let leftYPosition = Float.random(in: 1.1...1.3)
+                let leftXPosition = Float.random(in: -0.7...(-0.4))
                 
                 leftHand.position = [leftXPosition, leftYPosition, -5]
                 leftHand.components.set(InputTargetComponent())
@@ -274,6 +274,8 @@ struct ImmersiveView: View {
        RealityView { content in
            content.add(entity)
            
+           /*
+           
            for i in 1...48 {
                let sphere = MeshResource.generateSphere(radius: 0.01)
                let material = SimpleMaterial(color: .black, isMetallic: false)
@@ -310,6 +312,8 @@ struct ImmersiveView: View {
            let materialZR = SimpleMaterial(color: .blue, isMetallic: false)
            zR = ModelEntity(mesh: sphereZR, materials: [materialZR])
            content.add(zR)
+           
+           */
            
            // Assuming 'gameModel.musicView.selectedSong?.genres' is an optional array of String
            if let genres = gameModel.musicView.selectedSong?.genres {
@@ -440,9 +444,11 @@ struct ImmersiveView: View {
                 rightHand.littleFingerTip
            ]
            
+           /*
            for i in 0...jointPositions.count - 1 {
                handSpheres[i].transform.translation = jointPositions[i]
            }
+            */
            
            xL.transform.translation = leftHand.x
            yL.transform.translation = leftHand.y
@@ -454,15 +460,15 @@ struct ImmersiveView: View {
            
            for handTarget in handTargets {
                if (simd_distance(leftHand.hand.originFromAnchorTransform.columns.3.xyz, handTarget.position) < 0.3 && gestureModel.checkGesture(handTarget.name)!) {
-                   handTargets.remove(at: handTargets.firstIndex(of: handTarget)!)
+                   // handTargets.remove(at: handTargets.firstIndex(of: handTarget)!)
                    handTarget.removeFromParent()
-                   gameModel.score += 10
+                   // gameModel.score += 10
                }
                
                if (simd_distance(rightHand.hand.originFromAnchorTransform.columns.3.xyz, handTarget.position) < 0.3 && gestureModel.checkGesture(handTarget.name)!) {
-                   handTargets.remove(at: handTargets.firstIndex(of: handTarget)!)
+                   // handTargets.remove(at: handTargets.firstIndex(of: handTarget)!)
                    handTarget.removeFromParent()
-                   gameModel.score += 10
+                   // gameModel.score += 10 This causes a crash!!
                }
 
            }
