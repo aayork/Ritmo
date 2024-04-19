@@ -76,7 +76,7 @@ struct ScoreView: View {
                     }
                     HStack {
                         HStack {
-                            ProgressView(value: progressValue, total: gameModel.musicView.selectedSong!.duration)
+                            ProgressView(value: progressValue, total: gameModel.musicView.selectedSong?.duration ?? -1)
                                 .contentShape(.accessibility, Capsule().offset(y: -3))
                                 .tint(Color(uiColor: UIColor(red: 212 / 255, green: 244 / 255, blue: 4 / 255, alpha: 1.0)))
                                 .padding(.vertical, 30)
@@ -118,7 +118,7 @@ struct ScoreView: View {
                             gameModel.songTime += 1
                             progressValue += 1
                            
-                            if progressValue >= gameModel.musicView.selectedSong!.duration {
+                            if progressValue >= gameModel.musicView.selectedSong?.duration ?? -1 {
                                 progressValue = 0
                                 dismissWindow(id: "scoreView")
                                 await dismissImmersiveSpace()
