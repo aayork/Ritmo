@@ -141,6 +141,7 @@ struct HomeView: View {
                         Task {
                             let song = RecentlyPlayedManager.shared.getRecentlyPlayedSongs()[carousel.currentIndex]
                             gameModel.recentlyPlayed.addSong(song: song)
+                            gameModel.musicView.selectedSong = song
                             gameModel.curated = await gameModel.immsersiveView?.testJSON(songName: song.name) != nil
                             await openImmersiveSpace(id: "ImmersiveSpace")
                         }

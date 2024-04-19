@@ -54,8 +54,8 @@ struct ScoreView: View {
                     HStack(alignment: .top) {
                         VStack {
                             VStack {
-                                let songName = gameModel.musicView.selectedSong!.name
-                                let artistName = gameModel.musicView.selectedSong!.artist
+                                let songName = gameModel.musicView.selectedSong?.name ?? ""
+                                let artistName = gameModel.musicView.selectedSong?.artist ?? ""
                                 Text(songName)
                                     .font(.title3)
                                     .bold()
