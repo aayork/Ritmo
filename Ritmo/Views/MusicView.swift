@@ -226,7 +226,7 @@ struct MusicView: View {
                 do {
                     let result = try await request.response()
                     self.songs = result.songs.compactMap { song in
-                        return Item(name: song.title, artist: song.artistName, song: song.self, artwork: song.artwork!, duration: song.duration! * 1000, genres: song.genreNames)
+                        return Item(name: song.title, artist: song.artistName, song: song.self, artwork: song.artwork!, duration: (song.duration ?? -1) * 1000, genres: song.genreNames)
                     }
                     
                     for song in self.songs {

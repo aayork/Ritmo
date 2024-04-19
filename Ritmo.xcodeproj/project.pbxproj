@@ -28,7 +28,6 @@
 		EC69295B2BA9CFEE00EF3AFE /* FormaDJRMicro-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EC69295A2BA9CFEE00EF3AFE /* FormaDJRMicro-ExtraBold.ttf */; };
 		EC69295D2BA9CFF700EF3AFE /* FormaDJRMicro-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EC69295C2BA9CFF700EF3AFE /* FormaDJRMicro-Bold.ttf */; };
 		EC69295F2BA9CFFE00EF3AFE /* FormaDJRMicro-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EC69295E2BA9CFFE00EF3AFE /* FormaDJRMicro-Black.ttf */; };
-		EC6E9D472B7C62B700C1F0A3 /* FriendsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6E9D462B7C62B700C1F0A3 /* FriendsView.swift */; };
 		EC88C9B42BB8675400AD6254 /* HighScoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC88C9B32BB8675400AD6254 /* HighScoreManager.swift */; };
 		EC9407DE2BC71BD80057BA2E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC9407DD2BC71BD80057BA2E /* Assets.xcassets */; };
 		ECA1E2172B75B64100EE4926 /* RealityKitContent in Frameworks */ = {isa = PBXBuildFile; productRef = ECA1E2162B75B64100EE4926 /* RealityKitContent */; };
@@ -62,7 +61,6 @@
 		EC69295A2BA9CFEE00EF3AFE /* FormaDJRMicro-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FormaDJRMicro-ExtraBold.ttf"; sourceTree = "<group>"; };
 		EC69295C2BA9CFF700EF3AFE /* FormaDJRMicro-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FormaDJRMicro-Bold.ttf"; sourceTree = "<group>"; };
 		EC69295E2BA9CFFE00EF3AFE /* FormaDJRMicro-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FormaDJRMicro-Black.ttf"; sourceTree = "<group>"; };
-		EC6E9D462B7C62B700C1F0A3 /* FriendsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsView.swift; sourceTree = "<group>"; };
 		EC88C9B32BB8675400AD6254 /* HighScoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighScoreManager.swift; sourceTree = "<group>"; };
 		EC9407DD2BC71BD80057BA2E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ECA1E2112B75B64100EE4926 /* Ritmo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ritmo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -177,7 +175,6 @@
 				EC3336A52B787ACB00836AFB /* MusicView.swift */,
 				ECA1E21C2B75B64100EE4926 /* ImmersiveView.swift */,
 				9AF2D2EB2BA0F3660064D49D /* ScoreView.swift */,
-				EC6E9D462B7C62B700C1F0A3 /* FriendsView.swift */,
 				EC605FE82B77D06A005EC21A /* SettingsView.swift */,
 				EC10F9122B963E3B008741EA /* WaveAnimation.swift */,
 				EC5EC91A2BA682C800809821 /* SnapCarouselView.swift */,
@@ -281,7 +278,6 @@
 				9AF2D2F22BA0F7120064D49D /* GlobalEntities.swift in Sources */,
 				ECA1E2192B75B64100EE4926 /* RitmoApp.swift in Sources */,
 				EC64789A2B77C4F300F12A54 /* HomeView.swift in Sources */,
-				EC6E9D472B7C62B700C1F0A3 /* FriendsView.swift in Sources */,
 				EC88C9B42BB8675400AD6254 /* HighScoreManager.swift in Sources */,
 				ECF310752BA8CF6500CFFE00 /* RecentlyPlayedManager.swift in Sources */,
 				ECA1E21D2B75B64100EE4926 /* ImmersiveView.swift in Sources */,

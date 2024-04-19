@@ -141,7 +141,7 @@ struct ImmersiveView: View {
                 handTargets.append(leftHand)
                 
                 let rightYPosition = Float.random(in: 1.1...1.3)
-                let rightXPosition = Float.random(in: 0.4...0.7)
+                let rightXPosition = Float.random(in: 0.1...0.5)
                 
                 rightHand.position = [rightXPosition, rightYPosition, -5]
                 rightHand.components.set(InputTargetComponent())
@@ -149,7 +149,7 @@ struct ImmersiveView: View {
                 rightHand.components.set(GroundingShadowComponent(castsShadow: true))
                 
                 let leftYPosition = Float.random(in: 1.1...1.3)
-                let leftXPosition = Float.random(in: -0.7...(-0.4))
+                let leftXPosition = Float.random(in: -0.5...(-0.1))
                 
                 leftHand.position = [leftXPosition, leftYPosition, -5]
                 leftHand.components.set(InputTargetComponent())
@@ -392,6 +392,8 @@ struct ImmersiveView: View {
            let leftHand = hands[0]
            let rightHand = hands[1]
            
+           /*
+           
            let jointPositions: [SIMD3<Float>] = [
                 leftHand.thumbIntermediateBase,
                 leftHand.thumbIntermediateTip,
@@ -444,7 +446,6 @@ struct ImmersiveView: View {
                 rightHand.littleFingerTip
            ]
            
-           /*
            for i in 0...jointPositions.count - 1 {
                handSpheres[i].transform.translation = jointPositions[i]
            }
@@ -459,16 +460,18 @@ struct ImmersiveView: View {
            zR.transform.translation = rightHand.z
            
            for handTarget in handTargets {
-               if (simd_distance(leftHand.hand.originFromAnchorTransform.columns.3.xyz, handTarget.position) < 0.3 && gestureModel.checkGesture(handTarget.name)!) {
-                   // handTargets.remove(at: handTargets.firstIndex(of: handTarget)!)
+               if (simd_distance(leftHand.hand.originFromAnchorTransform.columns.3.xyz, handTarget.position) < 0.3 && gestureModel.checkGesture(handTarget.name) == true) {
                    handTarget.removeFromParent()
-                   // gameModel.score += 10
+                   DispatchQueue.main.async {
+                       gameModel.score += 10
+                   }
                }
                
-               if (simd_distance(rightHand.hand.originFromAnchorTransform.columns.3.xyz, handTarget.position) < 0.3 && gestureModel.checkGesture(handTarget.name)!) {
-                   // handTargets.remove(at: handTargets.firstIndex(of: handTarget)!)
+               if (simd_distance(rightHand.hand.originFromAnchorTransform.columns.3.xyz, handTarget.position) < 0.3 && gestureModel.checkGesture(handTarget.name) == true) {
                    handTarget.removeFromParent()
-                   // gameModel.score += 10 This causes a crash!!
+                   DispatchQueue.main.async {
+                       gameModel.score += 10
+                   }
                }
 
            }
@@ -490,6 +493,7 @@ struct ImmersiveView: View {
        .preferredSurroundingsEffect(.systemDark)
        .onDisappear() {
            gameModel.highScore.addScore(song: gameModel.musicView.selectedSong! ,score: gameModel.score) // Add the score of the song to the score list
+           gameModel.reset()
        }
    }
 }

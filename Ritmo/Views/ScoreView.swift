@@ -100,8 +100,8 @@ struct ScoreView: View {
                 .onChange(of: scenePhase) {
                     if scenePhase == .inactive {
                         Task {
-                            openWindow(id: "windowGroup")
                             dismissWindow(id: "scoreView")
+                            openWindow(id: "windowGroup")
                             await dismissImmersiveSpace()
                             if (gameModel.musicView.playing == true) {
                                 await gameModel.musicView.togglePlaying()
@@ -129,6 +129,7 @@ struct ScoreView: View {
                             if (gameLoopCount >= gameLoopTime) {
                                 gameLoopCount = 0
                                 print("Songtime: ", gameModel.songTime)
+                                print("Song duration: ", gameModel.musicView.selectedSong?.duration ?? -1)
                             }
                         }
                     }
