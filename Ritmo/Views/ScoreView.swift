@@ -54,8 +54,8 @@ struct ScoreView: View {
                     HStack(alignment: .top) {
                         VStack {
                             VStack {
-                                let songName = gameModel.musicView.selectedSong?.name ?? ""
-                                let artistName = gameModel.musicView.selectedSong?.artist ?? ""
+                                let songName = gameModel.selectedSong?.name ?? ""
+                                let artistName = gameModel.selectedSong?.artist ?? ""
                                 Text(songName)
                                     .font(.title3)
                                     .bold()
@@ -76,7 +76,7 @@ struct ScoreView: View {
                     }
                     HStack {
                         HStack {
-                            ProgressView(value: progressValue, total: gameModel.musicView.selectedSong?.duration ?? -1)
+                            ProgressView(value: progressValue, total: gameModel.selectedSong?.duration ?? -1)
                                 .contentShape(.accessibility, Capsule().offset(y: -3))
                                 .tint(Color(uiColor: UIColor(red: 212 / 255, green: 244 / 255, blue: 4 / 255, alpha: 1.0)))
                                 .padding(.vertical, 30)
@@ -118,7 +118,7 @@ struct ScoreView: View {
                             gameModel.songTime += 1
                             progressValue += 1
                            
-                            if progressValue >= gameModel.musicView.selectedSong?.duration ?? -1 {
+                            if progressValue >= gameModel.selectedSong?.duration ?? -1 {
                                 progressValue = 0
                                 dismissWindow(id: "scoreView")
                                 await dismissImmersiveSpace()
@@ -129,7 +129,7 @@ struct ScoreView: View {
                             if (gameLoopCount >= gameLoopTime) {
                                 gameLoopCount = 0
                                 print("Songtime: ", gameModel.songTime)
-                                print("Song duration: ", gameModel.musicView.selectedSong?.duration ?? -1)
+                                print("Song duration: ", gameModel.selectedSong?.duration ?? -1)
                             }
                         }
                     }

@@ -25,6 +25,7 @@ class GameModel {
     var songTime = 0 //millis
     var isPlaying = false
     var curated = false
+    var selectedSong: Item?
 
     /// Removes 3D content when then game is over.
     func clear() {

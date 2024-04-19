@@ -319,7 +319,7 @@ struct ImmersiveView: View {
            */
            
            // Assuming 'gameModel.musicView.selectedSong?.genres' is an optional array of String
-           if let genres = gameModel.musicView.selectedSong?.genres {
+           if let genres = gameModel.selectedSong?.genres {
                // Use a switch statement to check for specific genres
                // Assuming you want to check the first genre that matches your criteria
                // This could be adapted based on how you want to prioritize or handle multiple genres
@@ -497,7 +497,7 @@ struct ImmersiveView: View {
        }
        .preferredSurroundingsEffect(.systemDark)
        .onDisappear() {
-           gameModel.highScore.addScore(song: gameModel.musicView.selectedSong! ,score: gameModel.score) // Add the score of the song to the score list
+           gameModel.highScore.addScore(song: gameModel.selectedSong! ,score: gameModel.score) // Add the score of the song to the score list
            gameModel.reset()
        }
    }

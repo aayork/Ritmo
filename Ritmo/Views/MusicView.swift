@@ -38,6 +38,7 @@ struct MusicView: View {
                 List(songs, selection: $selectedSong) { song in
                     Button(action: {
                         self.selectedSong = song
+                        gameModel.selectedSong = song
                     })
                     {
                         HStack {
