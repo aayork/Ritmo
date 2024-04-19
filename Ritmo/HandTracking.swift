@@ -132,41 +132,41 @@ class HandTracking: ObservableObject, @unchecked Sendable {
               handAnchor.isTracked else {
             return nil
         }
-        let indexTip = handAnchor.handSkeleton?.joint(.indexFingerTip).anchorFromJointTransform.columns.3.xyz
-        let middleTip = handAnchor.handSkeleton?.joint(.middleFingerTip).anchorFromJointTransform.columns.3.xyz
-        let ringTip = handAnchor.handSkeleton?.joint(.ringFingerTip).anchorFromJointTransform.columns.3.xyz
-        let littleTip = handAnchor.handSkeleton?.joint(.littleFingerTip).anchorFromJointTransform.columns.3.xyz
+        let indexTip = handAnchor.handSkeleton?.joint(.indexFingerTip).anchorFromJointTransform.columns.3.xyz ?? SIMD3<Float>()
+        let middleTip = handAnchor.handSkeleton?.joint(.middleFingerTip).anchorFromJointTransform.columns.3.xyz ?? SIMD3<Float>()
+        let ringTip = handAnchor.handSkeleton?.joint(.ringFingerTip).anchorFromJointTransform.columns.3.xyz ?? SIMD3<Float>()
+        let littleTip = handAnchor.handSkeleton?.joint(.littleFingerTip).anchorFromJointTransform.columns.3.xyz ?? SIMD3<Float>()
         
-        let indexITip = handAnchor.handSkeleton?.joint(.indexFingerIntermediateTip).anchorFromJointTransform.columns.3.xyz
-        let middleITip = handAnchor.handSkeleton?.joint(.middleFingerIntermediateTip).anchorFromJointTransform.columns.3.xyz
-        let ringITip = handAnchor.handSkeleton?.joint(.ringFingerIntermediateTip).anchorFromJointTransform.columns.3.xyz
-        let littleITip = handAnchor.handSkeleton?.joint(.littleFingerIntermediateTip).anchorFromJointTransform.columns.3.xyz
+        let indexITip = handAnchor.handSkeleton?.joint(.indexFingerIntermediateTip).anchorFromJointTransform.columns.3.xyz ?? SIMD3<Float>()
+        let middleITip = handAnchor.handSkeleton?.joint(.middleFingerIntermediateTip).anchorFromJointTransform.columns.3.xyz ?? SIMD3<Float>()
+        let ringITip = handAnchor.handSkeleton?.joint(.ringFingerIntermediateTip).anchorFromJointTransform.columns.3.xyz ?? SIMD3<Float>()
+        let littleITip = handAnchor.handSkeleton?.joint(.littleFingerIntermediateTip).anchorFromJointTransform.columns.3.xyz ?? SIMD3<Float>()
         
-        let thumbTip = handAnchor.handSkeleton?.joint(.thumbTip).anchorFromJointTransform.columns.3.xyz
-        let thumbITip = handAnchor.handSkeleton?.joint(.thumbIntermediateTip).anchorFromJointTransform.columns.3.xyz
+        let thumbTip = handAnchor.handSkeleton?.joint(.thumbTip).anchorFromJointTransform.columns.3.xyz ?? SIMD3<Float>()
+        let thumbITip = handAnchor.handSkeleton?.joint(.thumbIntermediateTip).anchorFromJointTransform.columns.3.xyz ?? SIMD3<Float>()
         
         return isLeft ?
         // Left hand logic
-        indexTip!.x > indexITip!.x
-        && middleTip!.x > middleITip!.x
-        && ringTip!.x > ringITip!.x
-        && littleTip!.x > littleITip!.x
-        && thumbTip!.z < thumbITip!.z
-        && thumbTip!.z < indexTip!.z
-        && indexTip!.z < middleTip!.z
-        && middleTip!.z < ringTip!.z
-        && ringTip!.z < littleTip!.z
+        indexTip.x > indexITip.x
+        && middleTip.x > middleITip.x
+        && ringTip.x > ringITip.x
+        && littleTip.x > littleITip.x
+        && thumbTip.z < thumbITip.z
+        && thumbTip.z < indexTip.z
+        && indexTip.z < middleTip.z
+        && middleTip.z < ringTip.z
+        && ringTip.z < littleTip.z
         :
         // Right hand logic
-        indexTip!.x < indexITip!.x
-        && middleTip!.x < middleITip!.x
-        && ringTip!.x < ringITip!.x
-        && littleTip!.x < littleITip!.x
-        && thumbTip!.z > thumbITip!.z
-        && thumbTip!.z > indexTip!.z
-        && indexTip!.z > middleTip!.z
-        && middleTip!.z > ringTip!.z
-        && ringTip!.z > littleTip!.z
+        indexTip.x < indexITip.x
+        && middleTip.x < middleITip.x
+        && ringTip.x < ringITip.x
+        && littleTip.x < littleITip.x
+        && thumbTip.z > thumbITip.z
+        && thumbTip.z > indexTip.z
+        && indexTip.z > middleTip.z
+        && middleTip.z > ringTip.z
+        && ringTip.z > littleTip.z
     }
     
     func isFist(_ isLeft: Bool) -> Bool? {
@@ -174,33 +174,33 @@ class HandTracking: ObservableObject, @unchecked Sendable {
               handAnchor.isTracked else {
             return nil
         }
-        let indexTip = handAnchor.handSkeleton?.joint(.indexFingerTip).anchorFromJointTransform.columns.3.xyz
-        let middleTip = handAnchor.handSkeleton?.joint(.middleFingerTip).anchorFromJointTransform.columns.3.xyz
-        let ringTip = handAnchor.handSkeleton?.joint(.ringFingerTip).anchorFromJointTransform.columns.3.xyz
-        let littleTip = handAnchor.handSkeleton?.joint(.littleFingerTip).anchorFromJointTransform.columns.3.xyz
+        let indexTip = handAnchor.handSkeleton?.joint(.indexFingerTip).anchorFromJointTransform.columns.3.xyz ?? SIMD3<Float>()
+        let middleTip = handAnchor.handSkeleton?.joint(.middleFingerTip).anchorFromJointTransform.columns.3.xyz ?? SIMD3<Float>()
+        let ringTip = handAnchor.handSkeleton?.joint(.ringFingerTip).anchorFromJointTransform.columns.3.xyz ?? SIMD3<Float>()
+        let littleTip = handAnchor.handSkeleton?.joint(.littleFingerTip).anchorFromJointTransform.columns.3.xyz ?? SIMD3<Float>()
         
-        let indexIBase = handAnchor.handSkeleton?.joint(.indexFingerIntermediateBase).anchorFromJointTransform.columns.3.xyz
-        let middleIBase = handAnchor.handSkeleton?.joint(.middleFingerIntermediateBase).anchorFromJointTransform.columns.3.xyz
-        let ringIBase = handAnchor.handSkeleton?.joint(.ringFingerIntermediateBase).anchorFromJointTransform.columns.3.xyz
-        let littleIBase = handAnchor.handSkeleton?.joint(.littleFingerIntermediateBase).anchorFromJointTransform.columns.3.xyz
+        let indexIBase = handAnchor.handSkeleton?.joint(.indexFingerIntermediateBase).anchorFromJointTransform.columns.3.xyz ?? SIMD3<Float>()
+        let middleIBase = handAnchor.handSkeleton?.joint(.middleFingerIntermediateBase).anchorFromJointTransform.columns.3.xyz ?? SIMD3<Float>()
+        let ringIBase = handAnchor.handSkeleton?.joint(.ringFingerIntermediateBase).anchorFromJointTransform.columns.3.xyz ?? SIMD3<Float>()
+        let littleIBase = handAnchor.handSkeleton?.joint(.littleFingerIntermediateBase).anchorFromJointTransform.columns.3.xyz ?? SIMD3<Float>()
         
-        let thumbTip = handAnchor.handSkeleton?.joint(.thumbTip).anchorFromJointTransform.columns.3.xyz
-        let thumbKnuckle = handAnchor.handSkeleton?.joint(.thumbKnuckle).anchorFromJointTransform.columns.3.xyz
+        let thumbTip = handAnchor.handSkeleton?.joint(.thumbTip).anchorFromJointTransform.columns.3.xyz ?? SIMD3<Float>()
+        let thumbKnuckle = handAnchor.handSkeleton?.joint(.thumbKnuckle).anchorFromJointTransform.columns.3.xyz ?? SIMD3<Float>()
         
         return isLeft ? 
         // Left hand logic
-        indexTip!.x < indexIBase!.x
-        && middleTip!.x < middleIBase!.x
-        && ringTip!.x < ringIBase!.x
-        && littleTip!.x < littleIBase!.x
-        && thumbTip!.z > thumbKnuckle!.z
+        indexTip.x < indexIBase.x
+        && middleTip.x < middleIBase.x
+        && ringTip.x < ringIBase.x
+        && littleTip.x < littleIBase.x
+        && thumbTip.z > thumbKnuckle.z
         :
         // Right hand logic
-        indexTip!.x > indexIBase!.x
-        && middleTip!.x > middleIBase!.x
-        && ringTip!.x > ringIBase!.x
-        && littleTip!.x > littleIBase!.x
-        && thumbTip!.z < thumbKnuckle!.z
+        indexTip.x > indexIBase.x
+        && middleTip.x > middleIBase.x
+        && ringTip.x > ringIBase.x
+        && littleTip.x > littleIBase.x
+        && thumbTip.z < thumbKnuckle.z
     }
     
     func isPeaceSign(_ isLeft: Bool) -> Bool? {
@@ -208,39 +208,39 @@ class HandTracking: ObservableObject, @unchecked Sendable {
               handAnchor.isTracked else {
             return nil
         }
-        let indexTip = handAnchor.handSkeleton?.joint(.indexFingerTip).anchorFromJointTransform.columns.3.xyz
-        let middleTip = handAnchor.handSkeleton?.joint(.middleFingerTip).anchorFromJointTransform.columns.3.xyz
-        let ringTip = handAnchor.handSkeleton?.joint(.ringFingerTip).anchorFromJointTransform.columns.3.xyz
-        let littleTip = handAnchor.handSkeleton?.joint(.littleFingerTip).anchorFromJointTransform.columns.3.xyz
+        let indexTip = handAnchor.handSkeleton?.joint(.indexFingerTip).anchorFromJointTransform.columns.3.xyz ?? SIMD3<Float>()
+        let middleTip = handAnchor.handSkeleton?.joint(.middleFingerTip).anchorFromJointTransform.columns.3.xyz ?? SIMD3<Float>()
+        let ringTip = handAnchor.handSkeleton?.joint(.ringFingerTip).anchorFromJointTransform.columns.3.xyz ?? SIMD3<Float>()
+        let littleTip = handAnchor.handSkeleton?.joint(.littleFingerTip).anchorFromJointTransform.columns.3.xyz ?? SIMD3<Float>()
         
-        let indexITip = handAnchor.handSkeleton?.joint(.indexFingerIntermediateTip).anchorFromJointTransform.columns.3.xyz
-        let middleITip = handAnchor.handSkeleton?.joint(.middleFingerIntermediateTip).anchorFromJointTransform.columns.3.xyz
+        let indexITip = handAnchor.handSkeleton?.joint(.indexFingerIntermediateTip).anchorFromJointTransform.columns.3.xyz ?? SIMD3<Float>()
+        let middleITip = handAnchor.handSkeleton?.joint(.middleFingerIntermediateTip).anchorFromJointTransform.columns.3.xyz ?? SIMD3<Float>()
 
-        let ringIBase = handAnchor.handSkeleton?.joint(.ringFingerIntermediateBase).anchorFromJointTransform.columns.3.xyz
-        let littleIBase = handAnchor.handSkeleton?.joint(.littleFingerIntermediateBase).anchorFromJointTransform.columns.3.xyz
+        let ringIBase = handAnchor.handSkeleton?.joint(.ringFingerIntermediateBase).anchorFromJointTransform.columns.3.xyz ?? SIMD3<Float>()
+        let littleIBase = handAnchor.handSkeleton?.joint(.littleFingerIntermediateBase).anchorFromJointTransform.columns.3.xyz ?? SIMD3<Float>()
         
-        let thumbTip = handAnchor.handSkeleton?.joint(.thumbTip).anchorFromJointTransform.columns.3.xyz
-        let thumbKnuckle = handAnchor.handSkeleton?.joint(.thumbKnuckle).anchorFromJointTransform.columns.3.xyz
+        let thumbTip = handAnchor.handSkeleton?.joint(.thumbTip).anchorFromJointTransform.columns.3.xyz ?? SIMD3<Float>()
+        let thumbKnuckle = handAnchor.handSkeleton?.joint(.thumbKnuckle).anchorFromJointTransform.columns.3.xyz ?? SIMD3<Float>()
         
-        let indexKnuckle = handAnchor.handSkeleton?.joint(.indexFingerKnuckle).anchorFromJointTransform.columns.3.xyz
-        let middleKnuckle = handAnchor.handSkeleton?.joint(.middleFingerKnuckle).anchorFromJointTransform.columns.3.xyz
+        let indexKnuckle = handAnchor.handSkeleton?.joint(.indexFingerKnuckle).anchorFromJointTransform.columns.3.xyz ?? SIMD3<Float>()
+        let middleKnuckle = handAnchor.handSkeleton?.joint(.middleFingerKnuckle).anchorFromJointTransform.columns.3.xyz ?? SIMD3<Float>()
         
         return isLeft ?
         // Left hand logic
-        indexTip!.x > indexITip!.x
-        && middleTip!.x > middleITip!.x
-        && ringTip!.x < ringIBase!.x
-        && littleTip!.x < littleIBase!.x
-        && thumbTip!.z > thumbKnuckle!.z
-        && middleKnuckle!.z - indexKnuckle!.z < middleTip!.z - indexTip!.z
+        indexTip.x > indexITip.x
+        && middleTip.x > middleITip.x
+        && ringTip.x < ringIBase.x
+        && littleTip.x < littleIBase.x
+        && thumbTip.z > thumbKnuckle.z
+        && middleKnuckle.z - indexKnuckle.z < middleTip.z - indexTip.z
         :
         // Right hand logic
-        indexTip!.x < indexITip!.x
-        && middleTip!.x < middleITip!.x
-        && ringTip!.x > ringIBase!.x
-        && littleTip!.x > littleIBase!.x
-        && thumbTip!.z < thumbKnuckle!.z
-        && indexKnuckle!.z - middleKnuckle!.z < indexTip!.z - middleTip!.z
+        indexTip.x < indexITip.x
+        && middleTip.x < middleITip.x
+        && ringTip.x > ringIBase.x
+        && littleTip.x > littleIBase.x
+        && thumbTip.z < thumbKnuckle.z
+        && indexKnuckle.z - middleKnuckle.z < indexTip.z - middleTip.z
     }
     
     func isPoint(_ isLeft: Bool) -> Bool? {
@@ -248,34 +248,34 @@ class HandTracking: ObservableObject, @unchecked Sendable {
               handAnchor.isTracked else {
             return nil
         }
-        let indexTip = handAnchor.handSkeleton?.joint(.indexFingerTip).anchorFromJointTransform.columns.3.xyz
-        let middleTip = handAnchor.handSkeleton?.joint(.middleFingerTip).anchorFromJointTransform.columns.3.xyz
-        let ringTip = handAnchor.handSkeleton?.joint(.ringFingerTip).anchorFromJointTransform.columns.3.xyz
-        let littleTip = handAnchor.handSkeleton?.joint(.littleFingerTip).anchorFromJointTransform.columns.3.xyz
+        let indexTip = handAnchor.handSkeleton?.joint(.indexFingerTip).anchorFromJointTransform.columns.3.xyz ?? SIMD3<Float>()
+        let middleTip = handAnchor.handSkeleton?.joint(.middleFingerTip).anchorFromJointTransform.columns.3.xyz ?? SIMD3<Float>()
+        let ringTip = handAnchor.handSkeleton?.joint(.ringFingerTip).anchorFromJointTransform.columns.3.xyz ?? SIMD3<Float>()
+        let littleTip = handAnchor.handSkeleton?.joint(.littleFingerTip).anchorFromJointTransform.columns.3.xyz ?? SIMD3<Float>()
         
-        let indexITip = handAnchor.handSkeleton?.joint(.indexFingerIntermediateTip).anchorFromJointTransform.columns.3.xyz
+        let indexITip = handAnchor.handSkeleton?.joint(.indexFingerIntermediateTip).anchorFromJointTransform.columns.3.xyz ?? SIMD3<Float>()
         
-        let middleIBase = handAnchor.handSkeleton?.joint(.middleFingerIntermediateBase).anchorFromJointTransform.columns.3.xyz
-        let ringIBase = handAnchor.handSkeleton?.joint(.ringFingerIntermediateBase).anchorFromJointTransform.columns.3.xyz
-        let littleIBase = handAnchor.handSkeleton?.joint(.littleFingerIntermediateBase).anchorFromJointTransform.columns.3.xyz
+        let middleIBase = handAnchor.handSkeleton?.joint(.middleFingerIntermediateBase).anchorFromJointTransform.columns.3.xyz ?? SIMD3<Float>()
+        let ringIBase = handAnchor.handSkeleton?.joint(.ringFingerIntermediateBase).anchorFromJointTransform.columns.3.xyz ?? SIMD3<Float>()
+        let littleIBase = handAnchor.handSkeleton?.joint(.littleFingerIntermediateBase).anchorFromJointTransform.columns.3.xyz ?? SIMD3<Float>()
         
-        let thumbTip = handAnchor.handSkeleton?.joint(.thumbTip).anchorFromJointTransform.columns.3.xyz
-        let thumbITip = handAnchor.handSkeleton?.joint(.thumbIntermediateTip).anchorFromJointTransform.columns.3.xyz
+        let thumbTip = handAnchor.handSkeleton?.joint(.thumbTip).anchorFromJointTransform.columns.3.xyz ?? SIMD3<Float>()
+        let thumbITip = handAnchor.handSkeleton?.joint(.thumbIntermediateTip).anchorFromJointTransform.columns.3.xyz ?? SIMD3<Float>()
         
         return isLeft ?
         // Left hand logic
-        indexTip!.x > indexITip!.x
-        && middleTip!.x < middleIBase!.x
-        && ringTip!.x < ringIBase!.x
-        && littleTip!.x < littleIBase!.x
-        && thumbTip!.z < thumbITip!.z
+        indexTip.x > indexITip.x
+        && middleTip.x < middleIBase.x
+        && ringTip.x < ringIBase.x
+        && littleTip.x < littleIBase.x
+        && thumbTip.z < thumbITip.z
         :
         // Right hand logic
-        indexTip!.x < indexITip!.x
-        && middleTip!.x > middleIBase!.x
-        && ringTip!.x > ringIBase!.x
-        && littleTip!.x > littleIBase!.x
-        && thumbTip!.z > thumbITip!.z
+        indexTip.x < indexITip.x
+        && middleTip.x > middleIBase.x
+        && ringTip.x > ringIBase.x
+        && littleTip.x > littleIBase.x
+        && thumbTip.z > thumbITip.z
     }
     
     func getHands()  -> [Hand]? {
