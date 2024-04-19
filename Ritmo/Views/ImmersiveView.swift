@@ -461,6 +461,7 @@ struct ImmersiveView: View {
            
            for handTarget in handTargets {
                if (simd_distance(leftHand.hand.originFromAnchorTransform.columns.3.xyz, handTarget.position) < 0.3 && gestureModel.checkGesture(handTarget.name) == true) {
+                   handTargets.remove(at: handTargets.firstIndex(of: handTarget) ?? -1)
                    handTarget.removeFromParent()
                    DispatchQueue.main.async {
                        gameModel.score += 10
@@ -468,6 +469,7 @@ struct ImmersiveView: View {
                }
                
                if (simd_distance(rightHand.hand.originFromAnchorTransform.columns.3.xyz, handTarget.position) < 0.3 && gestureModel.checkGesture(handTarget.name) == true) {
+                   handTargets.remove(at: handTargets.firstIndex(of: handTarget) ?? -1)
                    handTarget.removeFromParent()
                    DispatchQueue.main.async {
                        gameModel.score += 10
