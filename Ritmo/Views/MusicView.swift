@@ -59,7 +59,6 @@ struct MusicView: View {
                     }
                 }
             } detail: {
-                //if let song = selectedSong { // Step 3: Update detail view for selected song
                     VStack {
                         VStack(alignment: .leading) {
                             Spacer()
@@ -91,16 +90,7 @@ struct MusicView: View {
                                             .font(.custom("FormaDJRMicro-Bold", size: 30.0))
                                             .foregroundStyle(Color("electricLime"))
                                         Text(song.artist).font(.custom("FormaDJRMicro-Medium", size: 25.0)) // Display artist name
-                                    
-                                    
-                                    /*
-                                        Text("High Score: ")
-                                            .font(.system(size: 20))
-                                        Text(String(highScore))
-                                            .font(.system(size: 30))
-                                            .foregroundStyle(Color("electricLime"))
-                                     */
-                                    
+                                        
                                         // Play controls
                                         HStack {
                                             Button("START", action: {
@@ -138,20 +128,6 @@ struct MusicView: View {
         }
         }
     } // View
-    
-    // Helper function to determine the color of the difficulty indicator
-    private func difficultyColor(for difficulty: String) -> Color {
-        switch difficulty {
-        case "Easy":
-            return Color.green
-        case "Medium":
-            return Color.orange
-        case "Hard":
-            return Color.red
-        default:
-            return Color.gray
-        }
-    }
     
     func togglePlayPause() async  {
         print("PlAYPAUSE")
