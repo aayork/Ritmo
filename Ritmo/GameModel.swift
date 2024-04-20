@@ -11,21 +11,21 @@ import RealityKitContent
 import SwiftUI
 
 /// State that drives the different screens of the game and options that players select.
-@Observable
-class GameModel {
+class GameModel: ObservableObject {
     /// A Boolean value that indicates that game assets have loaded.
-    var musicView: MusicView
-    var recentlyPlayed: RecentlyPlayedManager
-    var highScore: HighScoreManager
-    var immsersiveView: ImmersiveView?
-    var handTracking: HandTracking?
-    var carousel: SnapCarouselView
-    var score = 0
-    var tab = 1
-    var songTime = 0 //millis
-    var isPlaying = false
-    var curated = false
-    var selectedSong: Item?
+    @Published var musicView: MusicView
+    @Published var recentlyPlayed: RecentlyPlayedManager
+    @Published var musicPlaybackManager: MusicPlaybackManager?
+    @Published var highScore: HighScoreManager
+    @Published var immsersiveView: ImmersiveView?
+    @Published var handTracking: HandTracking?
+    @Published var carousel: SnapCarouselView
+    @Published var score = 0
+    @Published var tab = 1
+    @Published var songTime = 0 //millis
+    @Published var isPlaying = false
+    @Published var curated = false
+    @Published var selectedSong: Item?
 
     /// Removes 3D content when then game is over.
     func clear() {
@@ -98,6 +98,7 @@ class GameModel {
         rightPoint = importEntity
         
         Task { @MainActor in
+            self.musicPlaybackManager = MusicPlaybackManager()
             self.immsersiveView = ImmersiveView(gestureModel: HandTrackingContainer.handTracking)
             self.handTracking = HandTracking()
         }

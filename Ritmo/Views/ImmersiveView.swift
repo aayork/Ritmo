@@ -14,7 +14,7 @@ struct ImmersiveView: View {
     @Environment(\.dismissWindow) private var dismissWindow
     @Environment(\.openWindow) private var openWindow
     @Environment(\.dismissImmersiveSpace) private var dismissImmersiveSpace
-    @Environment(GameModel.self) var gameModel
+    @EnvironmentObject var gameModel: GameModel
     @ObservedObject var gestureModel: HandTracking
     @State var score = 0
     @State var currentIndex = 0
@@ -333,7 +333,7 @@ struct ImmersiveView: View {
                gameModel.immsersiveView = self
                print("runtask")
                // Read data from JSON
-               guard let songTiming = parseJSON(songName: gameModel.musicView.getSongName())
+               guard let songTiming = parseJSON(songName: gameModel.selectedSong?.name ?? "")
                else {
                    print("songTiming is nil")
                    return
@@ -364,6 +364,7 @@ struct ImmersiveView: View {
            
            for handTarget in handTargets {
                if (simd_distance(leftHand.hand.originFromAnchorTransform.columns.3.xyz, handTarget.position) < 0.3 && gestureModel.checkGesture(handTarget.name) == true) {
+                   handTarget.position = (SIMD3(7, 7, 7))
                    handTargets.remove(at: handTargets.firstIndex(of: handTarget) ?? -1)
                    handTarget.removeFromParent()
                    DispatchQueue.main.async {
@@ -372,6 +373,7 @@ struct ImmersiveView: View {
                }
                
                if (simd_distance(rightHand.hand.originFromAnchorTransform.columns.3.xyz, handTarget.position) < 0.3 && gestureModel.checkGesture(handTarget.name) == true) {
+                   handTarget.position = (SIMD3(7, 7, 7))
                    handTargets.remove(at: handTargets.firstIndex(of: handTarget) ?? -1)
                    handTarget.removeFromParent()
                    DispatchQueue.main.async {

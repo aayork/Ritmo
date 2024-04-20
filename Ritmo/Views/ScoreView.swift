@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ScoreView: View {
-    @Environment(GameModel.self) var gameModel
+    @EnvironmentObject var gameModel: GameModel
     @Environment(\.openWindow) private var openWindow
     @Environment(\.dismissImmersiveSpace) var dismissImmersiveSpace
     @Environment(\.dismissWindow) private var dismissWindow
@@ -24,7 +24,7 @@ struct ScoreView: View {
             if !isButtonClicked { // This condition will hide the button after it's clicked
                 Button(action: {
                     Task {
-                        await gameModel.musicView.togglePlaying() // Wait until togglePlaying has finished
+                        await gameModel.musicPlaybackManager!.togglePlaying() // Wait until togglePlaying has finished
                         gameModel.isPlaying = true;
                         isButtonClicked = true // Hide the button after it's clicked
                     }
@@ -103,8 +103,8 @@ struct ScoreView: View {
                             dismissWindow(id: "scoreView")
                             openWindow(id: "windowGroup")
                             await dismissImmersiveSpace()
-                            if (gameModel.musicView.playing == true) {
-                                await gameModel.musicView.togglePlaying()
+                            if (gameModel.musicPlaybackManager!.playing == true) {
+                                await gameModel.musicPlaybackManager!.togglePlaying()
                             }
                             gameModel.isPlaying = false
                         }

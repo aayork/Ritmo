@@ -13,7 +13,7 @@ struct RitmoApp: App {
     var body: some Scene {
         WindowGroup(id: "windowGroup") {
             ContentView()
-                .environment(self.gameModel)
+                .environmentObject(gameModel)
                 .frame(
                     minWidth: 1280, maxWidth: 1280,
                     minHeight: 720, maxHeight: 720)
@@ -22,7 +22,7 @@ struct RitmoApp: App {
         
         WindowGroup(id: "scoreView") {
             ScoreView()
-                .environment(self.gameModel)
+                .environmentObject(gameModel)
                 .frame(
                     minWidth: 460, maxWidth: 460,
                     minHeight: 230, maxHeight: 230)
@@ -32,10 +32,11 @@ struct RitmoApp: App {
         
         ImmersiveSpace(id: "ImmersiveSpace") {
             ImmersiveView(gestureModel: HandTrackingContainer.handTracking)
-                .environment(self.gameModel)
+                .environmentObject(gameModel)
         }
     }
 }
+
 @MainActor
 enum HandTrackingContainer {
     private(set) static var handTracking = HandTracking()

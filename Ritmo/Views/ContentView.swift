@@ -10,24 +10,27 @@ import RealityKit
 import RealityKitContent
 
 struct ContentView: View {
-    @Environment(GameModel.self) var gameModel
+    @EnvironmentObject var gameModel: GameModel
     @State private var tabSelection = 1
     
     var body: some View {
         TabView(selection: $tabSelection) {
             HomeView(tabSelection: $tabSelection)
+                .environmentObject(gameModel)
                 .tabItem {
                     Image(systemName: "house")
                     Text("Home")
                 }
                 .tag(1)
-            MusicView()
+            gameModel.musicView
+                .environmentObject(gameModel)
                 .tabItem {
                     Image(systemName: "music.note")
                     Text("Play")
                 }
                 .tag(2)
             SettingsView()
+                .environmentObject(gameModel)
                 .tabItem {
                     Image(systemName: "gearshape")
                     Text("Settings")
@@ -39,5 +42,5 @@ struct ContentView: View {
 
 #Preview {
     ContentView()
-        .environment(GameModel().self)
+        .environmentObject(GameModel().self)
 }

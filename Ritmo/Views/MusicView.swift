@@ -22,10 +22,9 @@ struct Item: Identifiable, Hashable, Codable {
 
 struct MusicView: View {
     @Environment(\.openImmersiveSpace) private var openImmersiveSpace
-    @Environment(GameModel.self) var gameModel
+    @EnvironmentObject var gameModel: GameModel
     @State private var searchText = ""
     @State private var songs = [Item]()
-    @State var selectedSong: Item?
     @State var playing = false
     @State var highScore = 0
     let musicPlayer = ApplicationMusicPlayer.shared
@@ -35,9 +34,8 @@ struct MusicView: View {
             Color.ritmoBlue.opacity(0.3)
                             .edgesIgnoringSafeArea(.all)
             NavigationSplitView {
-                List(songs, selection: $selectedSong) { song in
+                List(songs, selection: $gameModel.selectedSong) { song in
                     Button(action: {
-                        self.selectedSong = song
                         gameModel.selectedSong = song
                     })
                     {
@@ -79,7 +77,7 @@ struct MusicView: View {
                         Spacer()
                         HStack {
                             Spacer()
-                            if let song = selectedSong {
+                            if let song = gameModel.selectedSong {
                                 HStack {
                                     ArtworkImage(song.artwork, width: 400)
                                         .cornerRadius(20)
@@ -96,7 +94,7 @@ struct MusicView: View {
                                             Button("START", action: {
                                                 Task {
                                                     gameModel.musicView = self
-                                                    gameModel.recentlyPlayed.addSong(song: selectedSong!)
+                                                    gameModel.recentlyPlayed.addSong(song: gameModel.selectedSong!)
                                                     gameModel.curated = gameModel.immsersiveView?.testJSON(songName: song.name) != nil
                                                     await openImmersiveSpace(id: "ImmersiveSpace")
                                                 }
@@ -113,7 +111,7 @@ struct MusicView: View {
                                 }
                             } else {
                                 Text("Please search for a song...")
-                                    .font(.custom("FormaDJRMicro-Medium", size: 14.0))
+                                    .font(.custom("FormaDJRMicro-Medium", size: 25.0))
                                     .position(x:475, y:-25)
                             }
                         }
@@ -133,14 +131,14 @@ struct MusicView: View {
         print("PlAYPAUSE")
         playing.toggle()
         if playing {
-            print("Playing \(selectedSong?.name ?? "song")")
+            print("Playing \(gameModel.selectedSong?.name ?? "song")")
             do {
-                try await play(selectedSong!.song)
+                try await play(gameModel.selectedSong!.song)
             } catch {
                 print("Error")
             }
         } else {
-            print("Paused \(selectedSong?.name ?? "song")")
+            print("Paused \(gameModel.selectedSong?.name ?? "song")")
             musicPlayer.pause()
         }
     }
@@ -159,7 +157,7 @@ struct MusicView: View {
     }
     
     public func getSongName() -> String {
-        return selectedSong?.name ?? "No Song Selected"
+        return gameModel.selectedSong?.name ?? "No Song Selected"
     }
     
     func togglePlaying() async {
@@ -167,7 +165,7 @@ struct MusicView: View {
         playing.toggle()
         print(playing)
         // Check if there's a selected song and the playing state
-        if let item = selectedSong {
+        if let item = gameModel.selectedSong {
             if playing {
                 // Request music authorization
                 let status = await MusicAuthorization.request()
@@ -238,5 +236,5 @@ struct MusicView: View {
 
 #Preview {
     MusicView()
-        .environment(GameModel().self)
+        .environmentObject(GameModel().self)
 }

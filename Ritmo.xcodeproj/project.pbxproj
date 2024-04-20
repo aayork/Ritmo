@@ -36,6 +36,7 @@
 		ECA1E21D2B75B64100EE4926 /* ImmersiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA1E21C2B75B64100EE4926 /* ImmersiveView.swift */; };
 		ECA1E2222B75B64200EE4926 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ECA1E2212B75B64200EE4926 /* Preview Assets.xcassets */; };
 		ECA88E222BB9FCFA0068DAB4 /* Something in the Orange.json in Resources */ = {isa = PBXBuildFile; fileRef = ECA88E212BB9FCFA0068DAB4 /* Something in the Orange.json */; };
+		ECB427432BD473340035D594 /* MusicPlaybackManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB427422BD473340035D594 /* MusicPlaybackManager.swift */; };
 		ECF310752BA8CF6500CFFE00 /* RecentlyPlayedManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF310742BA8CF6500CFFE00 /* RecentlyPlayedManager.swift */; };
 /* End PBXBuildFile section */
 
@@ -71,6 +72,7 @@
 		ECA1E2212B75B64200EE4926 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		ECA1E2232B75B64200EE4926 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ECA88E212BB9FCFA0068DAB4 /* Something in the Orange.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "Something in the Orange.json"; sourceTree = "<group>"; };
+		ECB427422BD473340035D594 /* MusicPlaybackManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicPlaybackManager.swift; sourceTree = "<group>"; };
 		ECDD66992B8D2E96005987B0 /* Ritmo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Ritmo.entitlements; sourceTree = "<group>"; };
 		ECF310742BA8CF6500CFFE00 /* RecentlyPlayedManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentlyPlayedManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -137,6 +139,7 @@
 				ECA1E2182B75B64100EE4926 /* RitmoApp.swift */,
 				ECF310742BA8CF6500CFFE00 /* RecentlyPlayedManager.swift */,
 				EC88C9B32BB8675400AD6254 /* HighScoreManager.swift */,
+				ECB427422BD473340035D594 /* MusicPlaybackManager.swift */,
 				9A087E1D2BAA0E3500750AE0 /* HandTracking.swift */,
 				9AF2D2EF2BA0F5490064D49D /* GameModel.swift */,
 				9AF2D2F12BA0F7120064D49D /* GlobalEntities.swift */,
@@ -273,6 +276,7 @@
 				EC10F9132B963E3B008741EA /* WaveAnimation.swift in Sources */,
 				9AF2D2EC2BA0F3660064D49D /* ScoreView.swift in Sources */,
 				EC605FE92B77D06A005EC21A /* SettingsView.swift in Sources */,
+				ECB427432BD473340035D594 /* MusicPlaybackManager.swift in Sources */,
 				ECA1E21B2B75B64100EE4926 /* ContentView.swift in Sources */,
 				9AF2D2F02BA0F5490064D49D /* GameModel.swift in Sources */,
 				9AF2D2F22BA0F7120064D49D /* GlobalEntities.swift in Sources */,
