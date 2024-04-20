@@ -15,7 +15,7 @@ struct ContentView: View {
     
     var body: some View {
         TabView(selection: $tabSelection) {
-            HomeView(tabSelection: $tabSelection)
+            HomeView()
                 .environmentObject(gameModel)
                 .tabItem {
                     Image(systemName: "house")

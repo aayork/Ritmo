@@ -19,7 +19,6 @@ class GameModel: ObservableObject {
     @Published var highScore: HighScoreManager
     @Published var immsersiveView: ImmersiveView?
     @Published var handTracking: HandTracking?
-    @Published var carousel: SnapCarouselView
     @Published var score = 0
     @Published var tab = 1
     @Published var songTime = 0 //millis
@@ -46,7 +45,6 @@ class GameModel: ObservableObject {
     init() {
         self.musicView = MusicView()
         self.recentlyPlayed = RecentlyPlayedManager()
-        self.carousel = SnapCarouselView()
         self.highScore = HighScoreManager()
         
         guard let importEntity = try? Entity.load(named: "left_open", in: realityKitContentBundle) else {

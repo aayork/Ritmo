@@ -17,7 +17,6 @@
 		EC50B65E2BB4C50200927329 /* song_data_template.json in Resources */ = {isa = PBXBuildFile; fileRef = EC50B65D2BB4C50200927329 /* song_data_template.json */; };
 		EC50B6602BB4CA6B00927329 /* Party In the U.S.A..json in Resources */ = {isa = PBXBuildFile; fileRef = EC50B65F2BB4CA6B00927329 /* Party In the U.S.A..json */; };
 		EC5355722BB9F1C900555054 /* Thriller.json in Resources */ = {isa = PBXBuildFile; fileRef = EC5355712BB9F1C900555054 /* Thriller.json */; };
-		EC5EC91B2BA682C800809821 /* SnapCarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC5EC91A2BA682C800809821 /* SnapCarouselView.swift */; };
 		EC605FE92B77D06A005EC21A /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC605FE82B77D06A005EC21A /* SettingsView.swift */; };
 		EC64789A2B77C4F300F12A54 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6478992B77C4F300F12A54 /* HomeView.swift */; };
 		EC6929512BA9CFC500EF3AFE /* SoulcraftGX.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EC6929502BA9CFC500EF3AFE /* SoulcraftGX.ttf */; };
@@ -51,7 +50,6 @@
 		EC50B65D2BB4C50200927329 /* song_data_template.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = song_data_template.json; sourceTree = "<group>"; };
 		EC50B65F2BB4CA6B00927329 /* Party In the U.S.A..json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "Party In the U.S.A..json"; sourceTree = "<group>"; };
 		EC5355712BB9F1C900555054 /* Thriller.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Thriller.json; sourceTree = "<group>"; };
-		EC5EC91A2BA682C800809821 /* SnapCarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapCarouselView.swift; sourceTree = "<group>"; };
 		EC605FE82B77D06A005EC21A /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		EC6478992B77C4F300F12A54 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		EC6929502BA9CFC500EF3AFE /* SoulcraftGX.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SoulcraftGX.ttf; sourceTree = "<group>"; };
@@ -180,7 +178,6 @@
 				9AF2D2EB2BA0F3660064D49D /* ScoreView.swift */,
 				EC605FE82B77D06A005EC21A /* SettingsView.swift */,
 				EC10F9122B963E3B008741EA /* WaveAnimation.swift */,
-				EC5EC91A2BA682C800809821 /* SnapCarouselView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -271,7 +268,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EC5EC91B2BA682C800809821 /* SnapCarouselView.swift in Sources */,
 				EC3336A62B787ACB00836AFB /* MusicView.swift in Sources */,
 				EC10F9132B963E3B008741EA /* WaveAnimation.swift in Sources */,
 				9AF2D2EC2BA0F3660064D49D /* ScoreView.swift in Sources */,

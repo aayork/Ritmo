@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import MusicKit
 
 /*
  IF YOU NEED TO USE A CUSTOM FONT; THESE ARE THEIR NAMES:
@@ -35,13 +36,24 @@ struct RecentlyPlayedSong: Identifiable {
 }
 
 struct HomeView: View {
-    @Binding var tabSelection: Int
+    @State var tabSelection = 1
     @EnvironmentObject var gameModel: GameModel
     @Environment(\.openImmersiveSpace) private var openImmersiveSpace
     @State var selectedSong: Item?
-    var carousel = SnapCarouselView()
+    @State var currentIndex: Int
+    @State private var cards: [Item]
+    @State private var selectedCardID: UUID?
+    @State private var showWelcomeModal = false
     
     @State private var highScores: [SongScore] = HighScoreManager.shared.getHighScores()
+    
+    init() {
+        let recentlyPlayed = RecentlyPlayedManager.shared.getRecentlyPlayedSongs()
+        let firstIndex = 0
+        _cards = State(initialValue: recentlyPlayed)
+        _currentIndex = State(initialValue: max(0, firstIndex)) // Ensure it's not negative
+        _selectedCardID = State(initialValue: recentlyPlayed.indices.contains(firstIndex) ? recentlyPlayed[firstIndex].id : nil)
+    }
     
     var body: some View {
         ZStack {
@@ -136,14 +148,56 @@ struct HomeView: View {
                 Spacer()
                 
                 VStack(alignment: .center) {
-                    carousel
-                        .zIndex(2.0)
+                    VStack {
+                        Text("RECENTLY PLAYED")
+                            .font(.custom("Soulcraft_Wide", size: 50.0))
+                            .padding()
+                            .frame(alignment: .topLeading)
+                            .foregroundStyle(Color.electricLime)
+                        
+                        GeometryReader { geometry in
+                            ZStack(alignment: .center) {
+                                if (cards.count == 5) {
+                                    ForEach(cards.indices, id: \.self) { index in
+                                        let card = cards[index]
+                                        let totalWidth = geometry.size.width
+                                        let cardWidth = totalWidth / CGFloat(cards.count)
+                                        let halfTotalWidth = totalWidth / 2
+                                        let halfCardWidth = cardWidth / 2
+                                        let currentIndexOffset = CGFloat(currentIndex) * cardWidth
+                                        let indexOffset = CGFloat(index) * cardWidth
+                                        let offset = halfTotalWidth - currentIndexOffset - halfCardWidth + indexOffset
+                                        
+                                        // Calculate the distance from the center to adjust opacity and blur
+                                        let distanceFromCenter = abs(halfTotalWidth - (offset + halfCardWidth))
+                                        
+                                        CarouselCardView(card: card, selectedCardID: selectedCardID, geometry: geometry, distanceFromCenter: distanceFromCenter)
+                                            .offset(x: offset - 20, y: 0)
+                                        // Calculate zIndex based on how close the item is to the currently selected item
+                                            .zIndex(Double(cards.count - abs(currentIndex - index)))
+                                        
+                                    }
+                                }
+                            }
+                            .gesture(
+                                DragGesture()
+                                    .onEnded { value in
+                                        updateCurrentIndexAndSelectedCardID(with: value.translation.width)
+                                    }
+                            )
+                        }
+                        .padding()
+                        .offset(x: -110)
+                    }
+                    .zIndex(2.0)
                     Spacer()
                     
                     Button("PLAY NOW", action: {
                         Task {
-                            let song = gameModel.recentlyPlayed.getRecentlyPlayedSongs()[carousel.currentIndex]
+                            let song = gameModel.recentlyPlayed.getRecentlyPlayedSongs()[currentIndex]
                             gameModel.selectedSong = song
+                            print("selected song:",gameModel.selectedSong!)
+                            gameModel.curated = gameModel.immsersiveView?.testJSON(songName: song.name) != nil
                             await openImmersiveSpace(id: "ImmersiveSpace")
                         }
                     })
@@ -228,6 +282,47 @@ struct HomeView: View {
             )
             .blur(radius: 50) // Adjust the blur radius as needed
             .ignoresSafeArea() // Ensures the background extends to the edges of the display
+        }
+    }
+    
+    private func updateCurrentIndexAndSelectedCardID(with translationWidth: CGFloat) {
+        let threshold: CGFloat = 100
+        let offset = translationWidth
+        
+        withAnimation(Animation.spring()) {
+            if offset < -threshold {
+                currentIndex = min(currentIndex + 1, cards.count - 1)
+            } else if offset > threshold {
+                currentIndex = max(currentIndex - 1, 0)
+            }
+            selectedCardID = cards[currentIndex].id
+        }
+    }
+}
+
+struct CarouselCardView: View {
+    let card: Item
+    let selectedCardID: UUID?
+    let geometry: GeometryProxy
+    let distanceFromCenter: CGFloat
+    
+    var body: some View {
+        VStack {
+            ArtworkImage(card.artwork, width: 400)
+                .scaledToFit()
+                .frame(width: 400, height: 400)
+                .clipShape(RoundedRectangle(cornerRadius: 25.0))
+                .scaleEffect(max(0.4, 1 - (Double(distanceFromCenter) / 700)))
+                .opacity(max(0, 1 - (Double(distanceFromCenter) / 600)))
+            if (card.id == selectedCardID) {
+                HStack {
+                    Text("\(card.name) - \(card.artist)")
+                        .font(.custom("FormaDJRMicro-Bold", size: 24.0))
+                        .frame(width: 400)
+                        .lineLimit(2)
+                }
+                .padding()
+            }
         }
     }
 }
