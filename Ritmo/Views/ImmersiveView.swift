@@ -413,9 +413,9 @@ struct ImmersiveView: View {
                        gameModel.score += 10
                    }
                }
-
            }
        }
+        /*
        .gesture(TapGesture().targetedToAnyEntity().onEnded({ value in
            spawnParticles(position: value.entity.position)
            value.entity.position = (SIMD3(7, 7, 7))
@@ -425,6 +425,7 @@ struct ImmersiveView: View {
                gameModel.score += 10
            }
        }))
+         */
        .task {
            await gestureModel.start()
        }
