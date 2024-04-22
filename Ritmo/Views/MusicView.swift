@@ -27,16 +27,18 @@ struct MusicView: View {
     @State private var songs = [Item]()
     @State var playing = false
     @State var highScore = 0
+    @State var listedSong: Item?
     let musicPlayer = ApplicationMusicPlayer.shared
     
     var body: some View {
         ZStack {
             Color.ritmoBlue.opacity(0.3)
-                            .edgesIgnoringSafeArea(.all)
+                .edgesIgnoringSafeArea(.all)
             NavigationSplitView {
-                List(songs, selection: $gameModel.selectedSong) { song in
+                List(songs, selection: $listedSong) { song in
                     Button(action: {
-                        gameModel.selectedSong = song
+                        listedSong = song
+                        gameModel.selectedSong = listedSong
                     })
                     {
                         HStack {
@@ -57,73 +59,77 @@ struct MusicView: View {
                     }
                 }
             } detail: {
-                    VStack {
-                        VStack(alignment: .leading) {
-                            Spacer()
-                            HStack {
-                                ZStack {
-                                    WaveAnimation()
-                                    Text("Pick a Tune")
-                                        .font(.custom("Soulcraft_Wide", size: 70.0))
-                                        .foregroundColor(Color.ritmoWhite)
-                                        .padding()
-                                        .offset(x: -195, y: 150)
-                                }
-                                .frame(height: 400)
-                                .clipShape(Rectangle())
-                            }
-                        }
-                        .offset(y: -250)
+                VStack {
+                    VStack(alignment: .leading) {
                         Spacer()
                         HStack {
-                            Spacer()
-                            if let song = gameModel.selectedSong {
-                                HStack {
-                                    ArtworkImage(song.artwork, width: 400)
-                                        .cornerRadius(20)
-                                        .position(x:250, y:-25)
-                                    VStack() {
-                                    
-                                        Text(song.name) // Display song name
-                                            .font(.custom("FormaDJRMicro-Bold", size: 30.0))
-                                            .foregroundStyle(Color("electricLime"))
-                                        Text(song.artist).font(.custom("FormaDJRMicro-Medium", size: 25.0)) // Display artist name
-                                        
-                                        // Play controls
-                                        HStack {
-                                            Button("START", action: {
-                                                Task {
-                                                    gameModel.musicView = self
-                                                    gameModel.recentlyPlayed.addSong(song: gameModel.selectedSong!)
-                                                    gameModel.curated = gameModel.immsersiveView?.testJSON(songName: song.name) != nil
-                                                    await openImmersiveSpace(id: "ImmersiveSpace")
-                                                }
-                                            })
-                                            .buttonStyle(PlayButtonStyle())
-                                            .offset(x: 40)
-                                            Spacer()
-                                        }
-                                    }
-                                    .frame(width: 300)
-                                    .position(x:195, y: -10)
+                            ZStack {
+                                WaveAnimation()
+                                Text("Pick a Tune")
+                                    .font(.custom("Soulcraft_Wide", size: 70.0))
+                                    .foregroundColor(Color.ritmoWhite)
                                     .padding()
-                                            
-                                }
-                            } else {
-                                Text("Please search for a song...")
-                                    .font(.custom("FormaDJRMicro-Medium", size: 25.0))
-                                    .position(x:475, y:-25)
+                                    .offset(x: -195, y: 150)
                             }
+                            .frame(height: 400)
+                            .clipShape(Rectangle())
                         }
                     }
-                    .frame(minWidth: 0, maxWidth: .infinity)
+                    .offset(y: -250)
+                    Spacer()
+                    HStack {
+                        Spacer()
+                        if let song = gameModel.selectedSong {
+                            HStack {
+                                ArtworkImage(song.artwork, width: 400)
+                                    .cornerRadius(20)
+                                    .position(x:250, y:-25)
+                                VStack() {
+                                    
+                                    Text(song.name) // Display song name
+                                        .font(.custom("FormaDJRMicro-Bold", size: 30.0))
+                                        .foregroundStyle(Color("electricLime"))
+                                    Text(song.artist).font(.custom("FormaDJRMicro-Medium", size: 25.0)) // Display artist name
+                                    
+                                    // Play controls
+                                    HStack {
+                                        Button("START", action: {
+                                            Task {
+                                                gameModel.musicView = self
+                                                gameModel.recentlyPlayed.addSong(song: gameModel.selectedSong!)
+                                                gameModel.curated = gameModel.immsersiveView?.testJSON(songName: song.name) != nil
+                                                await openImmersiveSpace(id: "ImmersiveSpace")
+                                                DispatchQueue.main.async {
+                                                    self.searchText = "" // Reset searchText to force onChange detection
+                                                    self.listedSong = nil
+                                                }
+                                            }
+                                        })
+                                        .buttonStyle(PlayButtonStyle())
+                                        .offset(x: 40)
+                                        Spacer()
+                                    }
+                                }
+                                .frame(width: 300)
+                                .position(x:195, y: -10)
+                                .padding()
+                                
+                            }
+                        } else {
+                            Text("Please search for a song...")
+                                .font(.custom("FormaDJRMicro-Medium", size: 25.0))
+                                .position(x:475, y:-25)
+                        }
+                    }
+                }
+                .frame(minWidth: 0, maxWidth: .infinity)
                 
             }
             .searchable(text: $searchText)
             .navigationBarTitleDisplayMode(.inline)
-            .onChange(of: searchText, initial: true) { oldValue, newValue in
+            .onChange(of: searchText) {
                 fetchMusic()
-        }
+            }
         }
     } // View
     

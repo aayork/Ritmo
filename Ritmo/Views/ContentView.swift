@@ -22,7 +22,7 @@ struct ContentView: View {
                     Text("Home")
                 }
                 .tag(1)
-            gameModel.musicView
+            MusicView()
                 .environmentObject(gameModel)
                 .tabItem {
                     Image(systemName: "music.note")
