@@ -157,6 +157,12 @@ struct ImmersiveView: View {
                 leftHand.components.set(CollisionComponent(shapes: [.generateSphere(radius: 0.1)]))
                 leftHand.components.set(GroundingShadowComponent(castsShadow: true))
                 
+                // Generates collision shapes for the sphere based on its geometry.
+                leftHand.generateCollisionShapes(recursive: false)
+                
+                // Give the sphere an InputTargetComponent.
+                leftHand.components.set(InputTargetComponent())
+                
                 rootEntity.addChild(rightHand)
                 rootEntity.addChild(leftHand)
                 
@@ -172,10 +178,14 @@ struct ImmersiveView: View {
                 
                 // Despawn hands after stopping or after a fixed time
                 DispatchQueue.main.asyncAfter(deadline: .now() + handTravelTime - 1) {
-                    handTargets.remove(at: handTargets.firstIndex(of: rightHand) ?? -1)
-                    rightHand.removeFromParent()
-                    handTargets.remove(at: handTargets.firstIndex(of: leftHand) ?? -1)
-                    leftHand.removeFromParent()
+                    if (handTargets.firstIndex(of: rightHand) != nil) {
+                        handTargets.remove(at: handTargets.firstIndex(of: rightHand) ?? -1)
+                        rightHand.removeFromParent()
+                    }
+                    if (handTargets.firstIndex(of: leftHand) != nil) {
+                        handTargets.remove(at: handTargets.firstIndex(of: leftHand) ?? -1)
+                        leftHand.removeFromParent()
+                    }
                 }
                 
                 if (songTiming.count - 1 != currentIndex) {
@@ -183,6 +193,35 @@ struct ImmersiveView: View {
                 }
             }
         }
+    }
+    
+    func spawnParticles(position: SIMD3<Float>) {
+        print("burst")
+        var particles = ParticleEmitterComponent()
+        particles.timing = .once(emit: ParticleEmitterComponent.Timing.VariableDuration(duration: 4))
+        particles.emitterShape = .point
+        particles.birthLocation = .surface
+        particles.emitterShapeSize = [0.3, 0.3, 0.3]
+        
+        particles.mainEmitter.birthRate = 0
+        particles.burstCount = 30
+        particles.mainEmitter.size = 0.03
+        particles.mainEmitter.lifeSpan = 1
+        particles.mainEmitter.color = .evolving(start: .single(.white), end: .single(.blue))
+        particles.mainEmitter.spreadingAngle = 360
+        particles.speed = 1.5
+        particles.speedVariation = 0.3
+        particles.spawnOccasion = .onBirth
+        particles.mainEmitter.billboardMode = .billboard
+        particles.mainEmitter.dampingFactor = 4
+        particles.mainEmitter.stretchFactor = 6
+        particles.burst()
+        
+        let particleModel = ModelEntity()
+        particleModel.position = SIMD3(position.x, position.y + 0.1, position.z)
+        particleModel.components.set(particles)
+        rootEntity.addChild(particleModel)
+        
     }
     
     func startTimer() {
@@ -347,7 +386,7 @@ struct ImmersiveView: View {
            
            guard let hands = gestureModel.getHands()
            else {
-               print("hand positions not found")
+               //print("hand positions not found")
                return
            }
            
@@ -363,16 +402,11 @@ struct ImmersiveView: View {
            zR.transform.translation = rightHand.z
            
            for handTarget in handTargets {
-               if (simd_distance(leftHand.hand.originFromAnchorTransform.columns.3.xyz, handTarget.position) < 0.3 && gestureModel.checkGesture(handTarget.name) == true) {
-                   handTarget.position = (SIMD3(7, 7, 7))
-                   handTargets.remove(at: handTargets.firstIndex(of: handTarget) ?? -1)
-                   handTarget.removeFromParent()
-                   DispatchQueue.main.async {
-                       gameModel.score += 10
-                   }
-               }
-               
-               if (simd_distance(rightHand.hand.originFromAnchorTransform.columns.3.xyz, handTarget.position) < 0.3 && gestureModel.checkGesture(handTarget.name) == true) {
+               if ((simd_distance(leftHand.hand.originFromAnchorTransform.columns.3.xyz, handTarget.position) < 0.3 || simd_distance(rightHand.hand.originFromAnchorTransform.columns.3.xyz, handTarget.position) < 0.3) && gestureModel.checkGesture(handTarget.name) == true) {
+                   
+                   // Spawn particles
+                   spawnParticles(position: handTarget.position)
+                   
                    handTarget.position = (SIMD3(7, 7, 7))
                    handTargets.remove(at: handTargets.firstIndex(of: handTarget) ?? -1)
                    handTarget.removeFromParent()
@@ -384,8 +418,12 @@ struct ImmersiveView: View {
            }
        }
        .gesture(TapGesture().targetedToAnyEntity().onEnded({ value in
-           if (correctTime) {
-               gameModel.score += 1
+           spawnParticles(position: value.entity.position)
+           value.entity.position = (SIMD3(7, 7, 7))
+           handTargets.remove(at: handTargets.firstIndex(of: value.entity) ?? -1)
+           value.entity.removeFromParent()
+           DispatchQueue.main.async {
+               gameModel.score += 10
            }
        }))
        .task {
