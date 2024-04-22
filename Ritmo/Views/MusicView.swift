@@ -157,7 +157,6 @@ struct MusicView: View {
     
     @MainActor
     private func play<I: PlayableMusicItem>(_ item: I) async throws {
-        
         musicPlayer.queue = [item]
         try await musicPlayer.play()
     }

@@ -117,7 +117,7 @@ struct ScoreView: View {
                             gameLoopCount += 1
                             gameModel.songTime += 1
                             progressValue += 1
-                           
+                            
                             if progressValue >= gameModel.selectedSong?.duration ?? -1 {
                                 progressValue = 0
                                 dismissWindow(id: "scoreView")
