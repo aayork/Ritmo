@@ -146,7 +146,7 @@ struct ScoreView: View {
                                 case "Pop":
                                     bpm = 120
                                 case "Country":
-                                    bpm = 85
+                                    bpm = 105
                                 case "Electronic":
                                     bpm = 128
                                 case "Hip-Hop":
