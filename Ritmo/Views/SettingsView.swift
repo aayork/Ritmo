@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import AVKit
 
 struct SettingsView: View {
     // State for slider value
@@ -33,18 +34,6 @@ struct SettingsView: View {
                     .foregroundStyle(Color.electricLime)
                 
                 VStack {
-                    
-                    /*
-                    Text("Hand Height")
-                        .font(.custom("FormaDJRMicro-Medium", size: 30))
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .padding(.horizontal, 30)
-                    Slider(value: $volume, in: 0...100)
-                        .tint(Color.electricLime)
-                        .padding(.horizontal)
-                        .padding(.bottom)
-                     */
-                    
                     HStack {
                         Button(action: {
                             self.showModal = true
@@ -62,8 +51,9 @@ struct SettingsView: View {
                     
                         Spacer()
                         
-                        Button {
-                        } label: {
+                        Button(action: {
+                            // Open video player
+                        }) {
                             Text("TUTORIAL")
                                 .foregroundColor(.white)
                                 .font(.custom("Soulcraft_Wide", size: 30.0))
@@ -80,6 +70,9 @@ struct SettingsView: View {
             }
         }
     }
+    
+    
+    
 }
 
 struct Person {

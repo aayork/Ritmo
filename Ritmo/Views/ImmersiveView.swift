@@ -40,7 +40,6 @@ struct ImmersiveView: View {
     
     func gameLoop(bpm: Int) { // Use beats per minute as an argument
         if (gameModel.curated) {
-            print("current index:", currentIndex)
             if songTiming[currentIndex].timing == gameModel.songTime {
                 let entityName = songTiming[currentIndex].type
                 

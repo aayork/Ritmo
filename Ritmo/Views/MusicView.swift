@@ -25,10 +25,8 @@ struct MusicView: View {
     @EnvironmentObject var gameModel: GameModel
     @State private var searchText = ""
     @State private var songs = [Item]()
-    @State var playing = false
     @State var highScore = 0
     @State var listedSong: Item?
-    let musicPlayer = ApplicationMusicPlayer.shared
     
     var body: some View {
         ZStack {
@@ -133,68 +131,10 @@ struct MusicView: View {
         }
     } // View
     
-    func togglePlayPause() async  {
-        print("PlAYPAUSE")
-        playing.toggle()
-        if playing {
-            print("Playing \(gameModel.selectedSong?.name ?? "song")")
-            do {
-                try await play(gameModel.selectedSong!.song)
-            } catch {
-                print("Error")
-            }
-        } else {
-            print("Paused \(gameModel.selectedSong?.name ?? "song")")
-            musicPlayer.pause()
-        }
-    }
-    
     private var request: MusicCatalogSearchRequest {
         var request = MusicCatalogSearchRequest(term: searchText, types: [Song.self])
         request.limit = 25
         return request
-    }
-    
-    @MainActor
-    private func play<I: PlayableMusicItem>(_ item: I) async throws {
-        musicPlayer.queue = [item]
-        try await musicPlayer.play()
-    }
-    
-    public func getSongName() -> String {
-        return gameModel.selectedSong?.name ?? "No Song Selected"
-    }
-    
-    func togglePlaying() async {
-        // Toggle the playing state
-        playing.toggle()
-        print(playing)
-        // Check if there's a selected song and the playing state
-        if let item = gameModel.selectedSong {
-            if playing {
-                // Request music authorization
-                let status = await MusicAuthorization.request()
-                switch status {
-                case .authorized:
-                    // If authorized, play the selected song
-                    do {
-                        try await play(item.song)
-                    } catch {
-                        print("Error playing song: \(error)")
-                        playing = false
-                    }
-                default:
-                    print("Music authorization not granted")
-                    playing = false // Revert playing state as we cannot play the music
-                }
-            } else {
-                // Pause the music player
-                musicPlayer.pause()
-            }
-        } else {
-            print("No song selected")
-            playing = false // Revert playing state as there's no selection
-        }
     }
     
     private func fetchMusic() {

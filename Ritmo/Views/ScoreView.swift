@@ -128,14 +128,39 @@ struct ScoreView: View {
                             //occurs every second
                             if (gameLoopCount >= gameLoopTime) {
                                 gameLoopCount = 0
-                                print("Songtime: ", gameModel.songTime)
-                                print("Song duration: ", gameModel.selectedSong?.duration ?? -1)
                             }
                         }
                     }
                     Task {
                         if (gameModel.isPlaying) {
-                            gameModel.immsersiveView?.gameLoop(bpm: 94)
+                            
+                            var bpm: Int
+                            
+                            if let genres = gameModel.selectedSong?.genres {
+                                // Use a switch statement to check for specific genres
+                                let genre = genres.first(where: { $0 == "Rock" || $0 == "Pop" || $0 == "Country" || $0 == "Electronic" || $0 == "Hip-Hop" || $0 == "Jazz" || $0 == "Classical" }) // Add more genres as needed
+                                
+                                switch genre {
+                                case "Rock":
+                                    bpm = 140
+                                case "Pop":
+                                    bpm = 120
+                                case "Country":
+                                    bpm = 85
+                                case "Electronic":
+                                    bpm = 128
+                                case "Hip-Hop":
+                                    bpm = 95
+                                case "Jazz":
+                                    bpm = 120 // Jazz can vary widely but 120 is a middle ground
+                                case "Classical":
+                                    bpm = 60  // Averages for Classical can vary widely; 60 bpm for slower compositions
+                                default:
+                                    bpm = 120
+                                }
+                                
+                                gameModel.immsersiveView?.gameLoop(bpm: bpm)
+                            }
                         }
                     }
                 }
