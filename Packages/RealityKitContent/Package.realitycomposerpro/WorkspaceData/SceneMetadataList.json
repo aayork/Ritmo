@@ -44,14 +44,6 @@
     "objectMetadataList" : [
       [
         "4BA3AD97-6E8A-4C8E-99F8-2BCEC57BA3EE",
-        "Single_Hand_005"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "4BA3AD97-6E8A-4C8E-99F8-2BCEC57BA3EE",
         "_materials"
       ],
       {
@@ -62,6 +54,14 @@
         "4BA3AD97-6E8A-4C8E-99F8-2BCEC57BA3EE",
         "_materials",
         "GlassMaterial"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "4BA3AD97-6E8A-4C8E-99F8-2BCEC57BA3EE",
+        "Single_Hand_005"
       ],
       {
         "isExpanded" : true,
@@ -81,8 +81,7 @@
       },
       [
         "8CFA6B8B-7B91-423D-A96C-B656C37B25A2",
-        "_materials",
-        "GlassMaterial"
+        "Single_Hand_011"
       ],
       {
         "isExpanded" : true,
@@ -90,7 +89,8 @@
       },
       [
         "8CFA6B8B-7B91-423D-A96C-B656C37B25A2",
-        "Single_Hand_011"
+        "_materials",
+        "GlassMaterial"
       ],
       {
         "isExpanded" : true,
@@ -102,7 +102,7 @@
     "objectMetadataList" : [
       [
         "8F025AF8-6A37-4E83-9276-B9423DB2309F",
-        "Single_Hand_010"
+        "_materials"
       ],
       {
         "isExpanded" : true,
@@ -110,7 +110,7 @@
       },
       [
         "8F025AF8-6A37-4E83-9276-B9423DB2309F",
-        "_materials"
+        "Single_Hand_010"
       ],
       {
         "isExpanded" : true,
@@ -163,6 +163,15 @@
     "objectMetadataList" : [
       [
         "70D8C1B1-777C-4B3A-9685-3E55BF569365",
+        "_materials",
+        "GlassMaterial"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "70D8C1B1-777C-4B3A-9685-3E55BF569365",
         "Single_Hand_021_001"
       ],
       {
@@ -176,15 +185,6 @@
       {
         "isExpanded" : true,
         "isLocked" : false
-      },
-      [
-        "70D8C1B1-777C-4B3A-9685-3E55BF569365",
-        "_materials",
-        "GlassMaterial"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
       }
     ]
   },
@@ -192,7 +192,7 @@
     "objectMetadataList" : [
       [
         "77CECEE0-932D-4BA8-8165-6C402C8DBA42",
-        "Single_Hand_001"
+        "_materials"
       ],
       {
         "isExpanded" : true,
@@ -209,7 +209,7 @@
       },
       [
         "77CECEE0-932D-4BA8-8165-6C402C8DBA42",
-        "_materials"
+        "Single_Hand_001"
       ],
       {
         "isExpanded" : true,
@@ -262,7 +262,7 @@
     "objectMetadataList" : [
       [
         "A2FFB7F8-87B3-4FA8-8CF2-C2D615E4F3CA",
-        "Single_Hand_021_001"
+        "_materials"
       ],
       {
         "isExpanded" : true,
@@ -270,7 +270,7 @@
       },
       [
         "A2FFB7F8-87B3-4FA8-8CF2-C2D615E4F3CA",
-        "_materials"
+        "Single_Hand_021_001"
       ],
       {
         "isExpanded" : true,
@@ -282,6 +282,15 @@
     "objectMetadataList" : [
       [
         "A4A782C2-D001-4BC6-AF06-A40B6CCE0962",
+        "_materials",
+        "GlassMaterial"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "A4A782C2-D001-4BC6-AF06-A40B6CCE0962",
         "Single_Hand_005"
       ],
       {
@@ -291,15 +300,6 @@
       [
         "A4A782C2-D001-4BC6-AF06-A40B6CCE0962",
         "_materials"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "A4A782C2-D001-4BC6-AF06-A40B6CCE0962",
-        "_materials",
-        "GlassMaterial"
       ],
       {
         "isExpanded" : true,
@@ -320,7 +320,7 @@
       },
       [
         "A0819113-F600-4D8F-BC37-689DA54099F5",
-        "Single_Hand_022"
+        "_materials"
       ],
       {
         "isExpanded" : true,
@@ -328,7 +328,7 @@
       },
       [
         "A0819113-F600-4D8F-BC37-689DA54099F5",
-        "_materials"
+        "Single_Hand_022"
       ],
       {
         "isExpanded" : true,
@@ -348,7 +348,8 @@
       },
       [
         "A1066055-C05A-4ED1-9AF7-C4320A534E71",
-        "_materials"
+        "_materials",
+        "GlassMaterial"
       ],
       {
         "isExpanded" : true,
@@ -356,8 +357,7 @@
       },
       [
         "A1066055-C05A-4ED1-9AF7-C4320A534E71",
-        "_materials",
-        "GlassMaterial"
+        "_materials"
       ],
       {
         "isExpanded" : true,
@@ -369,44 +369,30 @@
     "objectMetadataList" : [
       [
         "AF09ED6F-1707-48FD-8720-65B998362C09",
+        "Root"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "AF09ED6F-1707-48FD-8720-65B998362C09",
+        "Root",
+        "AcousticGuitar"
+      ],
+      {
+        "isExpanded" : false,
+        "isLocked" : false,
+        "selectedAudioFilePrim" : {
+          "string" : "\/Root\/back_on_74_mp3"
+        }
+      },
+      [
+        "AF09ED6F-1707-48FD-8720-65B998362C09",
         "Root",
         "handwork",
         "RootNode",
         "Armature"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "AF09ED6F-1707-48FD-8720-65B998362C09",
-        "Root",
-        "handwork",
-        "RootNode",
-        "hand"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "AF09ED6F-1707-48FD-8720-65B998362C09",
-        "Root",
-        "handwork",
-        "RootNode",
-        "Armature",
-        "Bone",
-        "Bone005",
-        "Bone006",
-        "Bone007"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "AF09ED6F-1707-48FD-8720-65B998362C09",
-        "Root"
       ],
       {
         "isExpanded" : true,
@@ -430,7 +416,11 @@
         "handwork",
         "RootNode",
         "Armature",
-        "Bone"
+        "Bone",
+        "Bone005",
+        "Bone006",
+        "Bone007",
+        "Bone008"
       ],
       {
         "isExpanded" : true,
@@ -442,11 +432,7 @@
         "handwork",
         "RootNode",
         "Armature",
-        "Bone",
-        "Bone005",
-        "Bone006",
-        "Bone007",
-        "Bone008"
+        "Bone"
       ],
       {
         "isExpanded" : true,
@@ -492,7 +478,9 @@
         "RootNode",
         "Armature",
         "Bone",
-        "Bone005"
+        "Bone005",
+        "Bone006",
+        "Bone007"
       ],
       {
         "isExpanded" : true,
@@ -501,14 +489,38 @@
       [
         "AF09ED6F-1707-48FD-8720-65B998362C09",
         "Root",
-        "AcousticGuitar"
+        "handwork",
+        "RootNode",
+        "hand"
       ],
       {
-        "isExpanded" : false,
-        "isLocked" : false,
-        "selectedAudioFilePrim" : {
-          "string" : "\/Root\/back_on_74_mp3"
-        }
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "AF09ED6F-1707-48FD-8720-65B998362C09",
+        "Root",
+        "handwork",
+        "RootNode",
+        "Armature",
+        "Bone",
+        "Bone005"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      }
+    ]
+  },
+  "B1C3E891-E558-45DE-A897-1C293A20D68B" : {
+    "objectMetadataList" : [
+      [
+        "B1C3E891-E558-45DE-A897-1C293A20D68B",
+        "Root"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
       }
     ]
   },
@@ -516,8 +528,7 @@
     "objectMetadataList" : [
       [
         "B4478B48-8EA0-4342-8BD8-6E6604AF4D84",
-        "_materials",
-        "GlassMaterial"
+        "_materials"
       ],
       {
         "isExpanded" : true,
@@ -525,7 +536,8 @@
       },
       [
         "B4478B48-8EA0-4342-8BD8-6E6604AF4D84",
-        "_materials"
+        "_materials",
+        "GlassMaterial"
       ],
       {
         "isExpanded" : true,
@@ -545,8 +557,7 @@
     "objectMetadataList" : [
       [
         "CB766F92-EE55-4A63-9401-E7B8C009764D",
-        "Root",
-        "GridMaterial"
+        "Root"
       ],
       {
         "isExpanded" : true,
@@ -554,7 +565,8 @@
       },
       [
         "CB766F92-EE55-4A63-9401-E7B8C009764D",
-        "Root"
+        "Root",
+        "GridMaterial"
       ],
       {
         "isExpanded" : true,
@@ -566,7 +578,7 @@
     "objectMetadataList" : [
       [
         "D0C4F891-F5EE-4E7F-8C21-37D9ED409F19",
-        "_materials"
+        "Single_Hand_011"
       ],
       {
         "isExpanded" : true,
@@ -574,7 +586,7 @@
       },
       [
         "D0C4F891-F5EE-4E7F-8C21-37D9ED409F19",
-        "Single_Hand_011"
+        "_materials"
       ],
       {
         "isExpanded" : true,
@@ -649,7 +661,9 @@
     "objectMetadataList" : [
       [
         "D66134B1-3681-4A8E-AFE5-29F257229F3B",
-        "Root"
+        "Root",
+        "GridMaterial",
+        "GridMaterial"
       ],
       {
         "isExpanded" : true,
@@ -657,9 +671,7 @@
       },
       [
         "D66134B1-3681-4A8E-AFE5-29F257229F3B",
-        "Root",
-        "GridMaterial",
-        "GridMaterial"
+        "Root"
       ],
       {
         "isExpanded" : true,

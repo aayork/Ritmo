@@ -31,7 +31,7 @@ def Xform "Root"
     {
         quatf xformOp:orient = (0.3424601, 0, 0.9395324, 0)
         float3 xformOp:scale = (0.12700003, 0.12700003, 0.12700003)
-        float3 xformOp:translate = (3.8083825, 0, -0.15219972)
+        float3 xformOp:translate = (2.7570555, 0, 0.678655)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
     }
 
@@ -80,21 +80,7 @@ def Xform "Root"
     {
         quatf xformOp:orient = (0.8654576, 0, -0.5009822, 0)
         float3 xformOp:scale = (0.0008162277, 0.0008162277, 0.0008162277)
-        float3 xformOp:translate = (2.7041533, 0.06462918, -1.9663892)
-        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
-    }
-
-    def "Microphone" (
-        active = true
-        customData = {
-            float3 rotationEulerHint = (-9.278589e-8, 2.595713e-8, 0.5455592)
-        }
-        prepend references = @Microphone.usdz@
-    )
-    {
-        quatf xformOp:orient = (0.96302575, -4.8174147e-8, 0, 0.26940933)
-        float3 xformOp:scale = (0.018539464, 0.018539464, 0.018539464)
-        float3 xformOp:translate = (1.5040427, 0.29748133, -0.10869013)
+        float3 xformOp:translate = (2.7032847, 0.0646293, -1.5070653)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
     }
 
