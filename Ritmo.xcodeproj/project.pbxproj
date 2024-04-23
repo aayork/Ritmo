@@ -92,10 +92,10 @@
 			isa = PBXGroup;
 			children = (
 				EC50B65D2BB4C50200927329 /* song_data_template.json */,
+				EC2896472BD8776C006ACFE1 /* Back In Black.json */,
 				EC50B65F2BB4CA6B00927329 /* Party In the U.S.A..json */,
 				EC5355712BB9F1C900555054 /* Thriller.json */,
 				ECA88E212BB9FCFA0068DAB4 /* Something in the Orange.json */,
-				EC2896472BD8776C006ACFE1 /* Back In Black.json */,
 			);
 			path = "Song Data";
 			sourceTree = "<group>";
