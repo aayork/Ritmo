@@ -19,6 +19,7 @@ class GameModel: ObservableObject {
     @Published var highScore: HighScoreManager
     @Published var immsersiveView: ImmersiveView?
     @Published var handTracking: HandTracking?
+    @Published var tutorialPlayer: TutorialPlayer?
     @Published var score = 0
     @Published var tab = 1
     @Published var songTime = 0 //millis
@@ -46,6 +47,7 @@ class GameModel: ObservableObject {
         self.musicView = MusicView()
         self.recentlyPlayed = RecentlyPlayedManager()
         self.highScore = HighScoreManager()
+        self.tutorialPlayer = TutorialPlayer()
         
         guard let importEntity = try? Entity.load(named: "left_open", in: realityKitContentBundle) else {
             print("Failed to load entity: left_open")
