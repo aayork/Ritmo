@@ -7,41 +7,33 @@
     "creator": "Ritmo!"
   },
   "gesture_entities": [
-    {
-        "timing": 0,
-        "type": "right_fist",
-        "position": {"x": 0, "y": 1, "z": -2},
-        "orientation": {"pitch": 0, "yaw": 0, "roll": 0}
-    },
-    {
-        "timing": 638,
-        "type": "left_fist",
-        "position": {"x": 1, "y": 0, "z": -2},
-        "orientation": {"pitch": 0, "yaw": 0, "roll": 0}
-    },
-    {
-        "timing": 1276,
-        "type": "right_open",
-        "position": {"x": -1, "y": 0, "z": -2},
-        "orientation": {"pitch": 0, "yaw": 0, "roll": 0}
-    },
-    {
-        "timing": 1914,
-        "type": "left_open",
-        "position": {"x": 0, "y": 1, "z": -2},
-        "orientation": {"pitch": 0, "yaw": 0, "roll": 0}
-    },
-    {
-        "timing": 2552,
-        "type": "right_peaceSign",
-        "position": {"x": 1, "y": -1, "z": -2},
-        "orientation": {"pitch": 0, "yaw": 0, "roll": 0}
-    },
-    {
-        "timing": 3190,
-        "type": "left_peaceSign",
-        "position": {"x": -1, "y": -1, "z": -2},
-        "orientation": {"pitch": 0, "yaw": 0, "roll": 0}
-    }
+      {
+          "timing": 3000,
+          "type": "right_fist",
+          "position": {
+              "x": 0.25,
+              "y": 1.5,
+              "z": 0
+          },
+          "orientation": {
+              "pitch": 0,
+              "yaw": 0,
+              "roll": 0
+          }
+      },
+      {
+          "timing": 6000,
+          "type": "left_fist",
+          "position": {
+              "x": -0.25,
+              "y": 1.5,
+              "z": 0
+          },
+          "orientation": {
+              "pitch": 0,
+              "yaw": 0,
+              "roll": 0
+          }
+      }
   ]
 }

@@ -12,6 +12,7 @@
 		9AF2D2F02BA0F5490064D49D /* GameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF2D2EF2BA0F5490064D49D /* GameModel.swift */; };
 		9AF2D2F22BA0F7120064D49D /* GlobalEntities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF2D2F12BA0F7120064D49D /* GlobalEntities.swift */; };
 		EC10F9132B963E3B008741EA /* WaveAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC10F9122B963E3B008741EA /* WaveAnimation.swift */; };
+		EC2896482BD87986006ACFE1 /* Back In Black.json in Resources */ = {isa = PBXBuildFile; fileRef = EC2896472BD8776C006ACFE1 /* Back In Black.json */; };
 		EC3336A62B787ACB00836AFB /* MusicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC3336A52B787ACB00836AFB /* MusicView.swift */; };
 		EC35DBD92BAC849A000B4ABD /* Allura-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EC35DBD82BAC849A000B4ABD /* Allura-Regular.ttf */; };
 		EC50B65E2BB4C50200927329 /* song_data_template.json in Resources */ = {isa = PBXBuildFile; fileRef = EC50B65D2BB4C50200927329 /* song_data_template.json */; };
@@ -245,6 +246,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EC2896482BD87986006ACFE1 /* Back In Black.json in Resources */,
 				EC69295F2BA9CFFE00EF3AFE /* FormaDJRMicro-Black.ttf in Resources */,
 				EC69295B2BA9CFEE00EF3AFE /* FormaDJRMicro-ExtraBold.ttf in Resources */,
 				EC6929512BA9CFC500EF3AFE /* SoulcraftGX.ttf in Resources */,
