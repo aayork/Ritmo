@@ -177,7 +177,7 @@ struct HomeView: View {
                             let song = gameModel.recentlyPlayed.getRecentlyPlayedSongs()[currentIndex]
                             gameModel.selectedSong = song
                             print("selected song:",gameModel.selectedSong!)
-                            gameModel.curated = gameModel.immsersiveView?.testJSON(songName: song.name) != nil
+                            gameModel.curated = gameModel.immsersiveView?.testJSON(song: "\(song.name) \(song.artist)") != nil
                             await openImmersiveSpace(id: "ImmersiveSpace")
                         }
                     })

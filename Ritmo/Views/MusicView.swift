@@ -48,7 +48,7 @@ struct MusicView: View {
                                 Text(song.artist).font(.custom("FormaDJRMicro-light", size: 14.0))
                                     .foregroundStyle(Color("ritmoWhite"))
                             }
-                            if (gameModel.immsersiveView?.testJSON(songName: song.name) != nil) {
+                            if (gameModel.immsersiveView?.testJSON(song: "\(song.name) \(song.artist)") != nil) {
                                 Image("ritmoStar")
                                     .shadow(color: .blue, radius: 10)
                             }
@@ -95,7 +95,7 @@ struct MusicView: View {
                                             Task {
                                                 gameModel.musicView = self
                                                 gameModel.recentlyPlayed.addSong(song: gameModel.selectedSong!)
-                                                gameModel.curated = gameModel.immsersiveView?.testJSON(songName: song.name) != nil
+                                                gameModel.curated = gameModel.immsersiveView?.testJSON(song: "\(song.name) \(song.artist)") != nil
                                                 await openImmersiveSpace(id: "ImmersiveSpace")
                                                 DispatchQueue.main.async {
                                                     self.searchText = "" // Reset searchText to force onChange detection

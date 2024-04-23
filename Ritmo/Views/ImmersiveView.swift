@@ -232,8 +232,8 @@ struct ImmersiveView: View {
     }
     
     // Read data from JSON
-    func readJSONFromFile(songName: String) -> Data? {
-        guard let filePath = Bundle.main.path(forResource: songName, ofType: "json") else {
+    func readJSONFromFile(song: String) -> Data? {
+        guard let filePath = Bundle.main.path(forResource: song, ofType: "json") else {
             print("File not found")
             return nil
         }
@@ -249,9 +249,9 @@ struct ImmersiveView: View {
     }
 
     // Parse JSON data into Song object
-    func parseJSON(songName: String) -> [GestureEntity]? {
+    func parseJSON(song: String) -> [GestureEntity]? {
         print("parseJSON")
-        guard let jsonData = readJSONFromFile(songName: songName) else { return nil }
+        guard let jsonData = readJSONFromFile(song: song) else { return nil }
         
         do {
             let decoder = JSONDecoder()
@@ -270,9 +270,9 @@ struct ImmersiveView: View {
         return nil
     }
     
-    func testJSON(songName: String) -> Bool? {
+    func testJSON(song: String) -> Bool? {
             print("testJSON")
-        guard readJSONFromFile(songName: songName) != nil else { return nil }
+        guard readJSONFromFile(song: song) != nil else { return nil }
             do {
                 return true
             }
@@ -371,7 +371,7 @@ struct ImmersiveView: View {
                gameModel.immsersiveView = self
                print("runtask")
                // Read data from JSON
-               guard let songTiming = parseJSON(songName: gameModel.selectedSong?.name ?? "")
+               guard let songTiming = parseJSON(song: "\(String(describing: gameModel.selectedSong?.name)) \(String(describing: gameModel.selectedSong?.artist))")
                else {
                    print("songTiming is nil")
                    return
