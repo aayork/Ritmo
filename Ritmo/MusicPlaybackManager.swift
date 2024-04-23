@@ -31,8 +31,8 @@ class MusicPlaybackManager {
     
     /// Play a given song
     @MainActor
-    private func play<I: PlayableMusicItem>(_ item: I) async throws {
-        musicPlayer.queue = [item]
+    private func play<I: PlayableMusicItem>(_ song: I) async throws {
+        musicPlayer.queue = [song]
         try await musicPlayer.play()
     }
     

@@ -123,7 +123,7 @@ struct ModalView: View {
 struct BlurredBackground: View {
     var body: some View {
         LinearGradient(
-            gradient: Gradient(colors: [Color.ritmoBlue, Color.ritmoOrange]),
+            gradient: Gradient(colors: [Color.blue, Color.ritmoOrange]),
             startPoint: .topLeading,
             endPoint: .bottomTrailing
         )

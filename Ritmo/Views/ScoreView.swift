@@ -150,21 +150,21 @@ struct ScoreView: View {
                                 
                                 switch genre {
                                 case "Rock":
-                                    bpm = 140
+                                    bpm = 105
                                 case "Pop":
-                                    bpm = 120
+                                    bpm = 100
                                 case "Country":
                                     bpm = 85
                                 case "Electronic":
-                                    bpm = 128
+                                    bpm = 105
                                 case "Hip-Hop":
                                     bpm = 95
                                 case "Jazz":
-                                    bpm = 120 // Jazz can vary widely but 120 is a middle ground
+                                    bpm = 90 // Jazz can vary widely but 120 is a middle ground
                                 case "Classical":
                                     bpm = 60  // Averages for Classical can vary widely; 60 bpm for slower compositions
                                 default:
-                                    bpm = 120
+                                    bpm = 90
                                 }
                                 
                                 gameModel.immsersiveView?.gameLoop(bpm: bpm)
