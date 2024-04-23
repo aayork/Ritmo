@@ -141,7 +141,7 @@ struct ImmersiveView: View {
                 handTargets.append(leftHand)
                 
                 let rightYPosition = Float.random(in: 1.1...1.3)
-                let rightXPosition = Float.random(in: 0.1...0.5)
+                let rightXPosition = Float.random(in: 0.15...0.5)
                 
                 rightHand.position = [rightXPosition, rightYPosition, -5]
                 rightHand.components.set(InputTargetComponent())
@@ -149,7 +149,7 @@ struct ImmersiveView: View {
                 rightHand.components.set(GroundingShadowComponent(castsShadow: true))
                 
                 let leftYPosition = Float.random(in: 1.1...1.3)
-                let leftXPosition = Float.random(in: -0.5...(-0.1))
+                let leftXPosition = Float.random(in: -0.5...(-0.15))
                 
                 leftHand.position = [leftXPosition, leftYPosition, -5]
                 leftHand.components.set(InputTargetComponent())

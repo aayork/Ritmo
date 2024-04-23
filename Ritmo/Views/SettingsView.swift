@@ -90,10 +90,11 @@ struct ModalView: View {
             HStack {
                 Text("Meet the Team!").font(.custom("Soulcraft", size: 35.0))
                     .foregroundStyle(Color.ritmoOrange)
+                    .offset(x: 225)
                 Button("Done") {
                     self.showModal = false
                 }
-                .frame(alignment: .trailing)
+                .frame(maxWidth: .infinity, alignment: .trailing)
             }
             .padding()
             ForEach(people, id: \.name) { person in

@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import MusicKit
 
 struct ScoreView: View {
     @EnvironmentObject var gameModel: GameModel
@@ -32,14 +33,14 @@ struct ScoreView: View {
                     Text("Play")
                         .font(.custom("Soulcraft_Wide", size: 20.0))
                         .padding()
-                        .background(Rectangle().fill(Color.green))
+                        .background(Rectangle().fill(Color.blue))
                 }
                 .buttonStyle(PlainButtonStyle())
                 .cornerRadius(25)
                 .zIndex(1)
                 .background(
                     Rectangle()
-                        .fill(Color.green)
+                        .fill(Color.blue)
                         .frame(width: 460, height: 230) // Adjust the frame size as needed
                         .blur(radius: 100) // Adjust the blur radius to control the spread of the glow
                         .shadow(radius: 4)
@@ -51,34 +52,41 @@ struct ScoreView: View {
             
             HStack(alignment: .top) {
                 VStack(spacing: 0) {
-                    HStack(alignment: .top) {
+                    HStack() {
+                        ArtworkImage(gameModel.selectedSong!.artwork, width: 125)
+                            .cornerRadius(7.5)
+                            .frame(alignment: .leading)
                         VStack {
                             VStack {
                                 let songName = gameModel.selectedSong?.name ?? ""
                                 let artistName = gameModel.selectedSong?.artist ?? ""
                                 Text(songName)
-                                    .font(.title3)
-                                    .bold()
-                                    .accessibilityHidden(true)
+                                    .font(.custom("FormaDJRMicro-Bold", size: 30.0))
+                                    .foregroundStyle(Color("ritmoWhite"))
+                                    .frame(maxWidth: .infinity, alignment: .leading)
                                 Text(artistName)
-                                    .font(.subheadline)
-                                    .bold()
-                                    .accessibilityHidden(true)
+                                    .font(.custom("FormaDJRMicro-Medium", size: 17.0))
+                                    .foregroundStyle(Color("ritmoWhite"))
+                                    .frame(maxWidth: .infinity, alignment: .leading)
                             }
-                            .padding(20)
                             Text("Score: " + String(gameModel.score))
-                                .font(.system(size: 35))
-                                .bold()
+                                .font(.custom("Soulcraft_Slanted-wide", size: 35.0))
+                                .foregroundStyle(Color("electricLime"))
                                 .accessibilityLabel(Text("Score"))
                                 .accessibilityValue(String(gameModel.score))
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                                .offset(y: 7)
                         }
-                        .padding()
+                        .padding(10)
+                        .padding(.horizontal, 10)
                     }
+                    .padding(20)
+                    .offset(x: 10, y: 5)
                     HStack {
                         HStack {
                             ProgressView(value: progressValue, total: gameModel.selectedSong?.duration ?? -1)
                                 .contentShape(.accessibility, Capsule().offset(y: -3))
-                                .tint(Color(uiColor: UIColor(red: 212 / 255, green: 244 / 255, blue: 4 / 255, alpha: 1.0)))
+                                .tint(Color(.electricLime))
                                 .padding(.vertical, 30)
                                 .frame(width: 300)
                         }
@@ -146,7 +154,7 @@ struct ScoreView: View {
                                 case "Pop":
                                     bpm = 120
                                 case "Country":
-                                    bpm = 105
+                                    bpm = 85
                                 case "Electronic":
                                     bpm = 128
                                 case "Hip-Hop":
