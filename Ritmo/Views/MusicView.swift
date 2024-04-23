@@ -51,8 +51,9 @@ struct MusicView: View {
                                     .foregroundStyle(Color("ritmoWhite"))
                             }
                             if (gameModel.immsersiveView?.testJSON(songName: song.name) != nil) {
-                                Image("ritmoStar")
-                                    .shadow(color: .blue, radius: 10)
+                                Image("ritmoYellowStar")
+                                    .shadow(color: .electricLime, radius: 10)
+                                    .offset(x: 20)
                             }
                         }
                         .padding()

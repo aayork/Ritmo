@@ -45,6 +45,7 @@
 		9AF2D2EF2BA0F5490064D49D /* GameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameModel.swift; sourceTree = "<group>"; };
 		9AF2D2F12BA0F7120064D49D /* GlobalEntities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalEntities.swift; sourceTree = "<group>"; };
 		EC10F9122B963E3B008741EA /* WaveAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaveAnimation.swift; sourceTree = "<group>"; };
+		EC2896472BD8776C006ACFE1 /* Back In Black.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "Back In Black.json"; sourceTree = "<group>"; };
 		EC3336A52B787ACB00836AFB /* MusicView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicView.swift; sourceTree = "<group>"; };
 		EC35DBD82BAC849A000B4ABD /* Allura-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Allura-Regular.ttf"; sourceTree = "<group>"; };
 		EC50B65D2BB4C50200927329 /* song_data_template.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = song_data_template.json; sourceTree = "<group>"; };
@@ -94,6 +95,7 @@
 				EC50B65F2BB4CA6B00927329 /* Party In the U.S.A..json */,
 				EC5355712BB9F1C900555054 /* Thriller.json */,
 				ECA88E212BB9FCFA0068DAB4 /* Something in the Orange.json */,
+				EC2896472BD8776C006ACFE1 /* Back In Black.json */,
 			);
 			path = "Song Data";
 			sourceTree = "<group>";

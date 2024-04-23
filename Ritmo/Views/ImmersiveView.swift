@@ -27,7 +27,7 @@ struct ImmersiveView: View {
     @State private var zR = Entity()
     @State private var handSpheres = [Entity()]
     @State private var handTargets = [Entity()]
-
+    
     let rootEntity = Entity()
     @State var timer = Timer.publish(every: 5, on: .main, in: .common).autoconnect()
     @State var songTiming: [GestureEntity] = []
@@ -185,6 +185,35 @@ struct ImmersiveView: View {
         }
     }
     
+    func spawnParticles(position: SIMD3<Float>) {
+        print("burst")
+        var particles = ParticleEmitterComponent()
+        particles.timing = .once(emit: ParticleEmitterComponent.Timing.VariableDuration(duration: 4))
+        particles.emitterShape = .point
+        particles.birthLocation = .surface
+        particles.emitterShapeSize = [0.3, 0.3, 0.3]
+        
+        particles.mainEmitter.birthRate = 0
+        particles.burstCount = 30
+        particles.mainEmitter.size = 0.03
+        particles.mainEmitter.lifeSpan = 1
+        particles.mainEmitter.color = .evolving(start: .single(.white), end: .single(.blue))
+        particles.mainEmitter.spreadingAngle = 360
+        particles.speed = 1.5
+        particles.speedVariation = 0.3
+        particles.spawnOccasion = .onBirth
+        particles.mainEmitter.billboardMode = .billboard
+        particles.mainEmitter.dampingFactor = 4
+        particles.mainEmitter.stretchFactor = 6
+        particles.burst()
+        
+        let particleModel = ModelEntity()
+        particleModel.position = SIMD3(position.x, position.y + 0.1, position.z)
+        particleModel.components.set(particles)
+        rootEntity.addChild(particleModel)
+        
+    }
+    
     func startTimer() {
         self.timer = Timer.publish(every: 5, on: .main, in: .common).autoconnect()
     }
@@ -209,7 +238,7 @@ struct ImmersiveView: View {
             return nil
         }
     }
-
+    
     // Parse JSON data into Song object
     func parseJSON(songName: String) -> [GestureEntity]? {
         print("parseJSON")
@@ -233,11 +262,11 @@ struct ImmersiveView: View {
     }
     
     func testJSON(songName: String) -> Bool? {
-            print("testJSON")
+        print("testJSON")
         guard readJSONFromFile(songName: songName) != nil else { return nil }
-            do {
-                return true
-            }
+        do {
+            return true
+        }
     }
     
     struct Response: Codable {
@@ -252,7 +281,7 @@ struct ImmersiveView: View {
         let bpm: Int
         let creator: String
     }
-
+    
     struct GestureEntity: Codable {
         let timing: Int
         let type: String
@@ -265,7 +294,7 @@ struct ImmersiveView: View {
         let y: Float
         let z: Float
     }
-
+    
     struct Orientation: Codable {
         let pitch: Float
         let yaw: Float
@@ -274,231 +303,227 @@ struct ImmersiveView: View {
     
     
     var body: some View {
-       RealityView { content in
-           content.add(rootEntity)
-           
-           /*
-           
-           for i in 1...48 {
-               let sphere = MeshResource.generateSphere(radius: 0.01)
-               let material = SimpleMaterial(color: .black, isMetallic: false)
-               handSpheres.append(ModelEntity(mesh: sphere, materials: [material]))
-               content.add(handSpheres[i])
-           }
-           
-           let sphereX = MeshResource.generateSphere(radius: 0.01)
-           let materialX = SimpleMaterial(color: .red, isMetallic: false)
-           xL = ModelEntity(mesh: sphereX, materials: [materialX])
-           content.add(xL)
-           
-           let sphereY = MeshResource.generateSphere(radius: 0.01)
-           let materialY = SimpleMaterial(color: .green, isMetallic: false)
-           yL = ModelEntity(mesh: sphereY, materials: [materialY])
-           content.add(yL)
-           
-           let sphereZ = MeshResource.generateSphere(radius: 0.01)
-           let materialZ = SimpleMaterial(color: .blue, isMetallic: false)
-           zL = ModelEntity(mesh: sphereZ, materials: [materialZ])
-           content.add(zL)
-           
-           let sphereXR = MeshResource.generateSphere(radius: 0.01)
-           let materialXR = SimpleMaterial(color: .red, isMetallic: false)
-           xR = ModelEntity(mesh: sphereXR, materials: [materialXR])
-           content.add(xR)
-           
-           let sphereYR = MeshResource.generateSphere(radius: 0.01)
-           let materialYR = SimpleMaterial(color: .green, isMetallic: false)
-           yR = ModelEntity(mesh: sphereYR, materials: [materialYR])
-           content.add(yR)
-           
-           let sphereZR = MeshResource.generateSphere(radius: 0.01)
-           let materialZR = SimpleMaterial(color: .blue, isMetallic: false)
-           zR = ModelEntity(mesh: sphereZR, materials: [materialZR])
-           content.add(zR)
-           
-           */
-           
-           // Assuming 'gameModel.musicView.selectedSong?.genres' is an optional array of String
-           if let genres = gameModel.selectedSong?.genres {
-               // Use a switch statement to check for specific genres
-               // Assuming you want to check the first genre that matches your criteria
-               // This could be adapted based on how you want to prioritize or handle multiple genres
-               let genre = genres.first(where: { $0 == "Rock" || $0 == "Pop" || $0 == "Country" }) // Add more genres as needed
-               
-               switch genre {
-               case "Rock":
-                   do {
-                       let immersiveEntity = try await Entity(named: "RockScene", in: realityKitContentBundle)
-                       content.add(immersiveEntity)
-                   } catch {
-                       print("Error loading RockScene: \(error)")
-                   }
-               case "Pop":
-                   do {
-                       let immersiveEntity = try await Entity(named: "PopScene", in: realityKitContentBundle)
-                       content.add(immersiveEntity)
-                   } catch {
-                       print("Error loading PopScene: \(error)")
-                   }
-               case "Country":
-                   do {
-                       let immersiveEntity = try await Entity(named: "CountryScene", in: realityKitContentBundle)
-                       content.add(immersiveEntity)
-                   } catch {
-                       print("Error loading JazzScene: \(error)")
-                   }
-               default:
-                   // Handle any genre not explicitly matched above or if no genre is found
-                   do {
-                       let immersiveEntity = try await Entity(named: "PopScene", in: realityKitContentBundle)
-                       content.add(immersiveEntity)
-                   } catch {
-                       print("Error loading PopScene: \(error)")
-                   }
-               }
-           } else {
-               // Handle the case where genres is nil or empty
-               do {
-                   let immersiveEntity = try await Entity(named: "DefaultScene", in: realityKitContentBundle)
-                   content.add(immersiveEntity)
-               } catch {
-                   print("Error loading DefaultScene: \(error)")
-               }
-           }
-
-           
-           Task {
-               openWindow(id: "scoreView")
-               dismissWindow(id: "windowGroup")
-               // Attach itself to the gameModel
-               gameModel.immsersiveView = self
-               print("runtask")
-               // Read data from JSON
-               guard let songTiming = parseJSON(songName: gameModel.musicView.getSongName())
-               else {
-                   print("songTiming is nil")
-                   return
-               }
-               self.songTiming = songTiming
-               print(self.songTiming.count)
-               stopTimer()
-           }
+        RealityView { content in
+            content.add(rootEntity)
             
-       } update : { updateContent in
-           
-           guard let hands = gestureModel.getHands()
-           else {
-               print("hand positions not found")
-               return
-           }
-           
-           let leftHand = hands[0]
-           let rightHand = hands[1]
-           
-           /*
-           
-           let jointPositions: [SIMD3<Float>] = [
-                leftHand.thumbIntermediateBase,
-                leftHand.thumbIntermediateTip,
-                leftHand.thumbKnuckle,
-                leftHand.thumbTip,
-                leftHand.indexFingerIntermediateBase,
-                leftHand.indexFingerIntermediateTip,
-                leftHand.indexFingerKnuckle,
-                leftHand.indexFingerMetacarpal,
-                leftHand.indexFingerTip,
-                leftHand.middleFingerIntermediateBase,
-                leftHand.middleFingerIntermediateTip,
-                leftHand.middleFingerKnuckle,
-                leftHand.middleFingerMetacarpal,
-                leftHand.middleFingerTip,
-                leftHand.ringFingerIntermediateBase,
-                leftHand.ringFingerIntermediateTip,
-                leftHand.ringFingerKnuckle,
-                leftHand.ringFingerMetacarpal,
-                leftHand.ringFingerTip,
-                leftHand.littleFingerIntermediateBase,
-                leftHand.littleFingerIntermediateTip,
-                leftHand.littleFingerKnuckle,
-                leftHand.littleFingerMetacarpal,
-                leftHand.littleFingerTip,
-
-                rightHand.thumbIntermediateBase,
-                rightHand.thumbIntermediateTip,
-                rightHand.thumbKnuckle,
-                rightHand.thumbTip,
-                rightHand.indexFingerIntermediateBase,
-                rightHand.indexFingerIntermediateTip,
-                rightHand.indexFingerKnuckle,
-                rightHand.indexFingerMetacarpal,
-                rightHand.indexFingerTip,
-                rightHand.middleFingerIntermediateBase,
-                rightHand.middleFingerIntermediateTip,
-                rightHand.middleFingerKnuckle,
-                rightHand.middleFingerMetacarpal,
-                rightHand.middleFingerTip,
-                rightHand.ringFingerIntermediateBase,
-                rightHand.ringFingerIntermediateTip,
-                rightHand.ringFingerKnuckle,
-                rightHand.ringFingerMetacarpal,
-                rightHand.ringFingerTip,
-                rightHand.littleFingerIntermediateBase,
-                rightHand.littleFingerIntermediateTip,
-                rightHand.littleFingerKnuckle,
-                rightHand.littleFingerMetacarpal,
-                rightHand.littleFingerTip
-           ]
-           
-           for i in 0...jointPositions.count - 1 {
-               handSpheres[i].transform.translation = jointPositions[i]
-           }
-            */
-           
-           xL.transform.translation = leftHand.x
-           yL.transform.translation = leftHand.y
-           zL.transform.translation = leftHand.z
-           
-           xR.transform.translation = rightHand.x
-           yR.transform.translation = rightHand.y
-           zR.transform.translation = rightHand.z
-           
-           for handTarget in handTargets {
-               if (simd_distance(leftHand.hand.originFromAnchorTransform.columns.3.xyz, handTarget.position) < 0.3 && gestureModel.checkGesture(handTarget.name) == true) {
-                   handTargets.remove(at: handTargets.firstIndex(of: handTarget) ?? -1)
-                   handTarget.removeFromParent()
-                   DispatchQueue.main.async {
-                       gameModel.score += 10
-                   }
-               }
-               
-               if (simd_distance(rightHand.hand.originFromAnchorTransform.columns.3.xyz, handTarget.position) < 0.3 && gestureModel.checkGesture(handTarget.name) == true) {
-                   handTargets.remove(at: handTargets.firstIndex(of: handTarget) ?? -1)
-                   handTarget.removeFromParent()
-                   DispatchQueue.main.async {
-                       gameModel.score += 10
-                   }
-               }
-
-           }
-       }
-       .gesture(TapGesture().targetedToAnyEntity().onEnded({ value in
-           if (correctTime) {
-               gameModel.score += 1
-           }
-       }))
-       .task {
-           await gestureModel.start()
-       }
-       .task {
-           await gestureModel.publishHandTrackingUpdates()
-       }
-       .task {
-           await gestureModel.monitorSessionEvents()
-       }
-       .preferredSurroundingsEffect(.systemDark)
-       .onDisappear() {
-           gameModel.highScore.addScore(song: gameModel.selectedSong! ,score: gameModel.score) // Add the score of the song to the score list
-           gameModel.reset()
-       }
-   }
+            /*
+             
+             for i in 1...48 {
+             let sphere = MeshResource.generateSphere(radius: 0.01)
+             let material = SimpleMaterial(color: .black, isMetallic: false)
+             handSpheres.append(ModelEntity(mesh: sphere, materials: [material]))
+             content.add(handSpheres[i])
+             }
+             
+             let sphereX = MeshResource.generateSphere(radius: 0.01)
+             let materialX = SimpleMaterial(color: .red, isMetallic: false)
+             xL = ModelEntity(mesh: sphereX, materials: [materialX])
+             content.add(xL)
+             
+             let sphereY = MeshResource.generateSphere(radius: 0.01)
+             let materialY = SimpleMaterial(color: .green, isMetallic: false)
+             yL = ModelEntity(mesh: sphereY, materials: [materialY])
+             content.add(yL)
+             
+             let sphereZ = MeshResource.generateSphere(radius: 0.01)
+             let materialZ = SimpleMaterial(color: .blue, isMetallic: false)
+             zL = ModelEntity(mesh: sphereZ, materials: [materialZ])
+             content.add(zL)
+             
+             let sphereXR = MeshResource.generateSphere(radius: 0.01)
+             let materialXR = SimpleMaterial(color: .red, isMetallic: false)
+             xR = ModelEntity(mesh: sphereXR, materials: [materialXR])
+             content.add(xR)
+             
+             let sphereYR = MeshResource.generateSphere(radius: 0.01)
+             let materialYR = SimpleMaterial(color: .green, isMetallic: false)
+             yR = ModelEntity(mesh: sphereYR, materials: [materialYR])
+             content.add(yR)
+             
+             let sphereZR = MeshResource.generateSphere(radius: 0.01)
+             let materialZR = SimpleMaterial(color: .blue, isMetallic: false)
+             zR = ModelEntity(mesh: sphereZR, materials: [materialZR])
+             content.add(zR)
+             
+             */
+            
+            // Assuming 'gameModel.musicView.selectedSong?.genres' is an optional array of String
+            if let genres = gameModel.selectedSong?.genres {
+                // Use a switch statement to check for specific genres
+                // Assuming you want to check the first genre that matches your criteria
+                // This could be adapted based on how you want to prioritize or handle multiple genres
+                let genre = genres.first(where: { $0 == "Rock" || $0 == "Pop" || $0 == "Country" }) // Add more genres as needed
+                
+                switch genre {
+                case "Rock":
+                    do {
+                        let immersiveEntity = try await Entity(named: "RockScene", in: realityKitContentBundle)
+                        content.add(immersiveEntity)
+                    } catch {
+                        print("Error loading RockScene: \(error)")
+                    }
+                case "Pop":
+                    do {
+                        let immersiveEntity = try await Entity(named: "PopScene", in: realityKitContentBundle)
+                        content.add(immersiveEntity)
+                    } catch {
+                        print("Error loading PopScene: \(error)")
+                    }
+                case "Country":
+                    do {
+                        let immersiveEntity = try await Entity(named: "CountryScene", in: realityKitContentBundle)
+                        content.add(immersiveEntity)
+                    } catch {
+                        print("Error loading JazzScene: \(error)")
+                    }
+                default:
+                    // Handle any genre not explicitly matched above or if no genre is found
+                    do {
+                        let immersiveEntity = try await Entity(named: "PopScene", in: realityKitContentBundle)
+                        content.add(immersiveEntity)
+                    } catch {
+                        print("Error loading PopScene: \(error)")
+                    }
+                }
+            } else {
+                // Handle the case where genres is nil or empty
+                do {
+                    let immersiveEntity = try await Entity(named: "DefaultScene", in: realityKitContentBundle)
+                    content.add(immersiveEntity)
+                } catch {
+                    print("Error loading DefaultScene: \(error)")
+                }
+            }
+            
+            
+            Task {
+                openWindow(id: "scoreView")
+                dismissWindow(id: "windowGroup")
+                // Attach itself to the gameModel
+                gameModel.immsersiveView = self
+                print("runtask")
+                // Read data from JSON
+                guard let songTiming = parseJSON(songName: gameModel.musicView.getSongName())
+                else {
+                    print("songTiming is nil")
+                    return
+                }
+                self.songTiming = songTiming
+                print(self.songTiming.count)
+                stopTimer()
+            }
+            
+        } update : { updateContent in
+            
+            guard let hands = gestureModel.getHands()
+            else {
+                print("hand positions not found")
+                return
+            }
+            
+            let leftHand = hands[0]
+            let rightHand = hands[1]
+            
+            /*
+             
+             let jointPositions: [SIMD3<Float>] = [
+             leftHand.thumbIntermediateBase,
+             leftHand.thumbIntermediateTip,
+             leftHand.thumbKnuckle,
+             leftHand.thumbTip,
+             leftHand.indexFingerIntermediateBase,
+             leftHand.indexFingerIntermediateTip,
+             leftHand.indexFingerKnuckle,
+             leftHand.indexFingerMetacarpal,
+             leftHand.indexFingerTip,
+             leftHand.middleFingerIntermediateBase,
+             leftHand.middleFingerIntermediateTip,
+             leftHand.middleFingerKnuckle,
+             leftHand.middleFingerMetacarpal,
+             leftHand.middleFingerTip,
+             leftHand.ringFingerIntermediateBase,
+             leftHand.ringFingerIntermediateTip,
+             leftHand.ringFingerKnuckle,
+             leftHand.ringFingerMetacarpal,
+             leftHand.ringFingerTip,
+             leftHand.littleFingerIntermediateBase,
+             leftHand.littleFingerIntermediateTip,
+             leftHand.littleFingerKnuckle,
+             leftHand.littleFingerMetacarpal,
+             leftHand.littleFingerTip,
+             
+             rightHand.thumbIntermediateBase,
+             rightHand.thumbIntermediateTip,
+             rightHand.thumbKnuckle,
+             rightHand.thumbTip,
+             rightHand.indexFingerIntermediateBase,
+             rightHand.indexFingerIntermediateTip,
+             rightHand.indexFingerKnuckle,
+             rightHand.indexFingerMetacarpal,
+             rightHand.indexFingerTip,
+             rightHand.middleFingerIntermediateBase,
+             rightHand.middleFingerIntermediateTip,
+             rightHand.middleFingerKnuckle,
+             rightHand.middleFingerMetacarpal,
+             rightHand.middleFingerTip,
+             rightHand.ringFingerIntermediateBase,
+             rightHand.ringFingerIntermediateTip,
+             rightHand.ringFingerKnuckle,
+             rightHand.ringFingerMetacarpal,
+             rightHand.ringFingerTip,
+             rightHand.littleFingerIntermediateBase,
+             rightHand.littleFingerIntermediateTip,
+             rightHand.littleFingerKnuckle,
+             rightHand.littleFingerMetacarpal,
+             rightHand.littleFingerTip
+             ]
+             
+             for i in 0...jointPositions.count - 1 {
+             handSpheres[i].transform.translation = jointPositions[i]
+             }
+             */
+            
+            xL.transform.translation = leftHand.x
+            yL.transform.translation = leftHand.y
+            zL.transform.translation = leftHand.z
+            
+            xR.transform.translation = rightHand.x
+            yR.transform.translation = rightHand.y
+            zR.transform.translation = rightHand.z
+            
+            for handTarget in handTargets {
+                if ((simd_distance(leftHand.hand.originFromAnchorTransform.columns.3.xyz, handTarget.position) < 0.3 || simd_distance(rightHand.hand.originFromAnchorTransform.columns.3.xyz, handTarget.position) < 0.3) && gestureModel.checkGesture(handTarget.name) == true) {
+                    
+                    // Spawn particles
+                    spawnParticles(position: handTarget.position)
+                    
+                    handTarget.position = (SIMD3(7, 7, 7))
+                    // handTargets.remove(at: handTargets.firstIndex(of: handTarget) ?? -1)
+                    handTarget.removeFromParent()
+                    DispatchQueue.main.async {
+                        gameModel.score += 10
+                    }
+                }
+            }
+        }
+        .gesture(TapGesture().targetedToAnyEntity().onEnded({ value in
+            if (correctTime) {
+                gameModel.score += 1
+            }
+        }))
+        .task {
+            await gestureModel.start()
+        }
+        .task {
+            await gestureModel.publishHandTrackingUpdates()
+        }
+        .task {
+            await gestureModel.monitorSessionEvents()
+        }
+        .preferredSurroundingsEffect(.systemDark)
+        .onDisappear() {
+            gameModel.highScore.addScore(song: gameModel.selectedSong! ,score: gameModel.score) // Add the score of the song to the score list
+            gameModel.reset()
+        }
+    }
 }

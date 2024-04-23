@@ -19,7 +19,7 @@ struct SettingsView: View {
         Person(name: "Aynur Rauf", description: "Public Relations", imageName: "aynur"),
         Person(name: "Aidan York", description: "Developer", imageName: "aidan")
     ]
-
+    
     
     var body: some View {
         ZStack {
@@ -35,14 +35,14 @@ struct SettingsView: View {
                 VStack {
                     
                     /*
-                    Text("Hand Height")
-                        .font(.custom("FormaDJRMicro-Medium", size: 30))
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .padding(.horizontal, 30)
-                    Slider(value: $volume, in: 0...100)
-                        .tint(Color.electricLime)
-                        .padding(.horizontal)
-                        .padding(.bottom)
+                     Text("Hand Height")
+                     .font(.custom("FormaDJRMicro-Medium", size: 30))
+                     .frame(maxWidth: .infinity, alignment: .leading)
+                     .padding(.horizontal, 30)
+                     Slider(value: $volume, in: 0...100)
+                     .tint(Color.electricLime)
+                     .padding(.horizontal)
+                     .padding(.bottom)
                      */
                     
                     HStack {
@@ -59,7 +59,7 @@ struct SettingsView: View {
                         .sheet(isPresented: $showModal) {
                             ModalView(people: people, showModal: $showModal)
                         }
-                    
+                        
                         Spacer()
                         
                         Button {
@@ -72,7 +72,7 @@ struct SettingsView: View {
                         Spacer()
                     }
                     .padding(.horizontal)
-        
+                    
                 }
                 .frame(width: 1000, height: 400)
                 .background(Rectangle().fill(Color(red: 0.17, green: 0.17, blue: 0.17)).opacity(0.6))
@@ -91,16 +91,17 @@ struct Person {
 struct ModalView: View {
     var people: [Person]
     @Binding var showModal: Bool
-
+    
     var body: some View {
         VStack {
             HStack {
                 Text("Meet the Team!").font(.custom("Soulcraft", size: 35.0))
                     .foregroundStyle(Color.ritmoOrange)
+                    .offset(x: 225)
                 Button("Done") {
                     self.showModal = false
                 }
-                .frame(alignment: .trailing)
+                .frame(maxWidth: .infinity, alignment: .trailing)
             }
             .padding()
             ForEach(people, id: \.name) { person in
@@ -125,11 +126,10 @@ struct ModalView: View {
     }
 }
 
-
 struct BlurredBackground: View {
     var body: some View {
         LinearGradient(
-            gradient: Gradient(colors: [Color.ritmoBlue, Color.ritmoOrange]),
+            gradient: Gradient(colors: [Color.blue, Color.ritmoOrange]),
             startPoint: .topLeading,
             endPoint: .bottomTrailing
         )
