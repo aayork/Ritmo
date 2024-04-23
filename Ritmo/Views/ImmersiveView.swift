@@ -234,7 +234,7 @@ struct ImmersiveView: View {
     // Read data from JSON
     func readJSONFromFile(song: String) -> Data? {
         guard let filePath = Bundle.main.path(forResource: song, ofType: "json") else {
-            print("File not found")
+            print("JSON file not found.")
             return nil
         }
         
@@ -250,7 +250,6 @@ struct ImmersiveView: View {
 
     // Parse JSON data into Song object
     func parseJSON(song: String) -> [GestureEntity]? {
-        print("parseJSON")
         guard let jsonData = readJSONFromFile(song: song) else { return nil }
         
         do {
@@ -271,7 +270,7 @@ struct ImmersiveView: View {
     }
     
     func testJSON(song: String) -> Bool? {
-            print("testJSON")
+        print("testJSON")
         guard readJSONFromFile(song: song) != nil else { return nil }
             do {
                 return true
@@ -314,12 +313,8 @@ struct ImmersiveView: View {
     var body: some View {
        RealityView { content in
            content.add(rootEntity)
-           
-           // Assuming 'gameModel.musicView.selectedSong?.genres' is an optional array of String
            if let genres = gameModel.selectedSong?.genres {
                // Use a switch statement to check for specific genres
-               // Assuming you want to check the first genre that matches your criteria
-               // This could be adapted based on how you want to prioritize or handle multiple genres
                let genre = genres.first(where: { $0 == "Rock" || $0 == "Pop" || $0 == "Country" }) // Add more genres as needed
                
                switch genre {
@@ -371,7 +366,7 @@ struct ImmersiveView: View {
                gameModel.immsersiveView = self
                print("runtask")
                // Read data from JSON
-               guard let songTiming = parseJSON(song: "\(String(describing: gameModel.selectedSong?.name)) \(String(describing: gameModel.selectedSong?.artist))")
+               guard let songTiming = parseJSON(song: "\(gameModel.selectedSong?.name ?? "") \(gameModel.selectedSong?.artist ?? "")")
                else {
                    print("songTiming is nil")
                    return
