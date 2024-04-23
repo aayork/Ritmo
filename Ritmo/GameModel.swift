@@ -26,6 +26,7 @@ class GameModel: ObservableObject {
     @Published var isPlaying = false
     @Published var curated = false
     @Published var selectedSong: Item?
+    @Published var searchText = ""
 
     /// Removes 3D content when then game is over.
     func clear() {

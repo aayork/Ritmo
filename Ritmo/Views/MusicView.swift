@@ -51,7 +51,6 @@ struct MusicView: View {
                             if (gameModel.immsersiveView?.testJSON(song: "\(song.name) \(song.artist)") != nil) {
                                 Image("ritmoYellowStar")
                                     .shadow(color: .electricLime, radius: 10)
-                                    .offset(x: 20)
                             }
                         }
                         .padding()
@@ -124,22 +123,22 @@ struct MusicView: View {
                 .frame(minWidth: 0, maxWidth: .infinity)
                 
             }
-            .searchable(text: $searchText)
+            .searchable(text: $gameModel.searchText)
             .navigationBarTitleDisplayMode(.inline)
             .onChange(of: searchText) {
-                fetchMusic()
+                gameModel.musicPlaybackManager!.fetchMusic()
             }
         }
     } // View
     
     private var request: MusicCatalogSearchRequest {
-        var request = MusicCatalogSearchRequest(term: searchText, types: [Song.self])
+        var request = MusicCatalogSearchRequest(term: gameModel.searchText, types: [Song.self])
         request.limit = 25
         return request
     }
     
     private func fetchMusic() {
-        print(searchText)
+        print(gameModel.searchText)
         Task {
             let status = await MusicAuthorization.request()
             switch status {
