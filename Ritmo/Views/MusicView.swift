@@ -124,7 +124,7 @@ struct MusicView: View {
                                 }
                             } else {
                                 Text("Please search for a song...")
-                                    .font(.custom("FormaDJRMicro-Medium", size: 14.0))
+                                    .font(.custom("FormaDJRMicro-Bold", size: 17.0))
                                     .position(x:475, y:-25)
                             }
                         }
@@ -152,6 +152,10 @@ struct MusicView: View {
         default:
             return Color.gray
         }
+    }
+    
+    func setSong(song: Item) {
+        selectedSong = song
     }
     
     func togglePlayPause() async  {

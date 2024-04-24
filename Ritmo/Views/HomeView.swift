@@ -141,13 +141,7 @@ struct HomeView: View {
                     Spacer()
                     
                     Button("PLAY NOW", action: {
-                        Task {
-                            let song = RecentlyPlayedManager.shared.getRecentlyPlayedSongs()[carousel.currentIndex]
-                            gameModel.recentlyPlayed.addSong(song: song)
-                            gameModel.selectedSong = song
-                            gameModel.curated = await gameModel.immsersiveView?.testJSON(songName: song.name) != nil
-                            await openImmersiveSpace(id: "ImmersiveSpace")
-                        }
+                        tabSelection = 2
                     })
                     .buttonStyle(YellowButtonStyle())
                     Spacer()
