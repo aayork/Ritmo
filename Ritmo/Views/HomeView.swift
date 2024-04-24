@@ -38,7 +38,6 @@ struct HomeView: View {
     @Binding var tabSelection: Int
     @Environment(GameModel.self) var gameModel
     @Environment(\.openImmersiveSpace) private var openImmersiveSpace
-    @State var selectedSong: Item?
     var carousel = SnapCarouselView()
     
     @State private var highScores: [SongScore] = HighScoreManager.shared.getHighScores()

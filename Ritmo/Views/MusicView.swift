@@ -93,15 +93,6 @@ struct MusicView: View {
                                             .foregroundStyle(Color("electricLime"))
                                         Text(song.artist).font(.custom("FormaDJRMicro-Medium", size: 25.0)) // Display artist name
                                     
-                                    
-                                    /*
-                                        Text("High Score: ")
-                                            .font(.system(size: 20))
-                                        Text(String(highScore))
-                                            .font(.system(size: 30))
-                                            .foregroundStyle(Color("electricLime"))
-                                     */
-                                    
                                         // Play controls
                                         HStack {
                                             Button("START", action: {
@@ -155,7 +146,7 @@ struct MusicView: View {
     }
     
     func setSong(song: Item) {
-        selectedSong = song
+        self.selectedSong = song
     }
     
     func togglePlayPause() async  {
@@ -182,7 +173,6 @@ struct MusicView: View {
     
     @MainActor
     private func play<I: PlayableMusicItem>(_ item: I) async throws {
-        
         musicPlayer.queue = [item]
         try await musicPlayer.play()
     }

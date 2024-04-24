@@ -306,47 +306,6 @@ struct ImmersiveView: View {
         RealityView { content in
             content.add(rootEntity)
             
-            /*
-             
-             for i in 1...48 {
-             let sphere = MeshResource.generateSphere(radius: 0.01)
-             let material = SimpleMaterial(color: .black, isMetallic: false)
-             handSpheres.append(ModelEntity(mesh: sphere, materials: [material]))
-             content.add(handSpheres[i])
-             }
-             
-             let sphereX = MeshResource.generateSphere(radius: 0.01)
-             let materialX = SimpleMaterial(color: .red, isMetallic: false)
-             xL = ModelEntity(mesh: sphereX, materials: [materialX])
-             content.add(xL)
-             
-             let sphereY = MeshResource.generateSphere(radius: 0.01)
-             let materialY = SimpleMaterial(color: .green, isMetallic: false)
-             yL = ModelEntity(mesh: sphereY, materials: [materialY])
-             content.add(yL)
-             
-             let sphereZ = MeshResource.generateSphere(radius: 0.01)
-             let materialZ = SimpleMaterial(color: .blue, isMetallic: false)
-             zL = ModelEntity(mesh: sphereZ, materials: [materialZ])
-             content.add(zL)
-             
-             let sphereXR = MeshResource.generateSphere(radius: 0.01)
-             let materialXR = SimpleMaterial(color: .red, isMetallic: false)
-             xR = ModelEntity(mesh: sphereXR, materials: [materialXR])
-             content.add(xR)
-             
-             let sphereYR = MeshResource.generateSphere(radius: 0.01)
-             let materialYR = SimpleMaterial(color: .green, isMetallic: false)
-             yR = ModelEntity(mesh: sphereYR, materials: [materialYR])
-             content.add(yR)
-             
-             let sphereZR = MeshResource.generateSphere(radius: 0.01)
-             let materialZR = SimpleMaterial(color: .blue, isMetallic: false)
-             zR = ModelEntity(mesh: sphereZR, materials: [materialZR])
-             content.add(zR)
-             
-             */
-            
             // Assuming 'gameModel.musicView.selectedSong?.genres' is an optional array of String
             if let genres = gameModel.selectedSong?.genres {
                 // Use a switch statement to check for specific genres
@@ -423,65 +382,6 @@ struct ImmersiveView: View {
             
             let leftHand = hands[0]
             let rightHand = hands[1]
-            
-            /*
-             
-             let jointPositions: [SIMD3<Float>] = [
-             leftHand.thumbIntermediateBase,
-             leftHand.thumbIntermediateTip,
-             leftHand.thumbKnuckle,
-             leftHand.thumbTip,
-             leftHand.indexFingerIntermediateBase,
-             leftHand.indexFingerIntermediateTip,
-             leftHand.indexFingerKnuckle,
-             leftHand.indexFingerMetacarpal,
-             leftHand.indexFingerTip,
-             leftHand.middleFingerIntermediateBase,
-             leftHand.middleFingerIntermediateTip,
-             leftHand.middleFingerKnuckle,
-             leftHand.middleFingerMetacarpal,
-             leftHand.middleFingerTip,
-             leftHand.ringFingerIntermediateBase,
-             leftHand.ringFingerIntermediateTip,
-             leftHand.ringFingerKnuckle,
-             leftHand.ringFingerMetacarpal,
-             leftHand.ringFingerTip,
-             leftHand.littleFingerIntermediateBase,
-             leftHand.littleFingerIntermediateTip,
-             leftHand.littleFingerKnuckle,
-             leftHand.littleFingerMetacarpal,
-             leftHand.littleFingerTip,
-             
-             rightHand.thumbIntermediateBase,
-             rightHand.thumbIntermediateTip,
-             rightHand.thumbKnuckle,
-             rightHand.thumbTip,
-             rightHand.indexFingerIntermediateBase,
-             rightHand.indexFingerIntermediateTip,
-             rightHand.indexFingerKnuckle,
-             rightHand.indexFingerMetacarpal,
-             rightHand.indexFingerTip,
-             rightHand.middleFingerIntermediateBase,
-             rightHand.middleFingerIntermediateTip,
-             rightHand.middleFingerKnuckle,
-             rightHand.middleFingerMetacarpal,
-             rightHand.middleFingerTip,
-             rightHand.ringFingerIntermediateBase,
-             rightHand.ringFingerIntermediateTip,
-             rightHand.ringFingerKnuckle,
-             rightHand.ringFingerMetacarpal,
-             rightHand.ringFingerTip,
-             rightHand.littleFingerIntermediateBase,
-             rightHand.littleFingerIntermediateTip,
-             rightHand.littleFingerKnuckle,
-             rightHand.littleFingerMetacarpal,
-             rightHand.littleFingerTip
-             ]
-             
-             for i in 0...jointPositions.count - 1 {
-             handSpheres[i].transform.translation = jointPositions[i]
-             }
-             */
             
             xL.transform.translation = leftHand.x
             yL.transform.translation = leftHand.y

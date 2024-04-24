@@ -11,8 +11,7 @@ import RealityKitContent
 import SwiftUI
 
 /// State that drives the different screens of the game and options that players select.
-@Observable
-class GameModel {
+@Observable class GameModel {
     /// A Boolean value that indicates that game assets have loaded.
     var musicView: MusicView
     var recentlyPlayed: RecentlyPlayedManager
