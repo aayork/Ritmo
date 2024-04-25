@@ -150,7 +150,7 @@ struct ScoreView: View {
                                 
                                 switch genre {
                                 case "Rock":
-                                    bpm = 105
+                                    bpm = 94 // avg: 104
                                 case "Pop":
                                     bpm = 100
                                 case "Country":
