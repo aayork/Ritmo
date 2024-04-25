@@ -7,26 +7,6 @@
 
 import SwiftUI
 
-/*
- IF YOU NEED TO USE A CUSTOM FONT; THESE ARE THEIR NAMES:
- 
- Family: Forma DJR Micro
- - FormaDJRMicro-Regular
- - FormaDJRMicro-ExtraLight
- - FormaDJRMicro-Light
- - FormaDJRMicro-Medium
- - FormaDJRMicro-Bold
- - FormaDJRMicro-ExtraBold
- - FormaDJRMicro-Black
- 
- Family: Soulcraft
- - Soulcraft
- - Soulcraft_Slanted-Condensed
- - Soulcraft_Wide
- - Soulcraft_Slanted-Wide
- 
- */
-
 struct RecentlyPlayedSong: Identifiable {
     var id = UUID()
     var title: String

@@ -50,7 +50,7 @@ struct MusicView: View {
                                 Text(song.artist).font(.custom("FormaDJRMicro-light", size: 14.0))
                                     .foregroundStyle(Color("ritmoWhite"))
                             }
-                            if (gameModel.immsersiveView?.testJSON(songName: song.name) != nil) {
+                            if (gameModel.immsersiveView?.testJSON(song: "\(song.name) \(song.artist)") != nil) {
                                 Image("ritmoYellowStar")
                                     .shadow(color: .electricLime, radius: 10)
                                     .offset(x: 20)
@@ -99,7 +99,7 @@ struct MusicView: View {
                                                 Task {
                                                     gameModel.musicView = self
                                                     gameModel.recentlyPlayed.addSong(song: selectedSong!)
-                                                    gameModel.curated = gameModel.immsersiveView?.testJSON(songName: song.name) != nil
+                                                    gameModel.curated = gameModel.immsersiveView?.testJSON(song: "\(song.name) \(song.artist)") != nil
                                                     await openImmersiveSpace(id: "ImmersiveSpace")
                                                 }
                                             })

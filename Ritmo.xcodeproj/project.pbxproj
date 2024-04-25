@@ -12,12 +12,10 @@
 		9AF2D2F02BA0F5490064D49D /* GameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF2D2EF2BA0F5490064D49D /* GameModel.swift */; };
 		9AF2D2F22BA0F7120064D49D /* GlobalEntities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF2D2F12BA0F7120064D49D /* GlobalEntities.swift */; };
 		EC10F9132B963E3B008741EA /* WaveAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC10F9122B963E3B008741EA /* WaveAnimation.swift */; };
-		EC2896482BD87986006ACFE1 /* Back In Black.json in Resources */ = {isa = PBXBuildFile; fileRef = EC2896472BD8776C006ACFE1 /* Back In Black.json */; };
 		EC3336A62B787ACB00836AFB /* MusicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC3336A52B787ACB00836AFB /* MusicView.swift */; };
-		EC35DBD92BAC849A000B4ABD /* Allura-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EC35DBD82BAC849A000B4ABD /* Allura-Regular.ttf */; };
 		EC50B65E2BB4C50200927329 /* song_data_template.json in Resources */ = {isa = PBXBuildFile; fileRef = EC50B65D2BB4C50200927329 /* song_data_template.json */; };
-		EC50B6602BB4CA6B00927329 /* Party In the U.S.A..json in Resources */ = {isa = PBXBuildFile; fileRef = EC50B65F2BB4CA6B00927329 /* Party In the U.S.A..json */; };
-		EC5355722BB9F1C900555054 /* Thriller.json in Resources */ = {isa = PBXBuildFile; fileRef = EC5355712BB9F1C900555054 /* Thriller.json */; };
+		EC50B6602BB4CA6B00927329 /* Party In the U.S.A. Miley Cyrus.json in Resources */ = {isa = PBXBuildFile; fileRef = EC50B65F2BB4CA6B00927329 /* Party In the U.S.A. Miley Cyrus.json */; };
+		EC5355722BB9F1C900555054 /* Thriller Michael Jackson.json in Resources */ = {isa = PBXBuildFile; fileRef = EC5355712BB9F1C900555054 /* Thriller Michael Jackson.json */; };
 		EC5EC91B2BA682C800809821 /* SnapCarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC5EC91A2BA682C800809821 /* SnapCarouselView.swift */; };
 		EC605FE92B77D06A005EC21A /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC605FE82B77D06A005EC21A /* SettingsView.swift */; };
 		EC64789A2B77C4F300F12A54 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6478992B77C4F300F12A54 /* HomeView.swift */; };
@@ -36,7 +34,8 @@
 		ECA1E21B2B75B64100EE4926 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA1E21A2B75B64100EE4926 /* ContentView.swift */; };
 		ECA1E21D2B75B64100EE4926 /* ImmersiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA1E21C2B75B64100EE4926 /* ImmersiveView.swift */; };
 		ECA1E2222B75B64200EE4926 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ECA1E2212B75B64200EE4926 /* Preview Assets.xcassets */; };
-		ECA88E222BB9FCFA0068DAB4 /* Something in the Orange.json in Resources */ = {isa = PBXBuildFile; fileRef = ECA88E212BB9FCFA0068DAB4 /* Something in the Orange.json */; };
+		ECA589F12BDAA85C003597F0 /* Back In Black AC-DC.json in Resources */ = {isa = PBXBuildFile; fileRef = ECA589F02BDAA85C003597F0 /* Back In Black AC-DC.json */; };
+		ECA88E222BB9FCFA0068DAB4 /* Something in the Orange Zach Bryan.json in Resources */ = {isa = PBXBuildFile; fileRef = ECA88E212BB9FCFA0068DAB4 /* Something in the Orange Zach Bryan.json */; };
 		ECF310752BA8CF6500CFFE00 /* RecentlyPlayedManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF310742BA8CF6500CFFE00 /* RecentlyPlayedManager.swift */; };
 /* End PBXBuildFile section */
 
@@ -46,12 +45,10 @@
 		9AF2D2EF2BA0F5490064D49D /* GameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameModel.swift; sourceTree = "<group>"; };
 		9AF2D2F12BA0F7120064D49D /* GlobalEntities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalEntities.swift; sourceTree = "<group>"; };
 		EC10F9122B963E3B008741EA /* WaveAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaveAnimation.swift; sourceTree = "<group>"; };
-		EC2896472BD8776C006ACFE1 /* Back In Black.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "Back In Black.json"; sourceTree = "<group>"; };
 		EC3336A52B787ACB00836AFB /* MusicView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicView.swift; sourceTree = "<group>"; };
-		EC35DBD82BAC849A000B4ABD /* Allura-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Allura-Regular.ttf"; sourceTree = "<group>"; };
 		EC50B65D2BB4C50200927329 /* song_data_template.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = song_data_template.json; sourceTree = "<group>"; };
-		EC50B65F2BB4CA6B00927329 /* Party In the U.S.A..json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "Party In the U.S.A..json"; sourceTree = "<group>"; };
-		EC5355712BB9F1C900555054 /* Thriller.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Thriller.json; sourceTree = "<group>"; };
+		EC50B65F2BB4CA6B00927329 /* Party In the U.S.A. Miley Cyrus.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "Party In the U.S.A. Miley Cyrus.json"; sourceTree = "<group>"; };
+		EC5355712BB9F1C900555054 /* Thriller Michael Jackson.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "Thriller Michael Jackson.json"; sourceTree = "<group>"; };
 		EC5EC91A2BA682C800809821 /* SnapCarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapCarouselView.swift; sourceTree = "<group>"; };
 		EC605FE82B77D06A005EC21A /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		EC6478992B77C4F300F12A54 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -72,7 +69,8 @@
 		ECA1E21C2B75B64100EE4926 /* ImmersiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImmersiveView.swift; sourceTree = "<group>"; };
 		ECA1E2212B75B64200EE4926 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		ECA1E2232B75B64200EE4926 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		ECA88E212BB9FCFA0068DAB4 /* Something in the Orange.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "Something in the Orange.json"; sourceTree = "<group>"; };
+		ECA589F02BDAA85C003597F0 /* Back In Black AC-DC.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "Back In Black AC-DC.json"; sourceTree = "<group>"; };
+		ECA88E212BB9FCFA0068DAB4 /* Something in the Orange Zach Bryan.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "Something in the Orange Zach Bryan.json"; sourceTree = "<group>"; };
 		ECDD66992B8D2E96005987B0 /* Ritmo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Ritmo.entitlements; sourceTree = "<group>"; };
 		ECF310742BA8CF6500CFFE00 /* RecentlyPlayedManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentlyPlayedManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -93,10 +91,10 @@
 			isa = PBXGroup;
 			children = (
 				EC50B65D2BB4C50200927329 /* song_data_template.json */,
-				EC2896472BD8776C006ACFE1 /* Back In Black.json */,
-				EC50B65F2BB4CA6B00927329 /* Party In the U.S.A..json */,
-				EC5355712BB9F1C900555054 /* Thriller.json */,
-				ECA88E212BB9FCFA0068DAB4 /* Something in the Orange.json */,
+				ECA589F02BDAA85C003597F0 /* Back In Black AC-DC.json */,
+				EC50B65F2BB4CA6B00927329 /* Party In the U.S.A. Miley Cyrus.json */,
+				EC5355712BB9F1C900555054 /* Thriller Michael Jackson.json */,
+				ECA88E212BB9FCFA0068DAB4 /* Something in the Orange Zach Bryan.json */,
 			);
 			path = "Song Data";
 			sourceTree = "<group>";
@@ -112,7 +110,6 @@
 				EC69295A2BA9CFEE00EF3AFE /* FormaDJRMicro-ExtraBold.ttf */,
 				EC69295C2BA9CFF700EF3AFE /* FormaDJRMicro-Bold.ttf */,
 				EC69295E2BA9CFFE00EF3AFE /* FormaDJRMicro-Black.ttf */,
-				EC35DBD82BAC849A000B4ABD /* Allura-Regular.ttf */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -246,21 +243,20 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EC2896482BD87986006ACFE1 /* Back In Black.json in Resources */,
 				EC69295F2BA9CFFE00EF3AFE /* FormaDJRMicro-Black.ttf in Resources */,
 				EC69295B2BA9CFEE00EF3AFE /* FormaDJRMicro-ExtraBold.ttf in Resources */,
 				EC6929512BA9CFC500EF3AFE /* SoulcraftGX.ttf in Resources */,
-				EC5355722BB9F1C900555054 /* Thriller.json in Resources */,
+				EC5355722BB9F1C900555054 /* Thriller Michael Jackson.json in Resources */,
 				EC9407DE2BC71BD80057BA2E /* Assets.xcassets in Resources */,
 				ECA1E2222B75B64200EE4926 /* Preview Assets.xcassets in Resources */,
 				EC6929552BA9CFD900EF3AFE /* FormaDJRMicro-Medium.ttf in Resources */,
-				ECA88E222BB9FCFA0068DAB4 /* Something in the Orange.json in Resources */,
+				ECA88E222BB9FCFA0068DAB4 /* Something in the Orange Zach Bryan.json in Resources */,
+				ECA589F12BDAA85C003597F0 /* Back In Black AC-DC.json in Resources */,
 				EC50B65E2BB4C50200927329 /* song_data_template.json in Resources */,
 				EC6929532BA9CFD100EF3AFE /* FormaDJRMicro-Regular.ttf in Resources */,
-				EC50B6602BB4CA6B00927329 /* Party In the U.S.A..json in Resources */,
+				EC50B6602BB4CA6B00927329 /* Party In the U.S.A. Miley Cyrus.json in Resources */,
 				EC6929592BA9CFE800EF3AFE /* FormaDJRMicro-ExtraLight.ttf in Resources */,
 				EC6929572BA9CFE000EF3AFE /* FormaDJRMicro-Light.ttf in Resources */,
-				EC35DBD92BAC849A000B4ABD /* Allura-Regular.ttf in Resources */,
 				EC69295D2BA9CFF700EF3AFE /* FormaDJRMicro-Bold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
