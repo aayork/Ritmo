@@ -28,7 +28,6 @@ struct ImmersiveView: View {
     @State private var handSpheres = [Entity()]
     @State private var handTargets = [Entity()]
     
-    let rootEntity = Entity()
     @State var timer = Timer.publish(every: 5, on: .main, in: .common).autoconnect()
     @State var songTiming: [GestureEntity] = []
     @State var timingIndex = 0
@@ -76,7 +75,7 @@ struct ImmersiveView: View {
                 hand.components.set(CollisionComponent(shapes: [.generateSphere(radius: 0.1)]))
                 hand.components.set(GroundingShadowComponent(castsShadow: true))
                 
-                rootEntity.addChild(hand)
+                spaceOrigin.addChild(hand)
                 
                 // Move the hands towards the player
                 var targetTransform = hand.transform
@@ -157,8 +156,8 @@ struct ImmersiveView: View {
                 leftHand.components.set(CollisionComponent(shapes: [.generateSphere(radius: 0.1)]))
                 leftHand.components.set(GroundingShadowComponent(castsShadow: true))
                 
-                rootEntity.addChild(rightHand)
-                rootEntity.addChild(leftHand)
+                spaceOrigin.addChild(rightHand)
+                spaceOrigin.addChild(leftHand)
                 
                 // Move the hands towards the player
                 var rightTargetTransform = rightHand.transform
@@ -210,7 +209,7 @@ struct ImmersiveView: View {
         let particleModel = ModelEntity()
         particleModel.position = SIMD3(position.x, position.y + 0.1, position.z)
         particleModel.components.set(particles)
-        rootEntity.addChild(particleModel)
+        spaceOrigin.addChild(particleModel)
         
     }
     
@@ -241,8 +240,9 @@ struct ImmersiveView: View {
     
     // Parse JSON data into Song object
     func parseJSON(song: String) -> [GestureEntity]? {
-        print("parseJSON")
-        guard let jsonData = readJSONFromFile(song: song) else { return nil }
+        let sanitizedSong = sanitizeFilename(song)
+        print("parseJSON for \(sanitizedSong)")
+        guard let jsonData = readJSONFromFile(song: sanitizedSong) else { return nil }
         
         do {
             let decoder = JSONDecoder()
@@ -322,7 +322,7 @@ struct ImmersiveView: View {
     
     var body: some View {
         RealityView { content in
-            content.add(rootEntity)
+            content.add(spaceOrigin)
             
             // Assuming 'gameModel.musicView.selectedSong?.genres' is an optional array of String
             if let genres = gameModel.selectedSong?.genres {
@@ -386,7 +386,7 @@ struct ImmersiveView: View {
                     return
                 }
                 self.songTiming = songTiming
-                print(self.songTiming.count)
+                print("Song Timing count: \(self.songTiming.count)")
                 stopTimer()
             }
             
