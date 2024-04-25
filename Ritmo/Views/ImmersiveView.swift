@@ -263,11 +263,29 @@ struct ImmersiveView: View {
     
     func testJSON(song: String) -> Bool? {
         print("testJSON")
-        guard readJSONFromFile(song: song) != nil else { return nil }
+        let sanitizedSong = sanitizeFilename(song)
+        guard readJSONFromFile(song: sanitizedSong) != nil else { return nil }
         do {
             return true
         }
     }
+    
+    func sanitizeFilename(_ input: String) -> String {
+        let disallowedCharacters = CharacterSet(charactersIn: ":\\/<>?*|\"").union(.newlines).union(.illegalCharacters).union(.controlCharacters)
+        var sanitizedString = ""
+
+        for character in input {
+            if character.unicodeScalars.contains(where: disallowedCharacters.contains) {
+                sanitizedString.append("-")
+            } else {
+                sanitizedString.append(character)
+            }
+        }
+
+        return sanitizedString
+    }
+
+
     
     struct Response: Codable {
         var song: SongJSON
