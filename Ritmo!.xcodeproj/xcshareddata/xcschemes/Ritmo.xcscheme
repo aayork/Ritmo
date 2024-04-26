@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "ECA1E2102B75B64100EE4926"
-               BuildableName = "Ritmo.app"
-               BlueprintName = "Ritmo"
-               ReferencedContainer = "container:Ritmo.xcodeproj">
+               BuildableName = "Ritmo!.app"
+               BlueprintName = "Ritmo!"
+               ReferencedContainer = "container:Ritmo!.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -44,9 +44,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "ECA1E2102B75B64100EE4926"
-            BuildableName = "Ritmo.app"
-            BlueprintName = "Ritmo"
-            ReferencedContainer = "container:Ritmo.xcodeproj">
+            BuildableName = "Ritmo!.app"
+            BlueprintName = "Ritmo!"
+            ReferencedContainer = "container:Ritmo!.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -61,9 +61,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "ECA1E2102B75B64100EE4926"
-            BuildableName = "Ritmo.app"
-            BlueprintName = "Ritmo"
-            ReferencedContainer = "container:Ritmo.xcodeproj">
+            BuildableName = "Ritmo!.app"
+            BlueprintName = "Ritmo!"
+            ReferencedContainer = "container:Ritmo!.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

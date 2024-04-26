@@ -63,7 +63,7 @@
 		EC69295E2BA9CFFE00EF3AFE /* FormaDJRMicro-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FormaDJRMicro-Black.ttf"; sourceTree = "<group>"; };
 		EC88C9B32BB8675400AD6254 /* HighScoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighScoreManager.swift; sourceTree = "<group>"; };
 		EC9407DD2BC71BD80057BA2E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		ECA1E2112B75B64100EE4926 /* Ritmo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ritmo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		ECA1E2112B75B64100EE4926 /* Ritmo!.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Ritmo!.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECA1E2152B75B64100EE4926 /* RealityKitContent */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = RealityKitContent; sourceTree = "<group>"; };
 		ECA1E2182B75B64100EE4926 /* RitmoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RitmoApp.swift; sourceTree = "<group>"; };
 		ECA1E21A2B75B64100EE4926 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -71,7 +71,7 @@
 		ECA1E2212B75B64200EE4926 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		ECA1E2232B75B64200EE4926 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ECA88E212BB9FCFA0068DAB4 /* TEMP-REMOVED Something in the Orange Zach Bryan.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "TEMP-REMOVED Something in the Orange Zach Bryan.json"; sourceTree = "<group>"; };
-		ECDD66992B8D2E96005987B0 /* Ritmo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Ritmo.entitlements; sourceTree = "<group>"; };
+		ECDD66992B8D2E96005987B0 /* Ritmo!.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Ritmo!.entitlements"; sourceTree = "<group>"; };
 		ECF310742BA8CF6500CFFE00 /* RecentlyPlayedManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentlyPlayedManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -117,7 +117,7 @@
 		ECA1E2082B75B64100EE4926 = {
 			isa = PBXGroup;
 			children = (
-				ECA1E2132B75B64100EE4926 /* Ritmo */,
+				ECA1E2132B75B64100EE4926 /* Ritmo! */,
 				ECA1E2142B75B64100EE4926 /* Packages */,
 				ECA1E2122B75B64100EE4926 /* Products */,
 			);
@@ -126,12 +126,12 @@
 		ECA1E2122B75B64100EE4926 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				ECA1E2112B75B64100EE4926 /* Ritmo.app */,
+				ECA1E2112B75B64100EE4926 /* Ritmo!.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		ECA1E2132B75B64100EE4926 /* Ritmo */ = {
+		ECA1E2132B75B64100EE4926 /* Ritmo! */ = {
 			isa = PBXGroup;
 			children = (
 				ECA1E2182B75B64100EE4926 /* RitmoApp.swift */,
@@ -143,12 +143,12 @@
 				ECC092552B7844A5002B4013 /* Views */,
 				EC69294F2BA9CF8D00EF3AFE /* Fonts */,
 				EC50B65C2BB4C4B900927329 /* Song Data */,
-				ECDD66992B8D2E96005987B0 /* Ritmo.entitlements */,
+				ECDD66992B8D2E96005987B0 /* Ritmo!.entitlements */,
 				EC9407DD2BC71BD80057BA2E /* Assets.xcassets */,
 				ECA1E2232B75B64200EE4926 /* Info.plist */,
 				ECA1E2202B75B64200EE4926 /* Preview Content */,
 			);
-			path = Ritmo;
+			path = "Ritmo!";
 			sourceTree = "<group>";
 		};
 		ECA1E2142B75B64100EE4926 /* Packages */ = {
@@ -185,9 +185,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		ECA1E2102B75B64100EE4926 /* Ritmo */ = {
+		ECA1E2102B75B64100EE4926 /* Ritmo! */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = ECA1E2262B75B64200EE4926 /* Build configuration list for PBXNativeTarget "Ritmo" */;
+			buildConfigurationList = ECA1E2262B75B64200EE4926 /* Build configuration list for PBXNativeTarget "Ritmo!" */;
 			buildPhases = (
 				ECA1E20D2B75B64100EE4926 /* Sources */,
 				ECA1E20E2B75B64100EE4926 /* Frameworks */,
@@ -197,12 +197,12 @@
 			);
 			dependencies = (
 			);
-			name = Ritmo;
+			name = "Ritmo!";
 			packageProductDependencies = (
 				ECA1E2162B75B64100EE4926 /* RealityKitContent */,
 			);
 			productName = "vision-app";
-			productReference = ECA1E2112B75B64100EE4926 /* Ritmo.app */;
+			productReference = ECA1E2112B75B64100EE4926 /* Ritmo!.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -220,7 +220,7 @@
 					};
 				};
 			};
-			buildConfigurationList = ECA1E20C2B75B64100EE4926 /* Build configuration list for PBXProject "Ritmo" */;
+			buildConfigurationList = ECA1E20C2B75B64100EE4926 /* Build configuration list for PBXProject "Ritmo!" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -233,7 +233,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				ECA1E2102B75B64100EE4926 /* Ritmo */,
+				ECA1E2102B75B64100EE4926 /* Ritmo! */,
 			);
 		};
 /* End PBXProject section */
@@ -412,10 +412,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = Ritmo/Ritmo.entitlements;
+				CODE_SIGN_ENTITLEMENTS = "Ritmo!/Ritmo!.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Ritmo/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Ritmo!/Preview Content\"";
 				DEVELOPMENT_TEAM = C32HX45PQ4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -444,10 +444,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = Ritmo/Ritmo.entitlements;
+				CODE_SIGN_ENTITLEMENTS = "Ritmo!/Ritmo!.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Ritmo/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Ritmo!/Preview Content\"";
 				DEVELOPMENT_TEAM = C32HX45PQ4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -474,7 +474,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		ECA1E20C2B75B64100EE4926 /* Build configuration list for PBXProject "Ritmo" */ = {
+		ECA1E20C2B75B64100EE4926 /* Build configuration list for PBXProject "Ritmo!" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				ECA1E2242B75B64200EE4926 /* Debug */,
@@ -483,7 +483,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		ECA1E2262B75B64200EE4926 /* Build configuration list for PBXNativeTarget "Ritmo" */ = {
+		ECA1E2262B75B64200EE4926 /* Build configuration list for PBXNativeTarget "Ritmo!" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				ECA1E2272B75B64200EE4926 /* Debug */,
