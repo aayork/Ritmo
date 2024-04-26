@@ -32,7 +32,7 @@ struct MusicView: View {
     
     var body: some View {
         ZStack {
-            Color.ritmoBlue.opacity(0.3)
+            Color.ritmoLightBlue.opacity(0.3)
                             .edgesIgnoringSafeArea(.all)
             NavigationSplitView {
                 List(songs, selection: $selectedSong) { song in
