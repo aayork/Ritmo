@@ -18,7 +18,7 @@ struct WaveAnimation: View {
             Color(.ritmoBlue).opacity(1.0).ignoresSafeArea()
             ForEach(0..<70) { i in
                 Wave(offSet: Angle(degrees: waveOffset.degrees - Double(i) * 10), percent: percent, index: i, direction: i % 2 == 0 ? 1 : -1, hue: hue)
-                    .stroke(Color.blue
+                    .stroke(Color.ritmoLightBlue
                     )
                     .ignoresSafeArea(.all)
                     .blur(radius: 1.5)

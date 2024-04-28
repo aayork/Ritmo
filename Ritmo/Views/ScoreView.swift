@@ -31,16 +31,17 @@ struct ScoreView: View {
                     }
                 }) {
                     Text("Play")
+                        .foregroundStyle(Color.black)
                         .font(.custom("Soulcraft_Wide", size: 20.0))
                         .padding()
-                        .background(Rectangle().fill(Color.blue))
+                        .background(Rectangle().fill(Color.electricLime))
                 }
                 .buttonStyle(PlainButtonStyle())
                 .cornerRadius(25)
                 .zIndex(1)
                 .background(
                     Rectangle()
-                        .fill(Color.blue)
+                        .fill(Color.ritmoLightBlue)
                         .frame(width: 460, height: 230) // Adjust the frame size as needed
                         .blur(radius: 100) // Adjust the blur radius to control the spread of the glow
                         .shadow(radius: 4)
@@ -62,11 +63,11 @@ struct ScoreView: View {
                                 let artistName = gameModel.selectedSong?.artist ?? ""
                                 Text(songName)
                                     .font(.custom("FormaDJRMicro-Bold", size: 30.0))
-                                    .foregroundStyle(Color("ritmoWhite"))
+                                    .foregroundStyle(Color.white)
                                     .frame(maxWidth: .infinity, alignment: .leading)
                                 Text(artistName)
                                     .font(.custom("FormaDJRMicro-Medium", size: 17.0))
-                                    .foregroundStyle(Color("ritmoWhite"))
+                                    .foregroundStyle(Color.white)
                                     .frame(maxWidth: .infinity, alignment: .leading)
                             }
                             Text("Score: " + String(gameModel.score))
