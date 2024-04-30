@@ -10,7 +10,8 @@ import SwiftUI
 struct SettingsView: View {
     // State for slider value
     @State private var volume: Double = 50
-    @State private var showModal = false
+    @State private var showPeople = false
+    @State private var showTutorial = false
     
     let people = [
         Person(name: "Jax Cannon", description: "3D Design", imageName: "jax"),
@@ -47,7 +48,7 @@ struct SettingsView: View {
                     
                     HStack {
                         Button(action: {
-                            self.showModal = true
+                            self.showPeople = true
                         }) {
                             Text("CREDITS")
                                 .foregroundColor(.white)
@@ -56,18 +57,22 @@ struct SettingsView: View {
                         }
                         .offset(x: 200)
                         .padding(.horizontal)
-                        .sheet(isPresented: $showModal) {
-                            ModalView(people: people, showModal: $showModal)
+                        .sheet(isPresented: $showPeople) {
+                            PeopleView(people: people, showPeople: $showPeople)
                         }
                         
                         Spacer()
                         
                         Button {
+                            self.showTutorial = true
                         } label: {
                             Text("TUTORIAL")
                                 .foregroundColor(.white)
                                 .font(.custom("Soulcraft_Wide", size: 30.0))
                                 .frame(maxWidth: 225, minHeight: 52)
+                        }
+                        .sheet(isPresented: $showTutorial) {
+                            TutorialView(showTutorial: $showTutorial)
                         }
                         Spacer()
                     }
@@ -88,9 +93,9 @@ struct Person {
     var imageName: String // The image should be included in your Assets
 }
 
-struct ModalView: View {
+struct PeopleView: View {
     var people: [Person]
-    @Binding var showModal: Bool
+    @Binding var showPeople: Bool
     
     var body: some View {
         VStack {
@@ -99,7 +104,7 @@ struct ModalView: View {
                     .foregroundStyle(Color.ritmoOrange)
                     .offset(x: 225)
                 Button("Done") {
-                    self.showModal = false
+                    self.showPeople = false
                 }
                 .frame(maxWidth: .infinity, alignment: .trailing)
             }
@@ -123,6 +128,29 @@ struct ModalView: View {
         }
         .padding()
         .frame(width: 715, height: 715)
+    }
+}
+
+struct TutorialView: View {
+    @Binding var showTutorial: Bool
+    
+    var body: some View {
+        VStack {
+            HStack {
+                Text("Welcome!").font(.custom("Soulcraft", size: 35.0))
+                    .foregroundStyle(Color.ritmoOrange)
+                Button("Done") {
+                    self.showTutorial = false
+                }
+                .frame(maxWidth: .infinity, alignment: .trailing)
+            }
+            .padding()
+            VStack {
+                Text("To get started, please be sure you're signed in to an Apple Music account with an active subscription on your Apple Vision pro. From there, simply search for any song in the music tab to get started! Match your hands to the gestures on screen to earn points. Enjoy!")
+            }
+        }
+        .padding()
+        .frame(width: 400, height: 300)
     }
 }
 
