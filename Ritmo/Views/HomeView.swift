@@ -21,6 +21,7 @@ struct HomeView: View {
     var carousel = SnapCarouselView()
     
     @State private var highScores: [SongScore] = HighScoreManager.shared.getHighScores()
+    @State var showTutorial = false
     
     var body: some View {
         ZStack {
@@ -39,9 +40,12 @@ struct HomeView: View {
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 250)
                     Button("HOW TO PLAY", action: {
-                        // Open tutorial here
+                        self.showTutorial = true
                     })
                     .buttonStyle(GrayButtonStyle())
+                    .sheet(isPresented: $showTutorial) {
+                        TutorialView(showTutorial: $showTutorial)
+                    }
                     
                     VStack {
                         Text("HIGH SCORES")
@@ -138,10 +142,13 @@ struct HomeView: View {
                             .frame(width: 600)
                         Spacer()
                         Button("Get Started", action: {
-                            tabSelection = 3
+                            self.showTutorial = true
                         })
                         .buttonStyle(YellowButtonStyle())
                         .padding(.vertical)
+                        .sheet(isPresented: $showTutorial) {
+                            TutorialView(showTutorial: $showTutorial)
+                        }
                         Button("PLAY NOW", action: {
                             tabSelection = 2
                         })
@@ -201,6 +208,29 @@ struct HomeView: View {
             )
             .blur(radius: 50) // Adjust the blur radius as needed
             .ignoresSafeArea() // Ensures the background extends to the edges of the display
+        }
+    }
+    
+    struct TutorialView: View {
+        @Binding var showTutorial: Bool
+        
+        var body: some View {
+            VStack {
+                HStack {
+                    Text("Welcome!").font(.custom("Soulcraft", size: 35.0))
+                        .foregroundStyle(Color.ritmoOrange)
+                    Button("Done") {
+                        self.showTutorial = false
+                    }
+                    .frame(maxWidth: .infinity, alignment: .trailing)
+                }
+                .padding()
+                VStack {
+                    Text("To get started, please be sure you're signed in to an Apple Music account with an active subscription on your Apple Vision pro. From there, simply search for any song in the music tab to get started! Match your hands to the gestures on screen to earn points. Enjoy!")
+                }
+            }
+            .padding()
+            .frame(width: 400, height: 300)
         }
     }
 }
