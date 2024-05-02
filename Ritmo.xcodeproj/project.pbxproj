@@ -420,7 +420,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "$(TARGET_NAME)/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = Ritmo;
+				INFOPLIST_KEY_CFBundleDisplayName = "Ritmo!";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.games";
 				INFOPLIST_KEY_NSAppleMusicUsageDescription = "Requesting Access to Play Music";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -452,7 +452,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "$(TARGET_NAME)/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = Ritmo;
+				INFOPLIST_KEY_CFBundleDisplayName = "Ritmo!";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.games";
 				INFOPLIST_KEY_NSAppleMusicUsageDescription = "Requesting Access to Play Music";
 				LD_RUNPATH_SEARCH_PATHS = (
