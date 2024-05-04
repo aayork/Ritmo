@@ -82,15 +82,6 @@ struct HomeView: View {
                         Text("OUR PICKS")
                             .font(.custom("FormaDJRMicro-Bold", size: 30.0))
                             .padding(1)
-                        Text("SOMETHING IN THE ORANGE")
-                            .font(.custom("Soulcraft_Slanted-Condensed", size: 25.0))
-                            .foregroundStyle(Color.electricLime)
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                            .padding(.horizontal, 15)
-                        Text("Zach Bryan")
-                            .font(.custom("FormaDJRMicro-Bold", size: 17.0))
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                            .padding(.horizontal, 15)
                         Text("LAKE SHORE DRIVE")
                             .font(.custom("Soulcraft_Slanted-Condensed", size: 25.0))
                             .foregroundStyle(Color.electricLime)
@@ -100,12 +91,21 @@ struct HomeView: View {
                             .font(.custom("FormaDJRMicro-Bold", size: 17.0))
                             .frame(maxWidth: .infinity, alignment: .leading)
                             .padding(.horizontal, 15)
-                        Text("PARTY IN THE U.S.A.")
+                        Text("BACK ON 74")
                             .font(.custom("Soulcraft_Slanted-Condensed", size: 25.0))
                             .foregroundStyle(Color.electricLime)
                             .frame(maxWidth: .infinity, alignment: .leading)
                             .padding(.horizontal, 15)
-                        Text("Miley Cyrus")
+                        Text("Jungle")
+                            .font(.custom("FormaDJRMicro-Bold", size: 17.0))
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .padding(.horizontal, 15)
+                        Text("BACK IN BLACK")
+                            .font(.custom("Soulcraft_Slanted-Condensed", size: 25.0))
+                            .foregroundStyle(Color.electricLime)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .padding(.horizontal, 15)
+                        Text("AC/DC")
                             .font(.custom("FormaDJRMicro-Bold", size: 17.0))
                             .frame(maxWidth: .infinity, alignment: .leading)
                             .padding(.horizontal, 15)
@@ -218,7 +218,7 @@ struct HomeView: View {
             VStack {
                 HStack {
                     Text("Welcome!").font(.custom("Soulcraft", size: 35.0))
-                        .foregroundStyle(Color.ritmoOrange)
+                        .foregroundStyle(Color.electricLime)
                     Button("Done") {
                         self.showTutorial = false
                     }
@@ -227,6 +227,7 @@ struct HomeView: View {
                 .padding()
                 VStack {
                     Text("To get started, please be sure you're signed in to an Apple Music account with an active subscription on your Apple Vision pro. From there, simply search for any song in the music tab to get started! Match your hands to the gestures on screen to earn points. Enjoy!")
+                        .font(.custom("FormaDJRMicro-Medium", size: 17.0))
                 }
             }
             .padding()

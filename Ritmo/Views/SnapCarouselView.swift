@@ -49,7 +49,7 @@ struct SnapCarouselView: View {
                             let distanceFromCenter = abs(halfTotalWidth - (offset + halfCardWidth))
                             
                             CarouselCardView(card: card, selectedCardID: selectedCardID, geometry: geometry, distanceFromCenter: distanceFromCenter)
-                                .offset(x: offset - 20, y: 0)
+                                .offset(x: offset - 15, y: 0)
                             // Calculate zIndex based on how close the item is to the currently selected item
                                 .zIndex(Double(cards.count - abs(currentIndex - index)))
                             
@@ -96,7 +96,7 @@ struct CarouselCardView: View {
                 .frame(width: 400, height: 400)
                 .clipShape(RoundedRectangle(cornerRadius: 25.0))
                 .scaleEffect(max(0.4, 1 - (Double(distanceFromCenter) / 700)))
-                .opacity(max(0, 1 - (Double(distanceFromCenter) / 600)))
+                .opacity(max(0, 1 - (Double(distanceFromCenter) / 400)))
             if (card.id == selectedCardID) {
                 HStack {
                     Text("\(card.name) - \(card.artist)")

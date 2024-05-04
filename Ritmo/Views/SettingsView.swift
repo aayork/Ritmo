@@ -101,7 +101,7 @@ struct PeopleView: View {
         VStack {
             HStack {
                 Text("Meet the Team!").font(.custom("Soulcraft", size: 35.0))
-                    .foregroundStyle(Color.ritmoOrange)
+                    .foregroundStyle(Color.ritmoWhite)
                     .offset(x: 225)
                 Button("Done") {
                     self.showPeople = false
@@ -121,6 +121,7 @@ struct PeopleView: View {
                             .foregroundStyle(Color.electricLime)
                             .frame(maxWidth: .infinity, alignment: .leading)
                         Text(person.description).font(.custom("FormaDJRMicro-Medium", size: 17.0))
+                            .foregroundStyle(Color.ritmoWhite)
                             .frame(maxWidth: .infinity, alignment: .leading)
                     }
                 }
@@ -138,7 +139,7 @@ struct TutorialView: View {
         VStack {
             HStack {
                 Text("Welcome!").font(.custom("Soulcraft", size: 35.0))
-                    .foregroundStyle(Color.ritmoOrange)
+                    .foregroundStyle(Color.electricLime)
                 Button("Done") {
                     self.showTutorial = false
                 }
@@ -147,6 +148,7 @@ struct TutorialView: View {
             .padding()
             VStack {
                 Text("To get started, please be sure you're signed in to an Apple Music account with an active subscription on your Apple Vision pro. From there, simply search for any song in the music tab to get started! Match your hands to the gestures on screen to earn points. Enjoy!")
+                    .font(.custom("FormaDJRMicro-Medium", size: 17.0))
             }
         }
         .padding()
