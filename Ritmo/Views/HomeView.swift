@@ -19,10 +19,10 @@ struct HomeView: View {
     @Environment(GameModel.self) var gameModel
     @Environment(\.openImmersiveSpace) private var openImmersiveSpace
     var carousel = SnapCarouselView()
-    
+
     @State private var highScores: [SongScore] = HighScoreManager.shared.getHighScores()
     @State var showTutorial = false
-    
+
     var body: some View {
         ZStack {
             BlurredBackground()
@@ -30,7 +30,7 @@ struct HomeView: View {
         }
         .padding()
     }
-    
+
     private var contentStack: some View {
         HStack {
             if (RecentlyPlayedManager.shared.getRecentlyPlayedSongs().count >= 5) {
@@ -46,12 +46,12 @@ struct HomeView: View {
                     .sheet(isPresented: $showTutorial) {
                         TutorialView(showTutorial: $showTutorial)
                     }
-                    
+
                     VStack {
                         Text("HIGH SCORES")
                             .font(.custom("FormaDJRMicro-Bold", size: 30.0))
                             .padding(1)
-                        
+
                         if highScores.isEmpty {
                             Text("There are no high scores yet")
                                 .font(.custom("FormaDJRMicro-Bold", size: 17.0))
@@ -77,7 +77,7 @@ struct HomeView: View {
                     .background(Rectangle().fill(Color(red: 0.17, green: 0.17, blue: 0.17)).opacity(0.8))
                     .cornerRadius(20)
                     .padding(.vertical, 7)
-                    
+
                     VStack {
                         Text("OUR PICKS")
                             .font(.custom("FormaDJRMicro-Bold", size: 30.0))
@@ -115,14 +115,14 @@ struct HomeView: View {
                     .cornerRadius(20)
                 }
                 .zIndex(/*@START_MENU_TOKEN@*/1.0/*@END_MENU_TOKEN@*/)
-                
+
                 Spacer()
-                
+
                 VStack(alignment: .center) {
                     carousel
                         .zIndex(2.0)
                     Spacer()
-                    
+
                     Button("PLAY NOW", action: {
                         tabSelection = 2
                     })
@@ -159,11 +159,11 @@ struct HomeView: View {
                 }
                 .frame(maxWidth: .infinity, alignment: .center) // Ensure HStack uses all available space and centers content
             }
-            
+
             Spacer()
         }
     }
-    
+
     struct GrayButtonStyle: ButtonStyle {
         func makeBody(configuration: Configuration) -> some View {
             configuration.label
@@ -181,7 +181,7 @@ struct HomeView: View {
                 .scaleEffect(configuration.isPressed ? 0.95 : 1.0)
         }
     }
-    
+
     struct YellowButtonStyle: ButtonStyle {
         func makeBody(configuration: Configuration) -> some View {
             configuration.label
@@ -198,7 +198,7 @@ struct HomeView: View {
                 .scaleEffect(configuration.isPressed ? 0.95 : 1.0)
         }
     }
-    
+
     struct BlurredBackground: View {
         var body: some View {
             LinearGradient(
@@ -210,10 +210,10 @@ struct HomeView: View {
             .ignoresSafeArea() // Ensures the background extends to the edges of the display
         }
     }
-    
+
     struct TutorialView: View {
         @Binding var showTutorial: Bool
-        
+
         var body: some View {
             VStack {
                 HStack {

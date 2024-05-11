@@ -24,4 +24,7 @@ xcuserdata/
 *.rcuserdata
 *UserInterfaceState.xcuserstate
 
+### Build Shell
+*.sh
+
 
